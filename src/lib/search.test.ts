@@ -52,7 +52,7 @@ describe('search', () => {
   it('filters by elderFriendly', () => {
     const results = search(trip, { ...EMPTY_FILTERS, elderFriendlyOnly: true });
     const dayIds = new Set(results.map((r) => r.dayId));
-    expect(dayIds.has('d1')).toBe(false); // day 1 is not elder-friendly
+    expect(dayIds.has('d3')).toBe(false); // day 3 (Floransa #1) is not elder-friendly
     expect(dayIds.has('d2')).toBe(true);
   });
 

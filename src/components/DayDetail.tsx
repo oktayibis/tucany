@@ -1,5 +1,12 @@
 import type { ReactNode } from 'react';
 import { trip } from '../data/trip';
+import {
+  chosenOption,
+  effectiveFood,
+  effectiveShopping,
+  effectiveStops,
+  isStopVisible,
+} from '../lib/budget';
 import { formatDayMonth, weekdayDisplay } from '../lib/dates';
 import { gapsForDay } from '../lib/gaps';
 import { ALL_CLOSURES, ALL_GAPS } from '../state/derived';
@@ -32,7 +39,7 @@ export function DayDetail({
   readonly dayId: string;
   readonly onBack: () => void;
 }) {
-  const { today, budget } = useTrip();
+  const { today, budget, mode, party, chosenOptions, upgrades } = useTrip();
   const index = trip.days.findIndex((day) => day.id === dayId);
   const day = trip.days[index];
 
@@ -55,6 +62,13 @@ export function DayDetail({
   const dayClosures = ALL_CLOSURES.find((candidate) => candidate.dayId === dayId);
   const dayGaps = gapsForDay(ALL_GAPS, dayId);
   const isToday = day.date === today;
+
+  const option = chosenOption(day, { mode, party, chosenOptions, upgrades });
+  const stops = effectiveStops(day, option).filter((stop) =>
+    isStopVisible(stop, trip.days, chosenOptions),
+  );
+  const food = effectiveFood(day, option);
+  const shopping = effectiveShopping(day, option);
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col gap-4 p-4 pb-24">
@@ -94,19 +108,18 @@ export function DayDetail({
       </Section>
 
       <Section title="Görülecek">
-        {day.options !== undefined ? (
-          <OptionsSection day={day} />
-        ) : (
-          <StopsSection day={day} dayItems={dayBudget?.items ?? []} />
-        )}
+        <div className="flex flex-col gap-4">
+          {day.options !== undefined && <OptionsSection day={day} />}
+          {stops.length > 0 && <StopsSection stops={stops} dayItems={dayBudget?.items ?? []} />}
+        </div>
       </Section>
 
       <Section title="Yemek">
-        <FoodSection day={day} />
+        <FoodSection dayId={day.id} food={food} />
       </Section>
 
       <Section title="Alışveriş">
-        <ShoppingSection shopping={day.shopping} />
+        <ShoppingSection shopping={shopping} />
       </Section>
 
       <Section title="Notlar">

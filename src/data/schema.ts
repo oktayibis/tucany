@@ -41,6 +41,7 @@ export const themeSchema = z.enum([
   'scenic',
   'craft',
   'departure',
+  'plaj',
 ]);
 
 export const intensitySchema = z.enum(['low', 'low-medium', 'medium', 'medium-high', 'high']);
@@ -174,6 +175,10 @@ export const stopSchema = z
     nav: z.url().optional(),
     navNote: z.string().optional(),
     tags: z.array(z.enum(['market', 'shopping'])).optional(),
+    /** Short marker shown on the card, e.g. "Salı'dan taşındı". */
+    badge: z.string().optional(),
+    /** Only shown when another day's chosen option is one of `optionIn`. */
+    showWhen: z.object({ dayId: z.string(), optionIn: z.array(z.string()) }).strict().optional(),
   })
   .strict();
 
@@ -216,14 +221,35 @@ export const shoppingSchema = z
   })
   .strict();
 
-/** Day 9 offers three mutually exclusive itineraries instead of a stop list. */
+/** An option's cost: one figure, or a per-mode {a, b} split when it differs sharply. */
+export const optionCostSchema = z.union([eur, z.object({ a: eur, b: eur }).strict()]);
+
+/**
+ * A day can offer mutually exclusive itineraries instead of one stop list
+ * (day 9's three craft towns; day 7's rest-day-vs-beach choice). Some options
+ * are thin (id/label/desc/cost, resolved against the day's own stops/food);
+ * others are fully self-contained, carrying their own `stops`/`food`/
+ * `shopping` that replace the day's when chosen — see src/lib/budget.ts.
+ */
 export const dayOptionSchema = z
   .object({
     id: z.string(),
     label: z.string(),
     desc: z.string(),
-    cost: eur,
+    cost: optionCostSchema,
+    drivingMinutes: minutes.optional(),
     recommended: z.boolean().optional(),
+    pros: z.array(z.string()).optional(),
+    cons: z.array(z.string()).optional(),
+    note: z.string().optional(),
+    /** References a `beaches[].id` when this option is a beach day. */
+    beach: z.string().optional(),
+    /** Content that moves to another day's id when this option is chosen. */
+    movesTo: z.string().optional(),
+    bikes: z.string().optional(),
+    stops: z.array(stopSchema).optional(),
+    food: z.array(foodSchema).optional(),
+    shopping: z.array(shoppingSchema).optional(),
     nav: z.url().optional(),
   })
   .strict();
@@ -301,6 +327,23 @@ export const tipSchema = z
   })
   .strict();
 
+/** How much of a beach costs nothing: a free `spiaggia libera` strip, a paid
+ * `stabilimento` club, or both side by side. */
+export const beachFreeSchema = z.enum(['full', 'partial', 'none']);
+
+export const beachSchema = z
+  .object({
+    id: z.string(),
+    name: z.string(),
+    lat: z.number(),
+    lng: z.number(),
+    placeId: z.string().optional(),
+    minutesFromBase: minutes,
+    free: beachFreeSchema,
+    notes: z.string(),
+  })
+  .strict();
+
 export const closureSchema = z
   .object({
     place: z.string(),
@@ -331,6 +374,7 @@ export const tripDataSchema = z
     car: carSchema,
     budget: budgetSchema,
     days: z.array(daySchema).nonempty(),
+    beaches: z.array(beachSchema),
     bookings: z.array(bookingSchema),
     porkGuide: porkGuideSchema,
     phrases: z.array(phraseSchema).nonempty(),
@@ -367,6 +411,10 @@ export type Shopping = z.infer<typeof shoppingSchema>;
 export type DayOption = z.infer<typeof dayOptionSchema>;
 export type TimelineEntry = z.infer<typeof timelineEntrySchema>;
 export type Day = z.infer<typeof daySchema>;
+
+export type OptionCost = z.infer<typeof optionCostSchema>;
+export type BeachFree = z.infer<typeof beachFreeSchema>;
+export type Beach = z.infer<typeof beachSchema>;
 
 export type Booking = z.infer<typeof bookingSchema>;
 export type PorkGuide = z.infer<typeof porkGuideSchema>;

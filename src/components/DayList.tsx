@@ -1,4 +1,5 @@
 import { trip } from '../data/trip';
+import { chosenOption, effectiveDrivingMinutes } from '../lib/budget';
 import { formatDriving } from '../lib/dates';
 import { euro } from '../lib/format';
 import { PriceTag } from './PriceTag';
@@ -16,7 +17,7 @@ import { NavButton, PhoneButton } from './NavButton';
  * together, legible at a glance before reading a single number.
  */
 export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => void }) {
-  const { today, isOnTrip, activeDayId, budget } = useTrip();
+  const { today, isOnTrip, activeDayId, budget, mode, party, chosenOptions, upgrades } = useTrip();
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col pb-24">
@@ -58,15 +59,18 @@ export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => 
         {trip.days.map((day, index) => {
           const dayTotal = budget.days.find((candidate) => candidate.dayId === day.id)?.total ?? 0;
           const isToday = day.date === today;
+          const option = chosenOption(day, { mode, party, chosenOptions, upgrades });
+          const drivingMinutes = effectiveDrivingMinutes(day, option);
+          const undecided = day.options !== undefined && chosenOptions[day.id] === undefined;
           return (
             <li key={day.id} className="flex flex-col gap-2">
               {index > 0 && (
                 <div
                   aria-hidden="true"
                   className="flex items-center pl-1 text-xs text-text-muted"
-                  style={{ height: `${0.9 + day.drivingMinutes * 0.032}rem` }}
+                  style={{ height: `${0.9 + drivingMinutes * 0.032}rem` }}
                 >
-                  <span className="bg-bg pr-2">↓ {formatDriving(day.drivingMinutes)} sürüş</span>
+                  <span className="bg-bg pr-2">↓ {formatDriving(drivingMinutes)} sürüş</span>
                 </div>
               )}
               <div className="relative">
@@ -84,6 +88,8 @@ export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => 
                   day={day}
                   index={index}
                   total={dayTotal}
+                  drivingMinutes={drivingMinutes}
+                  undecided={undecided}
                   isToday={isToday}
                   onOpen={() => onOpenDay(day.id)}
                 />

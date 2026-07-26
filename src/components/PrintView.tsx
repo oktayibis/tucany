@@ -1,5 +1,13 @@
 import { trip } from '../data/trip';
-import { chosenOption, dayLineItems } from '../lib/budget';
+import {
+  chosenOption,
+  dayLineItems,
+  effectiveDrivingMinutes,
+  effectiveFood,
+  effectiveShopping,
+  effectiveStops,
+  resolveOptionCost,
+} from '../lib/budget';
 import { effectiveWeekday } from '../lib/closures';
 import { formatDayMonth, formatDriving, weekdayDisplay } from '../lib/dates';
 import { euro } from '../lib/format';
@@ -45,13 +53,16 @@ export function PrintView() {
         const items = dayLineItems(day, input);
         const option = chosenOption(day, input);
         const weekday = closures?.weekday ?? effectiveWeekday(day);
+        const stops = effectiveStops(day, option);
+        const food = effectiveFood(day, option);
+        const shopping = effectiveShopping(day, option);
 
         return (
           <section key={day.id} className="break-after-page">
             <h2 className="font-display text-2xl font-bold">
               {index + 1}. Gün · {weekdayDisplay(weekday)} · {formatDayMonth(day.date)} — {day.title}
             </h2>
-            <p className="text-sm">Sürüş: {formatDriving(day.drivingMinutes)}</p>
+            <p className="text-sm">Sürüş: {formatDriving(effectiveDrivingMinutes(day, option))}</p>
 
             {(day.warnings.length > 0 || (closures?.blocking.length ?? 0) > 0) && (
               <div className="mt-1 border border-black p-2 text-sm">
@@ -79,18 +90,19 @@ export function PrintView() {
             )}
 
             <h3 className="mt-3 font-display text-lg font-semibold">Görülecek</h3>
-            {day.options !== undefined ? (
+            {day.options !== undefined && (
               <ul className="text-sm">
                 {day.options.map((opt) => (
                   <li key={opt.id}>
-                    {opt.id === option?.id ? '☑' : '☐'} <strong>{opt.label}</strong> ({euro(opt.cost)}
-                    ) — {opt.desc}
+                    {opt.id === option?.id ? '☑' : '☐'} <strong>{opt.label}</strong> (
+                    {euro(resolveOptionCost(opt.cost, mode))}) — {opt.desc}
                   </li>
                 ))}
               </ul>
-            ) : (
+            )}
+            {stops.length > 0 && (
               <ul className="text-sm">
-                {day.stops.map((stop) => {
+                {stops.map((stop) => {
                   const item = items.find((line) => line.id === stop.id);
                   const dropped = stop.tier === 'skip' || stop.tier === 'removed';
                   return (
@@ -108,7 +120,7 @@ export function PrintView() {
 
             <h3 className="mt-3 font-display text-lg font-semibold">Yemek</h3>
             <ul className="text-sm">
-              {day.food.map((entry) => (
+              {food.map((entry) => (
                 <li key={`${entry.slot}-${entry.name}`}>
                   <strong>{entry.name}</strong> ({euro(entry.price)})
                   {entry.porkWarning !== undefined && ` — ⚠ ${entry.porkWarning}`}
@@ -119,11 +131,11 @@ export function PrintView() {
             </ul>
 
             <h3 className="mt-3 font-display text-lg font-semibold">Alışveriş</h3>
-            {day.shopping.length === 0 ? (
+            {shopping.length === 0 ? (
               <p className="text-sm">—</p>
             ) : (
               <ul className="text-sm">
-                {day.shopping.map((entry) => (
+                {shopping.map((entry) => (
                   <li key={entry.name}>
                     <strong>{entry.name}</strong> — {entry.for}
                   </li>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Day, Stop } from '../data/schema';
+import type { Stop } from '../data/schema';
 import type { LineItem } from '../lib/budget';
 import { euro } from '../lib/format';
 import { NavButton, PhoneButton } from './NavButton';
@@ -12,16 +12,19 @@ import { useTrip } from '../state/TripContext';
  * `optional` get full cards; `skip` and `removed` collapse into one
  * "Neden atlıyoruz" accordion — closed by default, but never hidden, because
  * the reasoning is half the value of the plan.
+ *
+ * `stops` is already resolved by the caller (day + selected option merged,
+ * conditional stops filtered) — this component just renders what it is given.
  */
 export function StopsSection({
-  day,
+  stops,
   dayItems,
 }: {
-  readonly day: Day;
+  readonly stops: readonly Stop[];
   readonly dayItems: readonly LineItem[];
 }) {
-  const visible = day.stops.filter((stop) => stop.tier === 'core' || stop.tier === 'optional');
-  const dropped = day.stops.filter((stop) => stop.tier === 'skip' || stop.tier === 'removed');
+  const visible = stops.filter((stop) => stop.tier === 'core' || stop.tier === 'optional');
+  const dropped = stops.filter((stop) => stop.tier === 'skip' || stop.tier === 'removed');
   const savedTotal = dropped.reduce((sum, stop) => sum + (stop.cost ?? 0), 0);
 
   return (
@@ -48,6 +51,11 @@ function StopCard({ stop, item }: { readonly stop: Stop; readonly item: LineItem
           {stop.name}
         </h3>
         <div className="flex items-center gap-2">
+          {stop.badge !== undefined && (
+            <span className="bg-accent-2/20 px-1.5 py-0.5 font-body text-xs font-semibold text-accent-2">
+              {stop.badge}
+            </span>
+          )}
           {stop.tier === 'optional' && <StopTierBadge tier="optional" />}
           <CostLine stop={stop} item={item} />
         </div>

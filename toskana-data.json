@@ -47,8 +47,8 @@
       "weekday": "Carsamba",
       "title": "Inis, Pisa (+ Lucca)",
       "theme": "arrival",
-      "intensity": "high",
-      "elderFriendly": false,
+      "intensity": "low",
+      "elderFriendly": true,
       "drivingMinutes": 135,
       "budget": { "a": 170, "b": 60 },
       "warnings": [
@@ -57,15 +57,44 @@
         "Ucus 06:05 - herkes cok yorgun olacak"
       ],
       "elderNote": "Ciddi oneri: Lucca'yi 6 Agustos'a kaydir. Sadece Pisa'yi gorup oglen otelde olmak butun haftanin enerjisini kurtarir.",
+      "options": [
+        {
+          "id": "opt-a",
+          "label": "Sadece Pisa + otel",
+          "desc": "09:15 araba / 09:45-11:15 Piazza dei Miracoli / 13:00 otelde / 14:00 check-in, havuz, otelde erken aksam yemegi.",
+          "cost": 45,
+          "drivingMinutes": 100,
+          "recommended": true,
+          "pros": [
+            "Ucus 06:05, herkes 03:30'dan beri ayakta - hafif ilk gun butun haftanin enerjisini koruyor",
+            "Havuza erken girilir"
+          ],
+          "cons": ["Lucca kacar (6 Agustos'ta opsiyon olarak duruyor)"]
+        },
+        {
+          "id": "opt-b",
+          "label": "Pisa + Lucca",
+          "desc": "Pisa'dan sonra Lucca: sur ustu yuruyus bandi (4 km, golgeli), Piazza dell'Anfiteatro. 12:30-16:30, sonra 80 dk yol, ~18:00 otelde.",
+          "cost": 90,
+          "drivingMinutes": 195,
+          "pros": ["Lucca gercekten guzel ve Pisa'dan daha keyifli", "Iki sehir tek gunde biter"],
+          "cons": ["Otelde 18:00, ilk gun icin agir", "Anne icin yorucu olabilir"],
+          "note": "Modumuz yuksekse. Havalimaninda karar verilebilir.",
+          "stops": [
+            { "id": "s1c", "name": "Lucca sur ustu + Piazza dell'Anfiteatro", "city": "Lucca", "lat": 43.843, "lng": 10.5027, "tier": "core", "cost": 0, "durationMin": 240, "why": "4 km golgeli yuruyus bandi; Roma amfitiyatrosunun ustune kurulmus oval meydan.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca" },
+            { "id": "s1d", "name": "Torre Guinigi", "city": "Lucca", "tier": "skip", "cost": 18, "why": "Tepesinde 700 yillik mese agaclari var ama 230 basamak." }
+          ],
+          "food": [
+            { "slot": "lunch", "tier": "a", "name": "Lucca'da restoran", "price": 70, "why": "Geleneksel Lucchese Trattoria (Trattoria da Ubaldo / Osteria da Pasquale). Lucca sur icinde Piazza dell'Anfiteatro yakininda ekzantrik atmosferli otantik mekan. Taze buyukanne usulu makarnalar, tagliata di manzo (dana biftek) ve mehur 'Torte coi becchi' tatlisi ile taninir.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+da+Ubaldo+Lucca" },
+            { "slot": "lunch", "tier": "b", "name": "Forno schiacciata + meyve, surda piknik", "price": 20, "why": "Firin & Piknik. Lucca surlarinin ustundeki dev golgeli agacli parkta tarihi firindan taze sicak schiacciata (zeytinyaqli Toskana firin ekmegi) ve meyve ile rahat acik hava piknigi.", "nav": "https://www.google.com/maps/search/?api=1&query=Forno+Lucca+Centro" }
+          ]
+        }
+      ],
       "stops": [
         { "id": "s1a", "name": "Piazza dei Miracoli", "city": "Pisa", "lat": 43.7229, "lng": 10.3966, "tier": "core", "cost": 0, "durationMin": 90, "why": "Battistero'da gorevli gunde birkac kez akustigi gostermek icin sesleniyor - cocuklar bayiliyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Via+Pietrasantina+Pisa", "navNote": "Via Pietrasantina otoparki, ucretsiz shuttle" },
-        { "id": "s1b", "name": "Egik Kule tirmanisi", "city": "Pisa", "tier": "skip", "cost": 60, "why": "3 yetiskin ~60 EUR, uzun sira, 8 yas alti yasak.", "skipReason": "para + zaman" },
-        { "id": "s1c", "name": "Lucca sur ustu + Piazza dell'Anfiteatro", "city": "Lucca", "lat": 43.843, "lng": 10.5027, "tier": "core", "cost": 0, "durationMin": 240, "why": "4 km golgeli yuruyus bandi; Roma amfitiyatrosunun ustune kurulmus oval meydan.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca" },
-        { "id": "s1d", "name": "Torre Guinigi", "city": "Lucca", "tier": "skip", "cost": 18, "why": "Tepesinde 700 yillik mese agaclari var ama 230 basamak." }
+        { "id": "s1b", "name": "Egik Kule tirmanisi", "city": "Pisa", "tier": "skip", "cost": 60, "why": "3 yetiskin ~60 EUR, uzun sira, 8 yas alti yasak.", "skipReason": "para + zaman" }
       ],
       "food": [
-        { "slot": "lunch", "tier": "a", "name": "Lucca'da restoran", "price": 70, "why": "Geleneksel Lucchese Trattoria (Trattoria da Ubaldo / Osteria da Pasquale). Lucca sur icinde Piazza dell'Anfiteatro yakininda ekzantrik atmosferli otantik mekan. Taze buyukanne usulu makarnalar, tagliata di manzo (dana biftek) ve mehur 'Torte coi becchi' tatlisi ile taninir.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+da+Ubaldo+Lucca" },
-        { "slot": "lunch", "tier": "b", "name": "Forno schiacciata + meyve, surda piknik", "price": 20, "why": "Firin & Piknik. Lucca surlarinin ustundeki dev golgeli agacli parkta tarihi firindan taze sicak schiacciata (zeytinyaqli Toskana firin ekmegi) ve meyve ile rahat acik hava piknigi.", "nav": "https://www.google.com/maps/search/?api=1&query=Forno+Lucca+Centro" },
         { "slot": "dinner", "tier": "a", "name": "Otel restorani", "price": 90, "why": "Otel Restorani (Borgo di Cortefreda - Place of Charme). Ilk gun ucus yorgunlugu sonrasi disari cikmadan otel terasinda Chianti manzarali kaliteli ve zahmetsiz aksam yemegi.", "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle" },
         { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino (pizza)", "price": 35, "why": "Yerel Pizzeria / Trattoria. Barberino'da yerel halkin tercih ettigi, odun atesinde ince tas firin pizzalari ve samimi aile ortami olan ekonomik mekan.", "closedToday": true, "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Barberino+Tavarnelle" },
         { "slot": "snack", "tier": "both", "name": "Gelateria De' Coltelli", "price": 12, "why": "Artisanal Dondurmaci (Gambero Rosso odullu). Pisa'da Arno nehri kiyisinda, tamamen dogal organik mevsim meyveleriyle renklendiricisiz dondurma yapan Italya'nin en mehur dondurmacilarindan biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+De%27+Coltelli+Pisa" }
@@ -220,27 +249,128 @@
       "id": "d7",
       "date": "2026-08-04",
       "weekday": "Sali",
-      "title": "Tam dinlenme + San Gimignano aksami",
+      "title": "Dinlenme veya plaj (4 secenek)",
       "theme": "rest",
       "intensity": "low",
       "elderFriendly": true,
       "drivingMinutes": 60,
       "budget": { "a": 140, "b": 40 },
-      "highlight": "Bu gun neredeyse bedava gecebilir.",
       "warnings": [],
       "elderNote": "Ana cadde hafif yokus ama kisa. Piazza della Cisterna'da oturup dondurma yemek zaten programin kendisi.",
-      "stops": [
-        { "id": "s7a", "name": "Otel havuzu (sabah + oglen)", "tier": "core", "cost": 0, "durationMin": 300, "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle" },
-        { "id": "s7b", "name": "San Gimignano - kuleler ve meydanlar", "city": "San Gimignano", "lat": 43.4674126, "lng": 11.0433506, "tier": "core", "cost": 0, "durationMin": 180, "bestTime": "17:00 sonrasi", "why": "14 ortacag kulesi. 1300'lerde zengin aileler birbirine ustunluk taslamak icin kule diktirmis; bugun ayakta kalan tek 'kuleli siluet' burasi. 17:00'den sonra otobus turlari gidiyor, kasaba bambaska bir yer oluyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano", "navNote": "P2 Giubileo, ~2 EUR/saat" },
-        { "id": "s7c", "name": "Rocca di Montestaffoli", "city": "San Gimignano", "tier": "core", "cost": 0, "durationMin": 45, "why": "Kale duvarlari - gun batimi icin en iyi nokta, bilet yok, kimse bilmiyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Rocca+di+Montestaffoli+San+Gimignano" },
-        { "id": "s7d", "name": "Torre Grossa", "tier": "skip", "cost": 27, "skipReason": "218 basamak; Rocca zaten daha iyi manzara veriyor" }
+      "options": [
+        {
+          "id": "opt-a",
+          "label": "Dinlenme + San Gimignano aksami",
+          "desc": "Sabah + oglen otel havuzu. Aksam San Gimignano: kuleler, Rocca di Montestaffoli'de gun batimi, Piazza della Cisterna'da Dondoli.",
+          "cost": 40,
+          "drivingMinutes": 60,
+          "pros": [
+            "En ucuz gun",
+            "Sifir surus stresi",
+            "San Gimignano gun batiminda bambaska - turist otobusleri gitmis olur"
+          ],
+          "cons": ["Deniz yok"],
+          "stops": [
+            { "id": "s7a", "name": "Otel havuzu (sabah + oglen)", "tier": "core", "cost": 0, "durationMin": 300, "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle" },
+            { "id": "s7b", "name": "San Gimignano - kuleler ve meydanlar", "city": "San Gimignano", "lat": 43.4674126, "lng": 11.0433506, "tier": "core", "cost": 0, "durationMin": 180, "bestTime": "17:00 sonrasi", "why": "14 ortacag kulesi. 1300'lerde zengin aileler birbirine ustunluk taslamak icin kule diktirmis; bugun ayakta kalan tek 'kuleli siluet' burasi. 17:00'den sonra otobus turlari gidiyor, kasaba bambaska bir yer oluyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano", "navNote": "P2 Giubileo, ~2 EUR/saat" },
+            { "id": "s7c", "name": "Rocca di Montestaffoli", "city": "San Gimignano", "tier": "core", "cost": 0, "durationMin": 45, "why": "Kale duvarlari - gun batimi icin en iyi nokta, bilet yok, kimse bilmiyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Rocca+di+Montestaffoli+San+Gimignano" },
+            { "id": "s7d", "name": "Torre Grossa", "tier": "skip", "cost": 27, "skipReason": "218 basamak; Rocca zaten daha iyi manzara veriyor" }
+          ],
+          "food": [
+            { "slot": "lunch", "tier": "b", "name": "Coop'tan malzemeyle havuz basi", "price": 15, "why": "Supermarket Malzemesi ile Otelde Havuz Basi Yemegi. Barberino Tavarnelle Coop'tan taze ekmek, grissini, domates, mozzarella ve meyve alip otel havuzunda rahat ogle yemegi keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=Coop+Barberino+Tavarnelle" },
+            { "slot": "dinner", "tier": "a", "name": "San Gimignano'da aksam yemegi", "price": 110, "why": "Orta Cag Kasaba Restorani (Ristorante Rigoletto / Osteria del Carcere). Otobus turlari cekildikten sonra aksam sakinlesen San Gimignano kuleleri altinda Safranli Pici makarnasi ve Vernaccia sarabi.", "nav": "https://www.google.com/maps/search/?api=1&query=Ristorante+Rigoletto+San+Gimignano" },
+            { "slot": "snack", "tier": "both", "name": "Gelateria Dondoli (Piazza della Cisterna 4)", "price": 12, "hours": "09:00-23:00", "why": "Dunya Sampiyonu Dondurmaci. Piazza della Cisterna'da 2 kez Dunya Dondurma Sampiyonu olan Sergio Dondoli'nin safranli-cam fistikli Crema di Santa Fina ve ahududu-biberiyeli Rosemary Baby ozel tatlari.", "keep": true, "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Dondoli+San+Gimignano" }
+          ],
+          "shopping": [
+            { "name": "San Gimignano zafferani (safran)", "for": "Ortacag'da kasabayi zengin eden urun, kucuk kutularda, mukemmel hediye", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+della+Cisterna+San+Gimignano" },
+            { "name": "Seramik ve el yapimi kagit dukkanlari", "for": "ana cadde boyunca", "nav": "https://www.google.com/maps/search/?api=1&query=Via+San+Matteo+San+Gimignano" }
+          ]
+        },
+        {
+          "id": "opt-b",
+          "label": "Marina di Bibbona / Cecina",
+          "desc": "08:00 cik / 09:30 plajda / 09:30-13:00 deniz / 13:00-16:00 ogle + golge / 16:00-18:30 deniz / 19:00 cik / 20:30 otelde.",
+          "cost": { "a": 177, "b": 60 },
+          "drivingMinutes": 160,
+          "recommended": true,
+          "beach": "bibbona",
+          "movesTo": "d9",
+          "pros": [
+            "En yakin ve en ucuz deniz secenegi",
+            "Sezlong+semsiye 18-25 EUR, serbest plaj da var",
+            "Arkada cam ormani - ogle sicaginda golgeli yuruyus",
+            "Sig ve genis kumsal, cocuk icin guvenli",
+            "Otopark kolay"
+          ],
+          "cons": [
+            "Ara sira denizanasi bildiriliyor",
+            "Kasaba siradan - plajdan baska yapacak sey yok",
+            "Cecina'nin en iyi restorani Ristorante da Andrea Pazartesi ve Sali kapali - bu gun gidilemez"
+          ],
+          "food": [
+            { "slot": "lunch", "tier": "a", "name": "Osteria Magona Mare (Cecina)", "price": 90, "why": "Deniz manzarali restoran, SALI ACIK. Fritto misto, spaghetti allo scoglio, alle vongole, cacciucco (Livorno'nun acili balik guveci). Sahilde domuz derdi sifir.", "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+Magona+Mare+Cecina" },
+            { "slot": "lunch", "tier": "b", "name": "Plaj kulubunun mutfagi veya Coop'tan piknik", "price": 30, "why": "Plaj kulubunde hafif ogle yemegi ya da Coop'tan alip sezlongda piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=Marina+di+Bibbona" }
+          ]
+        },
+        {
+          "id": "opt-c",
+          "label": "Golfo di Baratti (Populonia)",
+          "desc": "07:30 cik (erken - 09:00'dan sonra doluyor) / 09:15 plajda / ogleden sonra istege bagli Populonia nekropolu / 19:00 cik.",
+          "cost": { "a": 150, "b": 70 },
+          "drivingMinutes": 210,
+          "beach": "baratti",
+          "movesTo": "d9",
+          "pros": [
+            "Kiyinin en guzel koyu",
+            "Camlar kumun ustune iniyor - KUMSALDA golge var, anne icin gezinin en rahat plaji",
+            "Ustunde Populonia Etrusk nekropolu ve kale - deniz + kultur",
+            "Iri kum suyu berrak tutuyor"
+          ],
+          "cons": [
+            "Sabah 9'dan itibaren doluyor - erken cikmak sart",
+            "Otopark ucretli ve sinirli",
+            "Servis az, restoran secenegi dar",
+            "Bibbona'dan 25 dk daha uzak"
+          ],
+          "food": [
+            { "slot": "lunch", "tier": "a", "name": "Bagno Baratti plaj bari", "price": 45, "hours": "her gun 09:00-19:00", "why": "Plaj bari, sicak/soguk atistirmalik ve icecek. Populonia koyunde de kucuk trattoria'lar var.", "nav": "https://www.google.com/maps/search/?api=1&query=Bagno+Baratti+Populonia" },
+            { "slot": "lunch", "tier": "b", "name": "Coop'tan piknik", "price": 20, "why": "Plaja gelmeden Coop'tan alinan malzemeyle piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=Coop+Piombino" }
+          ]
+        },
+        {
+          "id": "opt-d",
+          "label": "Forte dei Marmi",
+          "desc": "07:30 cik / 09:30 Parcheggio Centro Commerciale (Via G.B. Vico 23) / 10:00-13:00 kasaba: Il Fortino, pontile, merkez, istege bagli bisiklet / 13:00 ogle / 14:00 Le Dune'e gec (10 dk kuzey, sokaga park) / 14:30-18:00 plaj / 18:00 cik / 20:00 otelde.",
+          "cost": { "a": 200, "b": 80 },
+          "drivingMinutes": 240,
+          "beach": "le-dune",
+          "movesTo": "d9",
+          "bikes": "Forte Bike (Viale A. Morin 22e) veya Coppa Bike (Via A. Franceschi 4D). Kasaba duz, sahil boyu bisiklet yolu var.",
+          "note": "Pazari da istiyorsan bu gunu Carsamba'ya alman ve Siena'yi Sali'ya kaydirman gerekir - ama o zaman Siena'nin Fortezza pazari kacar. Sali'da kalmak Siena'yi korur, pazari feda eder.",
+          "pros": [
+            "Le Dune ucretsiz plaji gercekten iyi: cankurtaran, dus, tuvalet, 30 m sig su, park 3 saat 4.50 EUR",
+            "Arkada Apuan Alpleri - Michelangelo'nun mermer daglari, kiyida baska yerde olmayan manzara",
+            "Kasaba dumduz ve bisiklet yolu sahil boyunca - Toskana'nin tepe kasabalarindan anne icin cok daha rahat",
+            "Zarif merkez, aksam yuruyusu keyifli"
+          ],
+          "cons": [
+            "SALI GUNU PAZAR YOK. Unlu pazar sadece Carsamba (216 tezgah) ve Pazar (55 tezgah). Forte dei Marmi'ye gitmenin asil sebebi bu pazar - Sali secilirse devre disi kalir.",
+            "4 saat surus - gezinin en uzun yol gunu",
+            "Kasaba Italya'nin en pahali sahili; ozel plajlar 40-80 EUR",
+            "Plajin kendisi Bibbona'dan daha iyi degil",
+            "Le Dune'de hic golge yok, semsiye sart",
+            "Seyyar saticilar israrci olabiliyor"
+          ],
+          "food": [
+            { "slot": "lunch", "tier": "b", "name": "Santa Lucia - La Bottega del Panino (Viale Ammiraglio Morin 89)", "price": 30, "hours": "her gun 08:00-22:00", "why": "Kasabanin en iyi pizza al taglio'su, firin da var, mutfak surekli acik (bolgede nadir).", "nav": "https://www.google.com/maps/search/?api=1&query=La+Bottega+del+Panino+Forte+dei+Marmi" },
+            { "slot": "lunch", "tier": "b", "name": "Vale (Piazza Garibaldi 4)", "price": 35, "why": "Dilim pizza, focaccia, salata, golgeli teras. Pazartesi kapali, Sali acik.", "closedOn": ["Pazartesi"], "nav": "https://www.google.com/maps/search/?api=1&query=Vale+Piazza+Garibaldi+Forte+dei+Marmi" },
+            { "slot": "snack", "tier": "both", "name": "La Chicca (Via Piave 15)", "price": 12, "why": "Dondurma, en dusuk fiyat kademesi, kasabanin en iyisi.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Chicca+Via+Piave+Forte+dei+Marmi" }
+          ]
+        }
       ],
-      "food": [
-        { "slot": "lunch", "tier": "b", "name": "Coop'tan malzemeyle havuz basi", "price": 15, "why": "Supermarket Malzemesi ile Otelde Havuz Basi Yemegi. Barberino Tavarnelle Coop'tan taze ekmek, grissini, domates, mozzarella ve meyve alip otel havuzunda rahat ogle yemegi keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=Coop+Barberino+Tavarnelle" },
-        { "slot": "dinner", "tier": "a", "name": "San Gimignano'da aksam yemegi", "price": 110, "why": "Orta Cag Kasaba Restorani (Ristorante Rigoletto / Osteria del Carcere). Otobus turlari cekildikten sonra aksam sakinlesen San Gimignano kuleleri altinda Safranli Pici makarnasi ve Vernaccia sarabi.", "nav": "https://www.google.com/maps/search/?api=1&query=Ristorante+Rigoletto+San+Gimignano" },
-        { "slot": "snack", "tier": "both", "name": "Gelateria Dondoli (Piazza della Cisterna 4)", "price": 12, "hours": "09:00-23:00", "why": "Dunya Sampiyonu Dondurmaci. Piazza della Cisterna'da 2 kez Dunya Dondurma Sampiyonu olan Sergio Dondoli'nin safranli-cam fistikli Crema di Santa Fina ve ahududu-biberiyeli Rosemary Baby ozel tatlari.", "keep": true, "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Dondoli+San+Gimignano" }
-      ],
-      "shopping": [{ "name": "San Gimignano zafferani (safran)", "for": "Ortacag'da kasabayi zengin eden urun, kucuk kutularda, mukemmel hediye", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+della+Cisterna+San+Gimignano" }, { "name": "Seramik ve el yapimi kagit dukkanlari", "for": "ana cadde boyunca", "nav": "https://www.google.com/maps/search/?api=1&query=Via+San+Matteo+San+Gimignano" }]
+      "stops": [],
+      "food": [],
+      "shopping": []
     },
     {
       "id": "d8",
@@ -307,7 +437,9 @@
           "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca"
         }
       ],
-      "stops": [],
+      "stops": [
+        { "id": "s9a", "name": "San Gimignano gun batimi", "city": "San Gimignano", "lat": 43.4674126, "lng": 11.0433506, "tier": "optional", "cost": 0, "durationMin": 120, "bestTime": "gun batimi", "why": "Montelupo -> San Gimignano ~40 dk, sabah zanaat duragindan sonra rahat oturuyor. Sali'da deniz secildiyse San Gimignano aksami buraya tasindi.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano", "badge": "Sali'dan tasindi", "showWhen": { "dayId": "d7", "optionIn": ["opt-b", "opt-c", "opt-d"] } }
+      ],
       "food": [
         { "slot": "lunch", "tier": "a", "name": "I' Girone De' Ghiotti (Via dei Cimatori 23)", "price": 30, "why": "Floransa Gurme Sandviccisi (Schiacciateria). Italya'nin en yuksek puanli sandvic dukkanlarindan biri; taze pisarak cıtır schiacciata ekmegine izgara sebze, peynir ve roast beef.", "porkWarning": "Icler cogunlukla salumi - peynirli / sebzeli / roast beef iste", "nav": "https://www.google.com/maps/search/?api=1&query=I%27+Girone+De%27+Ghiotti+Firenze" },
         { "slot": "lunch", "tier": "b", "name": "Montelupo'da yerel trattoria", "price": 50, "why": "Geleneksel Seramik Kasabasi Trattoria'si. Montelupo Fiorentino'da yerel halkin ogle yemegi yedigi samimi, fiyati uygun ev yemegi ve taze pasta sunan trattoria.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+Montelupo+Fiorentino" }
@@ -336,6 +468,12 @@
       "food": [],
       "shopping": []
     }
+  ],
+
+  "beaches": [
+    { "id": "bibbona", "name": "Marina di Bibbona / Cecina", "lat": 43.2519371, "lng": 10.5221615, "placeId": "ChIJx13BPckG1hIRlQbuPVT_pr8", "minutesFromBase": 80, "free": "partial", "notes": "Mavi Bayrak. Genis kumsal, sig su, arkada cam ormani. Plaja cam korusundan patikayla iniliyor. Stabilimento 18-25 EUR, serbest plaj bolumleri de var. Cecina 10 dk kuzeyde, ayni gun gezilir." },
+    { "id": "baratti", "name": "Golfo di Baratti (Populonia)", "lat": 42.9938094, "lng": 10.5127788, "placeId": "ChIJQ9h6oA4i1hIRtuXFASVIB64", "minutesFromBase": 105, "free": "partial", "notes": "Hilal koy. Camlar dogrudan kumun ustune iniyor - KUMSALDA dogal golge var, Toskana kiyisinda nadir. Iri kum suyu temiz tutuyor. Ustunde Populonia Etrusk nekropolu ve kale." },
+    { "id": "le-dune", "name": "Spiaggia libera Le Dune (Forte dei Marmi)", "lat": 43.9739269, "lng": 10.1458824, "placeId": "ChIJiUvL15cJ1RIRoo2liC2JVWE", "minutesFromBase": 120, "free": "full", "notes": "Forte dei Marmi'nin TEK ucretsiz plaji, ~200 m, WWF korumasindaki kumullar. Cankurtaran gorevde, dus ve tuvalet var. Deniz ~30 m boyunca sig, kucuk cocuk icin guvenli. Sokak parki 4.50 EUR / 3 saat. Kendi semsiyeni gotur - hic golge yok. Seyyar saticilar israrci. Kopekler tasmasiz dolasiyor." }
   ],
 
   "bookings": [
@@ -388,7 +526,8 @@
     { "id": "luggage", "icon": "luggage", "title": "Bagaj", "body": "VW Taigo kucuk bir crossover (~440 L). 4 kisi + 9 gunluk bagaj sikisir. Sert valiz yerine yumusak canta kullanin.", "severity": "warning" },
     { "id": "sagra", "icon": "party", "title": "Sagra ayi", "body": "Agustos'ta koylerde gonullu yemek festivalleri olur: ortak masalar, 10-15 EUR'ya 3 tabak. Otele varinca resepsiyona sor. Kasaba girislerindeki afislere bak.", "severity": "info" },
     { "id": "offline", "icon": "map", "title": "Cevrimdisi harita", "body": "Google Maps'te Toskana'yi cevrimdisi indir - Chianti'de sinyal kayboluyor.", "severity": "warning" },
-    { "id": "sunday", "icon": "calendar", "title": "Pazar gunleri", "body": "Italya'da dukkanlarin cogu kapali. Ayrica bircok yerde 13:00-16:00 arasi ogle molasi var.", "severity": "info" }
+    { "id": "sunday", "icon": "calendar", "title": "Pazar gunleri", "body": "Italya'da dukkanlarin cogu kapali. Ayrica bircok yerde 13:00-16:00 arasi ogle molasi var.", "severity": "info" },
+    { "id": "beach-libera", "icon": "umbrella", "title": "Spiaggia libera vs stabilimento", "body": "Serbest plaj bedava ama kendi semsiyeni goturuyorsun. Plaj kulubu (stabilimento) semsiye + 2 sezlong: Bibbona 18-25 EUR, Forte dei Marmi 40-80 EUR. Anne icin kulube para vermek mantikli - garantili golge, gercek sezlong, tuvalet, dus, 5 metre otede bar.", "severity": "info" }
   ],
 
   "closures": [
@@ -402,7 +541,9 @@
     { "place": "Sant'Ambrogio pazari", "closed": ["Pazar"], "note": "14:00'te kapanir" },
     { "place": "Antica Osteria l'Agania (Arezzo)", "closed": ["Pazartesi", "Sali"] },
     { "place": "Dario Doc (Panzano)", "closed": ["Cumartesi", "Pazar"] },
-    { "place": "Coop Tavarnelle", "closed": [], "note": "Pazar sadece 08:00-13:00" }
+    { "place": "Coop Tavarnelle", "closed": [], "note": "Pazar sadece 08:00-13:00" },
+    { "place": "Vale (Forte dei Marmi)", "closed": ["Pazartesi"] },
+    { "place": "Ristorante da Andrea (Cecina)", "closed": ["Pazartesi", "Sali"] }
   ],
 
   "packing": {
@@ -418,7 +559,9 @@
       "Sapka, gunes kremi, gunes gozlugu herkese",
       "Rahat, kaymaz ayakkabi - Toskana'nin tas sokaklari",
       "Anne icin: duzenli ilaclar + yedek, katlanir baston/oturak faydali olabilir",
-      "Kizin icin: tas sokaklarda puset zor - sirt tasiyici veya kaliteli tekerlekli"
+      "Kizin icin: tas sokaklarda puset zor - sirt tasiyici veya kaliteli tekerlekli",
+      "Plaj semsiyesi - Coop Tavarnelle'den 10-15 EUR. Le Dune'de ve serbest plajlarda hic golge yok.",
+      "Su ayakkabisi - bazi kumsallarda cakil var."
     ],
     "emergency": ["112 - tek Avrupa acil numarasi", "Farmacia - yesil hac, her kasabada nobetci olur", "Otel: +39 055 807 3333"]
   }

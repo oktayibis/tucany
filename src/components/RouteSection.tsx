@@ -1,12 +1,17 @@
 import type { Day } from '../data/schema';
 import { trip } from '../data/trip';
+import { chosenOption, effectiveDrivingMinutes } from '../lib/budget';
 import { formatDriving } from '../lib/dates';
 import { getDayRoute } from '../lib/routes';
+import { useTrip } from '../state/TripContext';
 import { NavButton, PhoneButton } from './NavButton';
 
 /** "Rota/navigasyon" — the day's driving load, base hotel origin/destination, starter route, and schedule. */
 export function RouteSection({ day }: { readonly day: Day }) {
   const dayRoute = getDayRoute(day);
+  const { mode, party, chosenOptions, upgrades } = useTrip();
+  const option = chosenOption(day, { mode, party, chosenOptions, upgrades });
+  const drivingMinutes = effectiveDrivingMinutes(day, option);
 
   return (
     <div className="flex flex-col gap-4">
@@ -57,7 +62,7 @@ export function RouteSection({ day }: { readonly day: Day }) {
         <div className="flex items-center justify-between">
           <p>
             Bugünkü toplam sürüş:{' '}
-            <strong className="font-display font-semibold">{formatDriving(day.drivingMinutes)}</strong>
+            <strong className="font-display font-semibold">{formatDriving(drivingMinutes)}</strong>
             {dayRoute !== undefined && (
               <span className="ml-2 text-xs font-normal text-text-muted">
                 (~{dayRoute.totalKm} km)

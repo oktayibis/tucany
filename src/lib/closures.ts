@@ -1,4 +1,4 @@
-import type { Closure, Day, TripData, Weekday } from '../data/schema';
+import type { Closure, Day, Food, TripData, Weekday } from '../data/schema';
 import { weekdayOf } from './dates';
 import { namesMatch } from './text';
 
@@ -51,12 +51,21 @@ export function closuresOn(closures: readonly Closure[], weekday: Weekday): read
   return closures.filter((closure) => closure.closed.includes(weekday));
 }
 
-/** Every named thing on a day that the family might turn up to. */
+/** A day's own food plus whatever its options add — options carry no closures logic of their own. */
+function allFood(day: Day): readonly Food[] {
+  return [...day.food, ...(day.options?.flatMap((option) => option.food ?? []) ?? [])];
+}
+
+/** Every named thing on a day that the family might turn up to, including what its options add. */
 function namedItems(day: Day): readonly { name: string; kind: ClosedThing['kind'] }[] {
+  const optionStops = day.options?.flatMap((option) => option.stops ?? []) ?? [];
+  const optionShopping = day.options?.flatMap((option) => option.shopping ?? []) ?? [];
   return [
     ...day.stops.map((stop) => ({ name: stop.name, kind: 'stop' as const })),
-    ...day.food.map((entry) => ({ name: entry.name, kind: 'food' as const })),
+    ...optionStops.map((stop) => ({ name: stop.name, kind: 'stop' as const })),
+    ...allFood(day).map((entry) => ({ name: entry.name, kind: 'food' as const })),
     ...day.shopping.map((entry) => ({ name: entry.name, kind: 'shopping' as const })),
+    ...optionShopping.map((entry) => ({ name: entry.name, kind: 'shopping' as const })),
   ];
 }
 
@@ -81,7 +90,7 @@ export function dayClosures(day: Day, closures: readonly Closure[]): DayClosures
     }
   }
 
-  for (const entry of day.food) {
+  for (const entry of allFood(day)) {
     const alreadyFlagged = blocking.some((thing) => thing.name === entry.name);
     if (entry.closedOn?.includes(weekday) === true && !alreadyFlagged) {
       blocking.push({ name: entry.name, kind: 'food', evidence: 'item-closedOn' });

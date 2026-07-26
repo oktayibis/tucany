@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Day, Food, MealSlot } from '../data/schema';
+import type { Food, MealSlot } from '../data/schema';
 import { foodKey, selectFood } from '../lib/budget';
 import { FoodTierBadge } from './TierBadge';
 import { NavButton, PhoneButton } from './NavButton';
@@ -24,16 +24,22 @@ const SLOT_ORDER: readonly MealSlot[] = ['coffee', 'lunch', 'aperitivo', 'dinner
  * seeing while the family is in Karma mode, so they know it exists and why
  * it's not tonight's plan.
  */
-export function FoodSection({ day }: { readonly day: Day }) {
+export function FoodSection({
+  dayId,
+  food,
+}: {
+  readonly dayId: string;
+  readonly food: readonly Food[];
+}) {
   const { mode, upgrades } = useTrip();
   const [selectedFood, setSelectedFood] = useState<Food | null>(null);
 
   const active = new Set(
-    selectFood(day.food, mode, day.id, upgrades).map((entry) => foodKey(day.id, entry)),
+    selectFood(food, mode, dayId, upgrades).map((entry) => foodKey(dayId, entry)),
   );
 
   const bySlot = new Map<MealSlot, Food[]>();
-  for (const entry of day.food) {
+  for (const entry of food) {
     const list = bySlot.get(entry.slot);
     if (list === undefined) bySlot.set(entry.slot, [entry]);
     else list.push(entry);
@@ -54,10 +60,10 @@ export function FoodSection({ day }: { readonly day: Day }) {
           <ul className="mt-1 flex flex-col gap-2">
             {(bySlot.get(slot) ?? []).map((entry) => (
               <FoodRow
-                key={foodKey(day.id, entry)}
-                dayId={day.id}
+                key={foodKey(dayId, entry)}
+                dayId={dayId}
                 entry={entry}
-                isActive={active.has(foodKey(day.id, entry))}
+                isActive={active.has(foodKey(dayId, entry))}
                 onOpenModal={() => setSelectedFood(entry)}
               />
             ))}
@@ -67,7 +73,7 @@ export function FoodSection({ day }: { readonly day: Day }) {
       {selectedFood !== null && (
         <FoodModal
           food={selectedFood}
-          dayId={day.id}
+          dayId={dayId}
           onClose={() => setSelectedFood(null)}
         />
       )}

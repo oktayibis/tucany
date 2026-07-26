@@ -6,6 +6,7 @@ import {
   chosenOption,
   dayBudget,
   daySavings,
+  effectiveFood,
   foodKey,
   modeDelta,
   selectFood,
@@ -122,10 +123,12 @@ describe('selectFood', () => {
   });
 
   it('cheap modes skip a slot that only has a splurge — that is the picnic evening', () => {
-    const day = dayById('d7'); // dinner exists only as tier a
-    expect(selectFood(day.food, 'a', day.id).some((entry) => entry.slot === 'dinner')).toBe(true);
-    expect(selectFood(day.food, 'mixed', day.id).some((entry) => entry.slot === 'dinner')).toBe(false);
-    expect(selectFood(day.food, 'b', day.id).some((entry) => entry.slot === 'dinner')).toBe(false);
+    const day = dayById('d7'); // opt-a's dinner exists only as tier a
+    const optA = day.options?.find((option) => option.id === 'opt-a') ?? null;
+    const food = effectiveFood(day, optA);
+    expect(selectFood(food, 'a', day.id).some((entry) => entry.slot === 'dinner')).toBe(true);
+    expect(selectFood(food, 'mixed', day.id).some((entry) => entry.slot === 'dinner')).toBe(false);
+    expect(selectFood(food, 'b', day.id).some((entry) => entry.slot === 'dinner')).toBe(false);
   });
 
   it('Karma buys back a tier-a meal when the family upgrades it, replacing the usual pick', () => {
@@ -233,7 +236,7 @@ describe('day totals', () => {
 
 describe('savings from skipped stops', () => {
   it('sums what the plan decided against, per day', () => {
-    expect(daySavings(dayById('d1'))).toBe(60 + 18); // Eğik Kule + Torre Guinigi
+    expect(daySavings(dayById('d1'))).toBe(60); // Eğik Kule (Torre Guinigi now lives under d1's opt-b)
     expect(daySavings(dayById('d3'))).toBe(90); // Brunelleschi Pass
     expect(daySavings(dayById('d2'))).toBe(0);
   });
@@ -306,7 +309,7 @@ describe('day 9, which offers three itineraries instead of stops', () => {
   });
 
   it('returns null for days that offer no alternatives', () => {
-    expect(chosenOption(dayById('d1'), input('mixed'))).toBeNull();
+    expect(chosenOption(dayById('d2'), input('mixed'))).toBeNull();
   });
 });
 

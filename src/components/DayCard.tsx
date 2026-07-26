@@ -12,12 +12,16 @@ export function DayCard({
   day,
   index,
   total,
+  drivingMinutes,
+  undecided,
   isToday,
   onOpen,
 }: {
   readonly day: Day;
   readonly index: number;
   readonly total: number;
+  readonly drivingMinutes: number;
+  readonly undecided: boolean;
   readonly isToday: boolean;
   readonly onOpen: () => void;
 }) {
@@ -48,9 +52,14 @@ export function DayCard({
         </span>
       </div>
       <h2 className="font-display text-base font-medium">{day.title}</h2>
+      {undecided && (
+        <span className="self-start bg-warn-bg px-1.5 py-0.5 font-body text-xs font-semibold text-warn-text">
+          Karar verilmedi
+        </span>
+      )}
       <div className="flex flex-wrap items-center gap-3 text-sm text-text-muted">
         <IntensityMeter intensity={day.intensity} />
-        <span>{day.drivingMinutes} dk sürüş</span>
+        <span>{drivingMinutes} dk sürüş</span>
         <span className="ml-auto font-display text-base font-semibold text-text">
           <PriceTag amount={total} />
         </span>

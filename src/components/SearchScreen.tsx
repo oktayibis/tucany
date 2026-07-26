@@ -12,6 +12,7 @@ const THEME_LABEL: Readonly<Record<Theme, string>> = {
   scenic: 'Manzara',
   craft: 'Zanaat',
   departure: 'Dönüş',
+  plaj: 'Plaj',
 };
 
 const TIER_LABEL: Readonly<Record<StopTier, string>> = {

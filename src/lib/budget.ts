@@ -1,4 +1,4 @@
-import type { Day, Food, MealSlot, Party, Stop, TripData } from '../data/schema';
+import type { Day, DayOption, Food, MealSlot, OptionCost, Party, Shopping, Stop, TripData } from '../data/schema';
 import { MODES, MODE_RULES, type Mode } from './modes';
 import { applyParty, classifyPrice, scalesWithParty, type PriceBasis } from './pricing';
 
@@ -242,12 +242,54 @@ function lineFor(
   };
 }
 
+/**
+ * A day's stops/food/shopping, folded together with whichever option is
+ * selected. Thin options (day 9's craft towns) carry no `stops`/`food` of
+ * their own, so these are no-ops for them and the day's own lists stand;
+ * self-contained options (day 7's beach days) add theirs on top, which is
+ * how "picking a card swaps the whole day" is implemented everywhere the day
+ * is rendered or priced.
+ */
+export function effectiveStops(day: Day, option: DayOption | null): readonly Stop[] {
+  return option?.stops === undefined ? day.stops : [...day.stops, ...option.stops];
+}
+
+export function effectiveFood(day: Day, option: DayOption | null): readonly Food[] {
+  return option?.food === undefined ? day.food : [...day.food, ...option.food];
+}
+
+export function effectiveShopping(day: Day, option: DayOption | null): readonly Shopping[] {
+  return option?.shopping === undefined ? day.shopping : [...day.shopping, ...option.shopping];
+}
+
+/** A day's driving load, swapped for the selected option's own figure when it has one. */
+export function effectiveDrivingMinutes(day: Day, option: DayOption | null): number {
+  return option?.drivingMinutes ?? day.drivingMinutes;
+}
+
+/** An option's cost in a given mode — the {a, b} split resolved, or the single figure as-is. */
+export function resolveOptionCost(cost: OptionCost, mode: Mode): number {
+  return typeof cost === 'number' ? cost : mode === 'a' ? cost.a : cost.b;
+}
+
+/**
+ * Whether an option prices itself out via its own stops/food (day 7's beach
+ * days) rather than a single headline figure resolved against the day's
+ * existing lists (day 9's craft towns, which have no `stops`/`food` of their
+ * own). Only the latter get a flat "option" line — a self-contained option's
+ * items are already counted individually, and adding both would double-count.
+ */
+function optionPricesItself(option: DayOption): boolean {
+  return option.stops !== undefined || option.food !== undefined;
+}
+
 /** Every priced line on a day, in the given mode. */
 export function dayLineItems(day: Day, input: BudgetInput): readonly LineItem[] {
   const { mode, party } = input;
   const items: LineItem[] = [];
+  const option = chosenOption(day, input);
 
-  for (const stop of day.stops) {
+  for (const stop of effectiveStops(day, option)) {
     const charge = stopCharge(stop, mode, isUpgraded(input, stopKey(stop)));
     if (charge === null || charge.amount === 0) continue;
     items.push(
@@ -258,12 +300,12 @@ export function dayLineItems(day: Day, input: BudgetInput): readonly LineItem[] 
     );
   }
 
-  const option = chosenOption(day, input);
-  if (option !== null && option.cost > 0) {
-    items.push(lineFor(option.id, option.label, 'option', option.cost, undefined, party));
+  if (option !== null && !optionPricesItself(option)) {
+    const cost = resolveOptionCost(option.cost, mode);
+    if (cost > 0) items.push(lineFor(option.id, option.label, 'option', cost, undefined, party));
   }
 
-  for (const entry of selectFood(day.food, mode, day.id, input.upgrades)) {
+  for (const entry of selectFood(effectiveFood(day, option), mode, day.id, input.upgrades)) {
     if (entry.price === 0) continue;
     const key = foodKey(day.id, entry);
     const upgraded = mode === 'mixed' && entry.tier === 'a' && input.upgrades.includes(key);
@@ -306,15 +348,44 @@ export function availableUpgrades(day: Day): readonly Upgrade[] {
  * Defaults to whichever the data marks `recommended`, so the app opens on the
  * plan's own advice rather than the first entry.
  */
-export function chosenOption(day: Day, input: BudgetInput) {
+export function chosenOption(day: Day, input: BudgetInput): DayOption | null {
+  return resolveOption(day, input.chosenOptions);
+}
+
+/**
+ * The same resolution as `chosenOption`, without needing a full
+ * `BudgetInput` — option selection never depends on mode, party or upgrades.
+ * Used to read one day's choice while rendering a different one (day 9's
+ * conditional San Gimignano block reads day 7's choice this way).
+ */
+export function resolveOption(
+  day: Day,
+  chosenOptions: Readonly<Record<string, string>>,
+): DayOption | null {
   if (day.options === undefined || day.options.length === 0) return null;
-  const selectedId = input.chosenOptions[day.id];
+  const selectedId = chosenOptions[day.id];
   return (
     day.options.find((option) => option.id === selectedId) ??
     day.options.find((option) => option.recommended === true) ??
     day.options[0] ??
     null
   );
+}
+
+/**
+ * Whether a stop with a `showWhen` guard should appear, based on what was
+ * chosen on the day it depends on. A stop with no guard is always visible.
+ */
+export function isStopVisible(
+  stop: Stop,
+  days: readonly Day[],
+  chosenOptions: Readonly<Record<string, string>>,
+): boolean {
+  if (stop.showWhen === undefined) return true;
+  const targetDay = days.find((day) => day.id === stop.showWhen?.dayId);
+  if (targetDay === undefined) return false;
+  const selectedId = resolveOption(targetDay, chosenOptions)?.id;
+  return selectedId !== undefined && stop.showWhen.optionIn.includes(selectedId);
 }
 
 /** What the plan avoided spending on this day by skipping or dropping stops. */
