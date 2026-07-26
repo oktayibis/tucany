@@ -1,28 +1,20 @@
 import { useState } from 'react';
 import type { Food, MealSlot } from '../data/schema';
 import { foodKey, selectFood } from '../lib/budget';
-import { FoodTierBadge } from './TierBadge';
-import { NavButton, PhoneButton } from './NavButton';
-import { PorkSafeNote, PorkWarningNote } from './PorkWarningNote';
-import { PriceTag } from './PriceTag';
-import { FoodModal } from './FoodModal';
 import { useTrip } from '../state/TripContext';
-
-const SLOT_LABEL: Readonly<Record<MealSlot, string>> = {
-  coffee: 'Kahve',
-  lunch: 'Öğle',
-  aperitivo: 'Aperitivo',
-  dinner: 'Akşam',
-  snack: 'Atıştırmalık',
-};
-
-const SLOT_ORDER: readonly MealSlot[] = ['coffee', 'lunch', 'aperitivo', 'dinner', 'snack'];
+import { FlowList, FlowRow } from './FlowRow';
+import { FoodSheet, SLOT_LABEL, SLOT_ORDER } from './FoodSheet';
+import { PriceTag } from './PriceTag';
+import { RatingBadge } from './RatingBadge';
 
 /**
- * "Yemek". Shows every option the data lists per slot, not just the one this
- * mode picks — a Keyif-only booking like Osteria di Passignano is still worth
- * seeing while the family is in Karma mode, so they know it exists and why
- * it's not tonight's plan.
+ * The day's meals, one slot at a time in eating order.
+ *
+ * The data lists several venues per slot and the mode picks one. That full
+ * list is still worth having — a Keyif-only booking is worth knowing about
+ * while in Karma mode — but it used to double the length of every day. So the
+ * chosen venue is the row you see, and the rest sit behind a per-slot
+ * "N alternatif" toggle. Nothing was removed, only ranked.
  */
 export function FoodSection({
   dayId,
@@ -32,7 +24,7 @@ export function FoodSection({
   readonly food: readonly Food[];
 }) {
   const { mode, upgrades } = useTrip();
-  const [selectedFood, setSelectedFood] = useState<Food | null>(null);
+  const [open, setOpen] = useState<Food | null>(null);
 
   const active = new Set(
     selectFood(food, mode, dayId, upgrades).map((entry) => foodKey(dayId, entry)),
@@ -51,131 +43,136 @@ export function FoodSection({
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      {slots.map((slot) => (
-        <div key={slot}>
-          <h3 className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-            {SLOT_LABEL[slot]}
-          </h3>
-          <ul className="mt-1 flex flex-col gap-2">
-            {(bySlot.get(slot) ?? []).map((entry) => (
-              <FoodRow
-                key={foodKey(dayId, entry)}
-                dayId={dayId}
-                entry={entry}
-                isActive={active.has(foodKey(dayId, entry))}
-                onOpenModal={() => setSelectedFood(entry)}
-              />
-            ))}
-          </ul>
-        </div>
-      ))}
-      {selectedFood !== null && (
-        <FoodModal
-          food={selectedFood}
-          dayId={dayId}
-          onClose={() => setSelectedFood(null)}
-        />
+    <>
+      <FlowList>
+        {slots.map((slot) => {
+          const entries = bySlot.get(slot) ?? [];
+          const chosen = entries.filter((entry) => active.has(foodKey(dayId, entry)));
+          // A slot can end up with nothing selected in this mode (e.g. a
+          // Keyif-only dinner while in Ucuz). Showing the alternatives as the
+          // primary rows is better than showing an empty slot.
+          const primary = chosen.length > 0 ? chosen : entries;
+          const alternatives = entries.filter((entry) => !primary.includes(entry));
+
+          return (
+            <SlotGroup
+              key={slot}
+              slot={slot}
+              primary={primary}
+              alternatives={alternatives}
+              anyChosen={chosen.length > 0}
+              dayId={dayId}
+              onOpen={setOpen}
+            />
+          );
+        })}
+      </FlowList>
+
+      {open !== null && (
+        <FoodSheet food={open} dayId={dayId} onClose={() => setOpen(null)} />
       )}
-    </div>
+    </>
   );
 }
 
-import { RatingBadge } from './RatingBadge';
-
-function FoodRow({
+function SlotGroup({
+  slot,
+  primary,
+  alternatives,
+  anyChosen,
   dayId,
-  entry,
-  isActive,
-  onOpenModal,
+  onOpen,
 }: {
+  readonly slot: MealSlot;
+  readonly primary: readonly Food[];
+  readonly alternatives: readonly Food[];
+  readonly anyChosen: boolean;
   readonly dayId: string;
-  readonly entry: Food;
-  readonly isActive: boolean;
-  readonly onOpenModal: () => void;
+  readonly onOpen: (food: Food) => void;
 }) {
-  const { mode, upgrades, toggleUpgrade } = useTrip();
-  const key = foodKey(dayId, entry);
-  const canUpgrade = mode === 'mixed' && entry.tier === 'a';
-  const isUpgraded = upgrades.includes(key);
+  const [showAll, setShowAll] = useState(false);
 
   return (
-    <li
-      className={`border bg-surface-2 p-3 ${isActive ? 'border-border' : 'border-dashed border-border opacity-70'}`}
-    >
-      <div className="flex flex-wrap items-start justify-between gap-2">
-        <div className="flex items-center gap-2">
+    <>
+      <li className="border-b border-border bg-surface px-3 py-1.5">
+        <span className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
+          {SLOT_LABEL[slot]}
+        </span>
+      </li>
+
+      {primary.map((entry) => (
+        <FoodFlowRow
+          key={foodKey(dayId, entry)}
+          entry={entry}
+          dimmed={!anyChosen}
+          note={anyChosen ? undefined : 'bu modda seçilmedi'}
+          onOpen={onOpen}
+        />
+      ))}
+
+      {showAll &&
+        alternatives.map((entry) => (
+          <FoodFlowRow
+            key={foodKey(dayId, entry)}
+            entry={entry}
+            dimmed
+            note={entry.tier === 'a' ? 'sadece Keyif modunda' : 'bu modda seçilmedi'}
+            onOpen={onOpen}
+          />
+        ))}
+
+      {alternatives.length > 0 && (
+        <li className="border-b border-border last:border-b-0">
           <button
             type="button"
-            onClick={onOpenModal}
-            className="text-left font-display font-medium hover:underline hover:text-accent focus:outline-none"
+            onClick={() => setShowAll((current) => !current)}
+            aria-expanded={showAll}
+            className="flex min-h-11 w-full items-center gap-2 px-3 py-2 text-left text-xs font-semibold text-accent"
           >
-            {entry.name}
-            {entry.michelin === true && (
-              <span className="ml-2 inline-flex items-center text-xs text-accent">★ Michelin</span>
-            )}
+            <span aria-hidden="true" className="w-6 text-center font-display text-base">
+              {showAll ? '−' : '+'}
+            </span>
+            {showAll ? 'Alternatifleri gizle' : `${alternatives.length} alternatif`}
           </button>
-          <RatingBadge rating={entry.rating} />
-        </div>
-        <div className="flex items-center gap-2">
-          <FoodTierBadge tier={entry.tier} />
-          <span className="text-sm font-semibold">
-            <PriceTag amount={entry.price} />
-          </span>
-        </div>
-      </div>
-
-      {!isActive && (
-        <p className="text-xs font-medium text-text-muted">
-          {entry.tier === 'a' ? 'Sadece Keyif modunda' : 'Bu modda seçilmedi'}
-        </p>
+        </li>
       )}
-
-      {entry.why !== undefined && <p className="mt-1 text-sm">{entry.why}</p>}
-      {entry.hours !== undefined && (
-        <p className="text-xs text-text-muted">Saatler: {entry.hours}</p>
-      )}
-      {entry.priceNote !== undefined && (
-        <p className="text-xs text-text-muted">Fiyat notu: {entry.priceNote}</p>
-      )}
-
-      {entry.porkWarning !== undefined && <PorkWarningNote warning={entry.porkWarning} />}
-      {entry.porkSafe === true && <PorkSafeNote />}
-
-      <div className="mt-3 flex flex-wrap items-center gap-2">
-        <NavButton place={entry} />
-        {entry.phone !== undefined && <PhoneButton phone={entry.phone} />}
-        <button
-          type="button"
-          onClick={onOpenModal}
-          className="inline-flex min-h-11 items-center border border-border bg-surface px-3 py-2 text-xs font-semibold text-ink"
-        >
-          Detaylar
-        </button>
-        {entry.booking !== undefined && (
-          <span className="text-xs text-text-muted">
-            Rezervasyon:{' '}
-            {entry.booking === 'required'
-              ? 'gerekli'
-              : entry.booking === 'recommended'
-                ? 'önerilir'
-                : 'sadece telefonla'}
-            {entry.bookingNote !== undefined && ` — ${entry.bookingNote}`}
-          </span>
-        )}
-        {canUpgrade && (
-          <button
-            type="button"
-            onClick={() => toggleUpgrade(key)}
-            className={`ml-auto min-h-11 border px-3 py-2 text-xs font-semibold ${
-              isUpgraded ? 'border-accent-2 bg-antimony text-ink' : 'border-border text-text-muted'
-            }`}
-          >
-            {isUpgraded ? '✓ Karma’ya eklendi — kaldır' : 'Karma’ya ekle'}
-          </button>
-        )}
-      </div>
-    </li>
+    </>
   );
 }
 
+function FoodFlowRow({
+  entry,
+  dimmed,
+  note,
+  onOpen,
+}: {
+  readonly entry: Food;
+  readonly dimmed: boolean;
+  readonly note: string | undefined;
+  readonly onOpen: (food: Food) => void;
+}) {
+  const meta = [
+    note,
+    entry.porkWarning !== undefined ? '⚠ domuz riski' : undefined,
+    entry.booking === 'required' ? 'rezervasyon gerekli' : undefined,
+    entry.closedToday === true ? 'bugün kapalı' : undefined,
+  ].filter((part): part is string => part !== undefined);
+
+  return (
+    <FlowRow
+      name={
+        <span className="flex flex-wrap items-center gap-1.5">
+          {entry.name}
+          <RatingBadge rating={entry.rating} />
+          {entry.michelin === true && (
+            <span className="font-body text-xs font-semibold text-accent">★ Michelin</span>
+          )}
+        </span>
+      }
+      meta={meta.length > 0 ? meta.join(' · ') : undefined}
+      trailing={<PriceTag amount={entry.price} />}
+      dimmed={dimmed}
+      onOpen={() => onOpen(entry)}
+    />
+  );
+}

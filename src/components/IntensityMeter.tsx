@@ -8,6 +8,15 @@ const LEVEL: Readonly<Record<Intensity, number>> = {
   high: 5,
 };
 
+/** Short form for the day header's stat strip, where the bars have no room. */
+export const INTENSITY_SHORT: Readonly<Record<Intensity, string>> = {
+  low: 'Düşük',
+  'low-medium': 'Düşük-orta',
+  medium: 'Orta',
+  'medium-high': 'Orta-yüksek',
+  high: 'Yüksek',
+};
+
 const LABEL: Readonly<Record<Intensity, string>> = {
   low: 'Düşük tempo',
   'low-medium': 'Düşük-orta tempo',

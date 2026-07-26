@@ -1,124 +1,95 @@
 import type { Day } from '../data/schema';
 import { trip } from '../data/trip';
-import { chosenOption, effectiveDrivingMinutes } from '../lib/budget';
-import { formatDriving } from '../lib/dates';
 import { getDayRoute } from '../lib/routes';
-import { useTrip } from '../state/TripContext';
+import { formatDriving } from '../lib/dates';
 import { NavButton, PhoneButton } from './NavButton';
-
 import { RatingBadge } from './RatingBadge';
 
-/** "Rota/navigasyon" — the day's driving load, base hotel origin/destination, starter route, and schedule. */
+/**
+ * The driving detail for a day: first leg out of the hotel, the per-leg
+ * breakdown, and the hotel's own card.
+ *
+ * All of it lives inside a collapsed disclosure in `DayDetail`. It used to
+ * open every day at full height — including a hotel card identical on all ten
+ * days — above the stops the family actually came to see. The one number worth
+ * seeing without opening anything (total driving) is hoisted into the day
+ * header's stat strip instead.
+ */
 export function RouteSection({ day }: { readonly day: Day }) {
   const dayRoute = getDayRoute(day);
-  const { mode, party, chosenOptions, upgrades } = useTrip();
-  const option = chosenOption(day, { mode, party, chosenOptions, upgrades });
-  const drivingMinutes = effectiveDrivingMinutes(day, option);
 
   return (
-    <div className="flex flex-col gap-4">
-      {/* Hotel Card */}
-      <div className="border border-border bg-surface-2 p-3">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <span className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-              🏨 Başlangıç & Dönüş Noktası (Otel)
-            </span>
-            <div className="flex items-center gap-2">
-              <p className="font-display text-base font-medium">{trip.base.name}</p>
-              <RatingBadge rating={trip.base.rating} />
-            </div>
-            <p className="text-xs text-text-muted">{trip.base.address}</p>
-          </div>
-        </div>
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <NavButton place={trip.base} note="Otele yol tarifi al" />
-          <PhoneButton phone={trip.base.phone} />
-        </div>
-      </div>
-
-      {/* Starter Route Card */}
+    <div className="flex flex-col gap-4 text-sm">
       {dayRoute !== undefined && (
-        <div className="border border-cobalt/30 bg-surface p-3">
-          <span className="font-display text-xs font-semibold uppercase tracking-wide text-cobalt">
-            🚀 Başlangıç Rotası (Otel → İlk Durak)
-          </span>
-          <p className="mt-1 font-display text-base font-semibold text-ink">
+        <div>
+          <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
+            İlk durak
+          </p>
+          <p className="mt-0.5 font-display font-medium">
             Otel → {dayRoute.starterRoute.destination}
           </p>
-          <div className="mt-1 flex items-center gap-3 text-xs text-text-muted">
-            <span>⏱ Sürüş: <strong>{formatDriving(dayRoute.starterRoute.durationMin)}</strong></span>
-            <span>📍 Mesafe: <strong>~{dayRoute.starterRoute.km} km</strong></span>
-          </div>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
+          <p className="mt-0.5 text-xs text-text-muted">
+            {formatDriving(dayRoute.starterRoute.durationMin)} · ~{dayRoute.starterRoute.km} km
+          </p>
+          <div className="mt-2">
             <NavButton
               place={{
                 name: dayRoute.starterRoute.destination,
                 nav: dayRoute.starterRoute.navUrl,
               }}
-              note="İlk durağa yol tarifi al"
             />
           </div>
         </div>
       )}
 
-      {/* Daily Driving Load & Route Leg Breakdown */}
-      <div className="flex flex-col gap-2 text-sm">
-        <div className="flex items-center justify-between">
-          <p>
-            Bugünkü toplam sürüş:{' '}
-            <strong className="font-display font-semibold">{formatDriving(drivingMinutes)}</strong>
-            {dayRoute !== undefined && (
-              <span className="ml-2 text-xs font-normal text-text-muted">
-                (~{dayRoute.totalKm} km)
-              </span>
-            )}
+      {dayRoute !== undefined && dayRoute.legs.length > 0 && (
+        <div>
+          <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
+            Etaplar (~{dayRoute.totalKm} km)
           </p>
+          <ul className="mt-1 flex flex-col">
+            {dayRoute.legs.map((leg) => (
+              <li
+                key={`${leg.from}-${leg.to}`}
+                className="flex flex-wrap items-center justify-between gap-2 border-b border-border py-1.5 text-xs last:border-b-0"
+              >
+                <span className="font-medium">
+                  {leg.from} → {leg.to}
+                </span>
+                <span className="flex items-center gap-2 text-text-muted">
+                  <span className="font-semibold text-accent">{formatDriving(leg.durationMin)}</span>
+                  <span>{leg.km} km</span>
+                  {leg.navUrl !== undefined && (
+                    <a
+                      href={leg.navUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-semibold text-accent underline"
+                    >
+                      Aç
+                    </a>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-
-        {dayRoute !== undefined && dayRoute.legs.length > 0 && (
-          <div className="mt-1 border border-border bg-surface-2 p-3 text-xs">
-            <p className="font-semibold text-text-muted mb-2">🚗 Sürüş Segmentleri & Süreler:</p>
-            <ul className="flex flex-col gap-2">
-              {dayRoute.legs.map((leg, i) => (
-                <li key={i} className="flex flex-wrap items-center justify-between border-b border-border/50 pb-1 last:border-b-0 last:pb-0">
-                  <span className="font-medium text-ink">
-                    {leg.from} → {leg.to}
-                  </span>
-                  <div className="flex items-center gap-2 text-text-muted">
-                    <span className="font-semibold text-accent">{formatDriving(leg.durationMin)}</span>
-                    <span>({leg.km} km)</span>
-                    {leg.navUrl && (
-                      <a
-                        href={leg.navUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-cobalt underline hover:text-accent font-medium"
-                      >
-                        Aç
-                      </a>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-
-      {day.timeline !== undefined && day.timeline.length > 0 && (
-        <ol className="flex flex-col gap-1 border-l-2 border-border pl-3 text-sm">
-          {day.timeline.map((entry) => (
-            <li key={entry.time} className="flex gap-2">
-              <span className="font-display font-semibold tabular-nums text-accent">
-                {entry.time}
-              </span>
-              <span>{entry.what}</span>
-            </li>
-          ))}
-        </ol>
       )}
+
+      <div className="border-t border-border pt-3">
+        <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
+          Otel (başlangıç & dönüş)
+        </p>
+        <div className="mt-0.5 flex items-center gap-2">
+          <p className="font-display font-medium">{trip.base.name}</p>
+          <RatingBadge rating={trip.base.rating} />
+        </div>
+        <p className="text-xs text-text-muted">{trip.base.address}</p>
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          <NavButton place={trip.base} />
+          <PhoneButton phone={trip.base.phone} />
+        </div>
+      </div>
     </div>
   );
 }
-

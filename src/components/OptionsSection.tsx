@@ -1,33 +1,91 @@
+import { useState } from 'react';
 import type { Day, DayOption } from '../data/schema';
 import { trip } from '../data/trip';
 import { chosenOption, resolveOptionCost } from '../lib/budget';
 import { formatDayMonth, formatDriving } from '../lib/dates';
 import { NavButton } from './NavButton';
 import { PriceTag } from './PriceTag';
+import { RatingBadge } from './RatingBadge';
 import { useTrip } from '../state/TripContext';
 
 /**
- * Renders a day's alternative itineraries as a single-choice picker — day 9's
- * three craft towns, day 7's rest-day-vs-beach choice. Pros/cons sit directly
- * on the card (the brief is explicit: they're the content, not something to
- * hide behind a toggle), and picking a card swaps stops/food/shopping/driving
- * time/budget for the whole day — see effectiveStops/Food/Shopping in
- * src/lib/budget.ts, which DayDetail folds the selection through.
+ * A day's alternative itineraries — day 9's craft towns, day 7's
+ * rest-day-vs-beach choice. Picking one swaps stops/food/shopping/driving
+ * time/budget for the whole day (see effectiveStops/Food/Shopping in
+ * src/lib/budget.ts), so this sits above the flow it rewrites.
+ *
+ * Once the choice is made it collapses to a single line: a decided day should
+ * cost one row, not three cards of pros and cons the family already weighed.
+ * Undecided, it opens the full picker — and pros/cons stay inline on the cards
+ * there, never behind another toggle, because they *are* the content.
  */
 export function OptionsSection({ day }: { readonly day: Day }) {
   const { mode, party, chosenOptions, chooseOption, upgrades } = useTrip();
+  const [editing, setEditing] = useState(false);
+
   if (day.options === undefined) return null;
 
   const selected = chosenOption(day, { mode, party, chosenOptions, upgrades });
   const isDecided = chosenOptions[day.id] !== undefined;
 
+  if (isDecided && !editing && selected !== null) {
+    // The chosen option's destination has to stay reachable from the collapsed
+    // bar. On a beach day "take me to the beach" is the single most-used action
+    // of the day, and it would otherwise be buried behind "Değiştir".
+    const beach =
+      selected.beach === undefined
+        ? undefined
+        : trip.beaches.find((candidate) => candidate.id === selected.beach);
+    const destination =
+      beach ?? (selected.nav === undefined ? undefined : { name: selected.label, nav: selected.nav });
+
+    return (
+      <div className="border border-border bg-surface-2">
+        <div className="flex items-center gap-3 p-3">
+          <div className="min-w-0 flex-1">
+            <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
+              Seçilen rota
+            </p>
+            <p className="font-display font-medium">{selected.label}</p>
+            {beach !== undefined && (
+              <p className="text-xs text-text-muted">{formatDriving(beach.minutesFromBase)}</p>
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={() => setEditing(true)}
+            className="min-h-11 shrink-0 border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
+          >
+            Değiştir
+          </button>
+        </div>
+        {destination !== undefined && (
+          <div className="border-t border-border px-3 py-2">
+            <NavButton place={destination} />
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-3">
-      {!isDecided && (
-        <p className="border border-dashed border-border bg-surface p-2 text-xs font-semibold text-text-muted">
-          Karar verilmedi — planın önerisi gösteriliyor, aşağıdan seç.
+      <div className="flex items-center gap-2">
+        <p className="flex-1 border border-dashed border-border bg-surface p-2 text-xs font-semibold text-text-muted">
+          {isDecided
+            ? 'Bugünün rotasını seç.'
+            : 'Karar verilmedi — planın önerisi gösteriliyor, aşağıdan seç.'}
         </p>
-      )}
+        {editing && (
+          <button
+            type="button"
+            onClick={() => setEditing(false)}
+            className="min-h-11 shrink-0 border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
+          >
+            Kapat
+          </button>
+        )}
+      </div>
       <div role="radiogroup" aria-label="Bugünün rotası" className="flex flex-col gap-3">
         {day.options.map((option) => (
           <OptionCard
@@ -35,15 +93,16 @@ export function OptionsSection({ day }: { readonly day: Day }) {
             day={day}
             option={option}
             isSelected={option.id === selected?.id}
-            onSelect={() => chooseOption(day.id, option.id)}
+            onSelect={() => {
+              chooseOption(day.id, option.id);
+              setEditing(false);
+            }}
           />
         ))}
       </div>
     </div>
   );
 }
-
-import { RatingBadge } from './RatingBadge';
 
 function OptionCard({
   day,
@@ -58,8 +117,10 @@ function OptionCard({
 }) {
   const { mode } = useTrip();
   const cost = resolveOptionCost(option.cost, mode);
-  const beach = option.beach === undefined ? undefined : trip.beaches.find((b) => b.id === option.beach);
-  const movesToDay = option.movesTo === undefined ? undefined : trip.days.find((d) => d.id === option.movesTo);
+  const beach =
+    option.beach === undefined ? undefined : trip.beaches.find((b) => b.id === option.beach);
+  const movesToDay =
+    option.movesTo === undefined ? undefined : trip.days.find((d) => d.id === option.movesTo);
   const isBeach = beach !== undefined;
 
   return (
@@ -90,7 +151,7 @@ function OptionCard({
           )}
           {isBeach && (
             <span className="bg-theme-plaj/15 px-1.5 py-0.5 font-body text-xs font-semibold text-theme-plaj">
-              🏖 Plaj
+              Plaj
             </span>
           )}
         </span>
@@ -147,7 +208,8 @@ function OptionCard({
 
       {movesToDay !== undefined && (
         <p className="text-xs text-text-muted">
-          ↷ Bu seçilirse akşam programı {formatDayMonth(movesToDay.date)}'e ({movesToDay.title}) taşınır.
+          ↷ Bu seçilirse akşam programı {formatDayMonth(movesToDay.date)}'e ({movesToDay.title})
+          taşınır.
         </p>
       )}
 
