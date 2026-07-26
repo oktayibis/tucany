@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
+import { BottomBar } from './components/BottomBar';
+import { Checklists } from './components/Checklists';
 import { DayDetail } from './components/DayDetail';
 import { DayList } from './components/DayList';
+import { PorkGuide } from './components/PorkGuide';
+import { PrintView } from './components/PrintView';
+import { SearchScreen } from './components/SearchScreen';
 import { HOME, useRoute } from './hooks/useRoute';
 import { TripProvider, useTrip } from './state/TripContext';
 
@@ -26,10 +31,27 @@ function Shell() {
     // midnight — that would yank the family back to "today" mid-browse.
   }, []);
 
-  if (route.name === 'day') {
-    return <DayDetail dayId={route.dayId} onBack={() => go(HOME)} />;
-  }
-  return <DayList onOpenDay={(dayId) => go({ name: 'day', dayId })} />;
+  const openDay = (dayId: string) => go({ name: 'day', dayId });
+
+  return (
+    <>
+      <div className="print:hidden">
+        {route.name === 'day' ? (
+          <DayDetail dayId={route.dayId} onBack={() => go(HOME)} />
+        ) : route.name === 'pork' ? (
+          <PorkGuide tab={route.tab} onTabChange={(tab) => go({ name: 'pork', tab })} />
+        ) : route.name === 'search' ? (
+          <SearchScreen onOpenDay={openDay} />
+        ) : route.name === 'lists' ? (
+          <Checklists />
+        ) : (
+          <DayList onOpenDay={openDay} />
+        )}
+        <BottomBar route={route} onNavigate={go} />
+      </div>
+      <PrintView />
+    </>
+  );
 }
 
 export default function App() {

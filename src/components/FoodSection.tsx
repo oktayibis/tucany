@@ -1,9 +1,9 @@
 import type { Day, Food, MealSlot } from '../data/schema';
 import { foodKey, selectFood } from '../lib/budget';
-import { euro } from '../lib/format';
 import { FoodTierBadge } from './TierBadge';
 import { PhoneButton } from './NavButton';
 import { PorkSafeNote, PorkWarningNote } from './PorkWarningNote';
+import { PriceTag } from './PriceTag';
 import { useTrip } from '../state/TripContext';
 
 const SLOT_LABEL: Readonly<Record<MealSlot, string>> = {
@@ -24,7 +24,9 @@ const SLOT_ORDER: readonly MealSlot[] = ['coffee', 'lunch', 'aperitivo', 'dinner
  */
 export function FoodSection({ day }: { readonly day: Day }) {
   const { mode, upgrades } = useTrip();
-  const active = new Set(selectFood(day.food, mode, day.id, upgrades).map((entry) => foodKey(day.id, entry)));
+  const active = new Set(
+    selectFood(day.food, mode, day.id, upgrades).map((entry) => foodKey(day.id, entry)),
+  );
 
   const bySlot = new Map<MealSlot, Food[]>();
   for (const entry of day.food) {
@@ -34,13 +36,15 @@ export function FoodSection({ day }: { readonly day: Day }) {
   }
 
   const slots = SLOT_ORDER.filter((slot) => bySlot.has(slot));
-  if (slots.length === 0) return <p className="text-sm opacity-75">Bu gün için yemek planı yok.</p>;
+  if (slots.length === 0) {
+    return <p className="text-sm text-text-muted">Bu gün için yemek planı yok.</p>;
+  }
 
   return (
     <div className="flex flex-col gap-4">
       {slots.map((slot) => (
         <div key={slot}>
-          <h3 className="text-sm font-semibold uppercase tracking-wide opacity-75">
+          <h3 className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
             {SLOT_LABEL[slot]}
           </h3>
           <ul className="mt-1 flex flex-col gap-2">
@@ -74,25 +78,31 @@ function FoodRow({
   const isUpgraded = upgrades.includes(key);
 
   return (
-    <li className={`rounded border p-3 ${isActive ? '' : 'opacity-60'}`}>
+    <li
+      className={`border bg-surface-2 p-3 ${isActive ? 'border-border' : 'border-dashed border-border opacity-70'}`}
+    >
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <p className="font-semibold">{entry.name}</p>
+        <p className="font-display font-medium">{entry.name}</p>
         <div className="flex items-center gap-2">
           <FoodTierBadge tier={entry.tier} />
-          <span className="text-sm font-semibold tabular-nums">{euro(entry.price)}</span>
+          <span className="text-sm font-semibold">
+            <PriceTag amount={entry.price} />
+          </span>
         </div>
       </div>
 
       {!isActive && (
-        <p className="text-xs opacity-75">
+        <p className="text-xs font-medium text-text-muted">
           {entry.tier === 'a' ? 'Sadece Keyif modunda' : 'Bu modda seçilmedi'}
         </p>
       )}
 
       {entry.why !== undefined && <p className="mt-1 text-sm">{entry.why}</p>}
-      {entry.hours !== undefined && <p className="text-xs opacity-75">Saatler: {entry.hours}</p>}
+      {entry.hours !== undefined && (
+        <p className="text-xs text-text-muted">Saatler: {entry.hours}</p>
+      )}
       {entry.priceNote !== undefined && (
-        <p className="text-xs opacity-75">Fiyat notu: {entry.priceNote}</p>
+        <p className="text-xs text-text-muted">Fiyat notu: {entry.priceNote}</p>
       )}
 
       {entry.porkWarning !== undefined && <PorkWarningNote warning={entry.porkWarning} />}
@@ -101,8 +111,13 @@ function FoodRow({
       <div className="mt-2 flex flex-wrap items-center gap-2">
         {entry.phone !== undefined && <PhoneButton phone={entry.phone} />}
         {entry.booking !== undefined && (
-          <span className="text-xs opacity-75">
-            Rezervasyon: {entry.booking === 'required' ? 'gerekli' : entry.booking === 'recommended' ? 'önerilir' : 'sadece telefonla'}
+          <span className="text-xs text-text-muted">
+            Rezervasyon:{' '}
+            {entry.booking === 'required'
+              ? 'gerekli'
+              : entry.booking === 'recommended'
+                ? 'önerilir'
+                : 'sadece telefonla'}
             {entry.bookingNote !== undefined && ` — ${entry.bookingNote}`}
           </span>
         )}
@@ -110,7 +125,9 @@ function FoodRow({
           <button
             type="button"
             onClick={() => toggleUpgrade(key)}
-            className="ml-auto min-h-11 rounded border px-3 py-2 text-xs font-medium"
+            className={`ml-auto min-h-11 border px-3 py-2 text-xs font-semibold ${
+              isUpgraded ? 'border-accent-2 bg-antimony text-ink' : 'border-border text-text-muted'
+            }`}
           >
             {isUpgraded ? '✓ Karma’ya eklendi — kaldır' : 'Karma’ya ekle'}
           </button>

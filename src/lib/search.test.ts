@@ -8,9 +8,21 @@ describe('search', () => {
     expect(results.some((r) => r.kind === 'stop' && r.title === 'Montefioralle')).toBe(true);
   });
 
-  it('finds a stop by why-text, not just its name', () => {
+  it('finds the pork phrase when searching a word only it contains', () => {
+    // Isolates the phrase match specifically, rather than accidentally
+    // passing because *something* matched "cinghiale" somewhere.
     const results = search(trip, { ...EMPTY_FILTERS, query: 'cinghiale' });
-    expect(results.length).toBeGreaterThan(0);
+    expect(results.some((r) => r.kind === 'phrase')).toBe(true);
+  });
+
+  it('finds a food entry by its pork warning, not just its name', () => {
+    // The fuar panini stall isn't named "porchetta" anywhere — the word only
+    // appears in its porkWarning. This is the exact mid-restaurant query the
+    // feature exists for: "does this contain X" typed while ordering.
+    const results = search(trip, { ...EMPTY_FILTERS, query: 'porchetta' });
+    expect(
+      results.some((r) => r.kind === 'food' && r.title.includes('panini tezgahlari')),
+    ).toBe(true);
   });
 
   it('finds shopping by what it is for', () => {

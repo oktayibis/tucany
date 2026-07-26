@@ -13,7 +13,11 @@ export function ModeSwitch() {
 
   return (
     <div>
-      <div role="radiogroup" aria-label="Bütçe modu" className="inline-flex rounded-lg border p-1">
+      <div
+        role="radiogroup"
+        aria-label="Bütçe modu"
+        className="flex divide-x divide-border border border-border bg-surface-2"
+      >
         {MODES.map((candidate) => (
           <button
             key={candidate}
@@ -21,15 +25,15 @@ export function ModeSwitch() {
             role="radio"
             aria-checked={candidate === mode}
             onClick={() => setMode(candidate)}
-            className={`min-h-11 min-w-11 rounded-md px-4 py-2 text-sm font-semibold transition-colors ${
-              candidate === mode ? 'bg-current/10' : ''
+            className={`min-h-11 flex-1 px-4 py-2 font-display text-sm font-semibold transition-colors ${
+              candidate === mode ? 'bg-accent text-white' : 'text-text-muted'
             }`}
           >
             {MODE_INFO[candidate].label}
           </button>
         ))}
       </div>
-      <p className="mt-1 text-xs opacity-75">{MODE_INFO[mode].gist}</p>
+      <p className="mt-1.5 text-xs text-text-muted">{MODE_INFO[mode].gist}</p>
       <ModeDeltaLine mode={mode} totals={budget.totalsByMode} />
     </div>
   );
@@ -44,7 +48,7 @@ function ModeDeltaLine({
   readonly totals: Readonly<Record<Mode, number>>;
 }) {
   return (
-    <ul className="mt-1 flex flex-col gap-0.5 text-xs opacity-75">
+    <ul className="mt-1 flex flex-col gap-0.5 text-xs text-text-muted">
       {otherModes(mode).map((other) => {
         const delta = modeDelta(totals, mode, other);
         return (

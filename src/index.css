@@ -98,6 +98,42 @@ h4 {
   outline-offset: 2px;
 }
 
+/*
+ * The one deliberate motion in the app: a price briefly reacting when the
+ * mode switch changes what it's worth. `prefers-reduced-motion` below zeroes
+ * the duration globally, so this becomes an instant value swap with no
+ * separate code path.
+ */
+@keyframes price-pulse {
+  0% {
+    color: var(--color-accent);
+    transform: scale(1.1);
+  }
+  100% {
+    color: inherit;
+    transform: scale(1);
+  }
+}
+.price-pulse {
+  animation: price-pulse 320ms ease-out;
+}
+
+/*
+ * Print: the whole trip as a linear paper document (see PrintView.tsx), one
+ * day per page. Everything interactive is scoped under `print:hidden` in
+ * App.tsx; this is the safety net that keeps the page itself white-on-black
+ * regardless, in case anything outside that wrapper ever slips through.
+ */
+@media print {
+  @page {
+    margin: 1.5cm;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

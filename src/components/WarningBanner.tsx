@@ -25,10 +25,13 @@ export function WarningBanner({
   if (items.length === 0) return null;
 
   return (
-    <div role="alert" className="rounded border-2 border-amber-600 p-3">
-      <ul className="flex flex-col gap-1.5 text-sm font-medium">
+    <div role="alert" className="border-2 border-warn-border bg-warn-bg p-3 text-warn-text">
+      <ul className="flex flex-col gap-1.5 text-sm font-semibold">
         {items.map((text) => (
-          <li key={text}>⚠ {text}</li>
+          <li key={text} className="flex gap-2">
+            <span aria-hidden="true">⚠</span>
+            <span>{text}</span>
+          </li>
         ))}
       </ul>
     </div>

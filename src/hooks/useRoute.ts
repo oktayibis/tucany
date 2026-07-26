@@ -12,8 +12,7 @@ export type Route =
   | { readonly name: 'day'; readonly dayId: string }
   | { readonly name: 'pork'; readonly tab: 'guide' | 'phrases' }
   | { readonly name: 'search' }
-  | { readonly name: 'lists' }
-  | { readonly name: 'info' };
+  | { readonly name: 'lists' };
 
 export const HOME: Route = { name: 'days' };
 
@@ -29,8 +28,6 @@ export function routeToHash(route: Route): string {
       return '#/ara';
     case 'lists':
       return '#/listeler';
-    case 'info':
-      return '#/bilgi';
   }
 }
 
@@ -49,8 +46,6 @@ export function hashToRoute(hash: string): Route {
       return { name: 'search' };
     case 'listeler':
       return { name: 'lists' };
-    case 'bilgi':
-      return { name: 'info' };
     default:
       return HOME;
   }

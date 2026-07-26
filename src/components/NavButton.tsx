@@ -25,19 +25,19 @@ export function NavButton({
         href={links.google}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex min-h-11 items-center rounded border px-3 py-2 text-sm font-medium"
+        className="inline-flex min-h-11 items-center border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
       >
         Google Maps’te aç
       </a>
       {showApple && (
         <a
           href={links.apple}
-          className="inline-flex min-h-11 items-center rounded border px-3 py-2 text-sm font-medium"
+          className="inline-flex min-h-11 items-center border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
         >
           Apple Maps’te aç
         </a>
       )}
-      {note !== undefined && <span className="text-xs opacity-75">{note}</span>}
+      {note !== undefined && <span className="text-xs text-text-muted">{note}</span>}
     </span>
   );
 }

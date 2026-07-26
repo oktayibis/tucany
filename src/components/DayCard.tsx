@@ -1,13 +1,12 @@
 import type { Day } from '../data/schema';
-import { euro } from '../lib/format';
 import { formatDayMonth, weekdayDisplay } from '../lib/dates';
 import { IntensityMeter } from './IntensityMeter';
+import { PriceTag } from './PriceTag';
 
 /**
- * One waypoint on the route. Deliberately plain markup at this stage — the
- * step-5 design pass turns this list into the continuous-line "route"
- * visual; what matters now is that every required field is present and the
- * card is a real link target.
+ * One waypoint's content on the route. The dot and connecting line live in
+ * `DayList` (they're a property of the list, not of one card); this is just
+ * the signage-plate card sitting next to that dot.
  */
 export function DayCard({
   day,
@@ -26,25 +25,35 @@ export function DayCard({
     <button
       type="button"
       onClick={onOpen}
-      className={`flex min-h-11 w-full flex-col gap-1 rounded border p-3 text-left ${
-        isToday ? 'border-2' : ''
+      className={`flex min-h-11 w-full flex-col gap-1.5 border bg-surface-2 p-3 text-left ${
+        isToday ? 'border-2 border-accent' : 'border-border'
       }`}
       aria-current={isToday ? 'date' : undefined}
     >
       <div className="flex items-center justify-between gap-2">
-        <span className="text-xs opacity-75">
+        <span className="font-display text-xs font-medium uppercase tracking-wide text-text-muted">
           {index + 1}. gün · {weekdayDisplay(day.weekday)} · {formatDayMonth(day.date)}
         </span>
-        {isToday && (
-          <span className="rounded bg-current/10 px-1.5 py-0.5 text-xs font-semibold">Bugün</span>
-        )}
-        {day.starred === true && <span aria-hidden="true">★</span>}
+        <span className="flex items-center gap-1.5">
+          {isToday && (
+            <span className="bg-accent px-1.5 py-0.5 font-display text-xs font-semibold uppercase tracking-wide text-white">
+              Bugün
+            </span>
+          )}
+          {day.starred === true && (
+            <span aria-hidden="true" className="text-accent-2">
+              ★
+            </span>
+          )}
+        </span>
       </div>
-      <h2 className="font-bold">{day.title}</h2>
-      <div className="flex flex-wrap items-center gap-3 text-sm opacity-75">
+      <h2 className="font-display text-base font-medium">{day.title}</h2>
+      <div className="flex flex-wrap items-center gap-3 text-sm text-text-muted">
         <IntensityMeter intensity={day.intensity} />
         <span>{day.drivingMinutes} dk sürüş</span>
-        <span className="ml-auto font-semibold tabular-nums">{euro(total)}</span>
+        <span className="ml-auto font-display text-base font-semibold text-text">
+          <PriceTag amount={total} />
+        </span>
       </div>
     </button>
   );

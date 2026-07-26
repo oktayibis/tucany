@@ -1,7 +1,7 @@
 import type { Day } from '../data/schema';
 import { chosenOption } from '../lib/budget';
-import { euro } from '../lib/format';
 import { NavButton } from './NavButton';
+import { PriceTag } from './PriceTag';
 import { useTrip } from '../state/TripContext';
 
 /**
@@ -22,25 +22,29 @@ export function OptionsSection({ day }: { readonly day: Day }) {
         return (
           <label
             key={option.id}
-            className={`flex cursor-pointer flex-col gap-1 rounded border p-3 ${isSelected ? 'border-2' : ''}`}
+            className={`flex cursor-pointer flex-col gap-1 border bg-surface-2 p-3 ${
+              isSelected ? 'border-2 border-accent' : 'border-border'
+            }`}
           >
             <div className="flex items-start justify-between gap-2">
-              <span className="flex items-center gap-2 font-semibold">
+              <span className="flex items-center gap-2 font-display font-medium">
                 <input
                   type="radio"
                   name={`${day.id}-option`}
                   checked={isSelected}
                   onChange={() => chooseOption(day.id, option.id)}
-                  className="h-5 w-5"
+                  className="h-5 w-5 accent-accent"
                 />
                 {option.label}
                 {option.recommended === true && (
-                  <span className="rounded border px-1.5 py-0.5 text-xs font-normal">
+                  <span className="bg-antimony px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
                     Planın önerisi
                   </span>
                 )}
               </span>
-              <span className="text-sm font-semibold tabular-nums">{euro(option.cost)}</span>
+              <span className="text-sm font-semibold">
+                <PriceTag amount={option.cost} />
+              </span>
             </div>
             <p className="text-sm">{option.desc}</p>
             {option.nav !== undefined && (

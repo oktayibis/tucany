@@ -1,4 +1,4 @@
-import type { Day, Phrase, Shopping, Stop, TripData } from '../data/schema';
+import type { Day, Food, Phrase, Shopping, Stop, TripData } from '../data/schema';
 import { matchesQuery } from './text';
 
 /**
@@ -52,6 +52,20 @@ function stopMatches(stop: Stop, filters: SearchFilters): boolean {
   return matchesQuery(stop.name, filters.query) || matchesQuery(stop.why ?? '', filters.query);
 }
 
+/**
+ * Matches name, why-text, and the pork note. That last one is the point of
+ * the feature: someone mid-restaurant typing "cinghiale" needs to find the
+ * dish that warns about it, not just a dish literally named "Cinghiale".
+ */
+function foodMatches(entry: Food, filters: SearchFilters): boolean {
+  if (filters.query.trim() === '') return false;
+  return (
+    matchesQuery(entry.name, filters.query) ||
+    matchesQuery(entry.why ?? '', filters.query) ||
+    matchesQuery(entry.porkWarning ?? '', filters.query)
+  );
+}
+
 function shoppingMatches(entry: Shopping, filters: SearchFilters): boolean {
   if (filters.tag !== null && filters.tag !== 'shopping') return false;
   if (filters.tier !== null) return false; // shopping has no tier
@@ -90,11 +104,9 @@ export function search(data: TripData, filters: SearchFilters): readonly SearchR
         results.push({ kind: 'shopping', dayId: day.id, title: entry.name, subtitle: entry.for });
       }
     }
-    if (filters.query.trim() !== '') {
-      for (const entry of day.food) {
-        if (matchesQuery(entry.name, filters.query)) {
-          results.push({ kind: 'food', dayId: day.id, title: entry.name, subtitle: day.title });
-        }
+    for (const entry of day.food) {
+      if (foodMatches(entry, filters)) {
+        results.push({ kind: 'food', dayId: day.id, title: entry.name, subtitle: day.title });
       }
     }
   }
