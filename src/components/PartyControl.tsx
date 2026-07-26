@@ -1,8 +1,9 @@
+import { HStack, IconButton, Span, Stack, Text, Wrap } from '@chakra-ui/react';
 import { useTrip } from '../state/TripContext';
 
 /**
  * Party-size stepper. Only two prices in the whole trip actually scale with
- * this (see `lib/pricing.ts`), so the tooltip is upfront about the limit
+ * this (see `lib/pricing.ts`), so the note below is upfront about the limit
  * rather than implying every euro on screen will move.
  */
 export function PartyControl() {
@@ -16,18 +17,18 @@ export function PartyControl() {
   };
 
   return (
-    <div>
-      <div className="flex flex-wrap items-center gap-4">
+    <Stack gap="1">
+      <Wrap align="center" gap="4">
         <Stepper label="Yetişkin" value={party.adults} onChange={adjustAdults} min={1} />
         <Stepper label="Çocuk" value={party.children} onChange={adjustChildren} min={0} />
-      </div>
-      <p className="mt-1 max-w-prose text-xs text-text-muted">
+      </Wrap>
+      <Text maxW="prose" fontSize="xs" color="fg.muted">
         Kişi sayısı sadece kişi başı yazılmış fiyatları değiştirir (şu an €
         {Math.round(budget.partySensitiveTotal)}
         'luk kısım). Bir bistecca veya paylaşılan bir tabak gibi "masaya" yazılmış fiyatlar sabit
         kalır — grup büyüse de küçülse de aynı yemeği paylaşırsınız.
-      </p>
-    </div>
+      </Text>
+    </Stack>
   );
 }
 
@@ -43,28 +44,60 @@ function Stepper({
   readonly min: number;
 }) {
   return (
-    <div className="inline-flex items-center gap-2">
-      <span className="text-sm font-medium">{label}</span>
-      <button
-        type="button"
-        onClick={() => onChange(-1)}
-        disabled={value <= min}
+    <HStack as="span" gap="2">
+      <Span fontSize="sm" fontWeight="medium">
+        {label}
+      </Span>
+      <StepButton
         aria-label={`${label} sayısını azalt`}
-        className="min-h-11 min-w-11 border border-border bg-surface-2 text-lg font-semibold text-accent disabled:opacity-40"
+        disabled={value <= min}
+        onClick={() => onChange(-1)}
       >
         −
-      </button>
-      <span aria-live="polite" className="min-w-6 text-center font-display text-base tabular-nums">
-        {value}
-      </span>
-      <button
-        type="button"
-        onClick={() => onChange(1)}
-        aria-label={`${label} sayısını artır`}
-        className="min-h-11 min-w-11 border border-border bg-surface-2 text-lg font-semibold text-accent"
+      </StepButton>
+      <Span
+        aria-live="polite"
+        minW="6"
+        textAlign="center"
+        fontFamily="heading"
+        fontSize="md"
+        fontVariantNumeric="tabular-nums"
       >
+        {value}
+      </Span>
+      <StepButton aria-label={`${label} sayısını artır`} onClick={() => onChange(1)}>
         +
-      </button>
-    </div>
+      </StepButton>
+    </HStack>
+  );
+}
+
+function StepButton({
+  children,
+  ...rest
+}: {
+  readonly children: string;
+  readonly 'aria-label': string;
+  readonly disabled?: boolean;
+  readonly onClick: () => void;
+}) {
+  return (
+    <IconButton
+      variant="plain"
+      minH="11"
+      minW="11"
+      borderWidth="1px"
+      borderColor="border"
+      bg="bg.panel"
+      color="accent"
+      rounded="l1"
+      fontSize="lg"
+      fontWeight="semibold"
+      _hover={{ bg: 'bg.subtle' }}
+      _disabled={{ opacity: 0.4, cursor: 'not-allowed' }}
+      {...rest}
+    >
+      {children}
+    </IconButton>
   );
 }

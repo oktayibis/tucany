@@ -1,9 +1,11 @@
+import { Box, Flex, HStack, Link, List, Span, Stack, Text, Wrap } from '@chakra-ui/react';
 import type { Day } from '../data/schema';
 import { trip } from '../data/trip';
-import { getDayRoute } from '../lib/routes';
 import { formatDriving } from '../lib/dates';
+import { getDayRoute } from '../lib/routes';
 import { NavButton, PhoneButton } from './NavButton';
 import { RatingBadge } from './RatingBadge';
+import { Eyebrow } from './ui/primitives';
 
 /**
  * The driving detail for a day: first leg out of the hotel, the per-leg
@@ -19,77 +21,85 @@ export function RouteSection({ day }: { readonly day: Day }) {
   const dayRoute = getDayRoute(day);
 
   return (
-    <div className="flex flex-col gap-4 text-sm">
+    <Stack gap="4" fontSize="sm">
       {dayRoute !== undefined && (
-        <div>
-          <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-            İlk durak
-          </p>
-          <p className="mt-0.5 font-display font-medium">
+        <Box>
+          <Eyebrow>İlk durak</Eyebrow>
+          <Text mt="0.5" fontFamily="heading" fontWeight="medium">
             Otel → {dayRoute.starterRoute.destination}
-          </p>
-          <p className="mt-0.5 text-xs text-text-muted">
+          </Text>
+          <Text mt="0.5" fontSize="xs" color="fg.muted">
             {formatDriving(dayRoute.starterRoute.durationMin)} · ~{dayRoute.starterRoute.km} km
-          </p>
-          <div className="mt-2">
+          </Text>
+          <Box mt="2">
             <NavButton
               place={{
                 name: dayRoute.starterRoute.destination,
                 nav: dayRoute.starterRoute.navUrl,
               }}
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
       )}
 
       {dayRoute !== undefined && dayRoute.legs.length > 0 && (
-        <div>
-          <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-            Etaplar (~{dayRoute.totalKm} km)
-          </p>
-          <ul className="mt-1 flex flex-col">
+        <Box>
+          <Eyebrow>Etaplar (~{dayRoute.totalKm} km)</Eyebrow>
+          <List.Root mt="1" gap="0" listStyle="none" ms="0">
             {dayRoute.legs.map((leg) => (
-              <li
+              <List.Item
                 key={`${leg.from}-${leg.to}`}
-                className="flex flex-wrap items-center justify-between gap-2 border-b border-border py-1.5 text-xs last:border-b-0"
+                borderBottomWidth="1px"
+                borderColor="border"
+                py="1.5"
+                fontSize="xs"
+                _last={{ borderBottomWidth: 0 }}
               >
-                <span className="font-medium">
-                  {leg.from} → {leg.to}
-                </span>
-                <span className="flex items-center gap-2 text-text-muted">
-                  <span className="font-semibold text-accent">{formatDriving(leg.durationMin)}</span>
-                  <span>{leg.km} km</span>
-                  {leg.navUrl !== undefined && (
-                    <a
-                      href={leg.navUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-semibold text-accent underline"
-                    >
-                      Aç
-                    </a>
-                  )}
-                </span>
-              </li>
+                <Flex wrap="wrap" align="center" justify="space-between" gap="2">
+                  <Span fontWeight="medium">
+                    {leg.from} → {leg.to}
+                  </Span>
+                  <HStack gap="2" color="fg.muted">
+                    <Span fontWeight="semibold" color="accent">
+                      {formatDriving(leg.durationMin)}
+                    </Span>
+                    <Span>{leg.km} km</Span>
+                    {leg.navUrl !== undefined && (
+                      <Link
+                        href={leg.navUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        fontWeight="semibold"
+                        color="accent"
+                        textDecoration="underline"
+                      >
+                        Aç
+                      </Link>
+                    )}
+                  </HStack>
+                </Flex>
+              </List.Item>
             ))}
-          </ul>
-        </div>
+          </List.Root>
+        </Box>
       )}
 
-      <div className="border-t border-border pt-3">
-        <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-          Otel (başlangıç & dönüş)
-        </p>
-        <div className="mt-0.5 flex items-center gap-2">
-          <p className="font-display font-medium">{trip.base.name}</p>
+      <Box borderTopWidth="1px" borderColor="border" pt="3">
+        <Eyebrow>Otel (başlangıç &amp; dönüş)</Eyebrow>
+        <HStack mt="0.5" gap="2">
+          <Text fontFamily="heading" fontWeight="medium">
+            {trip.base.name}
+          </Text>
           <RatingBadge rating={trip.base.rating} />
-        </div>
-        <p className="text-xs text-text-muted">{trip.base.address}</p>
-        <div className="mt-2 flex flex-wrap items-center gap-2">
+        </HStack>
+        <Text fontSize="xs" color="fg.muted">
+          {trip.base.address}
+        </Text>
+        <Wrap mt="2" gap="2" align="center">
           <NavButton place={trip.base} />
           <PhoneButton phone={trip.base.phone} />
-        </div>
-      </div>
-    </div>
+        </Wrap>
+      </Box>
+    </Stack>
   );
 }

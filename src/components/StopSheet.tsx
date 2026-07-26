@@ -1,3 +1,4 @@
+import { Badge, DataList, Flex, Span, Text, Wrap } from '@chakra-ui/react';
 import type { Stop } from '../data/schema';
 import type { LineItem } from '../lib/budget';
 import { euro } from '../lib/format';
@@ -7,6 +8,7 @@ import { PriceTag } from './PriceTag';
 import { RatingBadge } from './RatingBadge';
 import { Sheet } from './Sheet';
 import { StopTierBadge } from './TierBadge';
+import { CheckRow, SignButton } from './ui/primitives';
 
 /** Everything about one stop that no longer fits on its row in the day flow. */
 export function StopSheet({
@@ -43,69 +45,98 @@ export function StopSheet({
       titleExtra={<RatingBadge rating={stop.rating} />}
       onClose={onClose}
       footer={
-        <div className="flex flex-wrap items-center gap-2">
+        <Wrap align="center" gap="2">
           <NavButton place={stop} note={stop.navNote} />
           {stop.phone !== undefined && <PhoneButton phone={stop.phone} />}
-        </div>
+        </Wrap>
       }
     >
-      <div className="flex flex-wrap items-center gap-2">
+      <Wrap align="center" gap="2">
         {stop.tier === 'optional' && <StopTierBadge tier="optional" />}
         {stop.badge !== undefined && (
-          <span className="bg-accent-2/20 px-1.5 py-0.5 text-xs font-semibold text-accent-2">
+          <Badge
+            variant="plain"
+            bg="accentAlt.subtle"
+            color="warn.fg"
+            px="1.5"
+            py="0.5"
+            fontSize="xs"
+            fontWeight="semibold"
+          >
             {stop.badge}
-          </span>
+          </Badge>
         )}
-        <span className="ml-auto text-base font-semibold">
+        <Span ms="auto" fontSize="md" fontWeight="semibold">
           {item !== undefined ? (
             <PriceTag amount={item.amount} />
           ) : stop.cost === undefined || stop.cost === 0 ? (
             'Ücretsiz'
           ) : (
-            <span className="text-sm font-normal text-text-muted">Bu modda dahil değil</span>
+            <Span fontSize="sm" fontWeight="normal" color="fg.muted">
+              Bu modda dahil değil
+            </Span>
           )}
-        </span>
-      </div>
+        </Span>
+      </Wrap>
 
       {item?.altApplied !== undefined && (
-        <p className="mt-1 text-xs text-text-muted">Ücretsiz seçenek uygulandı.</p>
+        <Text mt="1" fontSize="xs" color="fg.muted">
+          Ücretsiz seçenek uygulandı.
+        </Text>
       )}
 
-      {stop.why !== undefined && <p className="mt-4 text-sm leading-relaxed">{stop.why}</p>}
+      {stop.why !== undefined && (
+        <Text mt="4" fontSize="sm" lineHeight="relaxed">
+          {stop.why}
+        </Text>
+      )}
 
       {facts.length > 0 && (
-        <dl className="mt-4 flex flex-col gap-1.5 text-sm">
+        <DataList.Root mt="4" gap="1.5" orientation="horizontal" size="sm">
           {facts.map(([label, value]) => (
-            <div key={label} className="flex gap-2">
-              <dt className="w-28 shrink-0 text-text-muted">{label}</dt>
-              <dd className="min-w-0 flex-1">{value}</dd>
-            </div>
+            <DataList.Item key={label}>
+              <DataList.ItemLabel w="28" flexShrink={0} color="fg.muted">
+                {label}
+              </DataList.ItemLabel>
+              <DataList.ItemValue minW="0" flex="1" color="fg">
+                {value}
+              </DataList.ItemValue>
+            </DataList.Item>
           ))}
-        </dl>
+        </DataList.Root>
       )}
 
-      <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-border pt-4">
-        <label className="inline-flex min-h-11 items-center gap-2 text-sm font-medium">
-          <input
-            type="checkbox"
-            checked={isVisited}
-            onChange={() => visited.toggle(stop.id)}
-            className="h-5 w-5 accent-accent"
-          />
+      <Flex
+        mt="5"
+        wrap="wrap"
+        align="center"
+        gap="3"
+        borderTopWidth="1px"
+        borderColor="border"
+        pt="4"
+      >
+        <CheckRow
+          checked={isVisited}
+          onToggle={() => visited.toggle(stop.id)}
+          fontSize="sm"
+          fontWeight="medium"
+        >
           Gezildi
-        </label>
+        </CheckRow>
         {canUpgrade && (
-          <button
-            type="button"
+          <SignButton
+            ms="auto"
+            fontSize="xs"
             onClick={() => toggleUpgrade(stop.id)}
-            className={`ml-auto min-h-11 border px-3 py-2 text-xs font-semibold ${
-              isUpgraded ? 'border-accent-2 bg-antimony text-ink' : 'border-border text-text-muted'
-            }`}
+            bg={isUpgraded ? 'antimony' : 'bg.panel'}
+            color={isUpgraded ? 'ink' : 'fg.muted'}
+            borderColor={isUpgraded ? 'accentAlt' : 'border'}
+            _hover={{ bg: isUpgraded ? 'antimony' : 'bg.subtle' }}
           >
             {isUpgraded ? '✓ Karma’ya eklendi — kaldır' : `Karma’ya ekle (+${euro(stop.cost ?? 0)})`}
-          </button>
+          </SignButton>
         )}
-      </div>
+      </Flex>
     </Sheet>
   );
 }

@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { useEffect, useRef } from 'react';
 import { BottomBar } from './components/BottomBar';
 import { Checklists } from './components/Checklists';
@@ -35,7 +36,9 @@ function Shell() {
 
   return (
     <>
-      <div className="print:hidden">
+      {/* The interactive app and the paper document are mutually exclusive:
+          this half disappears when printing, PrintView appears. */}
+      <Box _print={{ display: 'none' }}>
         {route.name === 'day' ? (
           <DayDetail dayId={route.dayId} onBack={() => go(HOME)} />
         ) : route.name === 'pork' ? (
@@ -48,7 +51,7 @@ function Shell() {
           <DayList onOpenDay={openDay} />
         )}
         <BottomBar route={route} onNavigate={go} />
-      </div>
+      </Box>
       <PrintView />
     </>
   );

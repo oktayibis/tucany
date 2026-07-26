@@ -1,13 +1,16 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import './index.css';
+import { Provider } from './components/ui/provider';
+import './fonts.css';
 
 const root = document.getElementById('root');
 if (root === null) throw new Error('#root bulunamadı');
 
 createRoot(root).render(
   <StrictMode>
-    <App />
+    <Provider>
+      <App />
+    </Provider>
   </StrictMode>,
 );

@@ -1,3 +1,4 @@
+import { Box, HStack } from '@chakra-ui/react';
 import type { Intensity } from '../data/schema';
 
 const LEVEL: Readonly<Record<Intensity, number>> = {
@@ -29,19 +30,25 @@ const LABEL: Readonly<Record<Intensity, string>> = {
 export function IntensityMeter({ intensity }: { readonly intensity: Intensity }) {
   const level = LEVEL[intensity];
   return (
-    <span
+    <HStack
+      as="span"
       role="img"
       aria-label={LABEL[intensity]}
       title={LABEL[intensity]}
-      className="inline-flex items-center gap-0.5"
+      gap="0.5"
+      flexShrink={0}
     >
       {[1, 2, 3, 4, 5].map((bar) => (
-        <span
+        <Box
           key={bar}
+          as="span"
           aria-hidden="true"
-          className={`inline-block h-3 w-1 rounded-full ${bar <= level ? 'bg-secondary' : 'bg-border'}`}
+          h="3"
+          w="1"
+          rounded="full"
+          bg={bar <= level ? 'secondary' : 'border'}
         />
       ))}
-    </span>
+    </HStack>
   );
 }

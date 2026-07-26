@@ -1,3 +1,4 @@
+import { Box, Circle, HStack, List, Span, chakra } from '@chakra-ui/react';
 import type { ReactNode } from 'react';
 
 /**
@@ -9,6 +10,21 @@ import type { ReactNode } from 'react';
  * Rows are hairline-separated inside a single bordered card rather than being
  * cards themselves; a ten-stop day used to be ten stacked boxes.
  */
+const RowButton = chakra('button', {
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '3',
+    w: 'full',
+    minH: '11',
+    px: '3',
+    py: '3',
+    textAlign: 'start',
+    cursor: 'pointer',
+    _hover: { bg: 'bg.subtle' },
+  },
+});
+
 export function FlowRow({
   marker,
   name,
@@ -25,48 +41,76 @@ export function FlowRow({
   readonly onOpen: () => void;
 }) {
   return (
-    <li className="border-b border-border last:border-b-0">
-      <button
-        type="button"
-        onClick={onOpen}
-        className={`flex min-h-11 w-full items-center gap-3 px-3 py-3 text-left ${
-          dimmed ? 'opacity-60' : ''
-        }`}
-      >
+    <List.Item borderBottomWidth="1px" borderColor="border" _last={{ borderBottomWidth: 0 }}>
+      <RowButton type="button" onClick={onOpen} opacity={dimmed ? 0.6 : 1}>
         {/* Always reserved, even when empty, so meal names line up with stop names. */}
-        <span className="flex w-6 shrink-0 justify-center">{marker}</span>
-        <span className="min-w-0 flex-1">
-          <span className="block font-display font-medium">{name}</span>
+        <Span display="flex" w="6" flexShrink={0} justifyContent="center">
+          {marker}
+        </Span>
+        <Box minW="0" flex="1">
+          <Span display="block" fontFamily="heading" fontWeight="medium">
+            {name}
+          </Span>
           {meta !== undefined && (
-            <span className="mt-0.5 block text-xs text-text-muted">{meta}</span>
+            <Span display="block" mt="0.5" fontSize="xs" color="fg.muted">
+              {meta}
+            </Span>
           )}
-        </span>
+        </Box>
         {trailing !== undefined && (
-          <span className="shrink-0 text-right text-sm font-semibold">{trailing}</span>
+          <Span flexShrink={0} textAlign="end" fontSize="sm" fontWeight="semibold">
+            {trailing}
+          </Span>
         )}
-        <span aria-hidden="true" className="shrink-0 font-display text-base text-text-muted">
+        <Span aria-hidden="true" flexShrink={0} fontFamily="heading" fontSize="md" color="fg.muted">
           ›
-        </span>
-      </button>
-    </li>
+        </Span>
+      </RowButton>
+    </List.Item>
   );
 }
 
 /** The numbered dot in a stop row's marker slot; fills in once marked visited. */
-export function StopMarker({ index, visited }: { readonly index: number; readonly visited: boolean }) {
+export function StopMarker({
+  index,
+  visited,
+}: {
+  readonly index: number;
+  readonly visited: boolean;
+}) {
   return (
-    <span
+    <Circle
       aria-hidden="true"
-      className={`inline-flex h-6 w-6 items-center justify-center rounded-full border font-display text-xs font-semibold ${
-        visited ? 'border-safe bg-safe text-white' : 'border-accent text-accent'
-      }`}
+      size="6"
+      borderWidth="1px"
+      fontFamily="heading"
+      fontSize="xs"
+      fontWeight="semibold"
+      borderColor={visited ? 'safe' : 'accent'}
+      bg={visited ? 'safe' : 'transparent'}
+      color={visited ? 'white' : 'accent'}
     >
       {visited ? '✓' : index}
-    </span>
+    </Circle>
   );
 }
 
 /** A single card wrapping a run of `FlowRow`s. */
 export function FlowList({ children }: { readonly children: ReactNode }) {
-  return <ul className="border border-border bg-surface-2">{children}</ul>;
+  return (
+    <List.Root layerStyle="card" listStyle="none" ms="0" gap="0">
+      {children}
+    </List.Root>
+  );
+}
+
+/** The slot heading inside a `FlowList` ("Öğle", "Akşam") — a row, not a card. */
+export function FlowGroupLabel({ children }: { readonly children: ReactNode }) {
+  return (
+    <List.Item borderBottomWidth="1px" borderColor="border" bg="bg.subtle" px="3" py="1.5">
+      <HStack as="span" textStyle="eyebrow" color="fg.muted">
+        {children}
+      </HStack>
+    </List.Item>
+  );
 }

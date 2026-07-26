@@ -1,3 +1,4 @@
+import { Span, chakra } from '@chakra-ui/react';
 import type { Route } from '../hooks/useRoute';
 
 type Tab = { readonly route: Route; readonly label: string; readonly glyph: string };
@@ -14,6 +15,22 @@ function isActive(route: Route, tabRoute: Route): boolean {
   return route.name === tabRoute.name;
 }
 
+const TabButton = chakra('button', {
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '0.5',
+    flex: '1',
+    minH: '11',
+    py: '2',
+    fontSize: 'xs',
+    fontWeight: 'semibold',
+    cursor: 'pointer',
+    _hover: { bg: 'bg.muted' },
+  },
+});
+
 /**
  * Persistent across every screen — the brief is explicit that the pork guide
  * must never be more than one tap away, so it lives here rather than behind
@@ -27,30 +44,36 @@ export function BottomBar({
   readonly onNavigate: (next: Route) => void;
 }) {
   return (
-    <nav
+    <chakra.nav
       aria-label="Ana gezinme"
-      className="fixed inset-x-0 bottom-0 z-10 flex border-t border-border bg-surface pb-[env(safe-area-inset-bottom)]"
+      position="fixed"
+      insetX="0"
+      bottom="0"
+      zIndex="10"
+      display="flex"
+      borderTopWidth="1px"
+      borderColor="border"
+      bg="bg.subtle"
+      pb="env(safe-area-inset-bottom)"
     >
       {TABS.map((tab) => {
         const active = isActive(route, tab.route);
         const isPork = tab.route.name === 'pork';
         return (
-          <button
+          <TabButton
             key={tab.label}
             type="button"
             onClick={() => onNavigate(tab.route)}
             aria-current={active ? 'page' : undefined}
-            className={`flex min-h-11 flex-1 flex-col items-center gap-0.5 py-2 text-xs font-semibold ${
-              isPork ? 'text-danger' : active ? 'text-accent' : 'text-text-muted'
-            }`}
+            color={isPork ? 'danger' : active ? 'accent' : 'fg.muted'}
           >
-            <span aria-hidden="true" className="font-display text-base">
+            <Span aria-hidden="true" fontFamily="heading" fontSize="md">
               {tab.glyph}
-            </span>
+            </Span>
             {tab.label}
-          </button>
+          </TabButton>
         );
       })}
-    </nav>
+    </chakra.nav>
   );
 }

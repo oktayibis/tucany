@@ -1,3 +1,5 @@
+import { Text } from '@chakra-ui/react';
+
 /**
  * Inline pork callout attached to a specific food or stop entry.
  *
@@ -9,12 +11,16 @@
  */
 export function PorkWarningNote({ warning }: { readonly warning: string }) {
   return (
-    <p role="note" className="text-sm font-semibold text-danger">
+    <Text role="note" fontSize="sm" fontWeight="semibold" color="danger">
       ⚠ {warning}
-    </p>
+    </Text>
   );
 }
 
 export function PorkSafeNote() {
-  return <p className="text-sm font-medium text-safe">✓ Domuzsuz olduğu doğrulanmış</p>;
+  return (
+    <Text fontSize="sm" fontWeight="medium" color="safe">
+      ✓ Domuzsuz olduğu doğrulanmış
+    </Text>
+  );
 }

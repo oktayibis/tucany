@@ -1,10 +1,15 @@
+import { Text, Wrap } from '@chakra-ui/react';
 import { useMemo } from 'react';
 import { isIos, mapLinks, telHref, type Place } from '../lib/nav';
+import { SignButton } from './ui/primitives';
 
 /**
  * Opens a place in the phone's map app. Offers Apple Maps alongside Google
  * Maps on iOS — the brief calls this out explicitly, and it is the last
  * external link the app should ever produce: everything else stays put.
+ *
+ * `asChild` keeps these real anchors (long-press to copy, open in a new tab,
+ * "Add to Home Screen" behaviour) while taking the button's tap-target size.
  */
 export function NavButton({
   place,
@@ -20,35 +25,33 @@ export function NavButton({
   );
 
   return (
-    <span className="inline-flex flex-wrap items-center gap-2">
-      <a
-        href={links.google}
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex min-h-11 items-center border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
-      >
-        Google Maps’te aç
-      </a>
-      {showApple && (
-        <a
-          href={links.apple}
-          className="inline-flex min-h-11 items-center border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
-        >
-          Apple Maps’te aç
+    <Wrap gap="2" align="center">
+      <SignButton asChild>
+        <a href={links.google} target="_blank" rel="noreferrer">
+          Google Maps’te aç
         </a>
+      </SignButton>
+      {showApple && (
+        <SignButton asChild>
+          <a href={links.apple}>Apple Maps’te aç</a>
+        </SignButton>
       )}
-      {note !== undefined && <span className="text-xs text-text-muted">{note}</span>}
-    </span>
+      {note !== undefined && (
+        // `inherit` rather than `fg.muted`: this note also appears on the brown
+        // signage plate in the day-list header, where a fixed muted grey is
+        // unreadable. Inheriting plus opacity gives a muted note on any ground.
+        <Text fontSize="xs" color="inherit" opacity={0.75}>
+          {note}
+        </Text>
+      )}
+    </Wrap>
   );
 }
 
 export function PhoneButton({ phone }: { readonly phone: string }) {
   return (
-    <a
-      href={telHref(phone)}
-      className="inline-flex min-h-11 items-center rounded border px-3 py-2 text-sm font-medium"
-    >
-      {phone} — ara
-    </a>
+    <SignButton asChild color="fg" fontWeight="medium">
+      <a href={telHref(phone)}>{phone} — ara</a>
+    </SignButton>
   );
 }

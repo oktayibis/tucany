@@ -1,8 +1,9 @@
+import { List, Span, Text, Wrap, chakra } from '@chakra-ui/react';
 import { useState } from 'react';
 import type { Food, MealSlot } from '../data/schema';
 import { foodKey, selectFood } from '../lib/budget';
 import { useTrip } from '../state/TripContext';
-import { FlowList, FlowRow } from './FlowRow';
+import { FlowGroupLabel, FlowList, FlowRow } from './FlowRow';
 import { FoodSheet, SLOT_LABEL, SLOT_ORDER } from './FoodSheet';
 import { PriceTag } from './PriceTag';
 import { RatingBadge } from './RatingBadge';
@@ -39,7 +40,11 @@ export function FoodSection({
 
   const slots = SLOT_ORDER.filter((slot) => bySlot.has(slot));
   if (slots.length === 0) {
-    return <p className="text-sm text-text-muted">Bu gün için yemek planı yok.</p>;
+    return (
+      <Text fontSize="sm" color="fg.muted">
+        Bu gün için yemek planı yok.
+      </Text>
+    );
   }
 
   return (
@@ -68,12 +73,28 @@ export function FoodSection({
         })}
       </FlowList>
 
-      {open !== null && (
-        <FoodSheet food={open} dayId={dayId} onClose={() => setOpen(null)} />
-      )}
+      {open !== null && <FoodSheet food={open} dayId={dayId} onClose={() => setOpen(null)} />}
     </>
   );
 }
+
+const ToggleButton = chakra('button', {
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '2',
+    w: 'full',
+    minH: '11',
+    px: '3',
+    py: '2',
+    textAlign: 'start',
+    fontSize: 'xs',
+    fontWeight: 'semibold',
+    color: 'accent',
+    cursor: 'pointer',
+    _hover: { bg: 'bg.subtle' },
+  },
+});
 
 function SlotGroup({
   slot,
@@ -94,11 +115,7 @@ function SlotGroup({
 
   return (
     <>
-      <li className="border-b border-border bg-surface px-3 py-1.5">
-        <span className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-          {SLOT_LABEL[slot]}
-        </span>
-      </li>
+      <FlowGroupLabel>{SLOT_LABEL[slot]}</FlowGroupLabel>
 
       {primary.map((entry) => (
         <FoodFlowRow
@@ -122,19 +139,18 @@ function SlotGroup({
         ))}
 
       {alternatives.length > 0 && (
-        <li className="border-b border-border last:border-b-0">
-          <button
+        <List.Item borderBottomWidth="1px" borderColor="border" _last={{ borderBottomWidth: 0 }}>
+          <ToggleButton
             type="button"
             onClick={() => setShowAll((current) => !current)}
             aria-expanded={showAll}
-            className="flex min-h-11 w-full items-center gap-2 px-3 py-2 text-left text-xs font-semibold text-accent"
           >
-            <span aria-hidden="true" className="w-6 text-center font-display text-base">
+            <Span aria-hidden="true" w="6" textAlign="center" fontFamily="heading" fontSize="md">
               {showAll ? '−' : '+'}
-            </span>
+            </Span>
             {showAll ? 'Alternatifleri gizle' : `${alternatives.length} alternatif`}
-          </button>
-        </li>
+          </ToggleButton>
+        </List.Item>
       )}
     </>
   );
@@ -161,13 +177,15 @@ function FoodFlowRow({
   return (
     <FlowRow
       name={
-        <span className="flex flex-wrap items-center gap-1.5">
+        <Wrap as="span" align="center" gap="1.5">
           {entry.name}
           <RatingBadge rating={entry.rating} />
           {entry.michelin === true && (
-            <span className="font-body text-xs font-semibold text-accent">★ Michelin</span>
+            <Span fontSize="xs" fontWeight="semibold" color="accent">
+              ★ Michelin
+            </Span>
           )}
-        </span>
+        </Wrap>
       }
       meta={meta.length > 0 ? meta.join(' · ') : undefined}
       trailing={<PriceTag amount={entry.price} />}

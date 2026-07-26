@@ -1,3 +1,4 @@
+import { List, Span, Stack, Text } from '@chakra-ui/react';
 import type { Day } from '../data/schema';
 import type { Gap } from '../lib/gaps';
 
@@ -10,19 +11,29 @@ export function DayHeadNotes({ day }: { readonly day: Day }) {
   if (day.highlight === undefined && day.elderNote === undefined) return null;
 
   return (
-    <div className="flex flex-col gap-2 text-sm">
+    <Stack gap="2" fontSize="sm">
       {day.highlight !== undefined && (
-        <p className="border-l-2 border-accent-2 bg-warn-bg px-3 py-2 font-medium text-warn-text">
+        <Text
+          borderStartWidth="2px"
+          borderColor="accentAlt"
+          bg="warn.bg"
+          color="warn.fg"
+          fontWeight="medium"
+          px="3"
+          py="2"
+        >
           ★ {day.highlight}
-        </p>
+        </Text>
       )}
       {day.elderNote !== undefined && (
-        <p className="border-l-2 border-border px-3 py-2 text-text-muted">
-          <span className="font-display font-semibold text-text">Anne için: </span>
+        <Text borderStartWidth="2px" borderColor="border" color="fg.muted" px="3" py="2">
+          <Span fontFamily="heading" fontWeight="semibold" color="fg">
+            Anne için:{' '}
+          </Span>
           {day.elderNote}
-        </p>
+        </Text>
       )}
-    </div>
+    </Stack>
   );
 }
 
@@ -34,20 +45,22 @@ export function hasTailNotes(day: Day, gaps: readonly Gap[]): boolean {
 /** The archival half: a change already applied to the plan, and this day's data gaps. */
 export function DayNotes({ day, gaps }: { readonly day: Day; readonly gaps: readonly Gap[] }) {
   return (
-    <div className="flex flex-col gap-3 text-sm">
+    <Stack gap="3" fontSize="sm">
       {day.revised !== undefined && (
-        <p className="text-text-muted">
-          <span className="font-display font-semibold text-text">Değişiklik: </span>
+        <Text color="fg.muted">
+          <Span fontFamily="heading" fontWeight="semibold" color="fg">
+            Değişiklik:{' '}
+          </Span>
           {day.revised}
-        </p>
+        </Text>
       )}
       {gaps.length > 0 && (
-        <ul className="flex flex-col gap-1 text-xs text-text-muted">
+        <List.Root gap="1" fontSize="xs" color="fg.muted" listStyle="none" ms="0">
           {gaps.map((gap) => (
-            <li key={gap.id}>ⓘ {gap.what}</li>
+            <List.Item key={gap.id}>ⓘ {gap.what}</List.Item>
           ))}
-        </ul>
+        </List.Root>
       )}
-    </div>
+    </Stack>
   );
 }

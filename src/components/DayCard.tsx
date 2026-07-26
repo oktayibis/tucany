@@ -1,7 +1,23 @@
+import { Badge, Flex, Heading, Span, Wrap, chakra } from '@chakra-ui/react';
 import type { Day } from '../data/schema';
 import { formatDayMonth, weekdayDisplay } from '../lib/dates';
 import { IntensityMeter } from './IntensityMeter';
 import { PriceTag } from './PriceTag';
+
+const CardButton = chakra('button', {
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5',
+    w: 'full',
+    minH: '11',
+    p: '3',
+    textAlign: 'start',
+    bg: 'bg.panel',
+    cursor: 'pointer',
+    _hover: { bg: 'bg.subtle' },
+  },
+});
 
 /**
  * One waypoint's content on the route. The dot and connecting line live in
@@ -26,44 +42,57 @@ export function DayCard({
   readonly onOpen: () => void;
 }) {
   return (
-    <button
+    <CardButton
       type="button"
       onClick={onOpen}
-      className={`flex min-h-11 w-full flex-col gap-1.5 border bg-surface-2 p-3 text-left ${
-        isToday ? 'border-2 border-accent' : 'border-border'
-      }`}
       aria-current={isToday ? 'date' : undefined}
+      borderWidth={isToday ? '2px' : '1px'}
+      borderColor={isToday ? 'accent' : 'border'}
     >
-      <div className="flex items-center justify-between gap-2">
-        <span className="font-display text-xs font-medium uppercase tracking-wide text-text-muted">
+      <Flex align="center" justify="space-between" gap="2" w="full">
+        <Span textStyle="eyebrow" fontWeight="medium" color="fg.muted">
           {index + 1}. gün · {weekdayDisplay(day.weekday)} · {formatDayMonth(day.date)}
-        </span>
-        <span className="flex items-center gap-1.5">
+        </Span>
+        <Flex as="span" align="center" gap="1.5">
           {isToday && (
-            <span className="bg-accent px-1.5 py-0.5 font-display text-xs font-semibold uppercase tracking-wide text-white">
+            <Badge variant="plain" bg="accent" color="accent.fg" px="1.5" py="0.5" textStyle="eyebrow">
               Bugün
-            </span>
+            </Badge>
           )}
           {day.starred === true && (
-            <span aria-hidden="true" className="text-accent-2">
+            <Span aria-hidden="true" color="accentAlt">
               ★
-            </span>
+            </Span>
           )}
-        </span>
-      </div>
-      <h2 className="font-display text-base font-medium">{day.title}</h2>
+        </Flex>
+      </Flex>
+
+      <Heading as="h2" fontSize="md" fontWeight="medium">
+        {day.title}
+      </Heading>
+
       {undecided && (
-        <span className="self-start bg-warn-bg px-1.5 py-0.5 font-body text-xs font-semibold text-warn-text">
+        <Badge
+          variant="plain"
+          alignSelf="start"
+          bg="warn.bg"
+          color="warn.fg"
+          px="1.5"
+          py="0.5"
+          fontSize="xs"
+          fontWeight="semibold"
+        >
           Karar verilmedi
-        </span>
+        </Badge>
       )}
-      <div className="flex flex-wrap items-center gap-3 text-sm text-text-muted">
+
+      <Wrap align="center" gap="3" w="full" fontSize="sm" color="fg.muted">
         <IntensityMeter intensity={day.intensity} />
-        <span>{drivingMinutes} dk sürüş</span>
-        <span className="ml-auto font-display text-base font-semibold text-text">
+        <Span>{drivingMinutes} dk sürüş</Span>
+        <Span ms="auto" fontFamily="heading" fontSize="md" fontWeight="semibold" color="fg">
           <PriceTag amount={total} />
-        </span>
-      </div>
-    </button>
+        </Span>
+      </Wrap>
+    </CardButton>
   );
 }

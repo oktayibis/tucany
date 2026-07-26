@@ -1,3 +1,4 @@
+import { List, SegmentGroup, Stack, Text } from '@chakra-ui/react';
 import { modeDelta } from '../lib/budget';
 import { deltaPhrase } from '../lib/format';
 import { MODES, MODE_INFO, otherModes, type Mode } from '../lib/modes';
@@ -7,35 +8,58 @@ import { useTrip } from '../state/TripContext';
  * The three-way Keyif/Karma/Ucuz switch. Persistent and central: every price
  * on every screen reads from `useTrip().budget`, which is keyed off this
  * value, so changing it here instantly re-renders the whole trip.
+ *
+ * `SegmentGroup` brings the roving-focus/arrow-key behaviour a segmented
+ * control is supposed to have; the sliding indicator is pinned to a hard
+ * cobalt plate so it still reads as enamel signage rather than an iOS pill.
  */
 export function ModeSwitch() {
   const { mode, setMode, budget } = useTrip();
 
   return (
-    <div>
-      <div
-        role="radiogroup"
+    <Stack gap="1.5">
+      <SegmentGroup.Root
+        value={mode}
+        onValueChange={(event) => {
+          if (event.value !== null) setMode(event.value as Mode);
+        }}
         aria-label="Bütçe modu"
-        className="flex divide-x divide-border border border-border bg-surface-2"
+        layerStyle="card"
+        gap="0"
+        p="0"
+        rounded="l1"
       >
+        <SegmentGroup.Indicator bg="accent" rounded="l1" shadow="none" />
         {MODES.map((candidate) => (
-          <button
+          <SegmentGroup.Item
             key={candidate}
-            type="button"
-            role="radio"
-            aria-checked={candidate === mode}
-            onClick={() => setMode(candidate)}
-            className={`min-h-11 flex-1 px-4 py-2 font-display text-sm font-semibold transition-colors ${
-              candidate === mode ? 'bg-accent text-white' : 'text-text-muted'
-            }`}
+            value={candidate}
+            flex="1"
+            minH="11"
+            justifyContent="center"
+            px="4"
+            py="2"
+            fontFamily="heading"
+            fontSize="sm"
+            fontWeight="semibold"
+            color="fg.muted"
+            cursor="pointer"
+            borderInlineEndWidth="1px"
+            borderColor="border"
+            _last={{ borderInlineEndWidth: 0 }}
+            _checked={{ color: 'accent.fg' }}
           >
-            {MODE_INFO[candidate].label}
-          </button>
+            <SegmentGroup.ItemText>{MODE_INFO[candidate].label}</SegmentGroup.ItemText>
+            <SegmentGroup.ItemHiddenInput />
+          </SegmentGroup.Item>
         ))}
-      </div>
-      <p className="mt-1.5 text-xs text-text-muted">{MODE_INFO[mode].gist}</p>
+      </SegmentGroup.Root>
+
+      <Text fontSize="xs" color="fg.muted">
+        {MODE_INFO[mode].gist}
+      </Text>
       <ModeDeltaLine mode={mode} totals={budget.totalsByMode} />
-    </div>
+    </Stack>
   );
 }
 
@@ -48,15 +72,15 @@ function ModeDeltaLine({
   readonly totals: Readonly<Record<Mode, number>>;
 }) {
   return (
-    <ul className="mt-1 flex flex-col gap-0.5 text-xs text-text-muted">
+    <List.Root gap="0.5" fontSize="xs" color="fg.muted" listStyle="none" ms="0">
       {otherModes(mode).map((other) => {
         const delta = modeDelta(totals, mode, other);
         return (
-          <li key={other}>
+          <List.Item key={other}>
             {MODE_INFO[other].label} modda {deltaPhrase(delta)}
-          </li>
+          </List.Item>
         );
       })}
-    </ul>
+    </List.Root>
   );
 }

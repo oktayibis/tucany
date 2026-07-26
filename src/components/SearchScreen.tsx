@@ -1,7 +1,14 @@
+import { Button, Heading, Input, List, Span, Stack, Text, Wrap, chakra } from '@chakra-ui/react';
 import { useMemo, useState, type ReactNode } from 'react';
-import { trip } from '../data/trip';
 import type { StopTier, Theme } from '../data/schema';
-import { EMPTY_FILTERS, hasActiveFilter, search, type SearchFilters, type SearchResultKind } from '../lib/search';
+import { trip } from '../data/trip';
+import {
+  EMPTY_FILTERS,
+  hasActiveFilter,
+  search,
+  type SearchFilters,
+  type SearchResultKind,
+} from '../lib/search';
 
 const THEME_LABEL: Readonly<Record<Theme, string>> = {
   arrival: 'Varış',
@@ -32,24 +39,47 @@ const KIND_LABEL: Readonly<Record<SearchResultKind, string>> = {
 const THEMES = Object.keys(THEME_LABEL) as Theme[];
 const TIERS = Object.keys(TIER_LABEL) as StopTier[];
 
+const ResultButton = chakra('button', {
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5',
+    w: 'full',
+    minH: '11',
+    layerStyle: 'card',
+    p: '3',
+    textAlign: 'start',
+    cursor: 'pointer',
+    _hover: { bg: 'bg.subtle' },
+  },
+});
+
 export function SearchScreen({ onOpenDay }: { readonly onOpenDay: (dayId: string) => void }) {
   const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
   const results = useMemo(() => search(trip, filters), [filters]);
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-4 p-4 pb-24">
-      <h1 className="text-display-lg font-semibold">Ara</h1>
+    <Stack mx="auto" maxW="2xl" gap="4" p="4" pb="24">
+      <Heading as="h1" textStyle="displayLg">
+        Ara
+      </Heading>
 
-      <input
+      <Input
         type="search"
         value={filters.query}
         onChange={(event) => setFilters({ ...filters, query: event.target.value })}
         placeholder="Durak, yemek, alışveriş, cümle ara…"
-        className="min-h-11 border border-border bg-surface-2 px-3 py-2 text-base"
         aria-label="Ara"
+        minH="11"
+        borderWidth="1px"
+        borderColor="border"
+        bg="bg.panel"
+        rounded="l1"
+        fontSize="md"
+        px="3"
       />
 
-      <div className="flex flex-col gap-2">
+      <Stack gap="2">
         <FilterRow label="Tema">
           {THEMES.map((theme) => (
             <FilterChip
@@ -85,7 +115,9 @@ export function SearchScreen({ onOpenDay }: { readonly onOpenDay: (dayId: string
           </FilterChip>
           <FilterChip
             active={filters.tag === 'market'}
-            onClick={() => setFilters({ ...filters, tag: filters.tag === 'market' ? null : 'market' })}
+            onClick={() =>
+              setFilters({ ...filters, tag: filters.tag === 'market' ? null : 'market' })
+            }
           >
             Pazar
           </FilterChip>
@@ -100,48 +132,49 @@ export function SearchScreen({ onOpenDay }: { readonly onOpenDay: (dayId: string
         </FilterRow>
 
         {hasActiveFilter(filters) && (
-          <button
-            type="button"
+          <Button
+            variant="plain"
+            alignSelf="start"
+            minH="11"
+            px="0"
+            fontSize="sm"
+            fontWeight="semibold"
+            color="accent"
             onClick={() => setFilters(EMPTY_FILTERS)}
-            className="min-h-11 self-start text-sm font-semibold text-accent"
           >
             Filtreleri temizle
-          </button>
+          </Button>
         )}
-      </div>
+      </Stack>
 
-      <ul className="flex flex-col gap-2">
+      <List.Root gap="2" listStyle="none" ms="0">
         {results.map((result, index) => {
           const dayId = result.dayId;
           return (
-            <li key={`${result.kind}-${result.title}-${index}`}>
+            <List.Item key={`${result.kind}-${result.title}-${index}`}>
               {dayId !== undefined ? (
-                <button
-                  type="button"
-                  onClick={() => onOpenDay(dayId)}
-                  className="flex min-h-11 w-full flex-col gap-0.5 border border-border bg-surface-2 p-3 text-left"
-                >
+                <ResultButton type="button" onClick={() => onOpenDay(dayId)}>
                   <ResultMeta kind={result.kind} subtitle={result.subtitle} />
-                  <span className="font-medium">{result.title}</span>
-                </button>
+                  <Span fontWeight="medium">{result.title}</Span>
+                </ResultButton>
               ) : (
-                <div className="flex flex-col gap-0.5 border border-border bg-surface-2 p-3">
+                <Stack layerStyle="card" gap="0.5" p="3">
                   <ResultMeta kind={result.kind} subtitle={result.subtitle} />
-                  <span className="font-medium">{result.title}</span>
-                </div>
+                  <Span fontWeight="medium">{result.title}</Span>
+                </Stack>
               )}
-            </li>
+            </List.Item>
           );
         })}
         {results.length === 0 && (
-          <p className="text-sm text-text-muted">
+          <Text fontSize="sm" color="fg.muted">
             {hasActiveFilter(filters)
               ? 'Bununla eşleşen bir şey yok.'
               : 'Aramak için yazmaya başla ya da yukarıdan filtre seç.'}
-          </p>
+          </Text>
         )}
-      </ul>
-    </div>
+      </List.Root>
+    </Stack>
   );
 }
 
@@ -153,19 +186,21 @@ function ResultMeta({
   readonly subtitle: string | undefined;
 }) {
   return (
-    <span className="font-display text-xs font-medium uppercase tracking-wide text-text-muted">
+    <Span textStyle="eyebrow" fontWeight="medium" color="fg.muted">
       {KIND_LABEL[kind]}
       {subtitle !== undefined && ` · ${subtitle}`}
-    </span>
+    </Span>
   );
 }
 
 function FilterRow({ label, children }: { readonly label: string; readonly children: ReactNode }) {
   return (
-    <div className="flex flex-wrap items-center gap-1.5">
-      <span className="mr-1 text-xs font-semibold text-text-muted">{label}:</span>
+    <Wrap align="center" gap="1.5">
+      <Span me="1" fontSize="xs" fontWeight="semibold" color="fg.muted">
+        {label}:
+      </Span>
       {children}
-    </div>
+    </Wrap>
   );
 }
 
@@ -179,15 +214,23 @@ function FilterChip({
   readonly children: string;
 }) {
   return (
-    <button
-      type="button"
+    <Button
+      variant="plain"
       onClick={onClick}
       aria-pressed={active}
-      className={`min-h-11 border px-2.5 py-1.5 text-xs font-semibold ${
-        active ? 'border-accent bg-accent text-white' : 'border-border text-text-muted'
-      }`}
+      minH="11"
+      px="2.5"
+      py="1.5"
+      fontSize="xs"
+      fontWeight="semibold"
+      rounded="l1"
+      borderWidth="1px"
+      borderColor={active ? 'accent' : 'border'}
+      bg={active ? 'accent' : 'transparent'}
+      color={active ? 'accent.fg' : 'fg.muted'}
+      _hover={{ bg: active ? 'accent' : 'bg.subtle' }}
     >
       {children}
-    </button>
+    </Button>
   );
 }

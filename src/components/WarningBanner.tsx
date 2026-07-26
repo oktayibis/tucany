@@ -1,3 +1,4 @@
+import { HStack, List, Span, Stack } from '@chakra-ui/react';
 import type { DayClosures } from '../lib/closures';
 
 /**
@@ -25,15 +26,24 @@ export function WarningBanner({
   if (items.length === 0) return null;
 
   return (
-    <div role="alert" className="border-2 border-warn-border bg-warn-bg p-3 text-warn-text">
-      <ul className="flex flex-col gap-1.5 text-sm font-semibold">
+    <Stack
+      role="alert"
+      borderWidth="2px"
+      borderColor="warn.border"
+      bg="warn.bg"
+      color="warn.fg"
+      p="3"
+    >
+      <List.Root gap="1.5" fontSize="sm" fontWeight="semibold" listStyle="none" ms="0">
         {items.map((text) => (
-          <li key={text} className="flex gap-2">
-            <span aria-hidden="true">⚠</span>
-            <span>{text}</span>
-          </li>
+          <List.Item key={text}>
+            <HStack align="start" gap="2">
+              <Span aria-hidden="true">⚠</Span>
+              <Span>{text}</Span>
+            </HStack>
+          </List.Item>
         ))}
-      </ul>
-    </div>
+      </List.Root>
+    </Stack>
   );
 }

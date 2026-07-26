@@ -1,3 +1,4 @@
+import { Span, type SpanProps } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 import { euro } from '../lib/format';
 
@@ -8,17 +9,12 @@ import { euro } from '../lib/format';
  * routes through this so switching Keyif/Karma/Ucuz reads as the numbers
  * visibly reacting, not silently swapping.
  *
- * Remounting on every change (via `key`) is what makes the CSS animation
- * restart reliably; `prefers-reduced-motion` zeroes the animation duration
- * globally, so this degrades to an instant value change with no extra code.
+ * Remounting on every change (via `key`) is what makes the animation restart
+ * reliably; `prefers-reduced-motion` zeroes the duration globally in the
+ * theme's `globalCss`, so this degrades to an instant value change with no
+ * extra code path.
  */
-export function PriceTag({
-  amount,
-  className = '',
-}: {
-  readonly amount: number;
-  readonly className?: string;
-}) {
+export function PriceTag({ amount, ...rest }: { readonly amount: number } & SpanProps) {
   const previous = useRef(amount);
   const [pulseKey, setPulseKey] = useState(0);
 
@@ -30,8 +26,14 @@ export function PriceTag({
   }, [amount]);
 
   return (
-    <span key={pulseKey} className={`price-pulse inline-block tabular-nums ${className}`}>
+    <Span
+      key={pulseKey}
+      display="inline-block"
+      fontVariantNumeric="tabular-nums"
+      animation="pricePulse 320ms ease-out"
+      {...rest}
+    >
       {euro(amount)}
-    </span>
+    </Span>
   );
 }

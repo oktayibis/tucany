@@ -1,3 +1,4 @@
+import { Badge, List, Span, Stack, Text, Wrap } from '@chakra-ui/react';
 import { useState } from 'react';
 import type { Stop } from '../data/schema';
 import type { LineItem } from '../lib/budget';
@@ -36,7 +37,7 @@ export function StopsSection({
   const savedTotal = dropped.reduce((sum, stop) => sum + (stop.cost ?? 0), 0);
 
   return (
-    <div className="flex flex-col gap-3">
+    <Stack gap="3">
       {visible.length > 0 && (
         <FlowList>
           {visible.map((stop, index) => {
@@ -46,15 +47,23 @@ export function StopsSection({
                 key={stop.id}
                 marker={<StopMarker index={index + 1} visited={visited.has(stop.id)} />}
                 name={
-                  <span className="flex flex-wrap items-center gap-1.5">
+                  <Wrap as="span" align="center" gap="1.5">
                     {stop.name}
                     <RatingBadge rating={stop.rating} />
                     {stop.badge !== undefined && (
-                      <span className="bg-accent-2/20 px-1.5 py-0.5 font-body text-xs font-semibold text-accent-2">
+                      <Badge
+                        variant="plain"
+                        bg="accentAlt.subtle"
+                        color="warn.fg"
+                        px="1.5"
+                        py="0.5"
+                        fontSize="xs"
+                        fontWeight="semibold"
+                      >
                         {stop.badge}
-                      </span>
+                      </Badge>
                     )}
-                  </span>
+                  </Wrap>
                 }
                 meta={<StopMeta stop={stop} />}
                 trailing={<StopPrice stop={stop} item={item} />}
@@ -72,23 +81,23 @@ export function StopsSection({
           count={dropped.length}
           hint={savedTotal > 0 ? `${euro(savedTotal)} tasarruf` : undefined}
         >
-          <ul className="flex flex-col gap-3">
+          <List.Root gap="3" listStyle="none" ms="0">
             {dropped.map((stop) => (
-              <li key={stop.id}>
-                <p className="text-sm font-semibold">
+              <List.Item key={stop.id}>
+                <Text fontSize="sm" fontWeight="semibold">
                   {stop.name}
                   {stop.cost !== undefined && stop.cost > 0 && (
-                    <span className="ml-2 font-normal text-text-muted">
+                    <Span ms="2" fontWeight="normal" color="fg.muted">
                       ({euro(stop.cost)} tasarruf)
-                    </span>
+                    </Span>
                   )}
-                </p>
-                <p className="text-sm text-text-muted">
+                </Text>
+                <Text fontSize="sm" color="fg.muted">
                   {stop.skipReason ?? stop.removedReason ?? stop.why}
-                </p>
-              </li>
+                </Text>
+              </List.Item>
             ))}
-          </ul>
+          </List.Root>
         </Disclosure>
       )}
 
@@ -99,7 +108,7 @@ export function StopsSection({
           onClose={() => setOpen(null)}
         />
       )}
-    </div>
+    </Stack>
   );
 }
 
@@ -118,6 +127,14 @@ function StopMeta({ stop }: { readonly stop: Stop }) {
 function StopPrice({ stop, item }: { readonly stop: Stop; readonly item: LineItem | undefined }) {
   if (item !== undefined) return <PriceTag amount={item.amount} />;
   if (stop.cost === undefined || stop.cost === 0)
-    return <span className="font-normal text-text-muted">Ücretsiz</span>;
-  return <span className="text-xs font-normal text-text-muted">dahil değil</span>;
+    return (
+      <Span fontWeight="normal" color="fg.muted">
+        Ücretsiz
+      </Span>
+    );
+  return (
+    <Span fontSize="xs" fontWeight="normal" color="fg.muted">
+      dahil değil
+    </Span>
+  );
 }

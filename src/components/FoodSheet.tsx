@@ -1,12 +1,14 @@
+import { Badge, Box, DataList, Span, Text, Wrap } from '@chakra-ui/react';
 import type { Food, MealSlot } from '../data/schema';
 import { foodKey } from '../lib/budget';
+import { useTrip } from '../state/TripContext';
 import { NavButton, PhoneButton } from './NavButton';
 import { PorkSafeNote, PorkWarningNote } from './PorkWarningNote';
 import { PriceTag } from './PriceTag';
 import { RatingBadge } from './RatingBadge';
 import { Sheet } from './Sheet';
 import { FoodTierBadge } from './TierBadge';
-import { useTrip } from '../state/TripContext';
+import { SignButton } from './ui/primitives';
 
 export const SLOT_LABEL: Readonly<Record<MealSlot, string>> = {
   coffee: 'Kahve',
@@ -39,6 +41,23 @@ export function FoodSheet({
   const canUpgrade = mode === 'mixed' && food.tier === 'a';
   const isUpgraded = upgrades.includes(key);
 
+  const facts: readonly (readonly [string, string])[] = [
+    ...(food.hours !== undefined ? ([['Saatler', food.hours]] as const) : ([] as const)),
+    ...(food.closedOn !== undefined && food.closedOn.length > 0
+      ? ([['Kapalı', food.closedOn.join(', ')]] as const)
+      : ([] as const)),
+    ...(food.booking !== undefined
+      ? ([
+          [
+            'Rezervasyon',
+            food.bookingNote === undefined
+              ? BOOKING_LABEL[food.booking]
+              : `${BOOKING_LABEL[food.booking]} — ${food.bookingNote}`,
+          ],
+        ] as const)
+      : ([] as const)),
+  ];
+
   return (
     <Sheet
       eyebrow={SLOT_LABEL[food.slot]}
@@ -46,82 +65,98 @@ export function FoodSheet({
       titleExtra={<RatingBadge rating={food.rating} />}
       onClose={onClose}
       footer={
-        <div className="flex flex-wrap items-center gap-2">
+        <Wrap align="center" gap="2">
           <NavButton place={food} />
           {food.phone !== undefined && <PhoneButton phone={food.phone} />}
-        </div>
+        </Wrap>
       }
     >
-      <div className="flex flex-wrap items-center gap-2">
+      <Wrap align="center" gap="2">
         <FoodTierBadge tier={food.tier} />
         {food.michelin === true && (
-          <span className="border border-accent px-1.5 py-0.5 text-xs font-semibold text-accent">
+          <Badge
+            variant="plain"
+            borderWidth="1px"
+            borderColor="accent"
+            color="accent"
+            px="1.5"
+            py="0.5"
+            fontSize="xs"
+            fontWeight="semibold"
+          >
             ★ Michelin
-          </span>
+          </Badge>
         )}
-        <span className="ml-auto text-base font-semibold">
+        <Span ms="auto" fontSize="md" fontWeight="semibold">
           <PriceTag amount={food.price} />
-        </span>
-      </div>
+        </Span>
+      </Wrap>
       {food.priceNote !== undefined && (
-        <p className="mt-1 text-xs text-text-muted">Fiyat notu: {food.priceNote}</p>
+        <Text mt="1" fontSize="xs" color="fg.muted">
+          Fiyat notu: {food.priceNote}
+        </Text>
       )}
 
       {food.closedToday === true && (
-        <p className="mt-4 border border-danger bg-danger-bg p-3 text-sm font-semibold text-danger">
+        <Text
+          mt="4"
+          borderWidth="1px"
+          borderColor="danger"
+          bg="danger.bg"
+          color="danger"
+          p="3"
+          fontSize="sm"
+          fontWeight="semibold"
+        >
           Bugün kapalı.
-        </p>
+        </Text>
       )}
 
-      {food.why !== undefined && <p className="mt-4 text-sm leading-relaxed">{food.why}</p>}
+      {food.why !== undefined && (
+        <Text mt="4" fontSize="sm" lineHeight="relaxed">
+          {food.why}
+        </Text>
+      )}
 
-      <dl className="mt-4 flex flex-col gap-1.5 text-sm">
-        {food.hours !== undefined && (
-          <div className="flex gap-2">
-            <dt className="w-28 shrink-0 text-text-muted">Saatler</dt>
-            <dd className="min-w-0 flex-1">{food.hours}</dd>
-          </div>
-        )}
-        {food.closedOn !== undefined && food.closedOn.length > 0 && (
-          <div className="flex gap-2">
-            <dt className="w-28 shrink-0 text-text-muted">Kapalı</dt>
-            <dd className="min-w-0 flex-1">{food.closedOn.join(', ')}</dd>
-          </div>
-        )}
-        {food.booking !== undefined && (
-          <div className="flex gap-2">
-            <dt className="w-28 shrink-0 text-text-muted">Rezervasyon</dt>
-            <dd className="min-w-0 flex-1">
-              {BOOKING_LABEL[food.booking]}
-              {food.bookingNote !== undefined && ` — ${food.bookingNote}`}
-            </dd>
-          </div>
-        )}
-      </dl>
+      {facts.length > 0 && (
+        <DataList.Root mt="4" gap="1.5" orientation="horizontal" size="sm">
+          {facts.map(([label, value]) => (
+            <DataList.Item key={label}>
+              <DataList.ItemLabel w="28" flexShrink={0} color="fg.muted">
+                {label}
+              </DataList.ItemLabel>
+              <DataList.ItemValue minW="0" flex="1" color="fg">
+                {value}
+              </DataList.ItemValue>
+            </DataList.Item>
+          ))}
+        </DataList.Root>
+      )}
 
       {food.porkWarning !== undefined && (
-        <div className="mt-4">
+        <Box mt="4">
           <PorkWarningNote warning={food.porkWarning} />
-        </div>
+        </Box>
       )}
       {food.porkSafe === true && (
-        <div className="mt-4">
+        <Box mt="4">
           <PorkSafeNote />
-        </div>
+        </Box>
       )}
 
       {canUpgrade && (
-        <div className="mt-5 border-t border-border pt-4">
-          <button
-            type="button"
+        <Box mt="5" borderTopWidth="1px" borderColor="border" pt="4">
+          <SignButton
+            fontSize="xs"
             onClick={() => toggleUpgrade(key)}
-            className={`min-h-11 border px-3 py-2 text-xs font-semibold ${
-              isUpgraded ? 'border-accent-2 bg-antimony text-ink' : 'border-border text-text-muted'
-            }`}
+            bg={isUpgraded ? 'antimony' : 'bg.panel'}
+            color={isUpgraded ? 'ink' : 'fg.muted'}
+            borderColor={isUpgraded ? 'accentAlt' : 'border'}
+            _hover={{ bg: isUpgraded ? 'antimony' : 'bg.subtle' }}
           >
             {isUpgraded ? '✓ Karma’ya eklendi — kaldır' : 'Karma’ya ekle'}
-          </button>
-        </div>
+          </SignButton>
+        </Box>
       )}
     </Sheet>
   );

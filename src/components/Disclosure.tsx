@@ -1,12 +1,40 @@
+import { Box, Span, chakra } from '@chakra-ui/react';
 import type { ReactNode } from 'react';
 
 /**
- * The day detail's one disclosure primitive. Native `<details>` on purpose:
- * no state, no aria wiring to get wrong, and it still works in the print
- * stylesheet and with in-page find (browsers expand a `<details>` to reveal a
- * search hit). Everything the family does not need *while standing in a
- * piazza* lives inside one of these.
+ * The day detail's one disclosure primitive. Still a native `<details>` on
+ * purpose rather than Chakra's `Accordion`: no state, no aria wiring to get
+ * wrong, it survives the print stylesheet, and browsers expand a `<details>`
+ * to reveal an in-page find hit — none of which an ARIA accordion gives you.
+ * `chakra()` only adds token-aware styling on top of that element.
+ *
+ * Everything the family does not need *while standing in a piazza* lives
+ * inside one of these.
  */
+const Details = chakra('details', {
+  base: {
+    layerStyle: 'card',
+    // Native `<details>` exposes no data-state, but `[open]` is a real
+    // attribute — Chakra's `_open` condition matches it directly.
+    '&[open] .disclosure-chevron': { transform: 'rotate(90deg)' },
+  },
+});
+
+const Summary = chakra('summary', {
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '2',
+    minH: '11',
+    px: '3',
+    py: '2.5',
+    cursor: 'pointer',
+    listStyle: 'none',
+    _hover: { bg: 'bg.subtle' },
+    '&::-webkit-details-marker': { display: 'none' },
+  },
+});
+
 export function Disclosure({
   title,
   count,
@@ -21,19 +49,34 @@ export function Disclosure({
   readonly children: ReactNode;
 }) {
   return (
-    <details open={defaultOpen} className="group border border-border bg-surface-2">
-      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 px-3 py-2.5 [&::-webkit-details-marker]:hidden">
-        <span
+    <Details open={defaultOpen}>
+      <Summary>
+        <Span
+          className="disclosure-chevron"
           aria-hidden="true"
-          className="font-display text-base leading-none text-text-muted transition-transform group-open:rotate-90"
+          fontFamily="heading"
+          fontSize="md"
+          lineHeight="none"
+          color="fg.muted"
+          transition="transform 150ms"
         >
           ›
-        </span>
-        <span className="font-display text-xs font-semibold uppercase tracking-wide">{title}</span>
-        {count !== undefined && <span className="text-xs text-text-muted">({count})</span>}
-        {hint !== undefined && <span className="ml-auto text-xs text-text-muted">{hint}</span>}
-      </summary>
-      <div className="border-t border-border p-3">{children}</div>
-    </details>
+        </Span>
+        <Span textStyle="eyebrow">{title}</Span>
+        {count !== undefined && (
+          <Span fontSize="xs" color="fg.muted">
+            ({count})
+          </Span>
+        )}
+        {hint !== undefined && (
+          <Span ms="auto" fontSize="xs" color="fg.muted">
+            {hint}
+          </Span>
+        )}
+      </Summary>
+      <Box borderTopWidth="1px" borderColor="border" p="3">
+        {children}
+      </Box>
+    </Details>
   );
 }

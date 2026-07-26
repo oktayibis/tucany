@@ -1,9 +1,11 @@
-import { trip } from '../data/trip';
+import { Box, Flex, Heading, Link, List, Span, Stack, Wrap } from '@chakra-ui/react';
 import type { Booking, Priority } from '../data/schema';
+import { trip } from '../data/trip';
 import { euro } from '../lib/format';
 import { telHref } from '../lib/nav';
 import { bookingKey, packingKey, type PackingCategory } from '../state/keys';
 import { useTrip } from '../state/TripContext';
+import { CheckRow, Eyebrow } from './ui/primitives';
 
 const PACKING_LABEL: Readonly<Record<PackingCategory, string>> = {
   documents: 'Belgeler',
@@ -12,11 +14,13 @@ const PACKING_LABEL: Readonly<Record<PackingCategory, string>> = {
   emergency: 'Acil durum',
 };
 
-const PRIORITY_STYLE: Readonly<Record<Priority, string>> = {
-  high: 'border-danger bg-danger-bg text-danger',
-  medium: 'border-warn-border bg-warn-bg text-warn-text',
-  low: 'border-border bg-surface text-text-muted',
-  optional: 'border-border bg-surface text-text-muted',
+const PRIORITY_STYLE: Readonly<
+  Record<Priority, { readonly borderColor: string; readonly bg: string; readonly color: string }>
+> = {
+  high: { borderColor: 'danger', bg: 'danger.bg', color: 'danger' },
+  medium: { borderColor: 'warn.border', bg: 'warn.bg', color: 'warn.fg' },
+  low: { borderColor: 'border', bg: 'bg.subtle', color: 'fg.muted' },
+  optional: { borderColor: 'border', bg: 'bg.subtle', color: 'fg.muted' },
 };
 
 /**
@@ -36,12 +40,16 @@ export function Checklists() {
   const visitedCount = visitableStops.filter(({ stop }) => visited.has(stop.id)).length;
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-6 p-4 pb-24">
-      <h1 className="text-display-lg font-semibold">Listeler</h1>
+    <Stack mx="auto" maxW="2xl" gap="6" p="4" pb="24">
+      <Heading as="h1" textStyle="displayLg">
+        Listeler
+      </Heading>
 
-      <section>
-        <h2 className="font-display text-base font-semibold">Rezervasyonlar</h2>
-        <ul className="mt-2 flex flex-col gap-2">
+      <Box as="section">
+        <Heading as="h2" fontSize="md" fontWeight="semibold">
+          Rezervasyonlar
+        </Heading>
+        <List.Root mt="2" gap="2" listStyle="none" ms="0">
           {trip.bookings.map((booking) => (
             <BookingRow
               key={bookingKey(booking)}
@@ -50,68 +58,68 @@ export function Checklists() {
               onToggle={() => bookingsDone.toggle(bookingKey(booking))}
             />
           ))}
-        </ul>
-      </section>
+        </List.Root>
+      </Box>
 
-      <section>
-        <h2 className="font-display text-base font-semibold">Bavul listesi</h2>
-        <div className="mt-2 flex flex-col gap-4">
+      <Box as="section">
+        <Heading as="h2" fontSize="md" fontWeight="semibold">
+          Bavul listesi
+        </Heading>
+        <Stack mt="2" gap="4">
           {(Object.keys(trip.packing) as PackingCategory[]).map((category) => (
-            <div key={category}>
-              <h3 className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-                {PACKING_LABEL[category]}
-              </h3>
-              <ul className="mt-1 flex flex-col gap-1">
+            <Box key={category}>
+              <Eyebrow as="h3">{PACKING_LABEL[category]}</Eyebrow>
+              <List.Root mt="1" gap="1" listStyle="none" ms="0">
                 {trip.packing[category].map((item, index) => {
                   const key = packingKey(category, index);
+                  const done = packingDone.has(key);
                   return (
-                    <li key={key}>
-                      <label className="flex min-h-11 items-center gap-2 border border-border bg-surface-2 px-3 py-2 text-sm">
-                        <input
-                          type="checkbox"
-                          checked={packingDone.has(key)}
-                          onChange={() => packingDone.toggle(key)}
-                          className="h-5 w-5 flex-none accent-accent"
-                        />
-                        <span className={packingDone.has(key) ? 'text-text-muted line-through' : ''}>
+                    <List.Item key={key} layerStyle="card" px="3" py="2" fontSize="sm">
+                      <CheckRow checked={done} onToggle={() => packingDone.toggle(key)} w="full">
+                        <Span
+                          color={done ? 'fg.muted' : 'fg'}
+                          textDecoration={done ? 'line-through' : 'none'}
+                        >
                           {item}
-                        </span>
-                      </label>
-                    </li>
+                        </Span>
+                      </CheckRow>
+                    </List.Item>
                   );
                 })}
-              </ul>
-            </div>
+              </List.Root>
+            </Box>
           ))}
-        </div>
-      </section>
+        </Stack>
+      </Box>
 
-      <section>
-        <h2 className="font-display text-base font-semibold">
+      <Box as="section">
+        <Heading as="h2" fontSize="md" fontWeight="semibold">
           Gezilenler ({visitedCount}/{visitableStops.length})
-        </h2>
-        <ul className="mt-2 flex flex-col gap-1">
-          {visitableStops.map(({ dayTitle, stop }) => (
-            <li key={stop.id}>
-              <label className="flex min-h-11 items-center gap-2 border border-border bg-surface-2 px-3 py-2 text-sm">
-                <input
-                  type="checkbox"
-                  checked={visited.has(stop.id)}
-                  onChange={() => visited.toggle(stop.id)}
-                  className="h-5 w-5 flex-none accent-accent"
-                />
-                <span className="flex flex-col">
-                  <span className={visited.has(stop.id) ? 'text-text-muted line-through' : ''}>
-                    {stop.name}
-                  </span>
-                  <span className="text-xs text-text-muted">{dayTitle}</span>
-                </span>
-              </label>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </div>
+        </Heading>
+        <List.Root mt="2" gap="1" listStyle="none" ms="0">
+          {visitableStops.map(({ dayTitle, stop }) => {
+            const done = visited.has(stop.id);
+            return (
+              <List.Item key={stop.id} layerStyle="card" px="3" py="2" fontSize="sm">
+                <CheckRow checked={done} onToggle={() => visited.toggle(stop.id)} w="full">
+                  <Stack as="span" gap="0">
+                    <Span
+                      color={done ? 'fg.muted' : 'fg'}
+                      textDecoration={done ? 'line-through' : 'none'}
+                    >
+                      {stop.name}
+                    </Span>
+                    <Span fontSize="xs" color="fg.muted">
+                      {dayTitle}
+                    </Span>
+                  </Stack>
+                </CheckRow>
+              </List.Item>
+            );
+          })}
+        </List.Root>
+      </Box>
+    </Stack>
   );
 }
 
@@ -124,34 +132,52 @@ function BookingRow({
   readonly done: boolean;
   readonly onToggle: () => void;
 }) {
+  const priority = PRIORITY_STYLE[booking.priority];
+
   return (
-    <li className="border border-border bg-surface-2 p-3">
-      <div className="flex flex-wrap items-start justify-between gap-2">
-        <label className="flex min-h-11 items-center gap-2 font-display font-medium">
-          <input
-            type="checkbox"
-            checked={done}
-            onChange={onToggle}
-            className="h-5 w-5 flex-none accent-accent"
-          />
-          <span className={done ? 'text-text-muted line-through' : ''}>{booking.what}</span>
-        </label>
-        <span className="text-sm font-semibold tabular-nums">{euro(booking.cost)}</span>
-      </div>
-      <div className="mt-1.5 flex flex-wrap items-center gap-2 pl-7">
-        <span className={`border px-1.5 py-0.5 text-xs font-semibold ${PRIORITY_STYLE[booking.priority]}`}>
+    <List.Item layerStyle="card" p="3">
+      <Flex wrap="wrap" align="start" justify="space-between" gap="2">
+        <CheckRow checked={done} onToggle={onToggle} fontFamily="heading" fontWeight="medium">
+          <Span color={done ? 'fg.muted' : 'fg'} textDecoration={done ? 'line-through' : 'none'}>
+            {booking.what}
+          </Span>
+        </CheckRow>
+        <Span fontSize="sm" fontWeight="semibold" fontVariantNumeric="tabular-nums">
+          {euro(booking.cost)}
+        </Span>
+      </Flex>
+
+      <Wrap mt="1.5" ps="7" align="center" gap="2">
+        <Span
+          borderWidth="1px"
+          borderColor={priority.borderColor}
+          bg={priority.bg}
+          color={priority.color}
+          px="1.5"
+          py="0.5"
+          fontSize="xs"
+          fontWeight="semibold"
+        >
           {booking.when}
-        </span>
-        <span className="text-xs text-text-muted">{booking.how}</span>
-      </div>
+        </Span>
+        <Span fontSize="xs" color="fg.muted">
+          {booking.how}
+        </Span>
+      </Wrap>
+
       {/\+\d/.test(booking.how) && (
-        <a
+        <Link
           href={telHref(booking.how)}
-          className="ml-7 mt-1 inline-block text-xs font-semibold text-accent"
+          ms="7"
+          mt="1"
+          display="inline-block"
+          fontSize="xs"
+          fontWeight="semibold"
+          color="accent"
         >
           Telefonu ara
-        </a>
+        </Link>
       )}
-    </li>
+    </List.Item>
   );
 }

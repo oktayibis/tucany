@@ -1,3 +1,4 @@
+import { Box, Heading, List, Span, Table, Text } from '@chakra-ui/react';
 import { trip } from '../data/trip';
 import {
   chosenOption,
@@ -19,33 +20,35 @@ import { useTrip } from '../state/TripContext';
 /**
  * The whole trip as one linear paper document — a PDF backup for when the
  * phone is dead or signal is gone entirely. Always mounted (see App.tsx),
- * hidden on screen (`hidden print:block`) and the only thing visible when
- * printing (the rest of the app gets `print:hidden`). Deliberately not the
- * interactive components: no buttons, no checkboxes that do nothing on
- * paper, no nav chrome — just what the brief asks for, one day per page.
+ * hidden on screen and the only thing visible when printing (the app shell
+ * gets the mirror-image `_print={{ display: 'none' }}`). Deliberately not the
+ * interactive components: no buttons, no checkboxes that do nothing on paper,
+ * no nav chrome — just what the brief asks for, one day per page.
  */
 export function PrintView() {
   const { mode, party, chosenOptions, upgrades, budget } = useTrip();
   const input = { mode, party, chosenOptions, upgrades };
 
   return (
-    <div className="hidden print:block print:text-black">
-      <header className="mb-6">
-        <h1 className="font-display text-3xl font-bold">{trip.trip.title}</h1>
-        <p className="text-sm">
+    <Box display="none" _print={{ display: 'block', color: 'black' }}>
+      <Box as="header" mb="6">
+        <Heading as="h1" fontSize="3xl" fontWeight="bold">
+          {trip.trip.title}
+        </Heading>
+        <Text fontSize="sm">
           {formatDayMonth(trip.trip.startDate)} – {formatDayMonth(trip.trip.endDate)} ·{' '}
           {trip.trip.nights} gece · {trip.base.name} · {trip.base.phone}
-        </p>
-        <p className="text-sm">
+        </Text>
+        <Text fontSize="sm">
           Bütçe modu: {MODE_INFO[mode].label} · {party.adults} yetişkin + {party.children} çocuk ·
           Toplam: {euro(budget.grandTotal)} (yakıt/otoyol/otopark dahil)
-        </p>
-        <ul className="mt-2 text-sm">
+        </Text>
+        <List.Root mt="2" fontSize="sm" listStyle="none" ms="0">
           {trip.trip.constraints.map((constraint) => (
-            <li key={constraint}>• {constraint}</li>
+            <List.Item key={constraint}>• {constraint}</List.Item>
           ))}
-        </ul>
-      </header>
+        </List.Root>
+      </Box>
 
       {trip.days.map((day, index) => {
         const closures = ALL_CLOSURES.find((candidate) => candidate.dayId === day.id);
@@ -58,131 +61,144 @@ export function PrintView() {
         const shopping = effectiveShopping(day, option);
 
         return (
-          <section key={day.id} className="break-after-page">
-            <h2 className="font-display text-2xl font-bold">
+          <Box as="section" key={day.id} css={{ breakAfter: 'page' }}>
+            <Heading as="h2" fontSize="2xl" fontWeight="bold">
               {index + 1}. Gün · {weekdayDisplay(weekday)} · {formatDayMonth(day.date)} — {day.title}
-            </h2>
-            <p className="text-sm">Sürüş: {formatDriving(effectiveDrivingMinutes(day, option))}</p>
+            </Heading>
+            <Text fontSize="sm">Sürüş: {formatDriving(effectiveDrivingMinutes(day, option))}</Text>
 
             {(day.warnings.length > 0 || (closures?.blocking.length ?? 0) > 0) && (
-              <div className="mt-1 border border-black p-2 text-sm">
-                <strong>Dikkat:</strong>
-                <ul>
+              <Box mt="1" borderWidth="1px" borderColor="black" p="2" fontSize="sm">
+                <Span fontWeight="bold">Dikkat:</Span>
+                <List.Root listStyle="none" ms="0">
                   {day.warnings.map((warning) => (
-                    <li key={warning}>⚠ {warning}</li>
+                    <List.Item key={warning}>⚠ {warning}</List.Item>
                   ))}
                   {closures?.blocking.map((thing) => (
-                    <li key={thing.name}>⚠ {thing.name} bugün ({weekdayDisplay(weekday)}) kapalı.</li>
+                    <List.Item key={thing.name}>
+                      ⚠ {thing.name} bugün ({weekdayDisplay(weekday)}) kapalı.
+                    </List.Item>
                   ))}
-                </ul>
-              </div>
+                </List.Root>
+              </Box>
             )}
 
-            <h3 className="mt-3 font-display text-lg font-semibold">Rota / navigasyon</h3>
+            <PrintHeading>Rota / navigasyon</PrintHeading>
             {day.timeline !== undefined && (
-              <ol className="text-sm">
+              <List.Root as="ol" fontSize="sm" listStyle="none" ms="0">
                 {day.timeline.map((entry) => (
-                  <li key={entry.time}>
+                  <List.Item key={entry.time}>
                     {entry.time} — {entry.what}
-                  </li>
+                  </List.Item>
                 ))}
-              </ol>
+              </List.Root>
             )}
 
-            <h3 className="mt-3 font-display text-lg font-semibold">Görülecek</h3>
+            <PrintHeading>Görülecek</PrintHeading>
             {day.options !== undefined && (
-              <ul className="text-sm">
+              <List.Root fontSize="sm" listStyle="none" ms="0">
                 {day.options.map((opt) => (
-                  <li key={opt.id}>
-                    {opt.id === option?.id ? '☑' : '☐'} <strong>{opt.label}</strong> (
+                  <List.Item key={opt.id}>
+                    {opt.id === option?.id ? '☑' : '☐'} <Span fontWeight="bold">{opt.label}</Span> (
                     {euro(resolveOptionCost(opt.cost, mode))}) — {opt.desc}
-                  </li>
+                  </List.Item>
                 ))}
-              </ul>
+              </List.Root>
             )}
             {stops.length > 0 && (
-              <ul className="text-sm">
+              <List.Root fontSize="sm" listStyle="none" ms="0">
                 {stops.map((stop) => {
                   const item = items.find((line) => line.id === stop.id);
                   const dropped = stop.tier === 'skip' || stop.tier === 'removed';
                   return (
-                    <li key={stop.id} className={dropped ? 'italic' : ''}>
-                      ☐ <strong>{stop.name}</strong>
+                    <List.Item key={stop.id} fontStyle={dropped ? 'italic' : 'normal'}>
+                      ☐ <Span fontWeight="bold">{stop.name}</Span>
                       {item !== undefined && ` — ${euro(item.amount)}`}
-                      {dropped &&
-                        ` — atlandı: ${stop.skipReason ?? stop.removedReason ?? ''}`}
+                      {dropped && ` — atlandı: ${stop.skipReason ?? stop.removedReason ?? ''}`}
                       {stop.why !== undefined && ` — ${stop.why}`}
-                    </li>
+                    </List.Item>
                   );
                 })}
-              </ul>
+              </List.Root>
             )}
 
-            <h3 className="mt-3 font-display text-lg font-semibold">Yemek</h3>
-            <ul className="text-sm">
+            <PrintHeading>Yemek</PrintHeading>
+            <List.Root fontSize="sm" listStyle="none" ms="0">
               {food.map((entry) => (
-                <li key={`${entry.slot}-${entry.name}`}>
-                  <strong>{entry.name}</strong> ({euro(entry.price)})
+                <List.Item key={`${entry.slot}-${entry.name}`}>
+                  <Span fontWeight="bold">{entry.name}</Span> ({euro(entry.price)})
                   {entry.porkWarning !== undefined && ` — ⚠ ${entry.porkWarning}`}
                   {entry.porkSafe === true && ' — ✓ domuzsuz'}
                   {entry.phone !== undefined && ` — Tel: ${entry.phone}`}
-                </li>
+                </List.Item>
               ))}
-            </ul>
+            </List.Root>
 
-            <h3 className="mt-3 font-display text-lg font-semibold">Alışveriş</h3>
+            <PrintHeading>Alışveriş</PrintHeading>
             {shopping.length === 0 ? (
-              <p className="text-sm">—</p>
+              <Text fontSize="sm">—</Text>
             ) : (
-              <ul className="text-sm">
+              <List.Root fontSize="sm" listStyle="none" ms="0">
                 {shopping.map((entry) => (
-                  <li key={entry.name}>
-                    <strong>{entry.name}</strong> — {entry.for}
-                  </li>
+                  <List.Item key={entry.name}>
+                    <Span fontWeight="bold">{entry.name}</Span> — {entry.for}
+                  </List.Item>
                 ))}
-              </ul>
+              </List.Root>
             )}
 
-            <h3 className="mt-3 font-display text-lg font-semibold">Notlar</h3>
-            <ul className="text-sm">
-              {day.highlight !== undefined && <li>★ {day.highlight}</li>}
-              {day.elderNote !== undefined && <li>Anne için: {day.elderNote}</li>}
-              {day.revised !== undefined && <li>Değişiklik: {day.revised}</li>}
+            <PrintHeading>Notlar</PrintHeading>
+            <List.Root fontSize="sm" listStyle="none" ms="0">
+              {day.highlight !== undefined && <List.Item>★ {day.highlight}</List.Item>}
+              {day.elderNote !== undefined && <List.Item>Anne için: {day.elderNote}</List.Item>}
+              {day.revised !== undefined && <List.Item>Değişiklik: {day.revised}</List.Item>}
               {gaps.map((gap) => (
-                <li key={gap.id}>ⓘ {gap.what}</li>
+                <List.Item key={gap.id}>ⓘ {gap.what}</List.Item>
               ))}
-            </ul>
-          </section>
+            </List.Root>
+          </Box>
         );
       })}
 
-      <section>
-        <h2 className="font-display text-2xl font-bold">Domuz rehberi</h2>
-        <p className="text-sm">
-          <strong>Kaçının:</strong> {trip.porkGuide.avoid.join(', ')}
-        </p>
-        <p className="text-sm">{trip.porkGuide.avoidNote}</p>
-        <table className="mt-1 w-full border-collapse text-sm">
-          <tbody>
+      <Box as="section">
+        <Heading as="h2" fontSize="2xl" fontWeight="bold">
+          Domuz rehberi
+        </Heading>
+        <Text fontSize="sm">
+          <Span fontWeight="bold">Kaçının:</Span> {trip.porkGuide.avoid.join(', ')}
+        </Text>
+        <Text fontSize="sm">{trip.porkGuide.avoidNote}</Text>
+        <Table.Root mt="1" w="full" size="sm" variant="line" fontSize="sm">
+          <Table.Body>
             {trip.porkGuide.safe.map((dish) => (
-              <tr key={dish.dish}>
-                <td className="pr-2 font-semibold">{dish.dish}</td>
-                <td className="pr-2">{dish.desc}</td>
-                <td>{dish.price}</td>
-              </tr>
+              <Table.Row key={dish.dish} bg="transparent">
+                <Table.Cell pe="2" fontWeight="semibold">
+                  {dish.dish}
+                </Table.Cell>
+                <Table.Cell pe="2">{dish.desc}</Table.Cell>
+                <Table.Cell>{dish.price}</Table.Cell>
+              </Table.Row>
             ))}
-          </tbody>
-        </table>
+          </Table.Body>
+        </Table.Root>
 
-        <h3 className="mt-3 font-display text-lg font-semibold">Cümleler</h3>
-        <ul className="text-sm">
+        <PrintHeading>Cümleler</PrintHeading>
+        <List.Root fontSize="sm" listStyle="none" ms="0">
           {trip.phrases.map((phrase) => (
-            <li key={phrase.tr}>
-              <strong>{phrase.it}</strong> — {phrase.tr}
-            </li>
+            <List.Item key={phrase.tr}>
+              <Span fontWeight="bold">{phrase.it}</Span> — {phrase.tr}
+            </List.Item>
           ))}
-        </ul>
-      </section>
-    </div>
+        </List.Root>
+      </Box>
+    </Box>
+  );
+}
+
+function PrintHeading({ children }: { readonly children: string }) {
+  return (
+    <Heading as="h3" mt="3" fontSize="lg" fontWeight="semibold">
+      {children}
+    </Heading>
   );
 }

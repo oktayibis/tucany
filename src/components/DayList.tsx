@@ -1,13 +1,29 @@
+import { Box, Circle, Flex, Heading, List, Span, Stack, Text, Wrap, chakra } from '@chakra-ui/react';
 import { trip } from '../data/trip';
 import { chosenOption, effectiveDrivingMinutes } from '../lib/budget';
 import { formatDriving } from '../lib/dates';
 import { euro } from '../lib/format';
-import { PriceTag } from './PriceTag';
 import { useTrip } from '../state/TripContext';
 import { DayCard } from './DayCard';
 import { ModeSwitch } from './ModeSwitch';
-import { PartyControl } from './PartyControl';
 import { NavButton, PhoneButton } from './NavButton';
+import { PartyControl } from './PartyControl';
+import { PriceTag } from './PriceTag';
+import { Eyebrow, SignButton } from './ui/primitives';
+
+/** The cold-start shortcut into today, shown only while the trip is running. */
+const TodayButton = chakra('button', {
+  base: {
+    minH: '11',
+    borderWidth: '2px',
+    borderColor: 'accent',
+    bg: 'bg.panel',
+    p: '3',
+    textAlign: 'start',
+    cursor: 'pointer',
+    _hover: { bg: 'bg.subtle' },
+  },
+});
 
 /**
  * Home. The signature element: a continuous vertical route where each day is
@@ -20,42 +36,59 @@ export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => 
   const { today, isOnTrip, activeDayId, budget, mode, party, chosenOptions, upgrades } = useTrip();
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col pb-24">
-      <header className="bg-plate px-4 pb-5 pt-6 text-plate-text">
-        <h1 className="font-display text-display-xl font-semibold">{trip.trip.title}</h1>
-        <p className="text-sm opacity-85">
+    <Flex direction="column" mx="auto" maxW="2xl" pb="24">
+      <Box as="header" layerStyle="plate" px="4" pt="6" pb="5">
+        <Heading as="h1" textStyle="displayXl">
+          {trip.trip.title}
+        </Heading>
+        <Text fontSize="sm" opacity={0.85}>
           🏨 {trip.base.name} · {trip.trip.nights} gece
-        </p>
-        <div className="mt-3 flex flex-wrap items-center gap-2">
+        </Text>
+        <Wrap mt="3" align="center" gap="2">
           <NavButton place={trip.base} note="Otele yol tarifi al" />
           <PhoneButton phone={trip.base.phone} />
-        </div>
-      </header>
+        </Wrap>
+      </Box>
 
-      <div className="-mt-3.5 px-4">
+      {/* Pulled up so the switch overlaps the plate's bottom edge, the way a
+          route marker is bolted onto a signpost rather than floating under it. */}
+      <Box mt="-3.5" px="4">
         <ModeSwitch />
-      </div>
+      </Box>
 
-      <div className="flex flex-col gap-4 px-4 pt-4">
+      <Stack gap="4" px="4" pt="4">
         <PartyControl />
 
         {isOnTrip && (
-          <button
-            type="button"
-            onClick={() => onOpenDay(activeDayId)}
-            className="min-h-11 border-2 border-accent bg-surface-2 p-3 text-left"
-          >
-            <p className="font-display text-xs font-semibold uppercase tracking-wide text-accent">
-              Bugün
-            </p>
-            <p className="font-display font-medium">
+          <TodayButton type="button" onClick={() => onOpenDay(activeDayId)}>
+            <Eyebrow color="accent">Bugün</Eyebrow>
+            <Text fontFamily="heading" fontWeight="medium">
               {trip.days.find((day) => day.id === activeDayId)?.title ?? ''}
-            </p>
-          </button>
+            </Text>
+          </TodayButton>
         )}
-      </div>
+      </Stack>
 
-      <ol className="relative flex flex-col px-4 pl-9 pt-6 before:absolute before:bottom-8 before:left-[1.4rem] before:top-6 before:w-0.5 before:bg-border before:content-['']">
+      <List.Root
+        as="ol"
+        position="relative"
+        display="flex"
+        flexDirection="column"
+        gap="0"
+        listStyle="none"
+        ms="0"
+        px="4"
+        ps="9"
+        pt="6"
+        _before={{
+          content: '""',
+          position: 'absolute',
+          insetBlock: '1.5rem 2rem',
+          insetInlineStart: '1.4rem',
+          w: '0.125rem',
+          bg: 'border',
+        }}
+      >
         {trip.days.map((day, index) => {
           const dayTotal = budget.days.find((candidate) => candidate.dayId === day.id)?.total ?? 0;
           const isToday = day.date === today;
@@ -63,26 +96,36 @@ export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => 
           const drivingMinutes = effectiveDrivingMinutes(day, option);
           const undecided = day.options !== undefined && chosenOptions[day.id] === undefined;
           return (
-            <li key={day.id} className="flex flex-col gap-2">
+            <List.Item key={day.id} display="flex" flexDirection="column" gap="2">
               {index > 0 && (
-                <div
+                // The segment's height *is* the driving time — this is the one
+                // piece of information the list encodes spatially rather than
+                // in text, so the heavy days are obvious before you read a number.
+                <Flex
                   aria-hidden="true"
-                  className="flex items-center pl-1 text-xs text-text-muted"
-                  style={{ height: `${0.9 + drivingMinutes * 0.032}rem` }}
+                  align="center"
+                  ps="1"
+                  fontSize="xs"
+                  color="fg.muted"
+                  h={`${0.9 + drivingMinutes * 0.032}rem`}
                 >
-                  <span className="bg-bg pr-2">↓ {formatDriving(drivingMinutes)} sürüş</span>
-                </div>
+                  <Span bg="bg" pe="2">
+                    ↓ {formatDriving(drivingMinutes)} sürüş
+                  </Span>
+                </Flex>
               )}
-              <div className="relative">
-                <span
+              <Box position="relative">
+                <Circle
                   aria-hidden="true"
-                  className={`absolute left-[-1.35rem] top-0.5 h-3.5 w-3.5 rounded-full border-2 bg-surface-2 ${
-                    day.starred === true
-                      ? 'border-accent-2 bg-antimony'
-                      : isToday
-                        ? 'border-accent bg-cobalt'
-                        : 'border-accent'
-                  }`}
+                  position="absolute"
+                  insetInlineStart="-1.35rem"
+                  top="0.5"
+                  size="3.5"
+                  borderWidth="2px"
+                  borderColor={day.starred === true ? 'accentAlt' : 'accent'}
+                  bg={
+                    day.starred === true ? 'antimony' : isToday ? 'cobalt' : 'bg.panel'
+                  }
                 />
                 <DayCard
                   day={day}
@@ -93,26 +136,32 @@ export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => 
                   isToday={isToday}
                   onOpen={() => onOpenDay(day.id)}
                 />
-              </div>
-            </li>
+              </Box>
+            </List.Item>
           );
         })}
-      </ol>
+      </List.Root>
 
-      <footer className="mt-4 flex flex-col gap-3 border-t border-border px-4 pt-4 text-sm text-text-muted">
-        <p>
+      <Stack
+        as="footer"
+        mt="4"
+        gap="3"
+        borderTopWidth="1px"
+        borderColor="border"
+        px="4"
+        pt="4"
+        fontSize="sm"
+        color="fg.muted"
+      >
+        <Text>
           Toplam ({budget.mode}):{' '}
-          <PriceTag amount={budget.grandTotal} className="font-semibold text-text" /> · Atlanan:{' '}
+          <PriceTag amount={budget.grandTotal} fontWeight="semibold" color="fg" /> · Atlanan:{' '}
           {euro(budget.savedTotal)}
-        </p>
-        <button
-          type="button"
-          onClick={() => window.print()}
-          className="min-h-11 self-start border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
-        >
+        </Text>
+        <SignButton alignSelf="start" onClick={() => window.print()}>
           Yazdır / PDF olarak kaydet
-        </button>
-      </footer>
-    </div>
+        </SignButton>
+      </Stack>
+    </Flex>
   );
 }

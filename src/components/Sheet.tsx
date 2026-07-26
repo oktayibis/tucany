@@ -1,12 +1,20 @@
-import { useEffect, useId, type ReactNode } from 'react';
+import { Box, CloseButton, Dialog, Portal, Wrap } from '@chakra-ui/react';
+import type { ReactNode } from 'react';
+import { Eyebrow } from './ui/primitives';
 
 /**
  * Bottom sheet on phones, centred dialog from `sm:` up. This is where all the
  * per-place depth went when the day detail became a list of rows: the row
  * answers "what and how much", the sheet answers everything else.
  *
- * Header and footer are sticky so the two things worth tapping — close, and
- * the nav buttons — stay reachable however long the body gets.
+ * Built on Chakra's `Dialog`, which brings the parts the hand-rolled overlay
+ * only approximated — focus trap and restore, scroll lock, `aria-modal`
+ * wiring, and Escape/outside-click handling. Header and footer stay pinned so
+ * the two things worth tapping (close, and the nav buttons) remain reachable
+ * however long the body gets.
+ *
+ * The caller mounts this conditionally (`{open !== null && <Sheet …/>}`), so
+ * the dialog is always `open` and `onOpenChange` just reports dismissal.
  */
 export function Sheet({
   eyebrow,
@@ -23,64 +31,79 @@ export function Sheet({
   readonly onClose: () => void;
   readonly children: ReactNode;
 }) {
-  const titleId = useId();
-
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', onKeyDown);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      window.removeEventListener('keydown', onKeyDown);
-      document.body.style.overflow = '';
-    };
-  }, [onClose]);
-
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 sm:items-center sm:p-4"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={titleId}
+    <Dialog.Root
+      open
+      onOpenChange={(event) => {
+        if (!event.open) onClose();
+      }}
+      // Chakra's `sm` is 480px, which would centre the dialog on a large
+      // phone; `md` (768px) keeps it a thumb-reachable bottom sheet on every
+      // phone and small tablet and only centres it on a desktop.
+      placement={{ base: 'bottom', md: 'center' }}
+      motionPreset="slide-in-bottom"
+      scrollBehavior="inside"
+      size="lg"
     >
-      <div
-        className="flex max-h-[88vh] w-full max-w-lg flex-col border border-border bg-surface shadow-xl"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-3 border-b border-border bg-surface p-4">
-          <div className="min-w-0">
-            {eyebrow !== undefined && (
-              <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-                {eyebrow}
-              </p>
-            )}
-            <div className="flex flex-wrap items-center gap-2">
-              <h2 id={titleId} className="font-display text-display-lg font-semibold">
-                {title}
-              </h2>
-              {titleExtra}
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Kapat"
-            className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center border border-border bg-surface-2 text-lg text-text-muted"
+      <Portal>
+        <Dialog.Backdrop bg="blackAlpha.600" />
+        <Dialog.Positioner p={{ base: '0', md: '4' }}>
+          <Dialog.Content
+            bg="bg.subtle"
+            borderWidth="1px"
+            borderColor="border"
+            rounded="l1"
+            maxH="88dvh"
+            w="full"
           >
-            ✕
-          </button>
-        </div>
+            <Dialog.Header
+              display="flex"
+              alignItems="start"
+              justifyContent="space-between"
+              gap="3"
+              borderBottomWidth="1px"
+              borderColor="border"
+              p="4"
+            >
+              <Box minW="0">
+                {eyebrow !== undefined && <Eyebrow>{eyebrow}</Eyebrow>}
+                <Wrap align="center" gap="2">
+                  <Dialog.Title textStyle="displayLg">{title}</Dialog.Title>
+                  {titleExtra}
+                </Wrap>
+              </Box>
+              <Dialog.CloseTrigger asChild position="static">
+                <CloseButton
+                  aria-label="Kapat"
+                  variant="plain"
+                  minH="11"
+                  minW="11"
+                  flexShrink={0}
+                  borderWidth="1px"
+                  borderColor="border"
+                  bg="bg.panel"
+                  color="fg.muted"
+                  rounded="l1"
+                />
+              </Dialog.CloseTrigger>
+            </Dialog.Header>
 
-        <div className="flex-1 overflow-y-auto p-4">{children}</div>
+            <Dialog.Body p="4">{children}</Dialog.Body>
 
-        {footer !== undefined && (
-          <div className="border-t border-border bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-            {footer}
-          </div>
-        )}
-      </div>
-    </div>
+            {footer !== undefined && (
+              <Dialog.Footer
+                display="block"
+                borderTopWidth="1px"
+                borderColor="border"
+                p="4"
+                pb="max(1rem, env(safe-area-inset-bottom))"
+              >
+                {footer}
+              </Dialog.Footer>
+            )}
+          </Dialog.Content>
+        </Dialog.Positioner>
+      </Portal>
+    </Dialog.Root>
   );
 }

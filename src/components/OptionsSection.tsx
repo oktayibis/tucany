@@ -1,12 +1,14 @@
+import { Badge, Box, Flex, Grid, List, RadioGroup, Span, Stack, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import type { Day, DayOption } from '../data/schema';
 import { trip } from '../data/trip';
 import { chosenOption, resolveOptionCost } from '../lib/budget';
 import { formatDayMonth, formatDriving } from '../lib/dates';
+import { useTrip } from '../state/TripContext';
 import { NavButton } from './NavButton';
 import { PriceTag } from './PriceTag';
 import { RatingBadge } from './RatingBadge';
-import { useTrip } from '../state/TripContext';
+import { Card, Eyebrow, SignButton } from './ui/primitives';
 
 /**
  * A day's alternative itineraries — day 9's craft towns, day 7's
@@ -37,83 +39,87 @@ export function OptionsSection({ day }: { readonly day: Day }) {
         ? undefined
         : trip.beaches.find((candidate) => candidate.id === selected.beach);
     const destination =
-      beach ?? (selected.nav === undefined ? undefined : { name: selected.label, nav: selected.nav });
+      beach ??
+      (selected.nav === undefined ? undefined : { name: selected.label, nav: selected.nav });
 
     return (
-      <div className="border border-border bg-surface-2">
-        <div className="flex items-center gap-3 p-3">
-          <div className="min-w-0 flex-1">
-            <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-              Seçilen rota
-            </p>
-            <p className="font-display font-medium">{selected.label}</p>
+      <Card>
+        <Flex align="center" gap="3" p="3">
+          <Box minW="0" flex="1">
+            <Eyebrow>Seçilen rota</Eyebrow>
+            <Text fontFamily="heading" fontWeight="medium">
+              {selected.label}
+            </Text>
             {beach !== undefined && (
-              <p className="text-xs text-text-muted">{formatDriving(beach.minutesFromBase)}</p>
+              <Text fontSize="xs" color="fg.muted">
+                {formatDriving(beach.minutesFromBase)}
+              </Text>
             )}
-          </div>
-          <button
-            type="button"
-            onClick={() => setEditing(true)}
-            className="min-h-11 shrink-0 border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
-          >
+          </Box>
+          <SignButton flexShrink={0} bg="bg.subtle" onClick={() => setEditing(true)}>
             Değiştir
-          </button>
-        </div>
+          </SignButton>
+        </Flex>
         {destination !== undefined && (
-          <div className="border-t border-border px-3 py-2">
+          <Box borderTopWidth="1px" borderColor="border" px="3" py="2">
             <NavButton place={destination} />
-          </div>
+          </Box>
         )}
-      </div>
+      </Card>
     );
   }
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-2">
-        <p className="flex-1 border border-dashed border-border bg-surface p-2 text-xs font-semibold text-text-muted">
+    <Stack gap="3">
+      <Flex align="center" gap="2">
+        <Text
+          flex="1"
+          borderWidth="1px"
+          borderStyle="dashed"
+          borderColor="border"
+          bg="bg.subtle"
+          p="2"
+          fontSize="xs"
+          fontWeight="semibold"
+          color="fg.muted"
+        >
           {isDecided
             ? 'Bugünün rotasını seç.'
             : 'Karar verilmedi — planın önerisi gösteriliyor, aşağıdan seç.'}
-        </p>
+        </Text>
         {editing && (
-          <button
-            type="button"
-            onClick={() => setEditing(false)}
-            className="min-h-11 shrink-0 border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
-          >
+          <SignButton flexShrink={0} bg="bg.subtle" onClick={() => setEditing(false)}>
             Kapat
-          </button>
+          </SignButton>
         )}
-      </div>
-      <div role="radiogroup" aria-label="Bugünün rotası" className="flex flex-col gap-3">
-        {day.options.map((option) => (
-          <OptionCard
-            key={option.id}
-            day={day}
-            option={option}
-            isSelected={option.id === selected?.id}
-            onSelect={() => {
-              chooseOption(day.id, option.id);
-              setEditing(false);
-            }}
-          />
-        ))}
-      </div>
-    </div>
+      </Flex>
+
+      <RadioGroup.Root
+        value={selected?.id ?? null}
+        onValueChange={(event) => {
+          if (event.value !== null) {
+            chooseOption(day.id, event.value);
+            setEditing(false);
+          }
+        }}
+      >
+        <RadioGroup.Label srOnly>Bugünün rotası</RadioGroup.Label>
+        <Stack gap="3">
+          {day.options.map((option) => (
+            <OptionCard key={option.id} option={option} isSelected={option.id === selected?.id} />
+          ))}
+        </Stack>
+      </RadioGroup.Root>
+    </Stack>
   );
 }
 
 function OptionCard({
-  day,
   option,
   isSelected,
-  onSelect,
 }: {
-  readonly day: Day;
   readonly option: DayOption;
   readonly isSelected: boolean;
-  readonly onSelect: () => void;
 }) {
   const { mode } = useTrip();
   const cost = resolveOptionCost(option.cost, mode);
@@ -124,100 +130,139 @@ function OptionCard({
   const isBeach = beach !== undefined;
 
   return (
-    <label
-      className={`flex cursor-pointer flex-col gap-2 border bg-surface-2 p-3 ${
-        isSelected
-          ? isBeach
-            ? 'border-2 border-theme-plaj'
-            : 'border-2 border-accent'
-          : 'border-border'
-      }`}
+    <RadioGroup.Item
+      value={option.id}
+      display="flex"
+      flexDirection="column"
+      alignItems="stretch"
+      gap="2"
+      cursor="pointer"
+      bg="bg.panel"
+      p="3"
+      borderWidth={isSelected ? '2px' : '1px'}
+      borderColor={isSelected ? (isBeach ? 'plaj' : 'accent') : 'border'}
+      rounded="l1"
     >
-      <div className="flex items-start justify-between gap-2">
-        <span className="flex flex-wrap items-center gap-2 font-display font-medium">
-          <input
-            type="radio"
-            name={`${day.id}-option`}
-            checked={isSelected}
-            onChange={onSelect}
-            className="h-5 w-5 accent-accent"
+      <RadioGroup.ItemHiddenInput />
+
+      <Flex align="start" justify="space-between" gap="2">
+        <Flex as="span" wrap="wrap" align="center" gap="2" fontFamily="heading" fontWeight="medium">
+          <RadioGroup.ItemControl
+            boxSize="5"
+            flexShrink={0}
+            borderColor="border"
+            bg="bg.panel"
+            _checked={{ bg: 'accent', borderColor: 'accent', color: 'accent.fg' }}
           />
-          {option.label}
+          <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
           <RatingBadge rating={option.rating ?? beach?.rating} />
           {option.recommended === true && (
-            <span className="bg-antimony px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
+            <Badge
+              variant="plain"
+              bg="antimony"
+              color="ink"
+              px="1.5"
+              py="0.5"
+              fontSize="xs"
+              fontWeight="semibold"
+            >
               Planın önerisi
-            </span>
+            </Badge>
           )}
           {isBeach && (
-            <span className="bg-theme-plaj/15 px-1.5 py-0.5 font-body text-xs font-semibold text-theme-plaj">
+            <Badge
+              variant="plain"
+              bg="plaj.subtle"
+              color="plaj"
+              px="1.5"
+              py="0.5"
+              fontSize="xs"
+              fontWeight="semibold"
+            >
               Plaj
-            </span>
+            </Badge>
           )}
-        </span>
-        <span className="text-sm font-semibold">
+        </Flex>
+        <Span fontSize="sm" fontWeight="semibold">
           <PriceTag amount={cost} />
-        </span>
-      </div>
+        </Span>
+      </Flex>
 
-      <p className="text-sm">{option.desc}</p>
+      <Text fontSize="sm">{option.desc}</Text>
 
       {option.drivingMinutes !== undefined && (
-        <p className="text-xs text-text-muted">Sürüş: {formatDriving(option.drivingMinutes)}</p>
+        <Text fontSize="xs" color="fg.muted">
+          Sürüş: {formatDriving(option.drivingMinutes)}
+        </Text>
       )}
 
       {(option.pros !== undefined || option.cons !== undefined) && (
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <Grid templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)' }} gap="2">
           {option.pros !== undefined && option.pros.length > 0 && (
-            <ul className="flex flex-col gap-0.5 text-xs text-safe">
+            <List.Root gap="0.5" fontSize="xs" color="safe" listStyle="none" ms="0">
               {option.pros.map((pro) => (
-                <li key={pro}>+ {pro}</li>
+                <List.Item key={pro}>+ {pro}</List.Item>
               ))}
-            </ul>
+            </List.Root>
           )}
           {option.cons !== undefined && option.cons.length > 0 && (
-            <ul className="flex flex-col gap-0.5 text-xs text-danger">
+            <List.Root gap="0.5" fontSize="xs" color="danger" listStyle="none" ms="0">
               {option.cons.map((con) => (
-                <li key={con}>− {con}</li>
+                <List.Item key={con}>− {con}</List.Item>
               ))}
-            </ul>
+            </List.Root>
           )}
-        </div>
+        </Grid>
       )}
 
       {beach !== undefined && (
-        <div className="border border-dashed border-theme-plaj bg-surface p-2 text-xs">
-          <p className="font-semibold">
+        <Box
+          borderWidth="1px"
+          borderStyle="dashed"
+          borderColor="plaj"
+          bg="bg.subtle"
+          p="2"
+          fontSize="xs"
+        >
+          <Text fontWeight="semibold">
             {beach.name} · {formatDriving(beach.minutesFromBase)}
-          </p>
-          <p className="mt-0.5 text-text-muted">{beach.notes}</p>
-          <div className="mt-1">
+          </Text>
+          <Text mt="0.5" color="fg.muted">
+            {beach.notes}
+          </Text>
+          <Box mt="1">
             <NavButton place={beach} note="Plaja yol tarifi al" />
-          </div>
-        </div>
+          </Box>
+        </Box>
       )}
 
       {option.bikes !== undefined && (
-        <p className="text-xs text-text-muted">
-          <span className="font-semibold text-text">Bisiklet: </span>
+        <Text fontSize="xs" color="fg.muted">
+          <Span fontWeight="semibold" color="fg">
+            Bisiklet:{' '}
+          </Span>
           {option.bikes}
-        </p>
+        </Text>
       )}
 
-      {option.note !== undefined && <p className="text-xs italic text-text-muted">{option.note}</p>}
+      {option.note !== undefined && (
+        <Text fontSize="xs" fontStyle="italic" color="fg.muted">
+          {option.note}
+        </Text>
+      )}
 
       {movesToDay !== undefined && (
-        <p className="text-xs text-text-muted">
+        <Text fontSize="xs" color="fg.muted">
           ↷ Bu seçilirse akşam programı {formatDayMonth(movesToDay.date)}'e ({movesToDay.title})
           taşınır.
-        </p>
+        </Text>
       )}
 
       {option.nav !== undefined && (
-        <div>
+        <Box>
           <NavButton place={{ name: option.label, nav: option.nav }} />
-        </div>
+        </Box>
       )}
-    </label>
+    </RadioGroup.Item>
   );
 }
