@@ -1,0 +1,41 @@
+import { useEffect, useRef } from 'react';
+import { DayDetail } from './components/DayDetail';
+import { DayList } from './components/DayList';
+import { HOME, useRoute } from './hooks/useRoute';
+import { TripProvider, useTrip } from './state/TripContext';
+
+function Shell() {
+  const { route, go } = useRoute();
+  const { isOnTrip, activeDayId } = useTrip();
+  const didAutoOpen = useRef(false);
+
+  /**
+   * Cold start behaviour the brief asks for: when the family is mid-trip,
+   * land straight on today's detail instead of the list. Runs once, only
+   * when the app was opened with no hash at all, so it never fights a
+   * deliberate navigation back to the list.
+   */
+  useEffect(() => {
+    if (didAutoOpen.current) return;
+    didAutoOpen.current = true;
+    if (window.location.hash === '' && isOnTrip) {
+      go({ name: 'day', dayId: activeDayId });
+    }
+    // Intentionally empty: this is a one-time cold-start check, not a sync
+    // that should re-run when `isOnTrip`/`activeDayId` are recomputed at
+    // midnight — that would yank the family back to "today" mid-browse.
+  }, []);
+
+  if (route.name === 'day') {
+    return <DayDetail dayId={route.dayId} onBack={() => go(HOME)} />;
+  }
+  return <DayList onOpenDay={(dayId) => go({ name: 'day', dayId })} />;
+}
+
+export default function App() {
+  return (
+    <TripProvider>
+      <Shell />
+    </TripProvider>
+  );
+}

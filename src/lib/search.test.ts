@@ -1,0 +1,77 @@
+import { describe, expect, it } from 'vitest';
+import { trip } from '../data/trip';
+import { EMPTY_FILTERS, hasActiveFilter, search } from './search';
+
+describe('search', () => {
+  it('finds a stop by name across the whole trip', () => {
+    const results = search(trip, { ...EMPTY_FILTERS, query: 'Montefioralle' });
+    expect(results.some((r) => r.kind === 'stop' && r.title === 'Montefioralle')).toBe(true);
+  });
+
+  it('finds a stop by why-text, not just its name', () => {
+    const results = search(trip, { ...EMPTY_FILTERS, query: 'cinghiale' });
+    expect(results.length).toBeGreaterThan(0);
+  });
+
+  it('finds shopping by what it is for', () => {
+    const results = search(trip, { ...EMPTY_FILTERS, query: 'ebru' });
+    expect(results.some((r) => r.kind === 'shopping' && r.title.includes('Il Torchio'))).toBe(true);
+  });
+
+  it('finds a phrase by its Turkish or Italian text', () => {
+    expect(search(trip, { ...EMPTY_FILTERS, query: 'domuz' }).some((r) => r.kind === 'phrase')).toBe(
+      true,
+    );
+    expect(
+      search(trip, { ...EMPTY_FILTERS, query: 'maiale' }).some((r) => r.kind === 'phrase'),
+    ).toBe(true);
+  });
+
+  it('does not flood results with phrases when the query is empty', () => {
+    expect(search(trip, EMPTY_FILTERS).some((r) => r.kind === 'phrase')).toBe(false);
+  });
+
+  it('filters by theme', () => {
+    const results = search(trip, { ...EMPTY_FILTERS, theme: 'market' });
+    expect(results.every((r) => r.dayId === 'd4' || r.dayId === 'd8')).toBe(true);
+    expect(results.length).toBeGreaterThan(0);
+  });
+
+  it('filters by elderFriendly', () => {
+    const results = search(trip, { ...EMPTY_FILTERS, elderFriendlyOnly: true });
+    const dayIds = new Set(results.map((r) => r.dayId));
+    expect(dayIds.has('d1')).toBe(false); // day 1 is not elder-friendly
+    expect(dayIds.has('d2')).toBe(true);
+  });
+
+  it('filters by tag', () => {
+    const results = search(trip, { ...EMPTY_FILTERS, tag: 'market' });
+    expect(results.every((r) => r.kind === 'stop')).toBe(true);
+    expect(results.length).toBeGreaterThan(0);
+  });
+
+  it('filters by tier', () => {
+    const results = search(trip, { ...EMPTY_FILTERS, tier: 'skip' });
+    expect(results.length).toBeGreaterThan(0);
+    for (const result of results) expect(result.kind).toBe('stop');
+  });
+
+  it('combines query and filters', () => {
+    const results = search(trip, { ...EMPTY_FILTERS, query: 'pazari', tag: 'market' });
+    expect(results.length).toBeGreaterThan(0);
+  });
+});
+
+describe('hasActiveFilter', () => {
+  it('is false for the empty filter set', () => {
+    expect(hasActiveFilter(EMPTY_FILTERS)).toBe(false);
+  });
+
+  it('is true when any field is set', () => {
+    expect(hasActiveFilter({ ...EMPTY_FILTERS, query: 'x' })).toBe(true);
+    expect(hasActiveFilter({ ...EMPTY_FILTERS, elderFriendlyOnly: true })).toBe(true);
+    expect(hasActiveFilter({ ...EMPTY_FILTERS, theme: 'city' })).toBe(true);
+    expect(hasActiveFilter({ ...EMPTY_FILTERS, tag: 'shopping' })).toBe(true);
+    expect(hasActiveFilter({ ...EMPTY_FILTERS, tier: 'core' })).toBe(true);
+  });
+});

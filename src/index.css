@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/*
+ * Step 3/4 placeholder: Tailwind's defaults only. The token system (colours,
+ * type scale, the route-line signature element) lands in the step 5 design
+ * pass — this file exists so the app is usable and reviewable before that.
+ */
+
+html {
+  color-scheme: light dark;
+}
