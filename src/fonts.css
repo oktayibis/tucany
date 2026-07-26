@@ -1,0 +1,23 @@
+/**
+ * Self-hosted fonts only — no font CDN, no Google Fonts link. This app has to
+ * cold-start with airplane mode on, so every asset it needs has to be in the
+ * PWA precache. `latin` + `latin-ext` covers Turkish (ç ğ ı ö ş ü) without
+ * pulling in Cyrillic/Vietnamese/Greek subsets nobody here reads.
+ *
+ * Oswald: the condensed grotesque for display type and numerals — the shape
+ * of Italian road signage. Public Sans: the humanist body face, chosen for
+ * how legible it stays at small sizes in direct sun.
+ */
+@import '@fontsource/oswald/latin-500.css';
+@import '@fontsource/oswald/latin-ext-500.css';
+@import '@fontsource/oswald/latin-600.css';
+@import '@fontsource/oswald/latin-ext-600.css';
+@import '@fontsource/oswald/latin-700.css';
+@import '@fontsource/oswald/latin-ext-700.css';
+
+@import '@fontsource/public-sans/latin-400.css';
+@import '@fontsource/public-sans/latin-ext-400.css';
+@import '@fontsource/public-sans/latin-500.css';
+@import '@fontsource/public-sans/latin-ext-500.css';
+@import '@fontsource/public-sans/latin-600.css';
+@import '@fontsource/public-sans/latin-ext-600.css';
