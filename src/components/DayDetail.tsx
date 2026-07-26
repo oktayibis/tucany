@@ -73,47 +73,50 @@ export function DayDetail({
   const drivingMinutes = effectiveDrivingMinutes(day, option);
 
   return (
-    <div className="mx-auto max-w-2xl px-4 pb-24">
-      <div className="sticky top-0 z-20 -mx-4 flex items-center gap-2 border-b border-border bg-bg/95 px-4 py-2 backdrop-blur">
+    <div className="mx-auto max-w-2xl px-4 pb-28">
+      <div className="sticky top-0 z-20 -mx-4 flex items-center gap-2 border-b border-border/80 bg-surface-2/95 px-4 py-2.5 shadow-xs backdrop-blur-md">
         <button
           type="button"
           onClick={onBack}
-          className="-ml-2 inline-flex min-h-11 items-center px-2 font-display text-sm font-semibold text-accent"
+          className="-ml-1 inline-flex min-h-10 items-center gap-1 rounded-lg bg-surface px-3 py-1.5 font-display text-xs font-bold text-accent border border-border/60 active:scale-95 transition-transform"
         >
           ← Günler
         </button>
-        <span className="truncate font-display text-xs font-medium uppercase tracking-wide text-text-muted">
-          {index + 1}. gün · {weekdayDisplay(day.weekday)} · {formatDayMonth(day.date)}
+        <span className="truncate font-display text-xs font-semibold uppercase tracking-wider text-text-muted">
+          {index + 1}. GÜN · {weekdayDisplay(day.weekday)} · {formatDayMonth(day.date)}
         </span>
         {isToday && (
-          <span className="ml-auto shrink-0 bg-accent px-1.5 py-0.5 font-display text-xs font-semibold uppercase text-white">
+          <span className="ml-auto shrink-0 rounded bg-accent px-2 py-0.5 font-display text-[11px] font-bold uppercase tracking-wider text-white shadow-xs">
             Bugün
           </span>
         )}
       </div>
 
       <header className="pt-4">
-        <h1 className="text-display-xl font-semibold">
-          {day.title}
+        <h1 className="text-display-xl font-bold text-text flex items-center gap-2">
+          <span>{day.title}</span>
           {day.starred === true && (
-            <span aria-hidden="true" className="ml-2 text-accent-2">
+            <span aria-hidden="true" className="text-accent-2" title="Özel Gün">
               ★
             </span>
           )}
         </h1>
-        <dl className="mt-3 grid grid-cols-3 border border-border bg-surface-2">
-          <Stat label="Sürüş" value={formatDriving(drivingMinutes)} />
-          <Stat label="Tempo" value={INTENSITY_SHORT[day.intensity]} />
-          <Stat label="Bütçe" value={<PriceTag amount={dayBudget?.total ?? 0} />} last />
+
+        <dl className="mt-4 grid grid-cols-3 gap-2">
+          <Stat icon="🚘" label="Sürüş" value={formatDriving(drivingMinutes)} />
+          <Stat icon="⚡" label="Tempo" value={INTENSITY_SHORT[day.intensity]} />
+          <Stat icon="💰" label="Bütçe" value={<PriceTag amount={dayBudget?.total ?? 0} />} />
         </dl>
+
         {!day.elderFriendly && (
-          <p className="mt-2 border border-warn-border bg-warn-bg px-3 py-1.5 text-xs font-semibold text-warn-text">
-            Anne için zorlu gün olabilir
-          </p>
+          <div className="mt-3 flex items-center gap-2 rounded-xl border border-warn-border bg-warn-bg px-3.5 py-2 text-xs font-bold text-warn-text shadow-xs">
+            <span aria-hidden="true" className="text-sm">⚠️</span>
+            <span>Anne için yokuşlu/merdivenli zorlu gün olabilir</span>
+          </div>
         )}
       </header>
 
-      <div className="mt-4 flex flex-col gap-4">
+      <div className="mt-5 flex flex-col gap-4">
         {dayClosures !== undefined && (
           <WarningBanner warnings={day.warnings} closures={dayClosures} />
         )}
@@ -124,17 +127,17 @@ export function DayDetail({
 
         {day.timeline !== undefined && day.timeline.length > 0 && (
           <section aria-labelledby="day-timeline">
-            <SectionLabel id="day-timeline">Saat saat</SectionLabel>
-            <ol className="border border-border bg-surface-2">
+            <SectionLabel id="day-timeline" icon="🕒">Saat saat plan</SectionLabel>
+            <ol className="rounded-xl border border-border/80 bg-surface-2 shadow-xs divide-y divide-border/40 overflow-hidden">
               {day.timeline.map((entry) => (
                 <li
                   key={entry.time}
-                  className="flex gap-3 border-b border-border px-3 py-2 text-sm last:border-b-0"
+                  className="flex gap-3 px-3.5 py-2.5 text-sm"
                 >
-                  <span className="font-display font-semibold tabular-nums text-accent">
+                  <span className="font-display font-bold tabular-nums text-accent bg-surface px-2 py-0.5 rounded border border-border/60 text-xs self-start">
                     {entry.time}
                   </span>
-                  <span>{entry.what}</span>
+                  <span className="text-text font-medium leading-snug">{entry.what}</span>
                 </li>
               ))}
             </ol>
@@ -143,29 +146,29 @@ export function DayDetail({
 
         {stops.length > 0 && (
           <section aria-labelledby="day-stops">
-            <SectionLabel id="day-stops">Görülecek</SectionLabel>
+            <SectionLabel id="day-stops" icon="📍">Görülecek yerler</SectionLabel>
             <StopsSection stops={stops} dayItems={dayBudget?.items ?? []} />
           </section>
         )}
 
         {food.length > 0 && (
           <section aria-labelledby="day-food">
-            <SectionLabel id="day-food">Yemek</SectionLabel>
+            <SectionLabel id="day-food" icon="🍝">Yemek ve mola</SectionLabel>
             <FoodSection dayId={day.id} food={food} />
           </section>
         )}
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2.5 pt-2">
           {shopping.length > 0 && (
-            <Disclosure title="Alışveriş" count={shopping.length}>
+            <Disclosure title="Alışveriş Durakları" count={shopping.length}>
               <ShoppingSection shopping={shopping} />
             </Disclosure>
           )}
-          <Disclosure title="Rota & sürüş" hint={formatDriving(drivingMinutes)}>
+          <Disclosure title="Rota & Detaylı Sürüş" hint={formatDriving(drivingMinutes)}>
             <RouteSection day={day} />
           </Disclosure>
           {hasTailNotes(day, dayGaps) && (
-            <Disclosure title="Notlar">
+            <Disclosure title="Günlük İpuçları & Notlar">
               <DayNotes day={day} gaps={dayGaps} />
             </Disclosure>
           )}
@@ -175,30 +178,42 @@ export function DayDetail({
   );
 }
 
-function SectionLabel({ id, children }: { readonly id: string; readonly children: ReactNode }) {
+function SectionLabel({
+  id,
+  icon,
+  children,
+}: {
+  readonly id: string;
+  readonly icon?: string;
+  readonly children: ReactNode;
+}) {
   return (
     <h2
       id={id}
-      className="mb-1.5 font-display text-xs font-semibold uppercase tracking-wide text-text-muted"
+      className="mb-2 flex items-center gap-1.5 font-display text-xs font-bold uppercase tracking-wider text-text-muted"
     >
-      {children}
+      {icon && <span aria-hidden="true">{icon}</span>}
+      <span>{children}</span>
     </h2>
   );
 }
 
 function Stat({
+  icon,
   label,
   value,
-  last = false,
 }: {
+  readonly icon: string;
   readonly label: string;
   readonly value: ReactNode;
-  readonly last?: boolean;
 }) {
   return (
-    <div className={`px-3 py-2 ${last ? '' : 'border-r border-border'}`}>
-      <dt className="font-display text-xs uppercase tracking-wide text-text-muted">{label}</dt>
-      <dd className="font-display text-display-md font-semibold">{value}</dd>
+    <div className="flex flex-col rounded-xl border border-border/80 bg-surface-2 p-2.5 shadow-xs">
+      <dt className="flex items-center gap-1 font-display text-[11px] font-bold uppercase tracking-wider text-text-muted">
+        <span aria-hidden="true">{icon}</span>
+        <span>{label}</span>
+      </dt>
+      <dd className="mt-1 font-display text-base font-bold text-text truncate">{value}</dd>
     </div>
   );
 }

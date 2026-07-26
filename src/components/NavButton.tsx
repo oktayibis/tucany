@@ -25,16 +25,18 @@ export function NavButton({
         href={links.google}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex min-h-11 items-center border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
+        className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-border/80 bg-surface-2 px-3.5 py-2 font-display text-xs font-bold text-accent shadow-xs active:scale-95 transition-all hover:bg-surface"
       >
-        Google Maps’te aç
+        <span>🗺️</span>
+        <span>Google Maps’te aç</span>
       </a>
       {showApple && (
         <a
           href={links.apple}
-          className="inline-flex min-h-11 items-center border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-border/80 bg-surface-2 px-3.5 py-2 font-display text-xs font-bold text-accent shadow-xs active:scale-95 transition-all hover:bg-surface"
         >
-          Apple Maps’te aç
+          <span>🧭</span>
+          <span>Apple Maps’te aç</span>
         </a>
       )}
       {note !== undefined && <span className="text-xs text-text-muted">{note}</span>}
@@ -46,9 +48,10 @@ export function PhoneButton({ phone }: { readonly phone: string }) {
   return (
     <a
       href={telHref(phone)}
-      className="inline-flex min-h-11 items-center rounded border px-3 py-2 text-sm font-medium"
+      className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-border/80 bg-surface-2 px-3.5 py-2 font-display text-xs font-bold text-text shadow-xs active:scale-95 transition-all hover:bg-surface"
     >
-      {phone} — ara
+      <span>📞</span>
+      <span>{phone} (Ara)</span>
     </a>
   );
 }

@@ -23,8 +23,8 @@
   --color-safe: #3f6b3e;
   --color-theme-plaj: #1f8a8c;
 
-  --color-bg: var(--color-tin);
-  --color-surface: #f5f6f3;
+  --color-bg: #eceee9;
+  --color-surface: #f7f8f5;
   --color-surface-2: #ffffff;
   --color-plate: var(--color-sign-brown);
   --color-plate-text: #f3e9dd;
@@ -33,7 +33,7 @@
   --color-accent: var(--color-cobalt);
   --color-accent-2: var(--color-antimony);
   --color-secondary: var(--color-manganese);
-  --color-border: #c9cdc8;
+  --color-border: #d2d6d0;
   --color-warn-bg: #fbeec9;
   --color-warn-border: var(--color-antimony);
   --color-warn-text: #6b4a12;
@@ -42,13 +42,13 @@
   --font-display: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
   --font-body: 'Public Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
-  /* Signage is a rectangular plate, not a soft app bubble. */
-  --radius: 0.125rem;
+  /* Friendly rounded corners for clear visual cards */
+  --radius: 0.625rem;
 
-  --text-display-xl: 2rem;
-  --text-display-xl--line-height: 1.1;
-  --text-display-lg: 1.5rem;
-  --text-display-lg--line-height: 1.15;
+  --text-display-xl: 1.875rem;
+  --text-display-xl--line-height: 1.15;
+  --text-display-lg: 1.375rem;
+  --text-display-lg--line-height: 1.2;
   --text-display-md: 1.0625rem;
   --text-display-md--line-height: 1.25;
 }

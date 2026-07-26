@@ -16,55 +16,59 @@ export function PartyControl() {
   };
 
   return (
-    <div>
-      <div className="flex flex-wrap items-center gap-4">
-        <Stepper label="Yetişkin" value={party.adults} onChange={adjustAdults} min={1} />
-        <Stepper label="Çocuk" value={party.children} onChange={adjustChildren} min={0} />
+    <div className="rounded-xl border border-border bg-surface-2 p-3 shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <Stepper icon="👨" label="Yetişkin" value={party.adults} onChange={adjustAdults} min={1} />
+        <Stepper icon="👶" label="Çocuk" value={party.children} onChange={adjustChildren} min={0} />
       </div>
-      <p className="mt-1 max-w-prose text-xs text-text-muted">
+      <p className="mt-2 text-xs text-text-muted">
         Kişi sayısı sadece kişi başı yazılmış fiyatları değiştirir (şu an €
         {Math.round(budget.partySensitiveTotal)}
-        'luk kısım). Bir bistecca veya paylaşılan bir tabak gibi "masaya" yazılmış fiyatlar sabit
-        kalır — grup büyüse de küçülse de aynı yemeği paylaşırsınız.
+        'luk kısım). Bir bistecca veya paylaşılan tabaklar gibi masaya yazılmış fiyatlar sabittir.
       </p>
     </div>
   );
 }
 
 function Stepper({
+  icon,
   label,
   value,
   onChange,
   min,
 }: {
+  readonly icon: string;
   readonly label: string;
   readonly value: number;
   readonly onChange: (delta: number) => void;
   readonly min: number;
 }) {
   return (
-    <div className="inline-flex items-center gap-2">
-      <span className="text-sm font-medium">{label}</span>
-      <button
-        type="button"
-        onClick={() => onChange(-1)}
-        disabled={value <= min}
-        aria-label={`${label} sayısını azalt`}
-        className="min-h-11 min-w-11 border border-border bg-surface-2 text-lg font-semibold text-accent disabled:opacity-40"
-      >
-        −
-      </button>
-      <span aria-live="polite" className="min-w-6 text-center font-display text-base tabular-nums">
-        {value}
-      </span>
-      <button
-        type="button"
-        onClick={() => onChange(1)}
-        aria-label={`${label} sayısını artır`}
-        className="min-h-11 min-w-11 border border-border bg-surface-2 text-lg font-semibold text-accent"
-      >
-        +
-      </button>
+    <div className="inline-flex items-center gap-2 rounded-lg bg-surface px-2.5 py-1 border border-border/60">
+      <span aria-hidden="true">{icon}</span>
+      <span className="text-xs font-semibold text-text">{label}</span>
+      <div className="flex items-center gap-1 ml-1">
+        <button
+          type="button"
+          onClick={() => onChange(-1)}
+          disabled={value <= min}
+          aria-label={`${label} sayısını azalt`}
+          className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-surface-2 text-base font-bold text-accent shadow-xs active:scale-95 disabled:opacity-30 disabled:active:scale-100"
+        >
+          −
+        </button>
+        <span aria-live="polite" className="min-w-6 text-center font-display text-sm font-bold tabular-nums">
+          {value}
+        </span>
+        <button
+          type="button"
+          onClick={() => onChange(1)}
+          aria-label={`${label} sayısını artır`}
+          className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-surface-2 text-base font-bold text-accent shadow-xs active:scale-95"
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 }

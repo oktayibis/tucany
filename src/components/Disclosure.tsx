@@ -21,19 +21,19 @@ export function Disclosure({
   readonly children: ReactNode;
 }) {
   return (
-    <details open={defaultOpen} className="group border border-border bg-surface-2">
-      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 px-3 py-2.5 [&::-webkit-details-marker]:hidden">
+    <details open={defaultOpen} className="group rounded-xl border border-border/80 bg-surface-2 shadow-xs transition-all">
+      <summary className="flex min-h-12 cursor-pointer list-none items-center gap-2.5 px-4 py-3 [&::-webkit-details-marker]:hidden hover:bg-surface/50 rounded-xl">
         <span
           aria-hidden="true"
-          className="font-display text-base leading-none text-text-muted transition-transform group-open:rotate-90"
+          className="font-display text-lg font-bold leading-none text-accent transition-transform group-open:rotate-90"
         >
           ›
         </span>
-        <span className="font-display text-xs font-semibold uppercase tracking-wide">{title}</span>
-        {count !== undefined && <span className="text-xs text-text-muted">({count})</span>}
-        {hint !== undefined && <span className="ml-auto text-xs text-text-muted">{hint}</span>}
+        <span className="font-display text-xs font-bold uppercase tracking-wider text-text">{title}</span>
+        {count !== undefined && <span className="rounded-full bg-surface px-2 py-0.5 text-[11px] font-semibold text-text-muted border border-border/60">({count})</span>}
+        {hint !== undefined && <span className="ml-auto font-display text-xs font-semibold text-text-muted">{hint}</span>}
       </summary>
-      <div className="border-t border-border p-3">{children}</div>
+      <div className="border-t border-border/40 p-4 pt-3">{children}</div>
     </details>
   );
 }

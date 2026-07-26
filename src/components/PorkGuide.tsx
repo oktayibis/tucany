@@ -26,15 +26,20 @@ export function PorkGuide({
   const { porkGuide, phrases } = trip;
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-4 p-4 pb-24">
-      <h1 className="text-display-lg font-semibold">Domuz rehberi</h1>
+    <div className="mx-auto flex max-w-2xl flex-col gap-4 p-4 pb-28">
+      <div className="flex flex-col gap-1">
+        <h1 className="text-display-lg font-bold text-text">🚫 Domuz Rehberi</h1>
+        <p className="text-xs text-text-muted font-medium">
+          İtalya'da garsona göstermek ve domuz etli yemeklerden kaçınmak için hızlı rehber.
+        </p>
+      </div>
 
-      <div role="tablist" aria-label="Domuz rehberi sekmeleri" className="flex border border-border bg-surface-2">
+      <div role="tablist" aria-label="Domuz rehberi sekmeleri" className="grid grid-cols-2 gap-1 rounded-xl border border-border bg-surface-2 p-1.5 shadow-xs">
         <TabButton active={tab === 'guide'} onClick={() => onTabChange('guide')}>
-          Kaçın / Güvenli
+          🛡️ Kaçın / Güvenli
         </TabButton>
         <TabButton active={tab === 'phrases'} onClick={() => onTabChange('phrases')}>
-          Cümleler
+          🗣️ Cümleler (Garsona Göster)
         </TabButton>
       </div>
 
@@ -58,8 +63,8 @@ function TabButton({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`min-h-11 flex-1 font-display text-sm font-semibold ${
-        active ? 'bg-accent text-white' : 'text-text-muted'
+      className={`min-h-11 flex-1 rounded-lg px-3 py-2 font-display text-xs font-bold transition-all ${
+        active ? 'bg-accent text-white shadow-xs' : 'text-text-muted hover:bg-surface hover:text-text'
       }`}
     >
       {children}
@@ -70,15 +75,17 @@ function TabButton({
 function GuideTab({ guide }: { readonly guide: PorkGuideData }) {
   const { avoid, avoidNote, safe, caution } = guide;
   return (
-    <div className="flex flex-col gap-5">
-      <section className="border-2 border-danger bg-danger-bg p-3">
-        <h2 className="font-display text-base font-semibold text-danger">Bunlardan kaçının</h2>
-        <p className="mt-1 text-sm text-danger">{avoidNote}</p>
-        <ul className="mt-2 flex flex-wrap gap-1.5">
+    <div className="flex flex-col gap-4">
+      <section className="rounded-xl border-2 border-danger bg-danger-bg p-4 shadow-xs">
+        <h2 className="font-display text-base font-bold text-danger flex items-center gap-1.5">
+          <span>⛔</span> Bunlardan Kaçının
+        </h2>
+        <p className="mt-1 text-xs font-medium text-danger/90">{avoidNote}</p>
+        <ul className="mt-3 flex flex-wrap gap-2">
           {avoid.map((item) => (
             <li
               key={item}
-              className="border border-danger bg-surface-2 px-2 py-1 text-sm font-medium text-danger"
+              className="rounded-lg border border-danger/80 bg-surface-2 px-2.5 py-1 text-xs font-bold text-danger shadow-xs"
             >
               {item}
             </li>
@@ -86,23 +93,25 @@ function GuideTab({ guide }: { readonly guide: PorkGuideData }) {
         </ul>
       </section>
 
-      <section>
-        <h2 className="font-display text-base font-semibold">Güvenli yemekler</h2>
-        <div className="mt-2 overflow-x-auto">
-          <table className="w-full border-collapse text-sm">
+      <section className="rounded-xl border border-border/80 bg-surface-2 p-4 shadow-xs">
+        <h2 className="font-display text-base font-bold text-text flex items-center gap-1.5">
+          <span>✅</span> Güvenli Yemekler
+        </h2>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full border-collapse text-xs">
             <thead>
-              <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-text-muted">
-                <th className="py-1.5 pr-2 font-display font-medium">Yemek</th>
-                <th className="py-1.5 pr-2 font-display font-medium">Açıklama</th>
-                <th className="py-1.5 font-display font-medium">Fiyat</th>
+              <tr className="border-b border-border/60 text-left uppercase tracking-wider text-text-muted">
+                <th className="py-2 pr-2 font-display font-bold">Yemek</th>
+                <th className="py-2 pr-2 font-display font-bold">Açıklama</th>
+                <th className="py-2 font-display font-bold">Fiyat</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-border/40">
               {safe.map((dish) => (
-                <tr key={dish.dish} className="border-b border-border">
-                  <td className="py-2 pr-2 font-semibold text-safe">{dish.dish}</td>
-                  <td className="py-2 pr-2">{dish.desc}</td>
-                  <td className="py-2 tabular-nums text-text-muted">{dish.price}</td>
+                <tr key={dish.dish}>
+                  <td className="py-2.5 pr-2 font-bold text-safe">{dish.dish}</td>
+                  <td className="py-2.5 pr-2 font-medium text-text">{dish.desc}</td>
+                  <td className="py-2.5 tabular-nums font-bold text-text-muted">{dish.price}</td>
                 </tr>
               ))}
             </tbody>
@@ -111,12 +120,14 @@ function GuideTab({ guide }: { readonly guide: PorkGuideData }) {
       </section>
 
       {caution.length > 0 && (
-        <section className="border border-warn-border bg-warn-bg p-3 text-warn-text">
-          <h2 className="font-display text-base font-semibold">Sor, emin olma</h2>
-          <ul className="mt-1 flex flex-col gap-1 text-sm">
+        <section className="rounded-xl border border-warn-border bg-warn-bg p-4 text-warn-text shadow-xs">
+          <h2 className="font-display text-base font-bold flex items-center gap-1.5">
+            <span>❓</span> Sorun, Emin Olun
+          </h2>
+          <ul className="mt-2 flex flex-col gap-1.5 text-xs">
             {caution.map((item) => (
-              <li key={item.dish}>
-                <span className="font-semibold">{item.dish}:</span> {item.note}
+              <li key={item.dish} className="leading-snug">
+                <strong className="font-bold">{item.dish}:</strong> {item.note}
               </li>
             ))}
           </ul>
@@ -130,23 +141,28 @@ function PhrasesTab({ phrases }: { readonly phrases: readonly Phrase[] }) {
   const [fullscreen, setFullscreen] = useState<Phrase | null>(null);
 
   return (
-    <div className="flex flex-col gap-2">
-      <p className="text-sm text-text-muted">
-        Bir cümleye dokun, tam ekran büyüsün — telefonu çevirip garsona göster.
+    <div className="flex flex-col gap-3">
+      <p className="text-xs font-semibold text-text-muted bg-surface p-2.5 rounded-lg border border-border/60">
+        💡 Bir cümleye dokun, tam ekran büyüsün — garsona göstermek için telefonu çevirin.
       </p>
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-col gap-2.5">
         {phrases.map((phrase) => (
           <li key={phrase.tr}>
             <button
               type="button"
               onClick={() => setFullscreen(phrase)}
-              className="flex min-h-11 w-full flex-col gap-1 border border-border bg-surface-2 p-3 text-left"
+              className="group flex min-h-12 w-full flex-col gap-1 rounded-xl border border-border/80 bg-surface-2 p-3.5 text-left shadow-xs transition-all active:scale-[0.99] hover:border-accent/40"
             >
-              <span className="font-display text-xs font-medium uppercase tracking-wide text-text-muted">
-                {CATEGORY_LABEL[phrase.category]}
-              </span>
-              <span className="text-base font-semibold">{phrase.it}</span>
-              <span className="text-sm text-text-muted">{phrase.tr}</span>
+              <div className="flex items-center justify-between">
+                <span className="font-display text-[11px] font-bold uppercase tracking-wider text-text-muted">
+                  {CATEGORY_LABEL[phrase.category]}
+                </span>
+                <span className="text-xs font-bold text-accent group-hover:translate-x-0.5 transition-transform">
+                  Büyüt 🔍
+                </span>
+              </div>
+              <span className="text-base font-bold text-text">{phrase.it}</span>
+              <span className="text-xs font-medium text-text-muted">{phrase.tr}</span>
             </button>
           </li>
         ))}

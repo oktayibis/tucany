@@ -25,26 +25,26 @@ export function FlowRow({
   readonly onOpen: () => void;
 }) {
   return (
-    <li className="border-b border-border last:border-b-0">
+    <li className="border-b border-border/40 last:border-b-0">
       <button
         type="button"
         onClick={onOpen}
-        className={`flex min-h-11 w-full items-center gap-3 px-3 py-3 text-left ${
-          dimmed ? 'opacity-60' : ''
+        className={`group flex min-h-12 w-full items-center gap-3 px-3.5 py-3 text-left transition-colors hover:bg-surface/50 active:bg-surface ${
+          dimmed ? 'opacity-55' : ''
         }`}
       >
         {/* Always reserved, even when empty, so meal names line up with stop names. */}
         <span className="flex w-6 shrink-0 justify-center">{marker}</span>
         <span className="min-w-0 flex-1">
-          <span className="block font-display font-medium">{name}</span>
+          <span className="block font-display font-semibold text-text group-hover:text-accent transition-colors">{name}</span>
           {meta !== undefined && (
-            <span className="mt-0.5 block text-xs text-text-muted">{meta}</span>
+            <span className="mt-0.5 block text-xs font-medium text-text-muted">{meta}</span>
           )}
         </span>
         {trailing !== undefined && (
-          <span className="shrink-0 text-right text-sm font-semibold">{trailing}</span>
+          <span className="shrink-0 text-right font-display text-sm font-bold text-text">{trailing}</span>
         )}
-        <span aria-hidden="true" className="shrink-0 font-display text-base text-text-muted">
+        <span aria-hidden="true" className="shrink-0 font-display text-base font-bold text-accent group-hover:translate-x-0.5 transition-transform">
           ›
         </span>
       </button>
@@ -57,8 +57,8 @@ export function StopMarker({ index, visited }: { readonly index: number; readonl
   return (
     <span
       aria-hidden="true"
-      className={`inline-flex h-6 w-6 items-center justify-center rounded-full border font-display text-xs font-semibold ${
-        visited ? 'border-safe bg-safe text-white' : 'border-accent text-accent'
+      className={`inline-flex h-6 w-6 items-center justify-center rounded-full border font-display text-xs font-bold shadow-xs ${
+        visited ? 'border-safe bg-safe text-white' : 'border-accent bg-surface text-accent'
       }`}
     >
       {visited ? '✓' : index}
@@ -68,5 +68,5 @@ export function StopMarker({ index, visited }: { readonly index: number; readonl
 
 /** A single card wrapping a run of `FlowRow`s. */
 export function FlowList({ children }: { readonly children: ReactNode }) {
-  return <ul className="border border-border bg-surface-2">{children}</ul>;
+  return <ul className="rounded-xl border border-border/80 bg-surface-2 shadow-xs overflow-hidden">{children}</ul>;
 }
