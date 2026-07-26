@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import type { Day, Food, MealSlot } from '../data/schema';
 import { foodKey, selectFood } from '../lib/budget';
 import { FoodTierBadge } from './TierBadge';
-import { PhoneButton } from './NavButton';
+import { NavButton, PhoneButton } from './NavButton';
 import { PorkSafeNote, PorkWarningNote } from './PorkWarningNote';
 import { PriceTag } from './PriceTag';
+import { FoodModal } from './FoodModal';
 import { useTrip } from '../state/TripContext';
 
 const SLOT_LABEL: Readonly<Record<MealSlot, string>> = {
@@ -24,6 +26,8 @@ const SLOT_ORDER: readonly MealSlot[] = ['coffee', 'lunch', 'aperitivo', 'dinner
  */
 export function FoodSection({ day }: { readonly day: Day }) {
   const { mode, upgrades } = useTrip();
+  const [selectedFood, setSelectedFood] = useState<Food | null>(null);
+
   const active = new Set(
     selectFood(day.food, mode, day.id, upgrades).map((entry) => foodKey(day.id, entry)),
   );
@@ -54,11 +58,19 @@ export function FoodSection({ day }: { readonly day: Day }) {
                 dayId={day.id}
                 entry={entry}
                 isActive={active.has(foodKey(day.id, entry))}
+                onOpenModal={() => setSelectedFood(entry)}
               />
             ))}
           </ul>
         </div>
       ))}
+      {selectedFood !== null && (
+        <FoodModal
+          food={selectedFood}
+          dayId={day.id}
+          onClose={() => setSelectedFood(null)}
+        />
+      )}
     </div>
   );
 }
@@ -67,10 +79,12 @@ function FoodRow({
   dayId,
   entry,
   isActive,
+  onOpenModal,
 }: {
   readonly dayId: string;
   readonly entry: Food;
   readonly isActive: boolean;
+  readonly onOpenModal: () => void;
 }) {
   const { mode, upgrades, toggleUpgrade } = useTrip();
   const key = foodKey(dayId, entry);
@@ -82,7 +96,16 @@ function FoodRow({
       className={`border bg-surface-2 p-3 ${isActive ? 'border-border' : 'border-dashed border-border opacity-70'}`}
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <p className="font-display font-medium">{entry.name}</p>
+        <button
+          type="button"
+          onClick={onOpenModal}
+          className="text-left font-display font-medium hover:underline hover:text-accent focus:outline-none"
+        >
+          {entry.name}
+          {entry.michelin === true && (
+            <span className="ml-2 inline-flex items-center text-xs text-accent">★ Michelin</span>
+          )}
+        </button>
         <div className="flex items-center gap-2">
           <FoodTierBadge tier={entry.tier} />
           <span className="text-sm font-semibold">
@@ -108,8 +131,16 @@ function FoodRow({
       {entry.porkWarning !== undefined && <PorkWarningNote warning={entry.porkWarning} />}
       {entry.porkSafe === true && <PorkSafeNote />}
 
-      <div className="mt-2 flex flex-wrap items-center gap-2">
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <NavButton place={entry} />
         {entry.phone !== undefined && <PhoneButton phone={entry.phone} />}
+        <button
+          type="button"
+          onClick={onOpenModal}
+          className="inline-flex min-h-11 items-center border border-border bg-surface px-3 py-2 text-xs font-semibold text-ink"
+        >
+          Detaylar
+        </button>
         {entry.booking !== undefined && (
           <span className="text-xs text-text-muted">
             Rezervasyon:{' '}
@@ -136,3 +167,4 @@ function FoodRow({
     </li>
   );
 }
+

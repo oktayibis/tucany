@@ -15,14 +15,15 @@
     ]
   },
   "base": {
-    "name": "Hotel Borgo di Cortefreda",
+    "name": "Hotel Borgo di Cortefreda - Place of Charme",
     "address": "Via Roma 191, 50028 Barberino Tavarnelle FI",
     "lat": 43.5529327,
     "lng": 11.173212,
     "placeId": "ChIJZ4uQURtIKhMRGJLy_5i4sNg",
     "phone": "+39 055 807 3333",
     "amenities": ["havuz", "restoran (her gün 12:00-14:30 / 19:00-22:00)", "e-bike kiralama"],
-    "checkInFrom": "14:00"
+    "checkInFrom": "14:00",
+    "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle"
   },
   "flights": [
     { "dir": "out", "date": "2026-07-29", "from": "CPH", "to": "PSA", "dep": "06:05", "arr": "08:30", "carrier": "SAS" },
@@ -63,11 +64,11 @@
         { "id": "s1d", "name": "Torre Guinigi", "city": "Lucca", "tier": "skip", "cost": 18, "why": "Tepesinde 700 yillik mese agaclari var ama 230 basamak." }
       ],
       "food": [
-        { "slot": "lunch", "tier": "a", "name": "Lucca'da restoran", "price": 70 },
-        { "slot": "lunch", "tier": "b", "name": "Forno schiacciata + meyve, surda piknik", "price": 20 },
-        { "slot": "dinner", "tier": "a", "name": "Otel restorani", "price": 90 },
-        { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino (pizza)", "price": 35, "closedToday": true, "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Barberino+Tavarnelle" },
-        { "slot": "snack", "tier": "both", "name": "Gelateria De' Coltelli", "price": 12, "why": "Dogal, boyasiz, Italya'nin en iyilerinden" }
+        { "slot": "lunch", "tier": "a", "name": "Lucca'da restoran", "price": 70, "why": "Geleneksel Lucchese Trattoria (Trattoria da Ubaldo / Osteria da Pasquale). Lucca sur icinde taze el yapimi pasta, tordelli ve yerel zeytinyaqli lezzetler sunan otantik aile isletmesi.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+da+Ubaldo+Lucca" },
+        { "slot": "lunch", "tier": "b", "name": "Forno schiacciata + meyve, surda piknik", "price": 20, "why": "Firin & Piknik. Lucca surlarinin ustundeki golgeli agacli parkta tarihi firindan taze sicak schiacciata ekmegi ve meyve ile ekonomik acik hava piknigi.", "nav": "https://www.google.com/maps/search/?api=1&query=Forno+Lucca+Centro" },
+        { "slot": "dinner", "tier": "a", "name": "Otel restorani", "price": 90, "why": "Otel Restorani (Borgo di Cortefreda). Ilk gun ucus yorgunlugu sonrasi disari cikmadan otel terasinda kaliteli ve zahmetsiz aksam yemegi.", "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Barberino+Tavarnelle" },
+        { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino (pizza)", "price": 35, "why": "Yerel Pizzeria / Trattoria. Barberino'da yerel halkin tercih ettigi, odun atesinde ince tas firin pizzasi ve samimi ortami olan ucuz mekan.", "closedToday": true, "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Barberino+Tavarnelle" },
+        { "slot": "snack", "tier": "both", "name": "Gelateria De' Coltelli", "price": 12, "why": "Artisanal Dondurmaci. Pisa'da Arno nehri kiyisinda, tamamen dogal mevsimlik meyvelerle yapilan Italya'nin en odullu dondurmacilarindan biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+De%27+Coltelli+Pisa" }
       ],
       "shopping": []
     },
@@ -92,9 +93,9 @@
       ],
       "food": [
         { "slot": "lunch", "tier": "a", "name": "Osteria di Passignano", "price": 225, "michelin": true, "phone": "+39 055 807 1278", "closedOn": ["Pazar"], "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+di+Passignano" },
-        { "slot": "lunch", "tier": "b", "name": "Pazardan pollo allo spiedo + peynir + ekmek, havuz basinda piknik", "price": 25, "why": "Butun sisde tavuk 9-11 EUR, 4 kisiye yeter." },
-        { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino / otel restorani", "price": 35 },
-        { "slot": "aperitivo", "tier": "both", "name": "Crodino veya San Bitter (alkolsuz)", "price": 12 }
+        { "slot": "lunch", "tier": "b", "name": "Pazardan pollo allo spiedo + peynir + ekmek, havuz basinda piknik", "price": 25, "why": "Butun sisde tavuk 9-11 EUR, 4 kisiye yeter.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa" },
+        { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino / otel restorani", "price": 35, "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Barberino+Tavarnelle" },
+        { "slot": "aperitivo", "tier": "both", "name": "Crodino veya San Bitter (alkolsuz)", "price": 12, "nav": "https://www.google.com/maps/search/?api=1&query=San+Donato+in+Poggio" }
       ],
       "shopping": [{ "name": "Tavarnelle pazari", "for": "kumas, deri, yerel gida", "cost": null }]
     },
@@ -124,10 +125,10 @@
       ],
       "food": [
         { "slot": "coffee", "tier": "both", "name": "Ditta Artigianale (Via dello Sprone)", "price": 15, "why": "Gercek specialty coffee", "nav": "https://www.google.com/maps/search/?api=1&query=Ditta+Artigianale+Via+dello+Sprone+Firenze" },
-        { "slot": "lunch", "tier": "a", "name": "Mercato Centrale ust kat", "price": 50 },
+        { "slot": "lunch", "tier": "a", "name": "Mercato Centrale ust kat", "price": 50, "nav": "https://www.google.com/maps/search/?api=1&query=Mercato+Centrale+Firenze" },
         { "slot": "lunch", "tier": "b", "name": "L'Antico Trippaio (Piazza dei Cimatori)", "price": 25, "porkSafe": true, "why": "Lampredotto/bollito sandvic 5.5 EUR'dan, dana - domuz yok. Sebzeli secenek de var. 08:30-21:30", "nav": "https://www.google.com/maps/search/?api=1&query=L%27Antico+Trippaio+Piazza+dei+Cimatori+Firenze" },
         { "slot": "lunch", "tier": "b", "name": "Da Nerbone (Mercato Centrale)", "price": 25, "porkSafe": true, "closedOn": ["Pazar"], "hours": "08:30-15:00", "nav": "https://www.google.com/maps/search/?api=1&query=Da+Nerbone+Mercato+Centrale+Firenze" },
-        { "slot": "dinner", "tier": "a", "name": "Trattoria Sostanza", "price": 130, "phone": "+39 055 212691", "closedOn": ["Cumartesi", "Pazar"], "booking": "phone-only", "porkSafe": true, "why": "Tereyaginda tavuk gogsu (petto di pollo al burro) - domuzsuz efsane tabak." },
+        { "slot": "dinner", "tier": "a", "name": "Trattoria Sostanza", "price": 130, "phone": "+39 055 212691", "closedOn": ["Cumartesi", "Pazar"], "booking": "phone-only", "porkSafe": true, "why": "Tereyaginda tavuk gogsu (petto di pollo al burro) - domuzsuz efsane tabak.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+Sostanza+Via+del+Porcellana+Firenze" },
         { "slot": "snack", "tier": "both", "name": "Gelateria dei Neri (Via dei Neri 9)", "price": 12, "closedOn": ["Sali"], "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+dei+Neri+Firenze" }
       ],
       "shopping": [
@@ -160,8 +161,8 @@
       ],
       "food": [
         { "slot": "lunch", "tier": "a", "name": "Antica Osteria l'Agania (Via Mazzini 10)", "price": 70, "closedOn": ["Pazartesi", "Sali"], "porkWarning": "Pici'lerin cogu cinghiale - sigir ragu veya aglione iste", "nav": "https://www.google.com/maps/search/?api=1&query=Antica+Osteria+l%27Agania+Arezzo" },
-        { "slot": "lunch", "tier": "b", "name": "Fuar alanindaki panini tezgahlari", "price": 25, "porkWarning": "porchetta domuz - lingua veya peynirli iste" },
-        { "slot": "coffee", "tier": "both", "name": "Caffe dei Costanti (Piazza San Francesco)", "price": 12, "why": "1804'ten beri Arezzo'nun tarihi kahvesi" }
+        { "slot": "lunch", "tier": "b", "name": "Fuar alanindaki panini tezgahlari", "price": 25, "porkWarning": "porchetta domuz - lingua veya peynirli iste", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Grande+Arezzo" },
+        { "slot": "coffee", "tier": "both", "name": "Caffe dei Costanti (Piazza San Francesco)", "price": 12, "why": "1804'ten beri Arezzo'nun tarihi kahvesi", "nav": "https://www.google.com/maps/search/?api=1&query=Caffe+dei+Costanti+Piazza+San+Francesco+Arezzo" }
       ],
       "shopping": [{ "name": "Fiera Antiquaria", "for": "antika, vintage, tasarim objeler", "tip": "'Qual e il prezzo migliore?' ile %20-30 iniyor. 16:00'dan sonra fiyatlar daha da yumusuyor." }]
     },
@@ -210,7 +211,7 @@
         { "id": "s6e", "name": "Montepulciano", "tier": "removed", "removedReason": "Dimdik yokus, anne icin uygun degil. 1.5 saat yol + 80 EUR tasarruf." }
       ],
       "food": [
-        { "slot": "lunch", "tier": "a", "name": "Pienza'da restoran", "price": 90 },
+        { "slot": "lunch", "tier": "a", "name": "Pienza'da restoran", "price": 90, "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+da+Fiorella+Pienza" },
         { "slot": "lunch", "tier": "b", "name": "La Taverna del Pecorino'dan pecorino + ekmek + domates, sur disinda piknik", "price": 20, "why": "4 kusaklik peynirci. Hem gezinin en guzel ogunu hem hediyeligin.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza" }
       ],
       "shopping": [{ "name": "La Taverna del Pecorino (Via Condotti 1)", "for": "pecorino di Pienza, zeytinyagi, bal, recel" }]
@@ -235,8 +236,8 @@
         { "id": "s7d", "name": "Torre Grossa", "tier": "skip", "cost": 27, "skipReason": "218 basamak; Rocca zaten daha iyi manzara veriyor" }
       ],
       "food": [
-        { "slot": "lunch", "tier": "b", "name": "Coop'tan malzemeyle havuz basi", "price": 15 },
-        { "slot": "dinner", "tier": "a", "name": "San Gimignano'da aksam yemegi", "price": 110 },
+        { "slot": "lunch", "tier": "b", "name": "Coop'tan malzemeyle havuz basi", "price": 15, "nav": "https://www.google.com/maps/search/?api=1&query=Coop+Barberino+Tavarnelle" },
+        { "slot": "dinner", "tier": "a", "name": "San Gimignano'da aksam yemegi", "price": 110, "nav": "https://www.google.com/maps/search/?api=1&query=Ristorante+Rigoletto+San+Gimignano" },
         { "slot": "snack", "tier": "both", "name": "Gelateria Dondoli (Piazza della Cisterna 4)", "price": 12, "hours": "09:00-23:00", "why": "Sahibi Sergio Dondoli dunya dondurma sampiyonu. Crema di Santa Fina (safran + cam fistigi) ve Rosemary Baby (ahududu-biberiye) dene.", "keep": true, "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Dondoli+San+Gimignano" }
       ],
       "shopping": [{ "name": "San Gimignano zafferani (safran)", "for": "Ortacag'da kasabayi zengin eden urun, kucuk kutularda, mukemmel hediye" }, { "name": "Seramik ve el yapimi kagit dukkanlari", "for": "ana cadde boyunca" }]
@@ -266,7 +267,7 @@
         { "slot": "lunch", "tier": "a", "name": "La Taverna di San Giuseppe (Via Dupre 132)", "price": 200, "phone": "+39 0577 42286", "booking": "phone-only", "bookingNote": "Gunler oncesinden ara", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+di+San+Giuseppe+Siena" },
         { "slot": "lunch", "tier": "b", "name": "Osteria Il Grattacielo (Via dei Pontani 8)", "price": 70, "phone": "+39 331 742 2835", "why": "1840'tan beri, en dusuk fiyat kademesi, tahtaya yazilan gunluk menu. Cok kucuk, 12:00'de kapida ol.", "porkWarning": "Menude salsiccia ve cinghiale var", "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+Il+Grattacielo+Siena" },
         { "slot": "lunch", "tier": "b", "name": "Consorzio Agrario (Via Pianigiani 9)", "price": 25, "why": "Merkezde gida deposu, siparis uzerine sandvic yapiyorlar, herkes Piazza Salimbeni'de oturup yiyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Consorzi+Agrari+Via+Pianigiani+9+Siena" },
-        { "slot": "coffee", "tier": "both", "name": "Nannini (Banchi di Sopra)", "price": 20, "why": "Ricciarelli ve panforte al - domuzsuz, uzun omurlu, Kopenhag'a hediye." },
+        { "slot": "coffee", "tier": "both", "name": "Nannini (Banchi di Sopra)", "price": 20, "why": "Ricciarelli ve panforte al - domuzsuz, uzun omurlu, Kopenhag'a hediye.", "nav": "https://www.google.com/maps/search/?api=1&query=Bar+Nannini+Banchi+di+Sopra+Siena" },
         { "slot": "snack", "tier": "both", "name": "Gelateria Kopakabana (Via dei Rossi 52)", "price": 12, "why": "Ana caddeden sapinca, yerel fiyat, kocaman porsiyon.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Kopakabana+Siena" }
       ],
       "shopping": [{ "name": "Antica Drogheria Manganelli (Via di Citta)", "for": "1879'dan kalma, ahsap rafli baharat dukkani" }]
@@ -308,7 +309,7 @@
       "stops": [],
       "food": [
         { "slot": "lunch", "tier": "a", "name": "I' Girone De' Ghiotti (Via dei Cimatori 23)", "price": 30, "porkWarning": "Icler cogunlukla salumi - peynirli / sebzeli / roast beef iste", "nav": "https://www.google.com/maps/search/?api=1&query=I%27+Girone+De%27+Ghiotti+Firenze" },
-        { "slot": "lunch", "tier": "b", "name": "Montelupo'da yerel trattoria", "price": 50 }
+        { "slot": "lunch", "tier": "b", "name": "Montelupo'da yerel trattoria", "price": 50, "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+Montelupo+Fiorentino" }
       ],
       "shopping": [{ "name": "Il Torchio (Via de' Bardi 17)", "for": "El yapimi ebru kagidi, ciltleme, ozel defter. Cts-Paz kapali.", "highlight": true }, { "name": "Tavarnelle pazari (Persembe)", "for": "Son gun eksik hediyelikler icin sabah 5 dakikalik ugrayis" }]
     },
