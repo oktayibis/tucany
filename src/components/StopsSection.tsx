@@ -7,6 +7,8 @@ import { PriceTag } from './PriceTag';
 import { StopTierBadge } from './TierBadge';
 import { useTrip } from '../state/TripContext';
 
+import { RatingBadge } from './RatingBadge';
+
 /**
  * "Görülecek". Splits a day's stops the way the brief specifies: `core` and
  * `optional` get full cards; `skip` and `removed` collapse into one
@@ -47,9 +49,12 @@ function StopCard({ stop, item }: { readonly stop: Stop; readonly item: LineItem
   return (
     <article className="border border-border bg-surface-2 p-3" aria-labelledby={`${stop.id}-title`}>
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <h3 id={`${stop.id}-title`} className="font-display text-base font-medium">
-          {stop.name}
-        </h3>
+        <div className="flex items-center gap-2">
+          <h3 id={`${stop.id}-title`} className="font-display text-base font-medium">
+            {stop.name}
+          </h3>
+          <RatingBadge rating={stop.rating} />
+        </div>
         <div className="flex items-center gap-2">
           {stop.badge !== undefined && (
             <span className="bg-accent-2/20 px-1.5 py-0.5 font-body text-xs font-semibold text-accent-2">

@@ -6,6 +6,8 @@ import { getDayRoute } from '../lib/routes';
 import { useTrip } from '../state/TripContext';
 import { NavButton, PhoneButton } from './NavButton';
 
+import { RatingBadge } from './RatingBadge';
+
 /** "Rota/navigasyon" — the day's driving load, base hotel origin/destination, starter route, and schedule. */
 export function RouteSection({ day }: { readonly day: Day }) {
   const dayRoute = getDayRoute(day);
@@ -22,7 +24,10 @@ export function RouteSection({ day }: { readonly day: Day }) {
             <span className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
               🏨 Başlangıç & Dönüş Noktası (Otel)
             </span>
-            <p className="font-display text-base font-medium">{trip.base.name}</p>
+            <div className="flex items-center gap-2">
+              <p className="font-display text-base font-medium">{trip.base.name}</p>
+              <RatingBadge rating={trip.base.rating} />
+            </div>
             <p className="text-xs text-text-muted">{trip.base.address}</p>
           </div>
         </div>

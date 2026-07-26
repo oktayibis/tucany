@@ -43,6 +43,8 @@ export function OptionsSection({ day }: { readonly day: Day }) {
   );
 }
 
+import { RatingBadge } from './RatingBadge';
+
 function OptionCard({
   day,
   option,
@@ -80,6 +82,7 @@ function OptionCard({
             className="h-5 w-5 accent-accent"
           />
           {option.label}
+          <RatingBadge rating={option.rating ?? beach?.rating} />
           {option.recommended === true && (
             <span className="bg-antimony px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
               Planın önerisi

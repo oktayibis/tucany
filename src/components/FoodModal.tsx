@@ -15,6 +15,8 @@ const SLOT_LABEL: Readonly<Record<MealSlot, string>> = {
   snack: 'Atıştırmalık',
 };
 
+import { RatingBadge } from './RatingBadge';
+
 export function FoodModal({
   food,
   dayId,
@@ -60,9 +62,12 @@ export function FoodModal({
             <span className="font-display text-xs font-semibold uppercase tracking-wider text-text-muted">
               {SLOT_LABEL[food.slot]}
             </span>
-            <h2 id="food-modal-title" className="font-display text-xl font-semibold text-ink">
-              {food.name}
-            </h2>
+            <div className="flex items-center gap-2">
+              <h2 id="food-modal-title" className="font-display text-xl font-semibold text-ink">
+                {food.name}
+              </h2>
+              <RatingBadge rating={food.rating} />
+            </div>
           </div>
           <button
             type="button"

@@ -81,6 +81,8 @@ export function FoodSection({
   );
 }
 
+import { RatingBadge } from './RatingBadge';
+
 function FoodRow({
   dayId,
   entry,
@@ -102,16 +104,19 @@ function FoodRow({
       className={`border bg-surface-2 p-3 ${isActive ? 'border-border' : 'border-dashed border-border opacity-70'}`}
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <button
-          type="button"
-          onClick={onOpenModal}
-          className="text-left font-display font-medium hover:underline hover:text-accent focus:outline-none"
-        >
-          {entry.name}
-          {entry.michelin === true && (
-            <span className="ml-2 inline-flex items-center text-xs text-accent">★ Michelin</span>
-          )}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onOpenModal}
+            className="text-left font-display font-medium hover:underline hover:text-accent focus:outline-none"
+          >
+            {entry.name}
+            {entry.michelin === true && (
+              <span className="ml-2 inline-flex items-center text-xs text-accent">★ Michelin</span>
+            )}
+          </button>
+          <RatingBadge rating={entry.rating} />
+        </div>
         <div className="flex items-center gap-2">
           <FoodTierBadge tier={entry.tier} />
           <span className="text-sm font-semibold">

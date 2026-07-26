@@ -103,6 +103,7 @@ export const baseSchema = z
     amenities: z.array(z.string()),
     checkInFrom: clockSchema,
     nav: z.url().optional(),
+    rating: z.number().min(1).max(5).optional(),
   })
   .strict();
 
@@ -179,6 +180,7 @@ export const stopSchema = z
     badge: z.string().optional(),
     /** Only shown when another day's chosen option is one of `optionIn`. */
     showWhen: z.object({ dayId: z.string(), optionIn: z.array(z.string()) }).strict().optional(),
+    rating: z.number().min(1).max(5).optional(),
   })
   .strict();
 
@@ -206,6 +208,7 @@ export const foodSchema = z
     /** Author flagged this as non-negotiable in every mode. */
     keep: z.boolean().optional(),
     nav: z.url().optional(),
+    rating: z.number().min(1).max(5).optional(),
   })
   .strict();
 
@@ -218,6 +221,7 @@ export const shoppingSchema = z
     tip: z.string().optional(),
     highlight: z.boolean().optional(),
     nav: z.url().optional(),
+    rating: z.number().min(1).max(5).optional(),
   })
   .strict();
 
@@ -251,6 +255,7 @@ export const dayOptionSchema = z
     food: z.array(foodSchema).optional(),
     shopping: z.array(shoppingSchema).optional(),
     nav: z.url().optional(),
+    rating: z.number().min(1).max(5).optional(),
   })
   .strict();
 
@@ -341,6 +346,8 @@ export const beachSchema = z
     minutesFromBase: minutes,
     free: beachFreeSchema,
     notes: z.string(),
+    nav: z.url().optional(),
+    rating: z.number().min(1).max(5).optional(),
   })
   .strict();
 
