@@ -20,6 +20,7 @@
   --color-tin: #e8eae7;
   --color-ink: #1a1614;
   --color-danger: #b3261e;
+  --color-safe: #3f6b3e;
 
   --color-bg: var(--color-tin);
   --color-surface: #f5f6f3;
@@ -70,6 +71,7 @@
     --color-warn-text: #f0c978;
     --color-danger: #e5645a;
     --color-danger-bg: #3a1815;
+    --color-safe: #7cb889;
   }
 }
 

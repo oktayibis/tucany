@@ -9,14 +9,12 @@
  */
 export function PorkWarningNote({ warning }: { readonly warning: string }) {
   return (
-    <p role="note" className="text-sm font-medium text-red-700 dark:text-red-400">
+    <p role="note" className="text-sm font-semibold text-danger">
       ⚠ {warning}
     </p>
   );
 }
 
 export function PorkSafeNote() {
-  return (
-    <p className="text-sm text-emerald-700 dark:text-emerald-400">✓ Domuzsuz olduğu doğrulanmış</p>
-  );
+  return <p className="text-sm font-medium text-safe">✓ Domuzsuz olduğu doğrulanmış</p>;
 }

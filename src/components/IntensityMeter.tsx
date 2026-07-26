@@ -30,7 +30,7 @@ export function IntensityMeter({ intensity }: { readonly intensity: Intensity })
         <span
           key={bar}
           aria-hidden="true"
-          className={`inline-block h-3 w-1 rounded-full ${bar <= level ? 'bg-current' : 'bg-current/25'}`}
+          className={`inline-block h-3 w-1 rounded-full ${bar <= level ? 'bg-secondary' : 'bg-border'}`}
         />
       ))}
     </span>
