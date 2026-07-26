@@ -6,6 +6,7 @@ import { useTrip } from '../state/TripContext';
 import { DayCard } from './DayCard';
 import { ModeSwitch } from './ModeSwitch';
 import { PartyControl } from './PartyControl';
+import { NavButton, PhoneButton } from './NavButton';
 
 /**
  * Home. The signature element: a continuous vertical route where each day is
@@ -22,8 +23,12 @@ export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => 
       <header className="bg-plate px-4 pb-5 pt-6 text-plate-text">
         <h1 className="font-display text-display-xl font-semibold">{trip.trip.title}</h1>
         <p className="text-sm opacity-85">
-          {trip.base.name} · {trip.trip.nights} gece
+          🏨 {trip.base.name} · {trip.trip.nights} gece
         </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <NavButton place={trip.base} note="Otele yol tarifi al" />
+          <PhoneButton phone={trip.base.phone} />
+        </div>
       </header>
 
       <div className="-mt-3.5 px-4">

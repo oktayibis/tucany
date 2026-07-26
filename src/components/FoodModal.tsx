@@ -92,8 +92,8 @@ export function FoodModal({
 
         {food.why !== undefined && (
           <div className="mt-4 rounded bg-surface-2 p-3 text-sm text-ink">
-            <p className="font-semibold text-xs text-text-muted uppercase mb-1">Neden Burası?</p>
-            <p>{food.why}</p>
+            <p className="font-semibold text-xs text-text-muted uppercase mb-1">💡 Mekan Türü & Neden Önerildi?</p>
+            <p className="leading-relaxed">{food.why}</p>
           </div>
         )}
 

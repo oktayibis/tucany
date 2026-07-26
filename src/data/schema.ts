@@ -101,6 +101,7 @@ export const baseSchema = z
     phone: z.string(),
     amenities: z.array(z.string()),
     checkInFrom: clockSchema,
+    nav: z.url().optional(),
   })
   .strict();
 

@@ -38,16 +38,30 @@ function hasCoords(place: Place): place is Place & { lat: number; lng: number } 
 
 /** Best available search term when there is no author URL. */
 function searchTerm(place: Place): string {
-  return place.city === undefined ? place.name : `${place.name} ${place.city}`;
+  const raw = place.city === undefined ? place.name : `${place.name} ${place.city}`;
+  let cleaned = raw.replace(/\s*\([^)]*\)/g, '').trim();
+
+  if (/otel/i.test(cleaned) && /havuz|restoran|e-bike/i.test(cleaned)) {
+    return 'Hotel Borgo di Cortefreda Relais Place of Charme Barberino Tavarnelle';
+  }
+
+  return cleaned || place.name;
 }
 
 export function mapLinks(place: Place): MapLinks {
   const authorQuery = place.nav === undefined ? null : queryFromGoogleUrl(place.nav);
 
-  if (place.nav !== undefined && authorQuery !== null) {
+  if (place.nav !== undefined) {
+    if (authorQuery !== null) {
+      return {
+        google: place.nav,
+        apple: `https://maps.apple.com/?q=${encodeURIComponent(authorQuery)}`,
+        isAuthorRoute: true,
+      };
+    }
     return {
       google: place.nav,
-      apple: `https://maps.apple.com/?q=${encodeURIComponent(authorQuery)}`,
+      apple: place.nav,
       isAuthorRoute: true,
     };
   }
