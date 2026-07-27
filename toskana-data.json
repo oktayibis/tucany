@@ -24,7 +24,258 @@
     "amenities": ["havuz", "restoran (her gün 12:00-14:30 / 19:00-22:00)", "e-bike kiralama"],
     "checkInFrom": "14:00",
     "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle",
-    "rating": 4.6
+    "rating": 4.6,
+    "nearbyVenues": [
+      {
+        "id": "nv-cantina-tartufi",
+        "category": "restaurant",
+        "name": "La Cantina dei Tartufi",
+        "city": "Barberino Tavarnelle",
+        "address": "Via Roma 92, Tavarnelle Val di Pesa",
+        "distanceNote": "0,5 km · yürüyerek 7 dk",
+        "rating": 4.9,
+        "ratingNote": "Google · 124 değerlendirme",
+        "why": "Otele en yakın ve çevrenin en yüksek puanlı mekanı. Sahibi Paolo eski bir trüf avcısı; menü tamamen trüf mantarı üzerine kurulu, küçük ve samimi bir şarap evi. Trüf avı turu da düzenliyorlar, sormaya değer.",
+        "menuHighlights": [
+          "Trüflü taze makarna (tagliolini)",
+          "Dana tartare (tartare di manzo)",
+          "Tiramisù",
+          "Chianti Classico"
+        ],
+        "hours": "Sadece akşam: Salı/Cuma/Pazar 19:00-23:00, Cumartesi 19:30-23:00",
+        "closedOn": [
+          "Pazartesi",
+          "Carsamba",
+          "Persembe"
+        ],
+        "priceNote": "~€20-60 / kişi",
+        "porkSafe": false,
+        "porkWarning": "Trüflü makarna ve dana tartare güvenli. Salumi/şarküteri tabağı istemeyin — Toskana şarküterisi domuz temellidir.",
+        "phone": "+39 392 619 9864",
+        "nav": "https://www.google.com/maps/search/?api=1&query=La+Cantina+dei+Tartufi+Via+Roma+92+Tavarnelle+Val+di+Pesa",
+        "sourceUrl": "https://restaurantguru.com/La-Cantina-dei-Tartufi-Tavarnelle-Val-di-Pesa"
+      },
+      {
+        "id": "nv-fitti-fitti",
+        "category": "restaurant",
+        "name": "Fitti Fitti",
+        "city": "Barberino Tavarnelle",
+        "address": "Via Benedetto Naldini 37, Tavarnelle Val di Pesa",
+        "distanceNote": "0,8 km · yürüyerek 10 dk",
+        "rating": 4.6,
+        "ratingNote": "Tripadvisor · Tavarnelle'deki 23 restoran içinde #8",
+        "why": "Tamamen deniz ürünleri üzerine kurulu tek mekân — bu listede domuz eti riski hiç olmayan en rahat seçenek. Chianti'nin ortasında balık restoranı beklenmedik ama puanı yüksek ve menü günün balığına göre değişiyor.",
+        "menuHighlights": [
+          "Guazzetto di moscardini (küçük ahtapot)",
+          "Frittelle di baccalà (morina köftesi)",
+          "Linguine al sapore di sgombro",
+          "Risotto al nero di seppia",
+          "Fırında baccalà, nohut püresi ile"
+        ],
+        "hours": "Salı-Cumartesi sadece akşam; Pazar öğle + akşam",
+        "closedOn": [
+          "Pazartesi"
+        ],
+        "porkSafe": true,
+        "phone": "+39 055 807 6271",
+        "nav": "https://www.google.com/maps/search/?api=1&query=Fitti+Fitti+Via+Benedetto+Naldini+37+Tavarnelle+Val+di+Pesa",
+        "sourceUrl": "https://www.fittifitti.it/"
+      },
+      {
+        "id": "nv-caratello",
+        "category": "restaurant",
+        "name": "Il Caratello",
+        "city": "Barberino Tavarnelle",
+        "address": "Via Roma 184, Tavarnelle Val di Pesa",
+        "distanceNote": "0,8 km · yürüyerek 11 dk",
+        "rating": 4.4,
+        "ratingNote": "Tripadvisor",
+        "why": "Otelle aynı cadde üzerindeki klasik Toskana trattoriası. Asıl olayı şu: her Salı akşamı 19:00-22:00 arası meydanda \"Bisteccata in Piazza\" var — eti yan kapıdaki kasaptan kendiniz seçiyorsunuz, meydandaki ızgarada pişiriliyor. Bunun için rezervasyon şart.",
+        "menuHighlights": [
+          "Bisteccata in Piazza (Salı akşamları)",
+          "Vitello tonnato",
+          "Tavuk ciğeri ezmeli crostini"
+        ],
+        "hours": "Her gün 12:00-15:00 & 19:00-23:00",
+        "closedOn": [
+          "Carsamba"
+        ],
+        "porkSafe": false,
+        "porkWarning": "Evin imzası olan pappardelle YABAN DOMUZU ragùsudur (cinghiale) — bunu sipariş etmeyin. Vitello tonnato, bistecca ve tavuk ciğerli crostini güvenli.",
+        "phone": "+39 055 805 9501",
+        "nav": "https://www.google.com/maps/search/?api=1&query=Il+Caratello+Via+Roma+184+Tavarnelle+Val+di+Pesa",
+        "sourceUrl": "https://www.ilcaratello.biz/en/"
+      },
+      {
+        "id": "nv-caffe-amici",
+        "category": "restaurant",
+        "name": "Il Caffè degli Amici",
+        "city": "Barberino Tavarnelle",
+        "address": "Via Roma 121, Tavarnelle Val di Pesa",
+        "distanceNote": "0,9 km · yürüyerek 11 dk",
+        "rating": 4.7,
+        "ratingNote": "Google · 952 değerlendirme (Tripadvisor 4,7 / 562)",
+        "why": "Kasabanın en çok değerlendirilen mekânı ve gün boyu açık olan tek yer: sabah 06:00'da kahve ve kruvasan, akşam ev yapımı taze makarnayla tam bir yemek. Erken çıkılan ya da geç dönülen günlerde iş gören esnek seçenek.",
+        "menuHighlights": [
+          "Ev yapımı taze makarna, ravioli",
+          "Rosbif",
+          "Cornetto + cappuccino (kahvaltı)",
+          "Tiramisù"
+        ],
+        "hours": "Salı-Pazar 06:00-24:00, Pazartesi 12:00-24:00",
+        "priceNote": "~€20-30 / kişi (akşam yemeği)",
+        "porkSafe": false,
+        "porkWarning": "Carbonara ve amatriciana guanciale (domuz yanağı) içerir. Ravioli, rosbif ve domates bazlı makarnalar güvenli.",
+        "phone": "+39 055 807 7236",
+        "nav": "https://www.google.com/maps/search/?api=1&query=Il+Caffe+degli+Amici+Via+Roma+121+Tavarnelle+Val+di+Pesa",
+        "sourceUrl": "https://restaurantguru.com/Caffe-Degli-Amici-Tavarnelle-Val-di-Pesa"
+      },
+      {
+        "id": "nv-la-gramola",
+        "category": "restaurant",
+        "name": "Osteria La Gramola",
+        "city": "Barberino Tavarnelle",
+        "address": "Via delle Fonti 1, Tavarnelle Val di Pesa",
+        "distanceNote": "1,0 km · yürüyerek 13 dk",
+        "rating": 4.5,
+        "ratingNote": "Tripadvisor",
+        "why": "Km0 (yerel üretici) anlayışıyla çalışan aile osteriası; bu listede glutensiz menüsü olduğunu açıkça belirten tek mekân. Yemek kursu ve trüf avı da düzenliyorlar. Akşam servisi 21:30'da bitiyor, geç kalmayın.",
+        "menuHighlights": [
+          "Bistecca alla Fiorentina",
+          "El yapımı taze makarnalar",
+          "Mevsimlik Toskana menüsü",
+          "Glutensiz menü mevcut"
+        ],
+        "hours": "Öğle 12:00-14:00, akşam 18:30-21:30",
+        "closedOn": [
+          "Sali"
+        ],
+        "porkSafe": false,
+        "porkWarning": "Toskana menüsünde cinghiale (yaban domuzu) ragùsu ve salumi bulunur; sipariş ederken \"senza maiale e senza cinghiale\" deyin.",
+        "phone": "+39 055 805 0321",
+        "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+La+Gramola+Via+delle+Fonti+1+Tavarnelle+Val+di+Pesa",
+        "sourceUrl": "https://www.gramola.it/"
+      },
+      {
+        "id": "nv-la-fornace",
+        "category": "pizza",
+        "name": "La Fornace",
+        "city": "Barberino Tavarnelle",
+        "address": "Strada Lavatoi 2, Tavarnelle Val di Pesa",
+        "distanceNote": "1,1 km · araçla 3 dk",
+        "rating": 4.3,
+        "ratingNote": "Google · 648 değerlendirme (Tripadvisor 4,0 / 265)",
+        "why": "Rahat, gürültüden çekinmeyen taş fırın pizzacısı — çocukla gidilecek en kolay yer ve oturmalı mekânlar içinde en ucuzu. Aynı zamanda B&B. Sadece akşam açık.",
+        "menuHighlights": [
+          "Taş fırın pizza",
+          "Burrata",
+          "Tiramisù, panna cotta",
+          "Vejetaryen seçenekler"
+        ],
+        "hours": "Her gün 19:00-23:00",
+        "priceNote": "~€9-22 / kişi",
+        "porkSafe": false,
+        "porkWarning": "Pizzalarda prosciutto/salame, makarnalarda carbonara var. Margherita, Ortolana, Quattro Formaggi ve burrata güvenli.",
+        "phone": "+39 055 807 6310",
+        "nav": "https://www.google.com/maps/search/?api=1&query=La+Fornace+Strada+Lavatoi+2+Tavarnelle+Val+di+Pesa",
+        "sourceUrl": "https://restaurantguru.com/La-Fornace-Tavarnelle-Val-di-Pesa"
+      },
+      {
+        "id": "nv-cocchino",
+        "category": "pizza",
+        "name": "In Serra da Cocchino",
+        "city": "Barberino Tavarnelle",
+        "address": "Viale 1° Maggio 1, Barberino Tavarnelle",
+        "distanceNote": "1,2 km · araçla 3 dk",
+        "rating": 4.7,
+        "ratingNote": "Restaurant Guru · 489 değerlendirme",
+        "why": "Oturmalı restoran değil: Roma usulü dilim pizza ve paket servis. Otele götürüp havuz başında yemek için en pratik ve en ekonomik seçenek. Saatlerini yayınlamıyorlar, çıkmadan önce arayın.",
+        "menuHighlights": [
+          "Dilim pizza (pizza al taglio)",
+          "Bütün pizza, paket",
+          "Roma usulü ince hamur"
+        ],
+        "hours": "Saatler yayınlanmamış — gitmeden önce arayın",
+        "priceNote": "Dilim pizza — listenin en ekonomiği",
+        "porkSafe": false,
+        "porkWarning": "Dilimlerin bir kısmında prosciutto/salame/würstel var. Vitrinde parmakla göstererek \"senza maiale\" diye teyit edin.",
+        "phone": "+39 055 805 9376",
+        "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Viale+1+Maggio+Barberino+Tavarnelle",
+        "sourceUrl": "https://inserradacocchino.it/"
+      },
+      {
+        "id": "nv-acquolina",
+        "category": "gelato",
+        "name": "Gelateria Acquolina",
+        "city": "Barberino Tavarnelle",
+        "address": "Piazza Giacomo Matteotti 37, Tavarnelle Val di Pesa",
+        "distanceNote": "0,9 km · yürüyerek 11 dk",
+        "ratingNote": "Tripadvisor'da Tavarnelle tatlıcıları sıralamasında #2",
+        "why": "Kasaba meydanındaki el yapımı dondurmacı; meydandaki çardağın altında oturup yeniyor. Akşam yemeğinden sonraki yürüyüşün doğal durağı. Dondurmanın yanında frappè, granita ve meyve sorbeleri de var.",
+        "menuHighlights": [
+          "Antep fıstığı (pistacchio)",
+          "Tuzlu karamel",
+          "Bitter çikolata",
+          "Granita & frappè",
+          "Meyve sorbesi"
+        ],
+        "hours": "Gece geç saate kadar açık (kesin saat yayınlanmamış)",
+        "porkSafe": true,
+        "phone": "+39 338 616 0088",
+        "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Acquolina+Piazza+Matteotti+37+Tavarnelle+Val+di+Pesa",
+        "sourceUrl": "https://www.tripadvisor.com/Restaurant_Review-g670654-d12442632-Reviews-Acquolina-Tavarnelle_Val_di_Pesa_Barberino_Tavarnellle_Tuscany.html"
+      },
+      {
+        "id": "nv-bagnoli",
+        "category": "bakery",
+        "name": "Bar Pasticceria Bagnoli",
+        "city": "Barberino Tavarnelle",
+        "address": "Via Cassia 48, Tavarnelle Val di Pesa",
+        "distanceNote": "1,2 km · araçla 3 dk",
+        "rating": 4.6,
+        "ratingNote": "Google · 217 değerlendirme",
+        "why": "Sabah 06:00'da açan mahalle pastanesi — Floransa ve Siena gibi erken çıkılan günlerde otelden önce kahvaltı için. El yapımı kruvasan, brioche ve millefoglie yapıyorlar; cappuccino'su çok övülüyor.",
+        "menuHighlights": [
+          "Cornetto & brioche",
+          "Millefoglie",
+          "Yaş pasta ve kuru pasta",
+          "Tramezzini (sandviç)",
+          "Cappuccino"
+        ],
+        "hours": "Pzt-Salı & Perşembe-Cmt 06:00-20:00, Pazar 06:00-13:00",
+        "closedOn": [
+          "Carsamba"
+        ],
+        "porkSafe": false,
+        "porkWarning": "Hamur işleri ve kahve güvenli. Tramezzini/sandviçlerin çoğunda prosciutto var — içini sorun.",
+        "phone": "+39 055 807 6663",
+        "nav": "https://www.google.com/maps/search/?api=1&query=Bar+Pasticceria+Bagnoli+Via+Cassia+48+Tavarnelle+Val+di+Pesa",
+        "sourceUrl": "https://restaurantguru.com/Bagnoli-Pasticceria-Tavarnelle-Val-di-Pesa"
+      },
+      {
+        "id": "nv-denni-gianni",
+        "category": "bakery",
+        "name": "Panificio Denni & Gianni",
+        "city": "Barberino Val d'Elsa",
+        "address": "Via Galileo Galilei 18, Barberino Val d'Elsa",
+        "distanceNote": "~2 km · araçla 5 dk",
+        "why": "Odun ateşinde, Toskana unuyla ekmek pişiren geleneksel fırın. Asıl alınacak şey schiacciata: zeytinyağlı, tuzlu, ince Toskana pidesi — gün boyu süren araba gezilerinde yanınıza alabileceğiniz en iyi atıştırmalık. Paket öğle menüsü ve kahvaltı kutusu da hazırlıyorlar.",
+        "menuHighlights": [
+          "Schiacciata toscana",
+          "Odun fırınında ekmek",
+          "Dilim pizza",
+          "Kahvaltılık hamur işleri",
+          "Paket öğle menüsü"
+        ],
+        "hours": "Saatler yayınlanmamış — gitmeden önce arayın",
+        "priceNote": "Schiacciata / dilim pizza: birkaç euro",
+        "porkSafe": false,
+        "porkWarning": "Sade zeytinyağlı schiacciata ve pomodoro güvenli; dolgulu olanlarda prosciutto olabilir, sorun.",
+        "phone": "+39 055 806 8122",
+        "nav": "https://www.google.com/maps/search/?api=1&query=Panificio+Denni+e+Gianni+Via+Galileo+Galilei+18+Barberino+Tavarnelle",
+        "sourceUrl": "https://www.panificiodenniegianni.it/Il-punto-vendita/"
+      }
+    ]
   },
   "flights": [
     { "dir": "out", "date": "2026-07-29", "from": "CPH", "to": "PSA", "dep": "06:05", "arr": "08:30", "carrier": "SAS" },

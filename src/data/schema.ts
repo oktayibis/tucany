@@ -92,6 +92,45 @@ export const tripMetaSchema = z
   })
   .strict();
 
+export const nearbyVenueCategorySchema = z.enum(['restaurant', 'pizza', 'bakery', 'gelato']);
+
+/**
+ * An eating/drinking place within walking or a couple of minutes' drive of the
+ * base hotel — the "we're back at the hotel, now what" list, deliberately kept
+ * apart from the per-day `food` entries, which belong to a planned outing.
+ *
+ * Every field here is transcribed from a named source (`sourceUrl`), never
+ * inferred: an earlier pass at this list carried invented phone numbers and
+ * opening hours, which is worse than having no list at all when someone is
+ * standing outside a locked door at 20:00. `rating` is optional for exactly
+ * that reason — two of these venues have no rating anyone publishes, and an
+ * omitted number is honest where a plausible one would not be.
+ */
+export const nearbyVenueSchema = z
+  .object({
+    id: z.string(),
+    category: nearbyVenueCategorySchema,
+    name: z.string(),
+    city: z.string(),
+    address: z.string(),
+    /** Straight-line km from the hotel, geocoded — not a driving estimate. */
+    distanceNote: z.string(),
+    rating: z.number().min(1).max(5).optional(),
+    /** Which site the `rating` comes from, so a stale number can be re-checked. */
+    ratingNote: z.string().optional(),
+    why: z.string(),
+    menuHighlights: z.array(z.string()),
+    hours: z.string(),
+    closedOn: z.array(weekdaySchema).optional(),
+    priceNote: z.string().optional(),
+    porkSafe: z.boolean().optional(),
+    porkWarning: z.string().optional(),
+    phone: z.string().optional(),
+    nav: z.url().optional(),
+    sourceUrl: z.url().optional(),
+  })
+  .strict();
+
 export const baseSchema = z
   .object({
     name: z.string(),
@@ -104,6 +143,7 @@ export const baseSchema = z
     checkInFrom: clockSchema,
     nav: z.url().optional(),
     rating: z.number().min(1).max(5).optional(),
+    nearbyVenues: z.array(nearbyVenueSchema).optional(),
   })
   .strict();
 
@@ -407,6 +447,8 @@ export type BookingKind = z.infer<typeof bookingKindSchema>;
 
 export type Party = z.infer<typeof partySchema>;
 export type TripMeta = z.infer<typeof tripMetaSchema>;
+export type NearbyVenueCategory = z.infer<typeof nearbyVenueCategorySchema>;
+export type NearbyVenue = z.infer<typeof nearbyVenueSchema>;
 export type Base = z.infer<typeof baseSchema>;
 export type Flight = z.infer<typeof flightSchema>;
 export type Car = z.infer<typeof carSchema>;

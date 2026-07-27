@@ -7,6 +7,7 @@ import { PriceTag } from './PriceTag';
 import { useTrip } from '../state/TripContext';
 import { DayCard } from './DayCard';
 import { Disclosure } from './Disclosure';
+import { HotelVenuesSection } from './HotelVenuesSection';
 import { ModeSwitch } from './ModeSwitch';
 import { PartyControl } from './PartyControl';
 import { NavButton, PhoneButton } from './NavButton';
@@ -76,6 +77,10 @@ export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => 
           </button>
         </div>
       )}
+
+      <div className="px-4 pt-3">
+        <HotelVenuesSection />
+      </div>
 
       <div className="flex items-baseline justify-between px-4 pb-3 pt-6">
         <h2 className="section-label">Günler</h2>
