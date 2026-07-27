@@ -50,7 +50,7 @@ function Stepper({
         onClick={() => onChange(-1)}
         disabled={value <= min}
         aria-label={`${label} sayısını azalt`}
-        className="min-h-11 min-w-11 border border-border bg-surface-2 text-lg font-semibold text-accent disabled:opacity-40"
+        className="min-h-11 min-w-11 rounded-full border border-border bg-surface-2 text-lg font-semibold text-accent disabled:opacity-40"
       >
         −
       </button>
@@ -61,7 +61,7 @@ function Stepper({
         type="button"
         onClick={() => onChange(1)}
         aria-label={`${label} sayısını artır`}
-        className="min-h-11 min-w-11 border border-border bg-surface-2 text-lg font-semibold text-accent"
+        className="min-h-11 min-w-11 rounded-full border border-border bg-surface-2 text-lg font-semibold text-accent"
       >
         +
       </button>

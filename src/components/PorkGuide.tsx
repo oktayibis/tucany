@@ -26,10 +26,10 @@ export function PorkGuide({
   const { porkGuide, phrases } = trip;
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-4 p-4 pb-24">
+    <div className="no-scrollbar flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain p-4 pb-8">
       <h1 className="text-display-lg font-semibold">Domuz rehberi</h1>
 
-      <div role="tablist" aria-label="Domuz rehberi sekmeleri" className="flex border border-border bg-surface-2">
+      <div role="tablist" aria-label="Domuz rehberi sekmeleri" className="seg flex w-full">
         <TabButton active={tab === 'guide'} onClick={() => onTabChange('guide')}>
           Kaçın / Güvenli
         </TabButton>
@@ -58,9 +58,12 @@ function TabButton({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`min-h-11 flex-1 font-display text-sm font-semibold ${
-        active ? 'bg-accent text-white' : 'text-text-muted'
-      }`}
+      // Styled to match `.seg-opt`, but a real tab rather than a radio: the
+      // segmented control's `:has(input:checked)` rule can't apply to a
+      // `role="tab"` button, so the checked look is spelled out here.
+      className={`min-h-[46px] flex-1 cursor-pointer font-display text-body font-semibold ${
+        active ? 'bg-accent text-bg' : 'text-neutral-700'
+      } ${active ? '' : 'hover:bg-[color-mix(in_srgb,var(--color-text)_7%,transparent)]'}`}
     >
       {children}
     </button>
@@ -71,14 +74,14 @@ function GuideTab({ guide }: { readonly guide: PorkGuideData }) {
   const { avoid, avoidNote, safe, caution } = guide;
   return (
     <div className="flex flex-col gap-5">
-      <section className="border-2 border-danger bg-danger-bg p-3">
+      <section className="rounded-xl bg-danger-bg p-4">
         <h2 className="font-display text-base font-semibold text-danger">Bunlardan kaçının</h2>
         <p className="mt-1 text-sm text-danger">{avoidNote}</p>
         <ul className="mt-2 flex flex-wrap gap-1.5">
           {avoid.map((item) => (
             <li
               key={item}
-              className="border border-danger bg-surface-2 px-2 py-1 text-sm font-medium text-danger"
+              className="rounded-full border border-danger bg-surface px-3 py-1 text-body font-medium text-danger"
             >
               {item}
             </li>
@@ -111,7 +114,7 @@ function GuideTab({ guide }: { readonly guide: PorkGuideData }) {
       </section>
 
       {caution.length > 0 && (
-        <section className="border border-warn-border bg-warn-bg p-3 text-warn-text">
+        <section className="rounded-xl bg-warn-bg p-4 text-warn-text">
           <h2 className="font-display text-base font-semibold">Sor, emin olma</h2>
           <ul className="mt-1 flex flex-col gap-1 text-sm">
             {caution.map((item) => (
@@ -140,7 +143,7 @@ function PhrasesTab({ phrases }: { readonly phrases: readonly Phrase[] }) {
             <button
               type="button"
               onClick={() => setFullscreen(phrase)}
-              className="flex min-h-11 w-full flex-col gap-1 border border-border bg-surface-2 p-3 text-left"
+              className="flex min-h-[44px] w-full cursor-pointer flex-col gap-1 rounded-xl bg-surface p-4 text-left"
             >
               <span className="font-display text-xs font-medium uppercase tracking-wide text-text-muted">
                 {CATEGORY_LABEL[phrase.category]}
@@ -193,7 +196,7 @@ function FullscreenPhrase({
         <button
           type="button"
           onClick={onClose}
-          className="min-h-11 shrink-0 border border-border bg-surface px-6 py-3 font-semibold text-text"
+          className="btn btn-secondary min-h-[44px] shrink-0 px-6"
         >
           Kapat
         </button>

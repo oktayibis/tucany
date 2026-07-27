@@ -1,9 +1,14 @@
 /**
  * Text normalisation shared by closure matching and search.
  *
- * The data mixes Turkish spellings with and without diacritics ("Carsamba",
- * "Çarşamba") and names the same venue differently in different sections
- * ("Trattoria Sostanza" in a day, "Trattoria Sostanza (Firenze)" in closures).
+ * Two jobs. First, the search box: the data is written in properly accented
+ * Turkish, but nobody reaches for the ı/ğ/ş keys mid-restaurant, so a query
+ * typed "pazari" has to find "pazarı". Folding both sides makes that work in
+ * either direction. Second, the same venue is named differently in different
+ * sections ("Trattoria Sostanza" in a day, "Trattoria Sostanza (Firenze)" in
+ * closures), and `weekday` values stay ASCII enums ("Carsamba") while their
+ * display forms are accented.
+ *
  * Everything that compares two human-written names goes through here.
  */
 

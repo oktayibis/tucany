@@ -2,37 +2,44 @@ import type { Shopping } from '../data/schema';
 import { euro } from '../lib/format';
 import { NavButton } from './NavButton';
 
+/** The day's shopping stops, as the mockup's name/description rows with an arrow out to maps. */
 export function ShoppingSection({ shopping }: { readonly shopping: readonly Shopping[] }) {
   if (shopping.length === 0) {
-    return <p className="text-sm text-text-muted">Bu gün için ayrı bir alışveriş durağı yok.</p>;
+    return <p className="text-body text-neutral-700">Bu gün için ayrı bir alışveriş durağı yok.</p>;
   }
 
   return (
     <ul className="flex flex-col gap-2">
       {shopping.map((entry) => (
-        <li key={entry.name} className="border border-border bg-surface-2 p-3">
-          <div className="flex flex-wrap items-start justify-between gap-2">
-            <p className="font-display font-medium">
+        <li
+          key={entry.name}
+          className="flex items-center gap-3 rounded-xl bg-surface px-4 py-3"
+        >
+          <div className="min-w-0 flex-1">
+            <p className="font-display text-item font-semibold">
               {entry.name}
               {entry.highlight === true && (
-                <span className="ml-2 bg-antimony px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
-                  Öne çıkan
-                </span>
+                <span className="tag tag-accent-2 ml-2 align-middle">öne çıkan</span>
               )}
             </p>
-            <span className="text-sm text-text-muted">
-              {entry.cost === undefined || entry.cost === null ? 'fiyat yok' : euro(entry.cost)}
-            </span>
+            <p className="mt-[3px] text-meta text-neutral-700">
+              {[
+                entry.for,
+                entry.cost === undefined || entry.cost === null ? 'fiyat yok' : euro(entry.cost),
+              ].join(' · ')}
+            </p>
+            {entry.address !== undefined && (
+              <p className="text-meta text-neutral-600">{entry.address}</p>
+            )}
+            {entry.tip !== undefined && (
+              <p className="mt-1 text-meta italic text-neutral-700">{entry.tip}</p>
+            )}
           </div>
-          <p className="mt-1 text-sm">{entry.for}</p>
-          {entry.address !== undefined && (
-            <p className="text-xs text-text-muted">{entry.address}</p>
-          )}
-          {entry.tip !== undefined && <p className="mt-1 text-sm italic">{entry.tip}</p>}
           {entry.nav !== undefined && (
-            <div className="mt-2">
-              <NavButton place={{ name: entry.name, nav: entry.nav }} />
-            </div>
+            <NavButton
+              place={{ name: entry.name, nav: entry.nav }}
+              className="min-h-[44px] w-[52px] flex-none"
+            />
           )}
         </li>
       ))}

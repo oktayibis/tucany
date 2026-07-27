@@ -4,6 +4,7 @@ import {
   activeDayIndex,
   daysBetween,
   daysUntilStart,
+  formatDateRange,
   formatDayMonth,
   formatDriving,
   isWithinTrip,
@@ -102,6 +103,19 @@ describe('formatting', () => {
   it('writes dates the way the family says them', () => {
     expect(formatDayMonth('2026-07-29')).toBe('29 Temmuz');
     expect(formatDayMonth('2026-08-01')).toBe('1 Ağustos');
+  });
+
+  it('writes the trip span as one chip-sized range', () => {
+    expect(formatDateRange('2026-07-29', '2026-08-07')).toBe('29 Tem – 7 Ağu 2026');
+    expect(formatDateRange(trip.trip.startDate, trip.trip.endDate)).toBe('29 Tem – 7 Ağu 2026');
+  });
+
+  it('drops the repeated month when the range stays inside one', () => {
+    expect(formatDateRange('2026-08-03', '2026-08-07')).toBe('3 – 7 Ağu 2026');
+  });
+
+  it('keeps both months when the range crosses a year', () => {
+    expect(formatDateRange('2026-12-28', '2027-01-03')).toBe('28 Ara – 3 Oca 2027');
   });
 
   it('writes driving times compactly', () => {

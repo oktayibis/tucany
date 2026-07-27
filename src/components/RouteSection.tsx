@@ -7,89 +7,82 @@ import { RatingBadge } from './RatingBadge';
 
 /**
  * The driving detail for a day: first leg out of the hotel, the per-leg
- * breakdown, and the hotel's own card.
+ * breakdown, and the hotel's own card — each an "İlk durak / Sonra / Dönüş"
+ * row in the mockup's shape.
  *
- * All of it lives inside a collapsed disclosure in `DayDetail`. It used to
+ * All of it lives inside a collapsed disclosure in the day panel. It used to
  * open every day at full height — including a hotel card identical on all ten
  * days — above the stops the family actually came to see. The one number worth
- * seeing without opening anything (total driving) is hoisted into the day
- * header's stat strip instead.
+ * seeing without opening anything (total driving) sits in the header's stat
+ * strip and on the disclosure's own row instead.
  */
 export function RouteSection({ day }: { readonly day: Day }) {
   const dayRoute = getDayRoute(day);
 
   return (
-    <div className="flex flex-col gap-4 text-sm">
+    <div className="flex flex-col gap-2">
       {dayRoute !== undefined && (
-        <div>
-          <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-            İlk durak
-          </p>
-          <p className="mt-0.5 font-display font-medium">
-            Otel → {dayRoute.starterRoute.destination}
-          </p>
-          <p className="mt-0.5 text-xs text-text-muted">
-            {formatDriving(dayRoute.starterRoute.durationMin)} · ~{dayRoute.starterRoute.km} km
-          </p>
-          <div className="mt-2">
-            <NavButton
-              place={{
-                name: dayRoute.starterRoute.destination,
-                nav: dayRoute.starterRoute.navUrl,
-              }}
-            />
-          </div>
-        </div>
+        <Leg
+          label="İlk durak"
+          name={`Otel → ${dayRoute.starterRoute.destination}`}
+          detail={`${formatDriving(dayRoute.starterRoute.durationMin)} · ~${dayRoute.starterRoute.km} km`}
+          nav={{ name: dayRoute.starterRoute.destination, nav: dayRoute.starterRoute.navUrl }}
+        />
       )}
 
-      {dayRoute !== undefined && dayRoute.legs.length > 0 && (
-        <div>
-          <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-            Etaplar (~{dayRoute.totalKm} km)
-          </p>
-          <ul className="mt-1 flex flex-col">
-            {dayRoute.legs.map((leg) => (
-              <li
-                key={`${leg.from}-${leg.to}`}
-                className="flex flex-wrap items-center justify-between gap-2 border-b border-border py-1.5 text-xs last:border-b-0"
-              >
-                <span className="font-medium">
-                  {leg.from} → {leg.to}
-                </span>
-                <span className="flex items-center gap-2 text-text-muted">
-                  <span className="font-semibold text-accent">{formatDriving(leg.durationMin)}</span>
-                  <span>{leg.km} km</span>
-                  {leg.navUrl !== undefined && (
-                    <a
-                      href={leg.navUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-semibold text-accent underline"
-                    >
-                      Aç
-                    </a>
-                  )}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {dayRoute?.legs.map((leg) => (
+        <Leg
+          key={`${leg.from}-${leg.to}`}
+          label="Sonra"
+          name={`${leg.from} → ${leg.to}`}
+          detail={`${formatDriving(leg.durationMin)} · ~${leg.km} km`}
+          nav={leg.navUrl === undefined ? undefined : { name: leg.to, nav: leg.navUrl }}
+        />
+      ))}
 
-      <div className="border-t border-border pt-3">
-        <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-          Otel (başlangıç & dönüş)
+      <div className="rounded-xl bg-neutral-200 px-4 py-3">
+        <p className="text-micro uppercase tracking-[0.1em] text-neutral-700">
+          Otel (başlangıç &amp; dönüş)
         </p>
-        <div className="mt-0.5 flex items-center gap-2">
-          <p className="font-display font-medium">{trip.base.name}</p>
+        <div className="mt-1 flex items-center gap-2">
+          <p className="font-display text-lead font-semibold">{trip.base.name}</p>
           <RatingBadge rating={trip.base.rating} />
         </div>
-        <p className="text-xs text-text-muted">{trip.base.address}</p>
+        <p className="mt-[3px] text-meta text-neutral-700">{trip.base.address}</p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
-          <NavButton place={trip.base} />
-          <PhoneButton phone={trip.base.phone} />
+          <NavButton place={trip.base} label="Yol tarifi" alt className="min-h-[44px]" />
+          <PhoneButton phone={trip.base.phone} className="min-h-[44px] w-[52px]" />
         </div>
       </div>
+    </div>
+  );
+}
+
+function Leg({
+  label,
+  name,
+  detail,
+  nav,
+}: {
+  readonly label: string;
+  readonly name: string;
+  readonly detail: string;
+  readonly nav?: { readonly name: string; readonly nav: string } | undefined;
+}) {
+  return (
+    <div className="flex items-center gap-3 rounded-xl bg-neutral-200 px-4 py-3">
+      <div className="min-w-0 flex-1">
+        <p className="text-micro uppercase tracking-[0.1em] text-neutral-700">{label}</p>
+        <p className="mt-1 font-display text-lead font-semibold leading-[1.3]">{name}</p>
+        <p className="mt-[3px] text-meta text-neutral-700">{detail}</p>
+      </div>
+      {nav !== undefined && (
+        <NavButton
+          place={nav}
+          variant="secondary"
+          className="min-h-[44px] w-[52px] flex-none border-neutral-400"
+        />
+      )}
     </div>
   );
 }

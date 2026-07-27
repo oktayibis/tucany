@@ -1,23 +1,39 @@
 /**
  * Self-hosted fonts only — no font CDN, no Google Fonts link. This app has to
  * cold-start with airplane mode on, so every asset it needs has to be in the
- * PWA precache. `latin` + `latin-ext` covers Turkish (ç ğ ı ö ş ü) without
- * pulling in Cyrillic/Vietnamese/Greek subsets nobody here reads.
+ * PWA precache. `latin` + `latin-ext` covers Turkish without pulling in
+ * Cyrillic/Vietnamese/Devanagari subsets nobody here reads.
  *
- * Oswald: the condensed grotesque for display type and numerals — the shape
- * of Italian road signage. Public Sans: the humanist body face, chosen for
- * how legible it stays at small sizes in direct sun.
+ * Both faces need BOTH subsets, and it is not optional: for each of them the
+ * `latin` file carries ç Ç ı ö Ö ü Ü while ğ Ğ İ ş Ş live only in `latin-ext`.
+ * Drop either import and Turkish words break mid-word into a fallback face.
+ *
+ * Baloo 2: the warm, rounded display face for headings and numerals. It
+ * replaced Caprasimo, which has no ğ Ğ İ ş Ş at all — not in `latin`, not in
+ * its 16-glyph `latin-ext` — so every "Değişiklik", "Şu an" or "İniş" heading
+ * silently fell back to Georgia for those letters. Baloo 2 keeps the same
+ * voice with real Turkish coverage.
+ *
+ * Figtree: the humanist body face, chosen for how legible it stays at small
+ * sizes in direct sun.
+ *
+ * Weights: unlike Caprasimo (400 only), Baloo 2 ships real 400–700, so the
+ * `font-medium`/`font-semibold`/`font-bold` classes already paired with
+ * `font-display` across the app now resolve to designed weights instead of
+ * browser-synthesised fake bold. All four are precached deliberately.
  */
-@import '@fontsource/oswald/latin-500.css';
-@import '@fontsource/oswald/latin-ext-500.css';
-@import '@fontsource/oswald/latin-600.css';
-@import '@fontsource/oswald/latin-ext-600.css';
-@import '@fontsource/oswald/latin-700.css';
-@import '@fontsource/oswald/latin-ext-700.css';
+@import '@fontsource/baloo-2/latin-400.css';
+@import '@fontsource/baloo-2/latin-ext-400.css';
+@import '@fontsource/baloo-2/latin-500.css';
+@import '@fontsource/baloo-2/latin-ext-500.css';
+@import '@fontsource/baloo-2/latin-600.css';
+@import '@fontsource/baloo-2/latin-ext-600.css';
+@import '@fontsource/baloo-2/latin-700.css';
+@import '@fontsource/baloo-2/latin-ext-700.css';
 
-@import '@fontsource/public-sans/latin-400.css';
-@import '@fontsource/public-sans/latin-ext-400.css';
-@import '@fontsource/public-sans/latin-500.css';
-@import '@fontsource/public-sans/latin-ext-500.css';
-@import '@fontsource/public-sans/latin-600.css';
-@import '@fontsource/public-sans/latin-ext-600.css';
+@import '@fontsource/figtree/latin-400.css';
+@import '@fontsource/figtree/latin-ext-400.css';
+@import '@fontsource/figtree/latin-500.css';
+@import '@fontsource/figtree/latin-ext-500.css';
+@import '@fontsource/figtree/latin-600.css';
+@import '@fontsource/figtree/latin-ext-600.css';

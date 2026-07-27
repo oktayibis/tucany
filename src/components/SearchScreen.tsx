@@ -37,7 +37,7 @@ export function SearchScreen({ onOpenDay }: { readonly onOpenDay: (dayId: string
   const results = useMemo(() => search(trip, filters), [filters]);
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-4 p-4 pb-24">
+    <div className="no-scrollbar flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain p-4 pb-8">
       <h1 className="text-display-lg font-semibold">Ara</h1>
 
       <input
@@ -45,7 +45,7 @@ export function SearchScreen({ onOpenDay }: { readonly onOpenDay: (dayId: string
         value={filters.query}
         onChange={(event) => setFilters({ ...filters, query: event.target.value })}
         placeholder="Durak, yemek, alışveriş, cümle ara…"
-        className="min-h-11 border border-border bg-surface-2 px-3 py-2 text-base"
+        className="min-h-[44px] rounded-full border border-border bg-surface-2 px-4 py-2 text-base"
         aria-label="Ara"
       />
 
@@ -119,13 +119,13 @@ export function SearchScreen({ onOpenDay }: { readonly onOpenDay: (dayId: string
                 <button
                   type="button"
                   onClick={() => onOpenDay(dayId)}
-                  className="flex min-h-11 w-full flex-col gap-0.5 border border-border bg-surface-2 p-3 text-left"
+                  className="flex min-h-[44px] w-full cursor-pointer flex-col gap-0.5 rounded-xl bg-surface p-4 text-left"
                 >
                   <ResultMeta kind={result.kind} subtitle={result.subtitle} />
                   <span className="font-medium">{result.title}</span>
                 </button>
               ) : (
-                <div className="flex flex-col gap-0.5 border border-border bg-surface-2 p-3">
+                <div className="flex flex-col gap-0.5 rounded-xl bg-surface p-4">
                   <ResultMeta kind={result.kind} subtitle={result.subtitle} />
                   <span className="font-medium">{result.title}</span>
                 </div>
@@ -183,8 +183,8 @@ function FilterChip({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`min-h-11 border px-2.5 py-1.5 text-xs font-semibold ${
-        active ? 'border-accent bg-accent text-white' : 'border-border text-text-muted'
+      className={`btn min-h-[44px] px-4 text-meta ${
+        active ? 'btn-primary' : 'btn-secondary text-neutral-700'
       }`}
     >
       {children}

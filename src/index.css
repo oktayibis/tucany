@@ -2,78 +2,204 @@
 @import './fonts.css';
 
 /*
- * Design tokens. Tailwind v4's `@theme` both registers these as real CSS
- * custom properties on `:root` AND generates utilities that read them via
- * `var(--color-x)` — so a dark-mode override further down the cascade (same
- * property name, higher specificity/later rule) is all a component needs;
- * no component ever hardcodes a hex value.
+ * Design tokens, ported 1:1 from the "Organic" design system that the
+ * `Toskana 2026.dc.html` mockup is built on (`_ds/organic-…/styles.css`).
+ * Tailwind v4's `@theme` both registers these as real CSS custom properties on
+ * `:root` AND generates utilities that read them via `var(--color-x)` — so a
+ * dark-mode override further down the cascade (same property name, later rule)
+ * is all a component needs; no component ever hardcodes a hex value.
  *
- * Ground: brown Italian tourist-heritage road signage (surfaces, headers)
- * + Montelupo majolica glaze colours (cobalt / antimony / manganese / tin).
- * Deliberately not cream+serif+terracotta.
+ * Ground: Tuscan terracotta + olive grove on a warm cream page. The three
+ * tonal ramps below are the design system's own, generated in OKLCH on one
+ * shared lightness scale, so step N of any ramp matches step N of the others
+ * in visual value. Components address ramp steps directly (`text-accent-700`,
+ * `bg-accent-2-100`) wherever the mockup does.
  */
 @theme {
-  --color-sign-brown: #4a3728;
-  --color-cobalt: #1f4e8c;
-  --color-antimony: #e3a32b;
-  --color-manganese: #6b4f70;
-  --color-tin: #e8eae7;
-  --color-ink: #1a1614;
+  /* — neutral ramp — */
+  --color-neutral-100: #f9f4ed;
+  --color-neutral-200: #eee7db;
+  --color-neutral-300: #dcd3c4;
+  --color-neutral-400: #c0b6a5;
+  --color-neutral-500: #a19786;
+  --color-neutral-600: #82796a;
+  --color-neutral-700: #645c50;
+  --color-neutral-800: #474238;
+  --color-neutral-900: #2e2b25;
+
+  /* — terracotta ramp — */
+  --color-accent-100: #fff2eb;
+  --color-accent-200: #ffe1d0;
+  --color-accent-300: #ffc6a5;
+  --color-accent-400: #f6a06b;
+  --color-accent-500: #d67f48;
+  --color-accent-600: #b2622d;
+  --color-accent-700: #8c491a;
+  --color-accent-800: #643312;
+  --color-accent-900: #402310;
+
+  /* — olive ramp — */
+  --color-accent-2-100: #f0fae1;
+  --color-accent-2-200: #e1eecc;
+  --color-accent-2-300: #ccdbb2;
+  --color-accent-2-400: #aebf92;
+  --color-accent-2-500: #8fa073;
+  --color-accent-2-600: #728157;
+  --color-accent-2-700: #56633f;
+  --color-accent-2-800: #3d472b;
+  --color-accent-2-900: #272e1b;
+
+  /* Raw material names kept as aliases onto the ramps above, so the handful of
+     components that reach for a fixed fill (TierBadge's chips, theme dots)
+     don't need to know ramp arithmetic. */
+  --color-terracotta-deep: var(--color-accent-900);
+  --color-clay: var(--color-accent-700);
+  --color-olive: var(--color-accent-2-500);
+  --color-wine: #8c5b53;
+  --color-gold: #c98a2e;
+  --color-cream: #f5ead8;
+  --color-ink: #201e1d;
   --color-danger: #b3261e;
-  --color-safe: #3f6b3e;
+  --color-safe: #56633f;
   --color-theme-plaj: #1f8a8c;
 
-  --color-bg: var(--color-tin);
-  --color-surface: #f5f6f3;
-  --color-surface-2: #ffffff;
-  --color-plate: var(--color-sign-brown);
-  --color-plate-text: #f3e9dd;
+  /* — semantic aliases: what components actually name — */
+  --color-bg: #f5ead8;
+  --color-surface: #ebddc5;
+  --color-surface-2: var(--color-neutral-200);
+  --color-plate: var(--color-accent-200);
+  --color-plate-text: var(--color-accent-800);
   --color-text: var(--color-ink);
-  --color-text-muted: #5b534c;
-  --color-accent: var(--color-cobalt);
-  --color-accent-2: var(--color-antimony);
-  --color-secondary: var(--color-manganese);
-  --color-border: #c9cdc8;
-  --color-warn-bg: #fbeec9;
-  --color-warn-border: var(--color-antimony);
-  --color-warn-text: #6b4a12;
+  --color-text-muted: var(--color-neutral-700);
+  --color-accent: #c67139;
+  --color-accent-2: #7a8a5e;
+  --color-secondary: var(--color-wine);
+  --color-border: #d3c9ba;
+  --color-warn-bg: var(--color-accent-100);
+  --color-warn-border: var(--color-accent-300);
+  --color-warn-text: var(--color-accent-900);
   --color-danger-bg: #f7e3e1;
 
-  --font-display: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
-  --font-body: 'Public Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  /*
+   * Baloo 2, not Caprasimo: Caprasimo ships no ğ Ğ İ ş Ş in any subset, which
+   * is unusable for a Turkish-language app (see fonts.css). The fallback is a
+   * sans stack, not Georgia — Baloo 2 is a rounded sans, so a serif fallback
+   * would swap voice entirely on the frame before the font lands.
+   */
+  --font-display: 'Baloo 2', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --font-body: 'Figtree', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
-  /* Signage is a rectangular plate, not a soft app bubble. */
-  --radius: 0.125rem;
+  /*
+   * The design system is built on a 4.4px rhythm, not 4px. Re-basing Tailwind's
+   * spacing unit here means `p-4` IS the system's `--space-4` (17.6px), `gap-2`
+   * its `--space-2`, `pb-8` its `--space-8` — the mockup's spacing values
+   * transcribe straight across with no arithmetic and no arbitrary values.
+   */
+  --spacing: 0.275rem;
 
-  --text-display-xl: 2rem;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  /* The system's rounded frame: cards and panels are `--radius-lg * 1.15`,
+     the home header's skirt `* 1.4`. */
+  --radius-xl: 32.2px;
+  --radius-2xl: 39.2px;
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2e2b25 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2e2b25 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2e2b25 22%, transparent);
+
+  /*
+   * Type scale transcribed from the mockup's literal px sizes. Named by role
+   * rather than by size so a retune stays in one place.
+   */
+  --text-micro: 10px;
+  --text-micro--line-height: 1.4;
+  --text-label: 11px;
+  --text-label--line-height: 1.4;
+  --text-meta: 12.5px;
+  --text-meta--line-height: 1.4;
+  --text-note: 13px;
+  --text-note--line-height: 1.5;
+  --text-body: 14px;
+  --text-body--line-height: 1.5;
+  --text-lead: 15px;
+  --text-lead--line-height: 1.5;
+  --text-item: 16px;
+  --text-item--line-height: 1.25;
+  --text-price: 17px;
+  --text-price--line-height: 1.2;
+  --text-display-md: 20px;
+  --text-display-md--line-height: 1.2;
+  --text-display-lg: 24px;
+  --text-display-lg--line-height: 1.2;
+  --text-display-xl: 34px;
   --text-display-xl--line-height: 1.1;
-  --text-display-lg: 1.5rem;
-  --text-display-lg--line-height: 1.15;
-  --text-display-md: 1.0625rem;
-  --text-display-md--line-height: 1.25;
+  --text-hero: 46px;
+  --text-hero--line-height: 1.05;
 }
 
-/* Dark theme: same token names, new values — every component follows for free. */
+/*
+ * Dark theme. The design system itself only specifies light, so this is a
+ * considered adaptation rather than a transcription: both tonal ramps are
+ * inverted in lightness while keeping their hue, so every `accent-700`-style
+ * reference in a component keeps meaning "the readable one against the page"
+ * without a single component needing a dark-mode branch.
+ */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #14100d;
-    --color-surface: #211a15;
-    --color-surface-2: #1a1512;
-    --color-plate: #5c4632;
-    --color-plate-text: #f6efe5;
-    --color-text: #f1ede6;
-    --color-text-muted: #b8ada0;
-    --color-accent: #6c9bd8;
-    --color-accent-2: #f0b750;
-    --color-secondary: #9b7ca3;
-    --color-border: #3a342e;
-    --color-warn-bg: #3a2c10;
-    --color-warn-border: #f0b750;
-    --color-warn-text: #f0c978;
+    --color-neutral-100: #221f1a;
+    --color-neutral-200: #2b2721;
+    --color-neutral-300: #383229;
+    --color-neutral-400: #4d453a;
+    --color-neutral-500: #6d6455;
+    --color-neutral-600: #8d8372;
+    --color-neutral-700: #ab9f8b;
+    --color-neutral-800: #cabda6;
+    --color-neutral-900: #eadcc4;
+
+    --color-accent-100: #2a1a10;
+    --color-accent-200: #3a2415;
+    --color-accent-300: #4d301a;
+    --color-accent-400: #6b4322;
+    --color-accent-500: #9a5f30;
+    --color-accent-600: #c07a41;
+    --color-accent-700: #e0935a;
+    --color-accent-800: #f3b184;
+    --color-accent-900: #ffd2b3;
+
+    --color-accent-2-100: #1b2013;
+    --color-accent-2-200: #242b19;
+    --color-accent-2-300: #313a22;
+    --color-accent-2-400: #45512f;
+    --color-accent-2-500: #64754a;
+    --color-accent-2-600: #839565;
+    --color-accent-2-700: #a3b382;
+    --color-accent-2-800: #c3d0a6;
+    --color-accent-2-900: #e0e9c9;
+
+    --color-bg: #17120c;
+    --color-surface: #221a11;
+    --color-surface-2: var(--color-neutral-200);
+    --color-plate: var(--color-accent-200);
+    --color-plate-text: var(--color-accent-900);
+    --color-text: #f3e9db;
+    --color-text-muted: var(--color-neutral-700);
+    --color-accent: #e0935a;
+    --color-accent-2: #a3b382;
+    --color-secondary: #c99b91;
+    --color-border: #3d3022;
+    --color-warn-bg: var(--color-accent-100);
+    --color-warn-border: var(--color-accent-400);
+    --color-warn-text: var(--color-accent-900);
     --color-danger: #e5645a;
     --color-danger-bg: #3a1815;
     --color-safe: #7cb889;
     --color-theme-plaj: #4fc3c7;
+
+    --shadow-sm: 0 1px 2px color-mix(in srgb, #000 45%, transparent);
+    --shadow-md: 0 3px 10px color-mix(in srgb, #000 50%, transparent);
+    --shadow-lg: 0 12px 32px color-mix(in srgb, #000 60%, transparent);
   }
 }
 
@@ -81,10 +207,18 @@ html {
   color-scheme: light dark;
 }
 
+/*
+ * The page behind the phone frame. On a phone the frame covers it entirely; on
+ * a desktop it is the muted surround the 480px column sits on, exactly as the
+ * mockup stages it.
+ */
 body {
-  background: var(--color-bg);
+  background: var(--color-neutral-300);
   color: var(--color-text);
   font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  overscroll-behavior: none;
 }
 
 h1,
@@ -92,12 +226,197 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
+  /* Baloo 2 sets generous default sidebearings; a touch negative keeps display
+     sizes from looking loose without tightening small headings into each other. */
+  letter-spacing: -0.005em;
   text-wrap: balance;
 }
 
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+/*
+ * The design system's own component classes, ported from `_ds/organic-…/
+ * styles.css` so the markup can carry the mockup's class names verbatim
+ * (`btn btn-primary`, `tag tag-accent`, `card elev-sm`) instead of every call
+ * site re-deriving the same padding/radius/colour triple in utilities. The
+ * system's "rounded frame" rule is folded in: cards go to `--radius-xl`, and
+ * buttons, tags and segmented controls go fully pill.
+ */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--color-text);
+    background: transparent;
+    border: 1px solid transparent;
+    padding: var(--spacing) calc(var(--spacing) * 3.6);
+    border-radius: 999px;
+  }
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent-600);
+  }
+  .btn-primary:active {
+    background: var(--color-accent-700);
+  }
+  .btn-secondary {
+    border-color: var(--color-border);
+  }
+  .btn-secondary:hover {
+    background: color-mix(in srgb, var(--color-text) 7%, transparent);
+  }
+  .btn-secondary:active {
+    background: color-mix(in srgb, var(--color-text) 14%, transparent);
+  }
+  .btn-ghost {
+    color: var(--color-accent);
+    padding-inline: var(--spacing);
+  }
+  .btn-ghost:hover {
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+  .btn-icon {
+    padding: 0;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--text-label);
+    letter-spacing: 0.02em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tag-accent {
+    background: var(--color-accent-100);
+    color: var(--color-accent-800);
+  }
+  .tag-accent-2 {
+    background: var(--color-accent-2-100);
+    color: var(--color-accent-2-800);
+  }
+  .tag-neutral {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-800);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+    padding: calc(var(--spacing) * 3);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+  }
+  .card-kicker {
+    font-size: var(--text-micro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .elev-sm {
+    box-shadow: var(--shadow-sm);
+  }
+  .elev-md {
+    box-shadow: var(--shadow-md);
+  }
+  .elev-lg {
+    box-shadow: var(--shadow-lg);
+  }
+
+  /*
+   * The design system hides scrollbars outright. Applied per-container rather
+   * than globally so a desktop browser keeps its usual page scrollbar, while
+   * the day pager's horizontal track — which is swiped, never dragged — does
+   * not draw a grey rail across the bottom of every day.
+   */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  /* The system's uppercase micro-heading, used for every section label. */
+  .section-label {
+    font-size: var(--text-note);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-neutral-700);
+  }
+
+  .seg {
+    display: inline-flex;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    /*
+     * `overflow: hidden` makes a flex item's automatic minimum size resolve to
+     * 0 instead of its content height, so a `.seg` dropped straight into a
+     * scrolling flex column collapses to its own 2px of border. A segmented
+     * control should never squash, so it opts out of shrinking entirely.
+     */
+    flex-shrink: 0;
+  }
+  .seg-opt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 12px;
+    font-size: var(--text-body);
+    font-family: var(--font-display);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .seg-opt + .seg-opt {
+    border-left: 1px solid var(--color-border);
+  }
+  .seg-opt:has(input:checked) {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+  .seg-opt:not(:has(input:checked)):hover {
+    background: color-mix(in srgb, var(--color-text) 7%, transparent);
+  }
+  .seg-opt:has(input:focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+  .seg-opt input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
 }
 
 /*

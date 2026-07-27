@@ -46,10 +46,10 @@ export function Sheet({
       aria-labelledby={titleId}
     >
       <div
-        className="flex max-h-[88vh] w-full max-w-lg flex-col border border-border bg-surface shadow-xl"
+        className="flex max-h-[88vh] w-full max-w-lg flex-col rounded-t-xl border border-border bg-surface shadow-xl sm:rounded-xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="flex items-start justify-between gap-3 border-b border-border bg-surface p-4">
+        <div className="flex items-start justify-between gap-3 rounded-t-xl border-b border-border bg-surface p-4">
           <div className="min-w-0">
             {eyebrow !== undefined && (
               <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
@@ -57,7 +57,7 @@ export function Sheet({
               </p>
             )}
             <div className="flex flex-wrap items-center gap-2">
-              <h2 id={titleId} className="font-display text-display-lg font-semibold">
+              <h2 id={titleId} className="font-display text-display-lg">
                 {title}
               </h2>
               {titleExtra}
@@ -67,7 +67,7 @@ export function Sheet({
             type="button"
             onClick={onClose}
             aria-label="Kapat"
-            className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center border border-border bg-surface-2 text-lg text-text-muted"
+            className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full border border-border bg-surface-2 text-lg text-text-muted"
           >
             ✕
           </button>
@@ -76,7 +76,7 @@ export function Sheet({
         <div className="flex-1 overflow-y-auto p-4">{children}</div>
 
         {footer !== undefined && (
-          <div className="border-t border-border bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          <div className="rounded-b-xl border-t border-border bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
             {footer}
           </div>
         )}

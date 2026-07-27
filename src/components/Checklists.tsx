@@ -36,7 +36,7 @@ export function Checklists() {
   const visitedCount = visitableStops.filter(({ stop }) => visited.has(stop.id)).length;
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-6 p-4 pb-24">
+    <div className="no-scrollbar flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto overscroll-contain p-4 pb-8">
       <h1 className="text-display-lg font-semibold">Listeler</h1>
 
       <section>
@@ -66,7 +66,7 @@ export function Checklists() {
                   const key = packingKey(category, index);
                   return (
                     <li key={key}>
-                      <label className="flex min-h-11 items-center gap-2 border border-border bg-surface-2 px-3 py-2 text-sm">
+                      <label className="flex min-h-[44px] items-center gap-2 rounded-xl bg-surface px-4 py-2 text-body">
                         <input
                           type="checkbox"
                           checked={packingDone.has(key)}
@@ -93,7 +93,7 @@ export function Checklists() {
         <ul className="mt-2 flex flex-col gap-1">
           {visitableStops.map(({ dayTitle, stop }) => (
             <li key={stop.id}>
-              <label className="flex min-h-11 items-center gap-2 border border-border bg-surface-2 px-3 py-2 text-sm">
+              <label className="flex min-h-[44px] items-center gap-2 rounded-xl bg-surface px-4 py-2 text-body">
                 <input
                   type="checkbox"
                   checked={visited.has(stop.id)}
@@ -125,7 +125,7 @@ function BookingRow({
   readonly onToggle: () => void;
 }) {
   return (
-    <li className="border border-border bg-surface-2 p-3">
+    <li className="rounded-xl bg-surface p-4">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <label className="flex min-h-11 items-center gap-2 font-display font-medium">
           <input

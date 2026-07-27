@@ -1,115 +1,116 @@
 import { trip } from '../data/trip';
 import { chosenOption, effectiveDrivingMinutes } from '../lib/budget';
-import { formatDriving } from '../lib/dates';
+import { formatDateRange } from '../lib/dates';
 import { euro } from '../lib/format';
+import { MODE_INFO } from '../lib/modes';
 import { PriceTag } from './PriceTag';
 import { useTrip } from '../state/TripContext';
 import { DayCard } from './DayCard';
+import { Disclosure } from './Disclosure';
 import { ModeSwitch } from './ModeSwitch';
 import { PartyControl } from './PartyControl';
 import { NavButton, PhoneButton } from './NavButton';
 
 /**
- * Home. The signature element: a continuous vertical route where each day is
- * a waypoint and the segment before it is drawn tall or short in proportion
- * to that day's driving minutes — so the two heavy driving days (Arezzo,
- * Val d'Orcia) visibly widen the line and the near-zero days sit close
- * together, legible at a glance before reading a single number.
+ * Home. A warm header skirt over a plain stack of day cards — each day sits on
+ * its own, total on its right, with no line connecting them.
+ *
+ * This is a scroll container, not a scrolling page: `App` owns the viewport
+ * height and this fills the space left between the header and the tab bar.
  */
 export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => void }) {
   const { today, isOnTrip, activeDayId, budget, mode, party, chosenOptions, upgrades } = useTrip();
+  const activeDay = trip.days.find((day) => day.id === activeDayId);
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col pb-24">
-      <header className="bg-plate px-4 pb-5 pt-6 text-plate-text">
-        <h1 className="font-display text-display-xl font-semibold">{trip.trip.title}</h1>
-        <p className="text-sm opacity-85">
-          🏨 {trip.base.name} · {trip.trip.nights} gece
+    <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <header className="rounded-b-2xl bg-plate px-4 pb-6 pt-6 text-plate-text">
+        <span className="tag tag-accent">
+          Toskana · {formatDateRange(trip.trip.startDate, trip.trip.endDate)}
+        </span>
+        <h1 className="mb-2 mt-3 font-display text-hero font-semibold tracking-[-0.02em]">
+          {trip.trip.title}
+        </h1>
+        <p className="text-lead text-accent-800">
+          {trip.base.name} · {trip.trip.nights} gece
+          <br />
+          {trip.base.address}
         </p>
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <NavButton place={trip.base} note="Otele yol tarifi al" />
-          <PhoneButton phone={trip.base.phone} />
+        <div className="mt-4 flex items-stretch gap-2">
+          <NavButton
+            place={trip.base}
+            label="Otele yol tarifi"
+            alt
+            iconSize={18}
+            className="min-h-[52px] flex-1 text-lead"
+          />
+          <PhoneButton phone={trip.base.phone} className="min-h-[52px] w-[64px]" />
         </div>
       </header>
 
-      <div className="-mt-3.5 px-4">
-        <ModeSwitch />
+      {/*
+       * Not in the mockup, which shows the mode switch only inside a day panel.
+       * Kept here deliberately: the "Toplam" figure directly below reacts to
+       * both of these, and burying them one screen deep would mean you cannot
+       * see a mode change and its effect on the trip total at the same time.
+       * Collapsed by default so the day list still opens as the mockup's.
+       */}
+      <div className="px-4 pt-4">
+        <Disclosure title="Bütçe modu ve kişi sayısı" hint={MODE_INFO[mode].label}>
+          <div className="flex flex-col gap-4">
+            <ModeSwitch />
+            <PartyControl />
+          </div>
+        </Disclosure>
       </div>
 
-      <div className="flex flex-col gap-4 px-4 pt-4">
-        <PartyControl />
-
-        {isOnTrip && (
+      {isOnTrip && activeDay !== undefined && (
+        <div className="px-4 pt-3">
           <button
             type="button"
             onClick={() => onOpenDay(activeDayId)}
-            className="min-h-11 border-2 border-accent bg-surface-2 p-3 text-left"
+            className="card w-full cursor-pointer gap-1 bg-accent-100 p-4 text-left ring-2 ring-accent"
           >
-            <p className="font-display text-xs font-semibold uppercase tracking-wide text-accent">
-              Bugün
-            </p>
-            <p className="font-display font-medium">
-              {trip.days.find((day) => day.id === activeDayId)?.title ?? ''}
-            </p>
+            <span className="card-kicker">Bugün</span>
+            <span className="card-title text-display-md">{activeDay.title}</span>
           </button>
-        )}
+        </div>
+      )}
+
+      <div className="flex items-baseline justify-between px-4 pb-3 pt-6">
+        <h2 className="section-label">Günler</h2>
+        <p className="text-note text-neutral-700">
+          Toplam{' '}
+          <PriceTag
+            amount={budget.grandTotal}
+            className="font-display text-lead font-semibold text-text"
+          />
+        </p>
       </div>
 
-      <ol className="relative flex flex-col px-4 pl-9 pt-6 before:absolute before:bottom-8 before:left-[1.4rem] before:top-6 before:w-0.5 before:bg-border before:content-['']">
+      <ol className="flex flex-col gap-2 px-4 pb-8">
         {trip.days.map((day, index) => {
           const dayTotal = budget.days.find((candidate) => candidate.dayId === day.id)?.total ?? 0;
-          const isToday = day.date === today;
           const option = chosenOption(day, { mode, party, chosenOptions, upgrades });
-          const drivingMinutes = effectiveDrivingMinutes(day, option);
-          const undecided = day.options !== undefined && chosenOptions[day.id] === undefined;
           return (
-            <li key={day.id} className="flex flex-col gap-2">
-              {index > 0 && (
-                <div
-                  aria-hidden="true"
-                  className="flex items-center pl-1 text-xs text-text-muted"
-                  style={{ height: `${0.9 + drivingMinutes * 0.032}rem` }}
-                >
-                  <span className="bg-bg pr-2">↓ {formatDriving(drivingMinutes)} sürüş</span>
-                </div>
-              )}
-              <div className="relative">
-                <span
-                  aria-hidden="true"
-                  className={`absolute left-[-1.35rem] top-0.5 h-3.5 w-3.5 rounded-full border-2 bg-surface-2 ${
-                    day.starred === true
-                      ? 'border-accent-2 bg-antimony'
-                      : isToday
-                        ? 'border-accent bg-cobalt'
-                        : 'border-accent'
-                  }`}
-                />
-                <DayCard
-                  day={day}
-                  index={index}
-                  total={dayTotal}
-                  drivingMinutes={drivingMinutes}
-                  undecided={undecided}
-                  isToday={isToday}
-                  onOpen={() => onOpenDay(day.id)}
-                />
-              </div>
+            <li key={day.id}>
+              <DayCard
+                day={day}
+                index={index}
+                total={dayTotal}
+                drivingMinutes={effectiveDrivingMinutes(day, option)}
+                undecided={day.options !== undefined && chosenOptions[day.id] === undefined}
+                isToday={day.date === today}
+                onOpen={() => onOpenDay(day.id)}
+              />
             </li>
           );
         })}
       </ol>
 
-      <footer className="mt-4 flex flex-col gap-3 border-t border-border px-4 pt-4 text-sm text-text-muted">
-        <p>
-          Toplam ({budget.mode}):{' '}
-          <PriceTag amount={budget.grandTotal} className="font-semibold text-text" /> · Atlanan:{' '}
-          {euro(budget.savedTotal)}
-        </p>
-        <button
-          type="button"
-          onClick={() => window.print()}
-          className="min-h-11 self-start border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
-        >
+      <footer className="flex flex-col items-start gap-3 px-4 pb-8 text-note text-neutral-700">
+        <p>Atlanan: {euro(budget.savedTotal)}</p>
+        <button type="button" onClick={() => window.print()} className="btn btn-secondary min-h-[44px]">
           Yazdır / PDF olarak kaydet
         </button>
       </footer>

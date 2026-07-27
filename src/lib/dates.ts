@@ -36,6 +36,22 @@ const MONTHS_TR = [
   'Aralık',
 ] as const;
 
+/** Chip-sized month names, for the header's date range where "Ağustos" won't fit. */
+const MONTHS_SHORT_TR = [
+  'Oca',
+  'Şub',
+  'Mar',
+  'Nis',
+  'May',
+  'Haz',
+  'Tem',
+  'Ağu',
+  'Eyl',
+  'Eki',
+  'Kas',
+  'Ara',
+] as const;
+
 /** Human-readable weekday with proper Turkish spelling, for display only. */
 const WEEKDAY_DISPLAY: Readonly<Record<Weekday, string>> = {
   Pazar: 'Pazar',
@@ -84,6 +100,24 @@ export function formatDayMonth(iso: string): string {
   const month = MONTHS_TR[date.getMonth()];
   if (month === undefined) throw new Error(`Ay çözülemedi: ${iso}`);
   return `${date.getDate()} ${month}`;
+}
+
+/**
+ * "29 Tem – 7 Ağu 2026" — the trip's span as one chip-sized string. The year
+ * is printed once at the end, and the month is dropped from the start when
+ * both ends fall in the same one ("3 – 7 Ağu 2026").
+ */
+export function formatDateRange(startIso: string, endIso: string): string {
+  const start = parseIsoDate(startIso);
+  const end = parseIsoDate(endIso);
+  const startMonth = MONTHS_SHORT_TR[start.getMonth()];
+  const endMonth = MONTHS_SHORT_TR[end.getMonth()];
+  if (startMonth === undefined || endMonth === undefined) {
+    throw new Error(`Ay çözülemedi: ${startIso} – ${endIso}`);
+  }
+  const sameMonth = start.getFullYear() === end.getFullYear() && startMonth === endMonth;
+  const left = sameMonth ? `${start.getDate()}` : `${start.getDate()} ${startMonth}`;
+  return `${left} – ${end.getDate()} ${endMonth} ${end.getFullYear()}`;
 }
 
 /** Whole days from `from` to `to`; negative when `to` is earlier. */

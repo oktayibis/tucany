@@ -37,33 +37,32 @@ export function OptionsSection({ day }: { readonly day: Day }) {
         ? undefined
         : trip.beaches.find((candidate) => candidate.id === selected.beach);
     const destination =
-      beach ?? (selected.nav === undefined ? undefined : { name: selected.label, nav: selected.nav });
+      beach ??
+      (selected.nav === undefined ? undefined : { name: selected.label, nav: selected.nav });
 
     return (
-      <div className="border border-border bg-surface-2">
-        <div className="flex items-center gap-3 p-3">
-          <div className="min-w-0 flex-1">
-            <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
-              Seçilen rota
+      <div className="flex items-center gap-3 rounded-xl bg-surface px-4 py-3">
+        <div className="min-w-0 flex-1">
+          <p className="text-micro uppercase tracking-[0.1em] text-accent-700">Seçilen rota</p>
+          <p className="mt-1 font-display text-item font-semibold">{selected.label}</p>
+          {beach !== undefined && (
+            <p className="mt-[3px] text-meta text-neutral-700">
+              {formatDriving(beach.minutesFromBase)}
             </p>
-            <p className="font-display font-medium">{selected.label}</p>
-            {beach !== undefined && (
-              <p className="text-xs text-text-muted">{formatDriving(beach.minutesFromBase)}</p>
-            )}
-          </div>
+          )}
+        </div>
+        <div className="flex flex-none flex-col items-stretch gap-[5px]">
           <button
             type="button"
             onClick={() => setEditing(true)}
-            className="min-h-11 shrink-0 border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
+            className="btn btn-secondary min-h-[36px] whitespace-nowrap border-neutral-400 px-3 text-meta"
           >
             Değiştir
           </button>
+          {destination !== undefined && (
+            <NavButton place={destination} iconSize={15} className="min-h-[36px] px-3" />
+          )}
         </div>
-        {destination !== undefined && (
-          <div className="border-t border-border px-3 py-2">
-            <NavButton place={destination} />
-          </div>
-        )}
       </div>
     );
   }
@@ -71,7 +70,7 @@ export function OptionsSection({ day }: { readonly day: Day }) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
-        <p className="flex-1 border border-dashed border-border bg-surface p-2 text-xs font-semibold text-text-muted">
+        <p className="flex-1 text-note text-neutral-700">
           {isDecided
             ? 'Bugünün rotasını seç.'
             : 'Karar verilmedi — planın önerisi gösteriliyor, aşağıdan seç.'}
@@ -80,13 +79,13 @@ export function OptionsSection({ day }: { readonly day: Day }) {
           <button
             type="button"
             onClick={() => setEditing(false)}
-            className="min-h-11 shrink-0 border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
+            className="btn btn-secondary min-h-[36px] flex-none border-neutral-400 px-3 text-meta"
           >
             Kapat
           </button>
         )}
       </div>
-      <div role="radiogroup" aria-label="Bugünün rotası" className="flex flex-col gap-3">
+      <div role="radiogroup" aria-label="Bugünün rotası" className="flex flex-col gap-2">
         {day.options.map((option) => (
           <OptionCard
             key={option.id}
@@ -121,62 +120,49 @@ function OptionCard({
     option.beach === undefined ? undefined : trip.beaches.find((b) => b.id === option.beach);
   const movesToDay =
     option.movesTo === undefined ? undefined : trip.days.find((d) => d.id === option.movesTo);
-  const isBeach = beach !== undefined;
 
   return (
     <label
-      className={`flex cursor-pointer flex-col gap-2 border bg-surface-2 p-3 ${
-        isSelected
-          ? isBeach
-            ? 'border-2 border-theme-plaj'
-            : 'border-2 border-accent'
-          : 'border-border'
+      className={`flex cursor-pointer flex-col gap-2 rounded-xl p-4 ${
+        isSelected ? 'bg-accent-100 ring-2 ring-inset ring-accent' : 'bg-surface'
       }`}
     >
       <div className="flex items-start justify-between gap-2">
-        <span className="flex flex-wrap items-center gap-2 font-display font-medium">
+        <span className="flex flex-wrap items-center gap-2 font-display text-item font-semibold">
           <input
             type="radio"
             name={`${day.id}-option`}
             checked={isSelected}
             onChange={onSelect}
-            className="h-5 w-5 accent-accent"
+            className="h-5 w-5 accent-[var(--color-accent)]"
           />
           {option.label}
           <RatingBadge rating={option.rating ?? beach?.rating} />
-          {option.recommended === true && (
-            <span className="bg-antimony px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
-              Planın önerisi
-            </span>
-          )}
-          {isBeach && (
-            <span className="bg-theme-plaj/15 px-1.5 py-0.5 font-body text-xs font-semibold text-theme-plaj">
-              Plaj
-            </span>
-          )}
+          {option.recommended === true && <span className="tag tag-accent-2">planın önerisi</span>}
+          {beach !== undefined && <span className="tag tag-neutral">plaj</span>}
         </span>
-        <span className="text-sm font-semibold">
+        <span className="flex-none font-display text-item font-semibold">
           <PriceTag amount={cost} />
         </span>
       </div>
 
-      <p className="text-sm">{option.desc}</p>
+      <p className="text-body">{option.desc}</p>
 
       {option.drivingMinutes !== undefined && (
-        <p className="text-xs text-text-muted">Sürüş: {formatDriving(option.drivingMinutes)}</p>
+        <p className="text-meta text-neutral-700">Sürüş: {formatDriving(option.drivingMinutes)}</p>
       )}
 
       {(option.pros !== undefined || option.cons !== undefined) && (
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <div className="flex flex-col gap-2">
           {option.pros !== undefined && option.pros.length > 0 && (
-            <ul className="flex flex-col gap-0.5 text-xs text-safe">
+            <ul className="flex flex-col gap-[2px] text-meta text-accent-2-700">
               {option.pros.map((pro) => (
                 <li key={pro}>+ {pro}</li>
               ))}
             </ul>
           )}
           {option.cons !== undefined && option.cons.length > 0 && (
-            <ul className="flex flex-col gap-0.5 text-xs text-danger">
+            <ul className="flex flex-col gap-[2px] text-meta text-danger">
               {option.cons.map((con) => (
                 <li key={con}>− {con}</li>
               ))}
@@ -186,28 +172,35 @@ function OptionCard({
       )}
 
       {beach !== undefined && (
-        <div className="border border-dashed border-theme-plaj bg-surface p-2 text-xs">
-          <p className="font-semibold">
+        <div className="rounded-lg bg-neutral-200 p-3 text-meta">
+          <p className="font-display text-lead font-semibold">
             {beach.name} · {formatDriving(beach.minutesFromBase)}
           </p>
-          <p className="mt-0.5 text-text-muted">{beach.notes}</p>
-          <div className="mt-1">
-            <NavButton place={beach} note="Plaja yol tarifi al" />
+          <p className="mt-1 text-neutral-700">{beach.notes}</p>
+          <div className="mt-2">
+            <NavButton
+              place={beach}
+              label="Plaja yol tarifi"
+              iconSize={15}
+              className="min-h-[36px] px-3"
+            />
           </div>
         </div>
       )}
 
       {option.bikes !== undefined && (
-        <p className="text-xs text-text-muted">
-          <span className="font-semibold text-text">Bisiklet: </span>
+        <p className="text-meta text-neutral-700">
+          <span className="font-display font-semibold text-text">Bisiklet: </span>
           {option.bikes}
         </p>
       )}
 
-      {option.note !== undefined && <p className="text-xs italic text-text-muted">{option.note}</p>}
+      {option.note !== undefined && (
+        <p className="text-meta italic text-neutral-700">{option.note}</p>
+      )}
 
       {movesToDay !== undefined && (
-        <p className="text-xs text-text-muted">
+        <p className="text-meta text-neutral-700">
           ↷ Bu seçilirse akşam programı {formatDayMonth(movesToDay.date)}'e ({movesToDay.title})
           taşınır.
         </p>
@@ -215,7 +208,12 @@ function OptionCard({
 
       {option.nav !== undefined && (
         <div>
-          <NavButton place={{ name: option.label, nav: option.nav }} />
+          <NavButton
+            place={{ name: option.label, nav: option.nav }}
+            label="Yol tarifi"
+            iconSize={15}
+            className="min-h-[36px] px-3"
+          />
         </div>
       )}
     </label>
