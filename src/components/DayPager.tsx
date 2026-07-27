@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { trip } from '../data/trip';
-import type { Day } from '../data/schema';
+import type { Day, Stop } from '../data/schema';
 import {
   chosenOption,
   effectiveDrivingMinutes,
@@ -16,6 +16,7 @@ import { ALL_CLOSURES, ALL_GAPS } from '../state/derived';
 import { useTrip } from '../state/TripContext';
 import { Disclosure } from './Disclosure';
 import { DayHeadNotes, DayNotes, hasTailNotes } from './DayNotes';
+import { Icon } from './Icon';
 import { FoodSection } from './FoodSection';
 import { INTENSITY_SHORT } from './IntensityMeter';
 import { ModeSwitch } from './ModeSwitch';
@@ -102,54 +103,53 @@ export function DayPager({
   const activeDay = trip.days[activeIndex];
 
   return (
-    <div
-      // 61px matches BottomBar's own content height (see BottomBar.tsx) — its
-      // safe-area padding is separate, so it's added here too, and again on
-      // NextStopBar's `bottom` offset below, so neither one drifts out of
-      // sync on a notched phone. If BottomBar's sizing ever changes, update
-      // both.
-      className="fixed inset-0 z-0 flex flex-col bg-bg"
-      style={{ paddingBottom: 'calc(61px + env(safe-area-inset-bottom))' }}
-    >
-      <div className="flex flex-none items-center gap-1 rounded-b-2xl bg-plate px-2 py-2 text-plate-text">
-        <button
-          type="button"
-          onClick={onBack}
-          className="inline-flex min-h-11 items-center gap-1 px-2 font-display text-sm"
-        >
-          ‹ Günler
+    /*
+     * Three plain flex children — header, swipe track, next-stop bar — inside
+     * the app frame's fixed height. Nothing here is `position: fixed` any more:
+     * the previous version had to offset the next-stop bar by a hand-copied
+     * 61px + safe-area to clear the tab bar, and the two drifted apart the
+     * moment either changed. Normal flow now does that for free.
+     */
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="flex flex-none items-center gap-2 bg-plate px-3 py-2 text-plate-text">
+        <button type="button" onClick={onBack} className="btn btn-ghost min-h-[44px] text-accent-800">
+          <Icon name="chevronLeft" size={18} />
+          Günler
         </button>
-        <span className="flex-1 truncate text-center text-xs font-medium uppercase tracking-wide">
+        <span className="flex-1 truncate text-center text-label uppercase tracking-[0.08em] text-accent-800">
           {activeDay !== undefined &&
-            `${activeIndex + 1}. gün · ${weekdayDisplay(activeDay.weekday)} · ${formatDayMonth(activeDay.date)}`}
+            `${activeIndex + 1}. gün · ${weekdayDisplay(activeDay.weekday)} ${formatDayMonth(activeDay.date)}`}
         </span>
         <button
           type="button"
           onClick={() => step(-1)}
           disabled={activeIndex === 0}
           aria-label="Önceki gün"
-          className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-full border border-plate-text/25 text-lg disabled:opacity-30"
+          className="btn btn-secondary btn-icon h-[44px] w-[44px] flex-none border-accent-700 text-accent-800 disabled:opacity-30"
         >
-          ‹
+          <Icon name="chevronLeft" size={20} />
         </button>
         <button
           type="button"
           onClick={() => step(1)}
           disabled={activeIndex === trip.days.length - 1}
           aria-label="Sonraki gün"
-          className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-full border border-plate-text/25 text-lg disabled:opacity-30"
+          className="btn btn-secondary btn-icon h-[44px] w-[44px] flex-none border-accent-700 text-accent-800 disabled:opacity-30"
         >
-          ›
+          <Icon name="chevronRight" size={20} />
         </button>
       </div>
 
       <div
         ref={trackRef}
         onScroll={onScroll}
-        className="flex flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain"
+        className="no-scrollbar flex min-h-0 flex-1 snap-x snap-mandatory scroll-smooth overflow-x-auto overflow-y-hidden overscroll-x-contain"
       >
         {trip.days.map((day) => (
-          <div key={day.id} className="h-full w-full flex-none snap-start overflow-y-auto overscroll-contain">
+          <div
+            key={day.id}
+            className="no-scrollbar h-full w-full flex-none snap-start overflow-y-auto overscroll-contain pb-8"
+          >
             <DayPanel day={day} />
           </div>
         ))}
@@ -176,45 +176,56 @@ function DayPanel({ day }: { readonly day: Day }) {
   const drivingMinutes = effectiveDrivingMinutes(day, option);
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-4 px-4 pb-6 pt-4">
-      <header className="flex flex-col gap-3">
-        <h1 className="font-display text-2xl">
+    <div className="flex flex-col">
+      <header className="px-4 pt-4">
+        <h1 className="font-display text-display-xl font-semibold">
           {day.title}
-          {day.starred === true && (
-            <span aria-hidden="true" className="ml-2 text-accent-2">
-              ★
-            </span>
-          )}
+          {day.starred === true && <span className="tag tag-accent-2 ml-2 align-middle">öne çıkan</span>}
         </h1>
-        <ModeSwitch />
-        <dl className="grid grid-cols-3 rounded-2xl border border-border bg-surface-2">
-          <Stat label="Sürüş" value={formatDriving(drivingMinutes)} />
-          <Stat label="Tempo" value={INTENSITY_SHORT[day.intensity]} />
-          <Stat label="Bütçe" value={<PriceTag amount={dayBudget?.total ?? 0} />} last />
-        </dl>
-        {!day.elderFriendly && (
-          <p className="rounded-full border border-warn-border bg-warn-bg px-3 py-1.5 text-xs font-semibold text-warn-text">
-            Anne için zorlu gün olabilir
-          </p>
-        )}
+        <div className="mt-4">
+          <ModeSwitch />
+        </div>
       </header>
 
-      {dayClosures !== undefined && <WarningBanner warnings={day.warnings} closures={dayClosures} />}
+      <dl className="grid grid-cols-3 gap-2 px-4 pt-4">
+        <Stat label="Sürüş" value={formatDriving(drivingMinutes)} />
+        <Stat label="Tempo" value={INTENSITY_SHORT[day.intensity]} />
+        <Stat label="Bütçe" value={<PriceTag amount={dayBudget?.total ?? 0} />} accent />
+      </dl>
 
       <DayHeadNotes day={day} />
 
-      {day.options !== undefined && <OptionsSection day={day} />}
+      {dayClosures !== undefined && (
+        <div className="px-4 pt-3">
+          <WarningBanner warnings={day.warnings} closures={dayClosures} />
+        </div>
+      )}
+
+      {!day.elderFriendly && (
+        <div className="px-4 pt-3">
+          <p className="rounded-xl bg-warn-bg px-4 py-3 text-body text-warn-text">
+            <span className="font-display font-semibold">Anne için: </span>
+            bu gün zorlu olabilir — merdiven, dik yokuş veya uzun sıcak yürüyüş var.
+          </p>
+        </div>
+      )}
+
+      {day.options !== undefined && (
+        <div className="px-4 pt-6">
+          <OptionsSection day={day} />
+        </div>
+      )}
 
       {day.timeline !== undefined && day.timeline.length > 0 && (
-        <section aria-labelledby={`day-timeline-${day.id}`}>
+        <section aria-labelledby={`day-timeline-${day.id}`} className="px-4 pt-6">
           <SectionLabel id={`day-timeline-${day.id}`}>Saat saat</SectionLabel>
-          <ol className="rounded-2xl border border-border bg-surface-2">
+          <ol className="flex flex-col gap-2">
             {day.timeline.map((entry) => (
               <li
                 key={entry.time}
-                className="flex gap-3 border-b border-border px-3 py-2 text-sm last:border-b-0"
+                className="flex items-center gap-3 rounded-xl bg-surface px-4 py-3 text-body"
               >
-                <span className="font-display font-semibold tabular-nums text-accent">
+                <span className="font-display font-semibold tabular-nums text-accent-700">
                   {entry.time}
                 </span>
                 <span>{entry.what}</span>
@@ -225,30 +236,32 @@ function DayPanel({ day }: { readonly day: Day }) {
       )}
 
       {stops.length > 0 && (
-        <section aria-labelledby={`day-stops-${day.id}`}>
-          <SectionLabel id={`day-stops-${day.id}`}>Görülecek</SectionLabel>
+        <section aria-labelledby={`day-stops-${day.id}`} className="px-4 pt-6">
+          <SectionLabel id={`day-stops-${day.id}`}>Görülecek yerler</SectionLabel>
           <StopsSection stops={stops} dayItems={dayBudget?.items ?? []} />
         </section>
       )}
 
       {food.length > 0 && (
-        <section aria-labelledby={`day-food-${day.id}`}>
-          <SectionLabel id={`day-food-${day.id}`}>Yemek</SectionLabel>
+        <section aria-labelledby={`day-food-${day.id}`} className="px-4 pt-6">
+          <SectionLabel id={`day-food-${day.id}`}>Yemek ve mola</SectionLabel>
           <FoodSection dayId={day.id} food={food} />
         </section>
       )}
 
-      <div className="flex flex-col gap-2">
-        {shopping.length > 0 && (
-          <Disclosure title="Alışveriş" count={shopping.length}>
-            <ShoppingSection shopping={shopping} />
-          </Disclosure>
-        )}
-        <Disclosure title="Rota & sürüş" hint={formatDriving(drivingMinutes)}>
+      {shopping.length > 0 && (
+        <section aria-labelledby={`day-shopping-${day.id}`} className="px-4 pt-6">
+          <SectionLabel id={`day-shopping-${day.id}`}>Alışveriş</SectionLabel>
+          <ShoppingSection shopping={shopping} />
+        </section>
+      )}
+
+      <div className="flex flex-col gap-2 px-4 pt-6">
+        <Disclosure title="Rota & sürüş" icon="route" hint={formatDriving(drivingMinutes)}>
           <RouteSection day={day} />
         </Disclosure>
         {hasTailNotes(day, dayGaps) && (
-          <Disclosure title="Notlar">
+          <Disclosure title="Notlar" icon="lightbulb">
             <DayNotes day={day} gaps={dayGaps} />
           </Disclosure>
         )}
@@ -259,25 +272,38 @@ function DayPanel({ day }: { readonly day: Day }) {
 
 function SectionLabel({ id, children }: { readonly id: string; readonly children: ReactNode }) {
   return (
-    <h2 id={id} className="mb-1.5 font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
+    <h2 id={id} className="section-label mb-3">
       {children}
     </h2>
   );
 }
 
+/**
+ * One cell of the three-up strip under the day title. The budget cell is
+ * tinted rather than neutral — it is the one figure the mode switch above it
+ * changes, so the mockup marks it as the live number of the three.
+ */
 function Stat({
   label,
   value,
-  last = false,
+  accent = false,
 }: {
   readonly label: string;
   readonly value: ReactNode;
-  readonly last?: boolean;
+  readonly accent?: boolean;
 }) {
   return (
-    <div className={`px-3 py-2 ${last ? '' : 'border-r border-border'}`}>
-      <dt className="font-display text-xs uppercase tracking-wide text-text-muted">{label}</dt>
-      <dd className="font-display text-display-md">{value}</dd>
+    <div className={`rounded-lg p-3 ${accent ? 'bg-accent-100' : 'bg-surface'}`}>
+      <dt
+        className={`text-micro uppercase tracking-[0.1em] ${accent ? 'text-accent-700' : 'text-neutral-700'}`}
+      >
+        {label}
+      </dt>
+      <dd
+        className={`mt-1 font-display text-item font-semibold ${accent ? 'text-accent-800' : ''}`}
+      >
+        {value}
+      </dd>
     </div>
   );
 }
@@ -299,18 +325,39 @@ function NextStopBar({ day }: { readonly day: Day }) {
   if (upcoming === undefined) return null;
 
   const done = visited.has(upcoming.id);
+  const remaining = stops.filter((stop) => !visited.has(stop.id)).length;
 
   return (
-    <div className="fixed inset-x-0 bottom-[calc(61px_+_env(safe-area-inset-bottom))] z-10 flex items-center gap-3 border-t border-border bg-surface-2 px-4 py-2.5">
+    <div className="elev-lg flex flex-none items-center gap-3 rounded-t-xl bg-surface px-4 pb-[calc(13.2px+env(safe-area-inset-bottom))] pt-3">
       <div className="min-w-0 flex-1">
-        <p className="font-display text-xs font-semibold uppercase tracking-wide text-accent">
+        <p className="text-micro uppercase tracking-[0.1em] text-accent-700">
           {done ? 'Son durak' : 'Sıradaki'}
         </p>
-        <p className="truncate font-display text-sm">{upcoming.name}</p>
+        <p className="mt-[3px] truncate font-display text-item font-semibold">{upcoming.name}</p>
+        <p className="mt-[2px] truncate text-meta text-neutral-700">{stopHint(upcoming, done, remaining)}</p>
       </div>
       {upcoming.nav !== undefined && (
-        <NavButton place={{ name: upcoming.name, nav: upcoming.nav }} />
+        <NavButton
+          place={{ name: upcoming.name, nav: upcoming.nav }}
+          label="Yol tarifi"
+          iconSize={18}
+          className="min-h-[54px] flex-none px-4 text-lead"
+        />
       )}
     </div>
   );
+}
+
+/**
+ * The bar's third line. Everything here is read off the stop and the `visited`
+ * set — the schema carries no per-stop clock time, so this never implies one:
+ * how long the stop takes and how many are still ahead, not when to be there.
+ */
+function stopHint(stop: Stop, done: boolean, remaining: number): string {
+  const parts = [
+    stop.durationMin === undefined ? undefined : `${stop.durationMin} dk`,
+    stop.bestTime === undefined ? undefined : `en iyi ${stop.bestTime}`,
+    done ? 'hepsi gezildi' : remaining > 1 ? `${remaining} durak kaldı` : 'son durak',
+  ].filter((part): part is string => part !== undefined);
+  return parts.join(' · ');
 }

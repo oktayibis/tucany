@@ -35,23 +35,34 @@ function Shell() {
 
   return (
     <>
-      <div className="print:hidden">
-        {route.name === 'day' ? (
-          <DayPager
-            dayId={route.dayId}
-            onBack={() => go(HOME)}
-            onDayChange={(dayId) => go({ name: 'day', dayId })}
-          />
-        ) : route.name === 'pork' ? (
-          <PorkGuide tab={route.tab} onTabChange={(tab) => go({ name: 'pork', tab })} />
-        ) : route.name === 'search' ? (
-          <SearchScreen onOpenDay={openDay} />
-        ) : route.name === 'lists' ? (
-          <Checklists />
-        ) : (
-          <DayList onOpenDay={openDay} />
-        )}
-        <BottomBar route={route} onNavigate={go} />
+      {/*
+       * The app is one fixed-height phone column, not a scrolling page: the
+       * frame owns the viewport height and every screen scrolls *inside* it.
+       * That is what lets the day pager's header, its swipe track and the two
+       * bottom bars all be plain `flex-none`/`flex-1` siblings — the previous
+       * page-scroll model needed `position: fixed` bars and a hand-maintained
+       * 61px offset between them, which drifted the moment BottomBar resized.
+       * On a desktop the column is centred on the muted page behind it.
+       */}
+      <div className="flex justify-center print:hidden">
+        <div className="relative flex h-[100dvh] w-full max-w-[480px] flex-col overflow-hidden bg-bg">
+          {route.name === 'day' ? (
+            <DayPager
+              dayId={route.dayId}
+              onBack={() => go(HOME)}
+              onDayChange={(dayId) => go({ name: 'day', dayId })}
+            />
+          ) : route.name === 'pork' ? (
+            <PorkGuide tab={route.tab} onTabChange={(tab) => go({ name: 'pork', tab })} />
+          ) : route.name === 'search' ? (
+            <SearchScreen onOpenDay={openDay} />
+          ) : route.name === 'lists' ? (
+            <Checklists />
+          ) : (
+            <DayList onOpenDay={openDay} />
+          )}
+          <BottomBar route={route} onNavigate={go} />
+        </div>
       </div>
       <PrintView />
     </>

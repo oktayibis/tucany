@@ -55,7 +55,7 @@ export function FoodSheet({
       <div className="flex flex-wrap items-center gap-2">
         <FoodTierBadge tier={food.tier} />
         {food.michelin === true && (
-          <span className="border border-accent px-1.5 py-0.5 text-xs font-semibold text-accent">
+          <span className="tag tag-accent">
             ★ Michelin
           </span>
         )}
@@ -68,7 +68,7 @@ export function FoodSheet({
       )}
 
       {food.closedToday === true && (
-        <p className="mt-4 border border-danger bg-danger-bg p-3 text-sm font-semibold text-danger">
+        <p className="mt-4 rounded-xl bg-danger-bg p-4 text-body font-semibold text-danger">
           Bugün kapalı.
         </p>
       )}

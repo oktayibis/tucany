@@ -1,12 +1,13 @@
 import type { Route } from '../hooks/useRoute';
+import { Icon, type IconName } from './Icon';
 
-type Tab = { readonly route: Route; readonly label: string; readonly glyph: string };
+type Tab = { readonly route: Route; readonly label: string; readonly icon: IconName };
 
 const TABS: readonly Tab[] = [
-  { route: { name: 'days' }, label: 'Günler', glyph: '≡' },
-  { route: { name: 'search' }, label: 'Ara', glyph: '⌕' },
-  { route: { name: 'pork', tab: 'guide' }, label: 'Domuz rehberi', glyph: '⚠' },
-  { route: { name: 'lists' }, label: 'Listeler', glyph: '✓' },
+  { route: { name: 'days' }, label: 'Günler', icon: 'map' },
+  { route: { name: 'search' }, label: 'Ara', icon: 'search' },
+  { route: { name: 'pork', tab: 'guide' }, label: 'Domuz', icon: 'pork' },
+  { route: { name: 'lists' }, label: 'Listeler', icon: 'lists' },
 ];
 
 function isActive(route: Route, tabRoute: Route): boolean {
@@ -16,8 +17,13 @@ function isActive(route: Route, tabRoute: Route): boolean {
 
 /**
  * Persistent across every screen — the brief is explicit that the pork guide
- * must never be more than one tap away, so it lives here rather than behind
- * a menu.
+ * must never be more than one tap away, so it lives here rather than behind a
+ * menu. The mockup has no tab bar at all (it only draws two screens), so this
+ * is styled to the same system rather than transcribed from it.
+ *
+ * A `flex-none` row at the bottom of the app frame, not a fixed overlay: the
+ * frame owns the viewport height, so nothing above needs to reserve space for
+ * this or track its height.
  */
 export function BottomBar({
   route,
@@ -29,7 +35,7 @@ export function BottomBar({
   return (
     <nav
       aria-label="Ana gezinme"
-      className="fixed inset-x-0 bottom-0 z-10 flex rounded-t-2xl border-t border-border bg-surface pb-[env(safe-area-inset-bottom)]"
+      className="flex flex-none border-t border-border bg-surface pb-[env(safe-area-inset-bottom)]"
     >
       {TABS.map((tab) => {
         const active = isActive(route, tab.route);
@@ -40,13 +46,11 @@ export function BottomBar({
             type="button"
             onClick={() => onNavigate(tab.route)}
             aria-current={active ? 'page' : undefined}
-            className={`flex min-h-11 flex-1 flex-col items-center gap-0.5 py-2 text-xs font-semibold ${
-              isPork ? 'text-danger' : active ? 'text-accent' : 'text-text-muted'
+            className={`flex min-h-[54px] flex-1 cursor-pointer flex-col items-center justify-center gap-[3px] text-label font-semibold ${
+              isPork ? 'text-danger' : active ? 'text-accent-700' : 'text-neutral-600'
             }`}
           >
-            <span aria-hidden="true" className="font-display text-base">
-              {tab.glyph}
-            </span>
+            <Icon name={tab.icon} size={19} />
             {tab.label}
           </button>
         );

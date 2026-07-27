@@ -46,10 +46,10 @@ export function Sheet({
       aria-labelledby={titleId}
     >
       <div
-        className="flex max-h-[88vh] w-full max-w-lg flex-col rounded-t-3xl border border-border bg-surface shadow-xl sm:rounded-3xl"
+        className="flex max-h-[88vh] w-full max-w-lg flex-col rounded-t-xl border border-border bg-surface shadow-xl sm:rounded-xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="flex items-start justify-between gap-3 rounded-t-3xl border-b border-border bg-surface p-4">
+        <div className="flex items-start justify-between gap-3 rounded-t-xl border-b border-border bg-surface p-4">
           <div className="min-w-0">
             {eyebrow !== undefined && (
               <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
@@ -76,7 +76,7 @@ export function Sheet({
         <div className="flex-1 overflow-y-auto p-4">{children}</div>
 
         {footer !== undefined && (
-          <div className="rounded-b-3xl border-t border-border bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          <div className="rounded-b-xl border-t border-border bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
             {footer}
           </div>
         )}
