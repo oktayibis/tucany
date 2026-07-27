@@ -1,4 +1,5 @@
 import type { DayClosures } from '../lib/closures';
+import { weekdayDisplay } from '../lib/dates';
 import { Icon } from './Icon';
 
 /**
@@ -14,12 +15,16 @@ export function WarningBanner({
   readonly warnings: readonly string[];
   readonly closures: DayClosures;
 }) {
+  // `closures.weekday` is the schema's ASCII enum ("Carsamba"), which is fine
+  // for comparisons but must never reach the screen — `weekdayDisplay` is the
+  // accented form ("Çarşamba").
+  const weekday = weekdayDisplay(closures.weekday);
   const items = [
     ...warnings,
     ...closures.blocking.map((thing) =>
       thing.note === undefined
-        ? `${thing.name} bugün (${closures.weekday}) kapalı.`
-        : `${thing.name} bugün (${closures.weekday}) kapalı. ${thing.note}`,
+        ? `${thing.name} bugün (${weekday}) kapalı.`
+        : `${thing.name} bugün (${weekday}) kapalı. ${thing.note}`,
     ),
   ];
 

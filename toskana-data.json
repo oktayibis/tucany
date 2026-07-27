@@ -30,12 +30,12 @@
     { "dir": "out", "date": "2026-07-29", "from": "CPH", "to": "PSA", "dep": "06:05", "arr": "08:30", "carrier": "SAS" },
     { "dir": "back", "date": "2026-08-07", "from": "PSA", "to": "CPH", "dep": "11:10", "arr": "13:20", "carrier": "Norwegian" }
   ],
-  "car": { "model": "VW Taigo", "note": "Kucuk crossover, ~440 L bagaj. 4 kisi + 9 gunluk bagaj icin sert valiz yerine yumusak canta kullanin." },
+  "car": { "model": "VW Taigo", "note": "Küçük crossover, ~440 L bagaj. 4 kişi + 9 günlük bagaj için sert valiz yerine yumuşak çanta kullanın." },
 
   "budget": {
     "modes": {
       "a": { "label": "Keyif", "foodAndTickets": 1900 },
-      "mixed": { "label": "Karma (onerilen)", "foodAndTickets": 950 },
+      "mixed": { "label": "Karma (önerilen)", "foodAndTickets": 950 },
       "b": { "label": "Ucuz", "foodAndTickets": 700 }
     },
     "fixed": { "fuel": 130, "tolls": 15, "parking": 80, "totalKm": 1150 }
@@ -46,64 +46,64 @@
       "id": "d1",
       "date": "2026-07-29",
       "weekday": "Carsamba",
-      "title": "Inis, Pisa (+ Lucca)",
+      "title": "İniş, Pisa (+ Lucca)",
       "theme": "arrival",
       "intensity": "low",
       "elderFriendly": true,
       "drivingMinutes": 135,
       "budget": { "a": 170, "b": 60 },
       "warnings": [
-        "Il Caratello ve In Serra da Cocchino Carsamba kapali - otel restorani kullan",
-        "Otel check-in 14:00'ten once degil; erken varirsan bagaji birak, havuzu kullan",
-        "Ucus 06:05 - herkes cok yorgun olacak"
+        "Il Caratello ve In Serra da Cocchino Çarşamba kapalı - otel restoranı kullan",
+        "Otel check-in 14:00'ten önce değil; erken varırsan bagajı bırak, havuzu kullan",
+        "Uçuş 06:05 - herkes çok yorgun olacak"
       ],
-      "elderNote": "Ciddi oneri: Lucca'yi 6 Agustos'a kaydir. Sadece Pisa'yi gorup oglen otelde olmak butun haftanin enerjisini kurtarir.",
+      "elderNote": "Ciddi öneri: Lucca'yı 6 Ağustos'a kaydır. Sadece Pisa'yı görüp öğlen otelde olmak bütün haftanın enerjisini kurtarır.",
       "options": [
         {
           "id": "opt-a",
           "label": "Sadece Pisa + otel",
-          "desc": "09:15 araba / 09:45-11:15 Piazza dei Miracoli / 13:00 otelde / 14:00 check-in, havuz, otelde erken aksam yemegi.",
+          "desc": "09:15 araba / 09:45-11:15 Piazza dei Miracoli / 13:00 otelde / 14:00 check-in, havuz, otelde erken akşam yemeği.",
           "cost": 45,
           "drivingMinutes": 100,
           "recommended": true,
           "rating": 4.7,
           "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Via+Pietrasantina+Pisa",
           "pros": [
-            "Ucus 06:05, herkes 03:30'dan beri ayakta - hafif ilk gun butun haftanin enerjisini koruyor",
+            "Uçuş 06:05, herkes 03:30'dan beri ayakta - hafif ilk gün bütün haftanın enerjisini koruyor",
             "Havuza erken girilir"
           ],
-          "cons": ["Lucca kacar (6 Agustos'ta opsiyon olarak duruyor)"]
+          "cons": ["Lucca kaçar (6 Ağustos'ta opsiyon olarak duruyor)"]
         },
         {
           "id": "opt-b",
           "label": "Pisa + Lucca",
-          "desc": "Pisa'dan sonra Lucca: sur ustu yuruyus bandi (4 km, golgeli), Piazza dell'Anfiteatro. 12:30-16:30, sonra 80 dk yol, ~18:00 otelde.",
+          "desc": "Pisa'dan sonra Lucca: sur üstü yürüyüş bandı (4 km, gölgeli), Piazza dell'Anfiteatro. 12:30-16:30, sonra 80 dk yol, ~18:00 otelde.",
           "cost": 90,
           "drivingMinutes": 195,
           "rating": 4.7,
           "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca",
-          "pros": ["Lucca gercekten guzel ve Pisa'dan daha keyifli", "Iki sehir tek gunde biter"],
-          "cons": ["Otelde 18:00, ilk gun icin agir", "Anne icin yorucu olabilir"],
-          "note": "Modumuz yuksekse. Havalimaninda karar verilebilir.",
+          "pros": ["Lucca gerçekten güzel ve Pisa'dan daha keyifli", "İki şehir tek günde biter"],
+          "cons": ["Otelde 18:00, ilk gün için ağır", "Anne için yorucu olabilir"],
+          "note": "Modumuz yüksekse. Havalimanında karar verilebilir.",
           "stops": [
-            { "id": "s1c", "name": "Lucca sur ustu + Piazza dell'Anfiteatro", "city": "Lucca", "lat": 43.843, "lng": 10.5027, "tier": "core", "cost": 0, "durationMin": 240, "why": "4 km golgeli yuruyus bandi; Roma amfitiyatrosunun ustune kurulmus oval meydan.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca", "rating": 4.7 },
-            { "id": "s1d", "name": "Torre Guinigi", "city": "Lucca", "tier": "skip", "cost": 18, "why": "Tepesinde 700 yillik mese agaclari var ama 230 basamak.", "nav": "https://www.google.com/maps/search/?api=1&query=Torre+Guinigi+Lucca", "rating": 4.6 }
+            { "id": "s1c", "name": "Lucca sur üstü + Piazza dell'Anfiteatro", "city": "Lucca", "lat": 43.843, "lng": 10.5027, "tier": "core", "cost": 0, "durationMin": 240, "why": "4 km gölgeli yürüyüş bandı; Roma amfitiyatrosunun üstüne kurulmuş oval meydan.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca", "rating": 4.7 },
+            { "id": "s1d", "name": "Torre Guinigi", "city": "Lucca", "tier": "skip", "cost": 18, "why": "Tepesinde 700 yıllık meşe ağaçları var ama 230 basamak.", "nav": "https://www.google.com/maps/search/?api=1&query=Torre+Guinigi+Lucca", "rating": 4.6 }
           ],
           "food": [
-            { "slot": "lunch", "tier": "a", "name": "Lucca'da restoran", "price": 70, "why": "Geleneksel Lucchese Trattoria (Trattoria da Ubaldo / Osteria da Pasquale). Lucca sur icinde Piazza dell'Anfiteatro yakininda ekzantrik atmosferli otantik mekan. Taze buyukanne usulu makarnalar, tagliata di manzo (dana biftek) ve mehur 'Torte coi becchi' tatlisi ile taninir.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+da+Ubaldo+Lucca", "rating": 4.5 },
-            { "slot": "lunch", "tier": "b", "name": "Forno schiacciata + meyve, surda piknik", "price": 20, "why": "Firin & Piknik. Lucca surlarinin ustundeki dev golgeli agacli parkta tarihi firindan taze sicak schiacciata (zeytinyaqli Toskana firin ekmegi) ve meyve ile rahat acik hava piknigi.", "nav": "https://www.google.com/maps/search/?api=1&query=Forno+a+Vapore+Amedeo+Giusti+Lucca", "rating": 4.6 }
+            { "slot": "lunch", "tier": "a", "name": "Lucca'da restoran", "price": 70, "why": "Geleneksel Lucchese Trattoria (Trattoria da Ubaldo / Osteria da Pasquale). Lucca sur içinde Piazza dell'Anfiteatro yakınında ekzantrik atmosferli otantik mekan. Taze büyükanne usulü makarnalar, tagliata di manzo (dana biftek) ve meşhur 'Torte coi becchi' tatlısı ile tanınır.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+da+Ubaldo+Lucca", "rating": 4.5 },
+            { "slot": "lunch", "tier": "b", "name": "Forno schiacciata + meyve, surda piknik", "price": 20, "why": "Fırın & Piknik. Lucca surlarının üstündeki dev gölgeli ağaçlı parkta tarihi fırından taze sıcak schiacciata (zeytinyağlı Toskana fırın ekmeği) ve meyve ile rahat açık hava pikniği.", "nav": "https://www.google.com/maps/search/?api=1&query=Forno+a+Vapore+Amedeo+Giusti+Lucca", "rating": 4.6 }
           ]
         }
       ],
       "stops": [
-        { "id": "s1a", "name": "Piazza dei Miracoli", "city": "Pisa", "lat": 43.7229, "lng": 10.3966, "tier": "core", "cost": 0, "durationMin": 90, "why": "Battistero'da gorevli gunde birkac kez akustigi gostermek icin sesleniyor - cocuklar bayiliyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Via+Pietrasantina+Pisa", "navNote": "Via Pietrasantina otoparki, ucretsiz shuttle", "rating": 4.7 },
-        { "id": "s1b", "name": "Egik Kule tirmanisi", "city": "Pisa", "tier": "skip", "cost": 60, "why": "3 yetiskin ~60 EUR, uzun sira, 8 yas alti yasak.", "skipReason": "para + zaman", "nav": "https://www.google.com/maps/search/?api=1&query=Torre+di+Pisa", "rating": 4.7 }
+        { "id": "s1a", "name": "Piazza dei Miracoli", "city": "Pisa", "lat": 43.7229, "lng": 10.3966, "tier": "core", "cost": 0, "durationMin": 90, "why": "Battistero'da görevli günde birkaç kez akustiği göstermek için sesleniyor - çocuklar bayılıyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Via+Pietrasantina+Pisa", "navNote": "Via Pietrasantina otoparkı, ücretsiz shuttle", "rating": 4.7 },
+        { "id": "s1b", "name": "Eğik Kule tırmanışı", "city": "Pisa", "tier": "skip", "cost": 60, "why": "3 yetişkin ~60 EUR, uzun sıra, 8 yaş altı yasak.", "skipReason": "para + zaman", "nav": "https://www.google.com/maps/search/?api=1&query=Torre+di+Pisa", "rating": 4.7 }
       ],
       "food": [
-        { "slot": "coffee", "tier": "both", "name": "Pasticceria Taddeucci (Buccellato di Lucca) & Cavalieri Coffee", "price": 12, "why": "Lucca Piazza San Michele'de 1881'den beri mehur Buccellato (anasonlu ve uzumlu tarihi tatli ekmek) ve Pisa'da Piazza dei Cavalieri'de nitelikli specialty espresso duragi.", "nav": "https://www.google.com/maps/search/?api=1&query=Pasticceria+Taddeucci+Lucca", "rating": 4.6 },
-        { "slot": "dinner", "tier": "a", "name": "Otel restorani", "price": 90, "why": "Otel Restorani (Borgo di Cortefreda - Place of Charme). Ilk gun ucus yorgunlugu sonrasi disari cikmadan otel terasinda Chianti manzarali kaliteli ve zahmetsiz aksam yemegi.", "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle", "rating": 4.6 },
-        { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino (pizza)", "price": 35, "why": "Yerel Pizzeria / Trattoria. Barberino'da yerel halkin tercih ettigi, odun atesinde ince tas firin pizzalari ve samimi aile ortami olan ekonomik mekan.", "closedToday": true, "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Barberino+Tavarnelle", "rating": 4.4 },
-        { "slot": "snack", "tier": "both", "name": "Gelateria De' Coltelli", "price": 12, "why": "Artisanal Dondurmaci (Gambero Rosso odullu). Pisa'da Arno nehri kiyisinda, tamamen dogal organik mevsim meyveleriyle renklendiricisiz dondurma yapan Italya'nin en mehur dondurmacilarindan biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+De%27+Coltelli+Pisa", "rating": 4.6 }
+        { "slot": "coffee", "tier": "both", "name": "Pasticceria Taddeucci (Buccellato di Lucca) & Cavalieri Coffee", "price": 12, "why": "Lucca Piazza San Michele'de 1881'den beri meşhur Buccellato (anasonlu ve üzümlü tarihi tatlı ekmek) ve Pisa'da Piazza dei Cavalieri'de nitelikli specialty espresso durağı.", "nav": "https://www.google.com/maps/search/?api=1&query=Pasticceria+Taddeucci+Lucca", "rating": 4.6 },
+        { "slot": "dinner", "tier": "a", "name": "Otel restoranı", "price": 90, "why": "Otel Restoranı (Borgo di Cortefreda - Place of Charme). İlk gün uçuş yorgunluğu sonrası dışarı çıkmadan otel terasında Chianti manzaralı kaliteli ve zahmetsiz akşam yemeği.", "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle", "rating": 4.6 },
+        { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino (pizza)", "price": 35, "why": "Yerel Pizzeria / Trattoria. Barberino'da yerel halkın tercih ettiği, odun ateşinde ince taş fırın pizzaları ve samimi aile ortamı olan ekonomik mekan.", "closedToday": true, "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Barberino+Tavarnelle", "rating": 4.4 },
+        { "slot": "snack", "tier": "both", "name": "Gelateria De' Coltelli", "price": 12, "why": "Artisanal Dondurmacı (Gambero Rosso ödüllü). Pisa'da Arno nehri kıyısında, tamamen doğal organik mevsim meyveleriyle renklendiricisiz dondurma yapan İtalya'nın en meşhur dondurmacılarından biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+De%27+Coltelli+Pisa", "rating": 4.6 }
       ],
       "shopping": []
     },
@@ -111,28 +111,28 @@
       "id": "d2",
       "date": "2026-07-30",
       "weekday": "Persembe",
-      "title": "Tavarnelle pazari + Badia a Passignano",
+      "title": "Tavarnelle pazarı + Badia a Passignano",
       "theme": "local",
       "intensity": "low",
       "elderFriendly": true,
       "drivingMinutes": 30,
       "budget": { "a": 290, "b": 60 },
       "warnings": [],
-      "elderNote": "Bugun tam ona gore: pazar + kisa koy gezisi + havuz. Uzun yuruyus yok.",
-      "highlight": "En buyuk tek tasarruf kalemi bu gun (Passignano yerine piknik = -230 EUR)",
+      "elderNote": "Bugün tam ona göre: pazar + kısa köy gezisi + havuz. Uzun yürüyüş yok.",
+      "highlight": "En büyük tek tasarruf kalemi bu gün (Passignano yerine piknik = -230 EUR)",
       "stops": [
-        { "id": "s2a", "name": "Tavarnelle haftalik pazari", "city": "Tavarnelle", "lat": 43.5610, "lng": 11.1732, "tier": "core", "cost": 0, "durationMin": 120, "hours": "08:00-13:00", "why": "Kasabanin kendi pazari, turist sifir. Peynirci, sebzeci, kumas ve deri tezgahlari.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa", "tags": ["market", "shopping"], "rating": 4.5 },
-        { "id": "s2b", "name": "Badia a Passignano", "city": "Passignano", "lat": 43.5768532, "lng": 11.2459054, "placeId": "ChIJ67nz44FJKhMRARsnAuVBgp0", "tier": "core", "cost": 0, "durationMin": 60, "why": "Servilerle cevrili 11. yy Vallombrosan manastiri, Chianti'nin en fotojenik yapisi.", "nav": "https://www.google.com/maps/search/?api=1&query=Badia+a+Passignano", "rating": 4.7 },
-        { "id": "s2c", "name": "San Donato in Poggio", "city": "San Donato", "lat": 43.5300, "lng": 11.2270, "tier": "optional", "cost": 0, "durationMin": 60, "why": "Surlu minik ortacag koyu, aksamustu meydanda aperitivo.", "nav": "https://www.google.com/maps/search/?api=1&query=San+Donato+in+Poggio", "rating": 4.6 },
+        { "id": "s2a", "name": "Tavarnelle haftalık pazarı", "city": "Tavarnelle", "lat": 43.5610, "lng": 11.1732, "tier": "core", "cost": 0, "durationMin": 120, "hours": "08:00-13:00", "why": "Kasabanın kendi pazarı, turist sıfır. Peynirci, sebzeci, kumaş ve deri tezgahları.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa", "tags": ["market", "shopping"], "rating": 4.5 },
+        { "id": "s2b", "name": "Badia a Passignano", "city": "Passignano", "lat": 43.5768532, "lng": 11.2459054, "placeId": "ChIJ67nz44FJKhMRARsnAuVBgp0", "tier": "core", "cost": 0, "durationMin": 60, "why": "Servilerle çevrili 11. yy Vallombrosan manastırı, Chianti'nin en fotojenik yapısı.", "nav": "https://www.google.com/maps/search/?api=1&query=Badia+a+Passignano", "rating": 4.7 },
+        { "id": "s2c", "name": "San Donato in Poggio", "city": "San Donato", "lat": 43.5300, "lng": 11.2270, "tier": "optional", "cost": 0, "durationMin": 60, "why": "Surlu minik ortaçağ köyü, akşamüstü meydanda aperitivo.", "nav": "https://www.google.com/maps/search/?api=1&query=San+Donato+in+Poggio", "rating": 4.6 },
         { "id": "s2d", "name": "Otel e-bike turu (Passignano-Sambuca)", "tier": "optional", "cost": 0, "durationMin": 60, "why": "Sabah erken saatte Chianti tepelerinde bisiklet.", "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle", "rating": 4.6 }
       ],
       "food": [
-        { "slot": "lunch", "tier": "a", "name": "Osteria di Passignano", "price": 225, "michelin": true, "why": "Michelin Yildizli Fine-Dining. Badia a Passignano manastirinin tarihi mahzenlerinde Antinori saraplari esliginde luks Chianti mutfagi tecrubesi.", "phone": "+39 055 807 1278", "closedOn": ["Pazar"], "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+di+Passignano", "rating": 4.6 },
-        { "slot": "lunch", "tier": "b", "name": "Pazardan pollo allo spiedo + peynir + ekmek, havuz basinda piknik", "price": 25, "why": "Pazar Yemegi / Havuz Basi Piknik. Tavarnelle pazarindan nar gibi odun atesinde sis tavuk (9-11 EUR), peynir ve ekmekle otelde keyifli piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa", "rating": 4.5 },
-        { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino / otel restorani", "price": 35, "why": "Pizzeria / Otel Restorani. Barberino civarinda hafif ve lezzetli pizza veya otel teras restorani secenegi.", "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Barberino+Tavarnelle", "rating": 4.4 },
-        { "slot": "aperitivo", "tier": "both", "name": "Crodino veya San Bitter (alkolsuz)", "price": 12, "why": "Meydan Bar Aperitif. San Donato in Poggio veya Tavarnelle meydaninda aksamustu serinliginde geleneksel ikramliklarla alkolsuz Crodino/San Bitter keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=San+Donato+in+Poggio", "rating": 4.5 }
+        { "slot": "lunch", "tier": "a", "name": "Osteria di Passignano", "price": 225, "michelin": true, "why": "Michelin Yıldızlı Fine-Dining. Badia a Passignano manastırının tarihi mahzenlerinde Antinori şarapları eşliğinde lüks Chianti mutfağı tecrübesi.", "phone": "+39 055 807 1278", "closedOn": ["Pazar"], "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+di+Passignano", "rating": 4.6 },
+        { "slot": "lunch", "tier": "b", "name": "Pazardan pollo allo spiedo + peynir + ekmek, havuz başında piknik", "price": 25, "why": "Pazar Yemeği / Havuz Başı Piknik. Tavarnelle pazarından nar gibi odun ateşinde şiş tavuk (9-11 EUR), peynir ve ekmekle otelde keyifli piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa", "rating": 4.5 },
+        { "slot": "dinner", "tier": "b", "name": "In Serra da Cocchino / otel restoranı", "price": 35, "why": "Pizzeria / Otel Restoranı. Barberino civarında hafif ve lezzetli pizza veya otel teras restoranı seçeneği.", "nav": "https://www.google.com/maps/search/?api=1&query=In+Serra+da+Cocchino+Barberino+Tavarnelle", "rating": 4.4 },
+        { "slot": "aperitivo", "tier": "both", "name": "Crodino veya San Bitter (alkolsüz)", "price": 12, "why": "Meydan Bar Aperitif. San Donato in Poggio veya Tavarnelle meydanında akşamüstü serinliğinde geleneksel ikramlıklarla alkolsüz Crodino/San Bitter keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=San+Donato+in+Poggio", "rating": 4.5 }
       ],
-      "shopping": [{ "name": "Tavarnelle pazari", "for": "kumas, deri, yerel gida", "cost": null, "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa", "rating": 4.5 }]
+      "shopping": [{ "name": "Tavarnelle pazarı", "for": "kumaş, deri, yerel gıda", "cost": null, "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa", "rating": 4.5 }]
     },
     {
       "id": "d3",
@@ -146,37 +146,37 @@
       "budget": { "a": 290, "b": 110 },
       "warnings": [
         "ZTL: arabayla merkeze girme. Tek ceza 100+ EUR",
-        "Villa Costanza otoparki + T1 tramvay kullan (~2 EUR park, ~1.70 EUR/kisi tramvay)"
+        "Villa Costanza otoparkı + T1 tramvay kullan (~2 EUR park, ~1.70 EUR/kişi tramvay)"
       ],
-      "elderNote": "Bu gunun puf noktasi kiliseler: ucretsiz, serin, oturakli. Her 1-1.5 saatte bir kiliseye girip 15 dk oturun.",
+      "elderNote": "Bu günün püf noktası kiliseler: ücretsiz, serin, oturaklı. Her 1-1.5 saatte bir kiliseye girip 15 dk oturun.",
       "stops": [
-        { "id": "s3a", "name": "Galleria dell'Accademia (David)", "city": "Firenze", "lat": 43.7767, "lng": 11.2586, "tier": "core", "cost": 55, "costNote": "3 yetiskin; 18 yas alti UCRETSIZ", "durationMin": 60, "booking": "required", "why": "45 dk, klimali, gercekten beklentiyi karsilayan az sayida eserden biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Galleria+dell%27Accademia+Firenze", "rating": 4.7 },
-        { "id": "s3b", "name": "Duomo + Battistero (dis + katedral ici)", "city": "Firenze", "lat": 43.7731, "lng": 11.2560, "tier": "core", "cost": 0, "durationMin": 60, "why": "Katedralin ici ucretsiz, siraya deger.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+del+Duomo+Firenze", "rating": 4.8 },
-        { "id": "s3c", "name": "Brunelleschi Pass (kubbe tirmanisi)", "city": "Firenze", "tier": "skip", "cost": 90, "skipReason": "463 dar basamak - anne cikamaz", "rating": 4.8 },
-        { "id": "s3d", "name": "Uffizi", "city": "Firenze", "tier": "optional", "cost": 80, "skipReason": "Ayni gun ikinci muze anne + cocukla zor", "rating": 4.7 },
-        { "id": "s3e", "name": "Piazza della Signoria + Loggia dei Lanzi", "city": "Firenze", "lat": 43.7696, "lng": 11.2558, "tier": "core", "cost": 0, "durationMin": 45, "why": "Acik hava heykel muzesi, bedava.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+della+Signoria+Firenze", "rating": 4.8 },
-        { "id": "s3f", "name": "Piazzale Michelangelo (gun batimi)", "city": "Firenze", "lat": 43.7629314, "lng": 11.2650561, "placeId": "ChIJQzhmQ_dTKhMRGVENguFo97Q", "tier": "core", "cost": 0, "durationMin": 60, "bestTime": "19:30", "why": "Floransa'nin en iyi manzarasi.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazzale+Michelangelo+Firenze", "rating": 4.8 },
-        { "id": "s3g", "name": "San Miniato al Monte", "city": "Firenze", "lat": 43.7593, "lng": 11.2650, "tier": "optional", "cost": 0, "durationMin": 30, "why": "Piazzale'nin ustu - manzarasi daha iyi, cok daha sakin, ucretsiz.", "nav": "https://www.google.com/maps/search/?api=1&query=San+Miniato+al+Monte+Firenze", "rating": 4.8 }
+        { "id": "s3a", "name": "Galleria dell'Accademia (David)", "city": "Firenze", "lat": 43.7767, "lng": 11.2586, "tier": "core", "cost": 55, "costNote": "3 yetişkin; 18 yaş altı ÜCRETSİZ", "durationMin": 60, "booking": "required", "why": "45 dk, klimalı, gerçekten beklentiyi karşılayan az sayıda eserden biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Galleria+dell%27Accademia+Firenze", "rating": 4.7 },
+        { "id": "s3b", "name": "Duomo + Battistero (dış + katedral içi)", "city": "Firenze", "lat": 43.7731, "lng": 11.2560, "tier": "core", "cost": 0, "durationMin": 60, "why": "Katedralin içi ücretsiz, sıraya değer.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+del+Duomo+Firenze", "rating": 4.8 },
+        { "id": "s3c", "name": "Brunelleschi Pass (kubbe tırmanışı)", "city": "Firenze", "tier": "skip", "cost": 90, "skipReason": "463 dar basamak - anne çıkamaz", "rating": 4.8 },
+        { "id": "s3d", "name": "Uffizi", "city": "Firenze", "tier": "optional", "cost": 80, "skipReason": "Aynı gün ikinci müze anne + çocukla zor", "rating": 4.7 },
+        { "id": "s3e", "name": "Piazza della Signoria + Loggia dei Lanzi", "city": "Firenze", "lat": 43.7696, "lng": 11.2558, "tier": "core", "cost": 0, "durationMin": 45, "why": "Açık hava heykel müzesi, bedava.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+della+Signoria+Firenze", "rating": 4.8 },
+        { "id": "s3f", "name": "Piazzale Michelangelo (gün batımı)", "city": "Firenze", "lat": 43.7629314, "lng": 11.2650561, "placeId": "ChIJQzhmQ_dTKhMRGVENguFo97Q", "tier": "core", "cost": 0, "durationMin": 60, "bestTime": "19:30", "why": "Floransa'nın en iyi manzarası.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazzale+Michelangelo+Firenze", "rating": 4.8 },
+        { "id": "s3g", "name": "San Miniato al Monte", "city": "Firenze", "lat": 43.7593, "lng": 11.2650, "tier": "optional", "cost": 0, "durationMin": 30, "why": "Piazzale'nin üstü - manzarası daha iyi, çok daha sakin, ücretsiz.", "nav": "https://www.google.com/maps/search/?api=1&query=San+Miniato+al+Monte+Firenze", "rating": 4.8 }
       ],
       "food": [
-        { "slot": "coffee", "tier": "both", "name": "Ditta Artigianale (Via dello Sprone)", "price": 15, "why": "Nitelikli Kahve Dukkani (Specialty Coffee). Floransa Oltrarno'da kendi kavurduklari nitelikli cekirdeklerle espresso ve soguk delemeler sunan sik modern kafe.", "nav": "https://www.google.com/maps/search/?api=1&query=Ditta+Artigianale+Via+dello+Sprone+Firenze", "rating": 4.5 },
-        { "slot": "lunch", "tier": "a", "name": "Mercato Centrale ust kat", "price": 50, "why": "Gastronomi Yemek Pazari (Food Hall). Floransa tarihi pazar binasinin ust katinda taze makarna, pizza ve tatli stantlariyla herkesin istedigini secebilecegi canli gurme atmosfer.", "nav": "https://www.google.com/maps/search/?api=1&query=Mercato+Centrale+Firenze", "rating": 4.5 },
-        { "slot": "lunch", "tier": "b", "name": "L'Antico Trippaio (Piazza dei Cimatori)", "price": 25, "porkSafe": true, "why": "Sokak Lezzeti Bufesi (100+ yillik). Piazza dei Cimatori'de dana eti ve sebzeli nefis Floransa sandvicleri (5.5 EUR'dan). Domuzsuz ve cok lezzetli.", "nav": "https://www.google.com/maps/search/?api=1&query=L%27Antico+Trippaio+Piazza+dei+Cimatori+Firenze", "rating": 4.7 },
-        { "slot": "lunch", "tier": "b", "name": "Da Nerbone (Mercato Centrale)", "price": 25, "porkSafe": true, "closedOn": ["Pazar"], "hours": "08:30-15:00", "why": "Tarihi Pazar Tezgahi (1872'den beri). Mercato Centrale zemin katinda sicak dana etli sandvicleriyle Floransa'nin en meshur otantik isci ogle yemegi duragi.", "nav": "https://www.google.com/maps/search/?api=1&query=Da+Nerbone+Mercato+Centrale+Firenze", "rating": 4.5 },
-        { "slot": "dinner", "tier": "a", "name": "Trattoria Sostanza", "price": 130, "phone": "+39 055 212691", "closedOn": ["Cumartesi", "Pazar"], "booking": "phone-only", "porkSafe": true, "why": "Tarihi Trattoria / Izgara Evi (1869'dan kalma). Komur atesinde tereyaginda cizirdayan tavuk gogsu (petto di pollo al burro) domuzsuz efsane bir Floransa lezzetidir.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+Sostanza+Via+del+Porcellana+Firenze", "rating": 4.4 },
-        { "slot": "snack", "tier": "both", "name": "Gelateria dei Neri (Via dei Neri 9)", "price": 12, "closedOn": ["Sali"], "why": "Geleneksel Dondurmaci. Santa Croce yakininda yogun kivamli fistikli ve meyveli sorbelere sahip Floransa'nin en koklu ve sevilen dondurmacilarindan biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+dei+Neri+Firenze", "rating": 4.7 }
+        { "slot": "coffee", "tier": "both", "name": "Ditta Artigianale (Via dello Sprone)", "price": 15, "why": "Nitelikli Kahve Dükkanı (Specialty Coffee). Floransa Oltrarno'da kendi kavurdukları nitelikli çekirdeklerle espresso ve soğuk delemeler sunan şık modern kafe.", "nav": "https://www.google.com/maps/search/?api=1&query=Ditta+Artigianale+Via+dello+Sprone+Firenze", "rating": 4.5 },
+        { "slot": "lunch", "tier": "a", "name": "Mercato Centrale üst kat", "price": 50, "why": "Gastronomi Yemek Pazarı (Food Hall). Floransa tarihi pazar binasının üst katında taze makarna, pizza ve tatlı stantlarıyla herkesin istediğini seçebileceği canlı gurme atmosfer.", "nav": "https://www.google.com/maps/search/?api=1&query=Mercato+Centrale+Firenze", "rating": 4.5 },
+        { "slot": "lunch", "tier": "b", "name": "L'Antico Trippaio (Piazza dei Cimatori)", "price": 25, "porkSafe": true, "why": "Sokak Lezzeti Büfesi (100+ yıllık). Piazza dei Cimatori'de dana eti ve sebzeli nefis Floransa sandviçleri (5.5 EUR'dan). Domuzsuz ve çok lezzetli.", "nav": "https://www.google.com/maps/search/?api=1&query=L%27Antico+Trippaio+Piazza+dei+Cimatori+Firenze", "rating": 4.7 },
+        { "slot": "lunch", "tier": "b", "name": "Da Nerbone (Mercato Centrale)", "price": 25, "porkSafe": true, "closedOn": ["Pazar"], "hours": "08:30-15:00", "why": "Tarihi Pazar Tezgahı (1872'den beri). Mercato Centrale zemin katında sıcak dana etli sandviçleriyle Floransa'nın en meşhur otantik işçi öğle yemeği durağı.", "nav": "https://www.google.com/maps/search/?api=1&query=Da+Nerbone+Mercato+Centrale+Firenze", "rating": 4.5 },
+        { "slot": "dinner", "tier": "a", "name": "Trattoria Sostanza", "price": 130, "phone": "+39 055 212691", "closedOn": ["Cumartesi", "Pazar"], "booking": "phone-only", "porkSafe": true, "why": "Tarihi Trattoria / Izgara Evi (1869'dan kalma). Kömür ateşinde tereyağında cızırdayan tavuk göğsü (petto di pollo al burro) domuzsuz efsane bir Floransa lezzetidir.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+Sostanza+Via+del+Porcellana+Firenze", "rating": 4.4 },
+        { "slot": "snack", "tier": "both", "name": "Gelateria dei Neri (Via dei Neri 9)", "price": 12, "closedOn": ["Sali"], "why": "Geleneksel Dondurmacı. Santa Croce yakınında yoğun kıvamlı fıstıklı ve meyveli sorbelere sahip Floransa'nın en köklü ve sevilen dondurmacılarından biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+dei+Neri+Firenze", "rating": 4.7 }
       ],
       "shopping": [
-        { "name": "Officina Profumo-Farmaceutica di Santa Maria Novella", "address": "Via della Scala 16", "for": "1221'den beri en eski parfumeri; girmek bedava, mekan muze gibi", "nav": "https://www.google.com/maps/search/?api=1&query=Officina+Profumo+Farmaceutica+Santa+Maria+Novella+Firenze", "rating": 4.7 },
-        { "name": "San Lorenzo deri pazari", "for": "deri, pazarlik yapilir", "nav": "https://www.google.com/maps/search/?api=1&query=Mercato+di+San+Lorenzo+Firenze", "rating": 4.4 },
-        { "name": "Scuola del Cuoio", "for": "deri ustalarini calisirken izliyorsun", "nav": "https://www.google.com/maps/search/?api=1&query=Scuola+del+Cuoio+Firenze", "rating": 4.6 }
+        { "name": "Officina Profumo-Farmaceutica di Santa Maria Novella", "address": "Via della Scala 16", "for": "1221'den beri en eski parfümeri; girmek bedava, mekan müze gibi", "nav": "https://www.google.com/maps/search/?api=1&query=Officina+Profumo+Farmaceutica+Santa+Maria+Novella+Firenze", "rating": 4.7 },
+        { "name": "San Lorenzo deri pazarı", "for": "deri, pazarlık yapılır", "nav": "https://www.google.com/maps/search/?api=1&query=Mercato+di+San+Lorenzo+Firenze", "rating": 4.4 },
+        { "name": "Scuola del Cuoio", "for": "deri ustalarını çalışırken izliyorsun", "nav": "https://www.google.com/maps/search/?api=1&query=Scuola+del+Cuoio+Firenze", "rating": 4.6 }
       ]
     },
     {
       "id": "d4",
       "date": "2026-08-01",
       "weekday": "Cumartesi",
-      "title": "AREZZO ANTIKA FUARI",
+      "title": "AREZZO ANTİKA FUARI",
       "theme": "market",
       "intensity": "medium",
       "elderFriendly": true,
@@ -184,23 +184,23 @@
       "budget": { "a": 160, "b": 130 },
       "starred": true,
       "warnings": [
-        "Cumartesi fuarin en yogun gunu - 09:00'da orada ol, otopark erken doluyor",
-        "Nakit tasi, cogu tezgah kart almiyor"
+        "Cumartesi fuarın en yoğun günü - 09:00'da orada ol, otopark erken doluyor",
+        "Nakit taşı, çoğu tezgah kart almıyor"
       ],
-      "elderNote": "Piazza Grande egimli ve tas doseli. Vasari Localari'nin alti golge ve oturakli - anneyi orada birakip siz tezgahlarda gezebilirsiniz.",
-      "highlight": "Italya'nin en buyuk ve en eski acik hava antika fuari. 500+ katilimci, 08:00-19:00, giris ucretsiz. Bu gunu kesme.",
+      "elderNote": "Piazza Grande eğimli ve taş döşeli. Vasari Localari'nin altı gölge ve oturaklı - anneyi orada bırakıp siz tezgahlarda gezebilirsiniz.",
+      "highlight": "İtalya'nın en büyük ve en eski açık hava antika fuarı. 500+ katılımcı, 08:00-19:00, giriş ücretsiz. Bu günü kesme.",
       "stops": [
-        { "id": "s4a", "name": "Fiera Antiquaria - Piazza Grande", "city": "Arezzo", "lat": 43.4633, "lng": 11.8796, "tier": "core", "cost": 0, "durationMin": 300, "hours": "08:00-19:00", "why": "Tablolar, kitaplar, tarihi baskilar, oyuncaklar, saatler, porselen, kumaslar. 'Hayat Guzeldir'in cekildigi meydan.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Pietri+Arezzo", "navNote": "Parcheggio Pietri, ~8 EUR/gun", "tags": ["market", "shopping"], "rating": 4.6 },
-        { "id": "s4b", "name": "Basilica di San Francesco (Piero della Francesca freskleri)", "city": "Arezzo", "tier": "optional", "cost": 30, "durationMin": 45, "booking": "recommended", "why": "Ronesans'in en onemli fresk dizilerinden biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Basilica+di+San+Francesco+Arezzo", "rating": 4.7 },
+        { "id": "s4a", "name": "Fiera Antiquaria - Piazza Grande", "city": "Arezzo", "lat": 43.4633, "lng": 11.8796, "tier": "core", "cost": 0, "durationMin": 300, "hours": "08:00-19:00", "why": "Tablolar, kitaplar, tarihi baskılar, oyuncaklar, saatler, porselen, kumaşlar. 'Hayat Güzeldir'in çekildiği meydan.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Pietri+Arezzo", "navNote": "Parcheggio Pietri, ~8 EUR/gün", "tags": ["market", "shopping"], "rating": 4.6 },
+        { "id": "s4b", "name": "Basilica di San Francesco (Piero della Francesca freskleri)", "city": "Arezzo", "tier": "optional", "cost": 30, "durationMin": 45, "booking": "recommended", "why": "Rönesans'ın en önemli fresk dizilerinden biri.", "nav": "https://www.google.com/maps/search/?api=1&query=Basilica+di+San+Francesco+Arezzo", "rating": 4.7 },
         { "id": "s4c", "name": "Duomo + Santa Maria della Pieve", "city": "Arezzo", "tier": "optional", "cost": 0, "durationMin": 40, "nav": "https://www.google.com/maps/search/?api=1&query=Pieve+di+Santa+Maria+Arezzo", "rating": 4.7 }
       ],
       "food": [
-        { "slot": "lunch", "tier": "a", "name": "Antica Osteria l'Agania (Via Mazzini 10)", "price": 70, "why": "Tarihi Arezzo Osteria'si. Arezzo merkezinde ahsap tavanli otantik atmosferde sarimsakli Pici all'Aglione makarnasi ve Chianina sigir eti sunan mehur aile mekani.", "closedOn": ["Pazartesi", "Sali"], "porkWarning": "Pici'lerin cogu cinghiale - sigir ragu veya aglione iste", "nav": "https://www.google.com/maps/search/?api=1&query=Antica+Osteria+l%27Agania+Arezzo", "rating": 4.4 },
-        { "slot": "lunch", "tier": "b", "name": "Fuar alanindaki panini tezgahlari", "price": 25, "why": "Fuar Sokak Lezzeti Tezgahi. Arezzo Antika Fuari stantlari arasinda gezerken pratik, sicak ve taze peynirli veya dana etli leziz panini.", "porkWarning": "porchetta domuz - lingua veya peynirli iste", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Grande+Arezzo", "rating": 4.5 },
-        { "slot": "coffee", "tier": "both", "name": "Caffe dei Costanti (Piazza San Francesco)", "price": 12, "why": "Tarihi Meydan Kahvesi (1804). 'Hayat Guzeldir' (La Vita e Bella) filminde de gorunen, Arezzo'nun en eski ve en zarif tarihi kahvesi.", "nav": "https://www.google.com/maps/search/?api=1&query=Caffe+dei+Costanti+Piazza+San+Francesco+Arezzo", "rating": 4.3 },
-        { "slot": "snack", "tier": "both", "name": "Pasticceria Vestri (Çikolata & Dondurma)", "price": 12, "why": "Arezzo'nun dunya mehur gurme cikolatacisi ve taze el yapimi dondurma ustasi.", "nav": "https://www.google.com/maps/search/?api=1&query=Pasticceria+Vestri+Arezzo", "rating": 4.7 }
+        { "slot": "lunch", "tier": "a", "name": "Antica Osteria l'Agania (Via Mazzini 10)", "price": 70, "why": "Tarihi Arezzo Osteria'sı. Arezzo merkezinde ahşap tavanlı otantik atmosferde sarımsaklı Pici all'Aglione makarnası ve Chianina sığır eti sunan meşhur aile mekanı.", "closedOn": ["Pazartesi", "Sali"], "porkWarning": "Pici'lerin çoğu cinghiale - sığır ragu veya aglione iste", "nav": "https://www.google.com/maps/search/?api=1&query=Antica+Osteria+l%27Agania+Arezzo", "rating": 4.4 },
+        { "slot": "lunch", "tier": "b", "name": "Fuar alanındaki panini tezgahları", "price": 25, "why": "Fuar Sokak Lezzeti Tezgahı. Arezzo Antika Fuarı stantları arasında gezerken pratik, sıcak ve taze peynirli veya dana etli leziz panini.", "porkWarning": "porchetta domuz - lingua veya peynirli iste", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Grande+Arezzo", "rating": 4.5 },
+        { "slot": "coffee", "tier": "both", "name": "Caffe dei Costanti (Piazza San Francesco)", "price": 12, "why": "Tarihi Meydan Kahvesi (1804). 'Hayat Güzeldir' (La Vita e Bella) filminde de görünen, Arezzo'nun en eski ve en zarif tarihi kahvesi.", "nav": "https://www.google.com/maps/search/?api=1&query=Caffe+dei+Costanti+Piazza+San+Francesco+Arezzo", "rating": 4.3 },
+        { "slot": "snack", "tier": "both", "name": "Pasticceria Vestri (Çikolata & Dondurma)", "price": 12, "why": "Arezzo'nun dünya meşhur gurme çikolatacısı ve taze el yapımı dondurma ustası.", "nav": "https://www.google.com/maps/search/?api=1&query=Pasticceria+Vestri+Arezzo", "rating": 4.7 }
       ],
-      "shopping": [{ "name": "Fiera Antiquaria", "for": "antika, vintage, tasarim objeler", "tip": "'Qual e il prezzo migliore?' ile %20-30 iniyor. 16:00'dan sonra fiyatlar daha da yumusuyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Grande+Arezzo", "rating": 4.6 }]
+      "shopping": [{ "name": "Fiera Antiquaria", "for": "antika, vintage, tasarım objeler", "tip": "'Qual e il prezzo migliore?' ile %20-30 iniyor. 16:00'dan sonra fiyatlar daha da yumuşuyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Grande+Arezzo", "rating": 4.6 }]
     },
     {
       "id": "d5",
@@ -212,17 +212,17 @@
       "elderFriendly": true,
       "drivingMinutes": 60,
       "budget": { "a": 290, "b": 150 },
-      "warnings": ["Pazar gunu dukkanlarin cogu kapali", "Dario Doc hafta sonu kapali"],
-      "elderNote": "Montefioralle'nin sokaklari dik. Arabayi koy girisine kadar cikarabilirsin, oradan 5 dk duz yuruyus.",
+      "warnings": ["Pazar günü dükkanların çoğu kapalı", "Dario Doc hafta sonu kapalı"],
+      "elderNote": "Montefioralle'nin sokakları dik. Arabayı köy girişine kadar çıkarabilirsin, oradan 5 dk düz yürüyüş.",
       "stops": [
-        { "id": "s5a", "name": "Otel havuzu", "tier": "core", "cost": 0, "durationMin": 180, "why": "Ucretsiz ve gezinin en iyi 3 saati.", "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle", "rating": 4.6 },
-        { "id": "s5b", "name": "Fattoria Casa Sola", "city": "Barberino", "lat": 43.5263474, "lng": 11.2105129, "placeId": "ChIJHVZckDU2KhMR5cCUcDZtWwc", "tier": "optional", "cost": 90, "costAlt": 0, "costAltNote": "Sadece dukkanina ugra - satin alirken tattiriyorlar, ucretsiz. Ya da sadece zeytinyagi tadimi iste (sarabin yari fiyati).", "hours": "Pazar 10:00-19:00", "phone": "+39 328 950 9196", "nav": "https://www.google.com/maps/search/?api=1&query=Fattoria+Casa+Sola+Barberino", "rating": 4.8 },
-        { "id": "s5c", "name": "Montefioralle", "city": "Greve in Chianti", "lat": 43.5850, "lng": 11.3050, "tier": "core", "cost": 0, "durationMin": 45, "why": "200 nufuslu, halka seklinde, tamamen tas ortacag koyu. Gezinin en guzel fotograflari.", "nav": "https://www.google.com/maps/search/?api=1&query=Montefioralle+Greve+in+Chianti", "rating": 4.7 }
+        { "id": "s5a", "name": "Otel havuzu", "tier": "core", "cost": 0, "durationMin": 180, "why": "Ücretsiz ve gezinin en iyi 3 saati.", "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle", "rating": 4.6 },
+        { "id": "s5b", "name": "Fattoria Casa Sola", "city": "Barberino", "lat": 43.5263474, "lng": 11.2105129, "placeId": "ChIJHVZckDU2KhMR5cCUcDZtWwc", "tier": "optional", "cost": 90, "costAlt": 0, "costAltNote": "Sadece dükkanına uğra - satın alırken tattırıyorlar, ücretsiz. Ya da sadece zeytinyağı tadımı iste (şarabın yarı fiyatı).", "hours": "Pazar 10:00-19:00", "phone": "+39 328 950 9196", "nav": "https://www.google.com/maps/search/?api=1&query=Fattoria+Casa+Sola+Barberino", "rating": 4.8 },
+        { "id": "s5c", "name": "Montefioralle", "city": "Greve in Chianti", "lat": 43.5850, "lng": 11.3050, "tier": "core", "cost": 0, "durationMin": 45, "why": "200 nüfuslu, halka şeklinde, tamamen taş ortaçağ köyü. Gezinin en güzel fotoğrafları.", "nav": "https://www.google.com/maps/search/?api=1&query=Montefioralle+Greve+in+Chianti", "rating": 4.7 }
       ],
       "food": [
-        { "slot": "dinner", "tier": "a", "name": "Officina della Bistecca (Dario Cecchini)", "price": 150, "priceNote": "50 EUR/kisi sabit menu", "why": "Efsanevi Kasap & Sov Restorani. Dunyaca mehur kasap Dario Cecchini'nin Panzano'daki ortalama masali et ziyafeti; Chianina bifteklerinin komurde pisirilip coskuyla sunuldugu unutulmaz bir deneyim.", "phone": "+39 055 852020", "booking": "required", "porkWarning": "Acilisi 'burro del Chianti' = domuz lardo'su. Rezervasyonda ve masada 'niente maiale, niente lardo' de.", "nav": "https://www.google.com/maps/search/?api=1&query=Officina+della+Bistecca+Panzano", "rating": 4.4 },
-        { "slot": "lunch", "tier": "b", "name": "Cecchini Panini Truck", "price": 35, "hours": "her gun 11:30-15:00", "why": "Manzarali Kasap Burger Tezgahi. Dario Cecchini'nin acik havada Chianti baglarina karsi dev dana burgerler (~10 EUR) ve firin patates sundugu ekonomik ve manzarali ogle duragi.", "porkWarning": "hot dog ve 'pancia' sandvici domuz", "nav": "https://www.google.com/maps/search/?api=1&query=Cecchini+Panini+Truck+Panzano", "rating": 4.5 },
-        { "slot": "dinner", "tier": "b", "name": "La Sosta di Pio VII (Barberino)", "price": 110, "phone": "+39 055 807 5923", "why": "Manzarali Toskana Trattoria'si. Otelinizin hemen yakininda muhtesem gun batimi terasina sahip, odun izgarasinda 1.2 kg Bistecca alla Fiorentina sunan huzurlu yerel mekan.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Sosta+di+Pio+VII+Barberino", "rating": 4.4 }
+        { "slot": "dinner", "tier": "a", "name": "Officina della Bistecca (Dario Cecchini)", "price": 150, "priceNote": "50 EUR/kişi sabit menü", "why": "Efsanevi Kasap & Şov Restoranı. Dünyaca meşhur kasap Dario Cecchini'nin Panzano'daki ortalama masalı et ziyafeti; Chianina bifteklerinin kömürde pişirilip coşkuyla sunulduğu unutulmaz bir deneyim.", "phone": "+39 055 852020", "booking": "required", "porkWarning": "Acilisi 'burro del Chianti' = domuz lardo'su. Rezervasyonda ve masada 'niente maiale, niente lardo' de.", "nav": "https://www.google.com/maps/search/?api=1&query=Officina+della+Bistecca+Panzano", "rating": 4.4 },
+        { "slot": "lunch", "tier": "b", "name": "Cecchini Panini Truck", "price": 35, "hours": "her gün 11:30-15:00", "why": "Manzaralı Kasap Burger Tezgahı. Dario Cecchini'nin açık havada Chianti bağlarına karşı dev dana burgerler (~10 EUR) ve fırın patates sunduğu ekonomik ve manzaralı öğle durağı.", "porkWarning": "hot dog ve 'pancia' sandviçi domuz", "nav": "https://www.google.com/maps/search/?api=1&query=Cecchini+Panini+Truck+Panzano", "rating": 4.5 },
+        { "slot": "dinner", "tier": "b", "name": "La Sosta di Pio VII (Barberino)", "price": 110, "phone": "+39 055 807 5923", "why": "Manzaralı Toskana Trattoria'sı. Otelinizin hemen yakınında muhteşem gün batımı terasına sahip, odun ızgarasında 1.2 kg Bistecca alla Fiorentina sunan huzurlu yerel mekan.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Sosta+di+Pio+VII+Barberino", "rating": 4.4 }
       ],
       "shopping": []
     },
@@ -230,76 +230,76 @@
       "id": "d6",
       "date": "2026-08-03",
       "weekday": "Pazartesi",
-      "title": "Val d'Orcia (kisaltilmis)",
+      "title": "Val d'Orcia (kısaltılmış)",
       "theme": "scenic",
       "intensity": "medium-high",
       "elderFriendly": true,
       "drivingMinutes": 205,
       "budget": { "a": 180, "b": 75 },
-      "revised": "Montepulciano cikarildi - kasaba dimdik yokus, meydana cikmak 20 dk tirmanis. Tasarruf: 1.5 saat yol + ~80 EUR.",
-      "warnings": ["Pienza'nin da ZTL'si var, sur disina park et", "08:00 cik, 18:00 otelde ol"],
-      "elderNote": "Bagno Vignoni gezinin en iyi duragi olabilir: ayaklarini termal suya sokabiliyor, ucretsiz, oturakli, golgeli. Eklem agrisina iyi gelir.",
+      "revised": "Montepulciano çıkarıldı - kasaba dimdik yokuş, meydana çıkmak 20 dk tırmanış. Tasarruf: 1.5 saat yol + ~80 EUR.",
+      "warnings": ["Pienza'nın da ZTL'si var, sur dışına park et", "08:00 çık, 18:00 otelde ol"],
+      "elderNote": "Bagno Vignoni gezinin en iyi durağı olabilir: ayaklarını termal suya sokabiliyor, ücretsiz, oturaklı, gölgeli. Eklem ağrısına iyi gelir.",
       "stops": [
-        { "id": "s6a", "name": "Pienza", "city": "Pienza", "lat": 43.0767964, "lng": 11.678544, "tier": "core", "cost": 0, "durationMin": 180, "why": "Papa II. Pius'un 15. yy'da sifirdan tasarlattigi 'ideal Ronesans sehri', UNESCO. Duz, kucuk, gezmesi kolay. Sur disi terasindan Val d'Orcia manzarasi ucretsiz.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Pienza", "rating": 4.7 },
-        { "id": "s6b", "name": "Palazzo Piccolomini", "city": "Pienza", "tier": "skip", "cost": 21, "skipReason": "Terastan bedavaya benzerini goruyorsun", "rating": 4.6 },
-        { "id": "s6c", "name": "Bagno Vignoni + Parco dei Mulini", "city": "Bagno Vignoni", "lat": 43.0308851, "lng": 11.6172621, "placeId": "ChIJv3gjDxRpKRMRLwDt3Gjr6x0", "tier": "core", "cost": 0, "durationMin": 90, "why": "Meydanin yerinde Romalilardan kalma dev termal havuz. Asagidaki parkta sicak su deresine ayak sokulabiliyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Bagno+Vignoni", "rating": 4.7 },
-        { "id": "s6d", "name": "Cappella della Madonna di Vitaleta + servi siralari", "city": "San Quirico d'Orcia", "lat": 43.0640, "lng": 11.6100, "tier": "optional", "cost": 0, "durationMin": 30, "bestTime": "18:00 sonrasi", "why": "Yol ustu fotograf duragi, bedava.", "nav": "https://www.google.com/maps/search/?api=1&query=Cappella+della+Madonna+di+Vitaleta", "rating": 4.7 },
-        { "id": "s6e", "name": "Montepulciano", "tier": "removed", "removedReason": "Dimdik yokus, anne icin uygun degil. 1.5 saat yol + 80 EUR tasarruf.", "rating": 4.7 }
+        { "id": "s6a", "name": "Pienza", "city": "Pienza", "lat": 43.0767964, "lng": 11.678544, "tier": "core", "cost": 0, "durationMin": 180, "why": "Papa II. Pius'un 15. yy'da sıfırdan tasarlattığı 'ideal Rönesans şehri', UNESCO. Düz, küçük, gezmesi kolay. Sur dışı terasından Val d'Orcia manzarası ücretsiz.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Pienza", "rating": 4.7 },
+        { "id": "s6b", "name": "Palazzo Piccolomini", "city": "Pienza", "tier": "skip", "cost": 21, "skipReason": "Terastan bedavaya benzerini görüyorsun", "rating": 4.6 },
+        { "id": "s6c", "name": "Bagno Vignoni + Parco dei Mulini", "city": "Bagno Vignoni", "lat": 43.0308851, "lng": 11.6172621, "placeId": "ChIJv3gjDxRpKRMRLwDt3Gjr6x0", "tier": "core", "cost": 0, "durationMin": 90, "why": "Meydanın yerinde Romalılardan kalma dev termal havuz. Aşağıdaki parkta sıcak su deresine ayak sokulabiliyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Bagno+Vignoni", "rating": 4.7 },
+        { "id": "s6d", "name": "Cappella della Madonna di Vitaleta + servi sıraları", "city": "San Quirico d'Orcia", "lat": 43.0640, "lng": 11.6100, "tier": "optional", "cost": 0, "durationMin": 30, "bestTime": "18:00 sonrası", "why": "Yol üstü fotoğraf durağı, bedava.", "nav": "https://www.google.com/maps/search/?api=1&query=Cappella+della+Madonna+di+Vitaleta", "rating": 4.7 },
+        { "id": "s6e", "name": "Montepulciano", "tier": "removed", "removedReason": "Dimdik yokuş, anne için uygun değil. 1.5 saat yol + 80 EUR tasarruf.", "rating": 4.7 }
       ],
       "food": [
-        { "slot": "lunch", "tier": "a", "name": "Pienza'da restoran", "price": 90, "why": "Val d'Orcia Trattoria'si (Trattoria da Fiorella). Pienza'nin cicekli tas sokaklarinda yerel Pecorino di Pienza peynirli makarnalar ve Val d'Orcia saraplari sunan otantik mekan.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+da+Fiorella+Pienza", "rating": 4.5 },
-        { "slot": "lunch", "tier": "b", "name": "La Taverna del Pecorino'dan pecorino + ekmek + domates, sur disinda piknik", "price": 20, "why": "Gurme Peynirci / Teras Piknigi. 4 kusaktir Pienza'da peynir olgunlastiran dukkan. Taze pecorino ve ekmekle sur disindaki terasta nefis Val d'Orcia manzarali piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza", "rating": 4.7 },
-        { "slot": "coffee", "tier": "both", "name": "Pienza Coffee & Fredo Pasticceria", "price": 12, "why": "Pienza'da meşe odununda kavrulan yerel meşhur artisanal kahve ve zarif bademli kurabiye duragi.", "nav": "https://www.google.com/maps/search/?api=1&query=Pienza+Coffee", "rating": 4.7 }
+        { "slot": "lunch", "tier": "a", "name": "Pienza'da restoran", "price": 90, "why": "Val d'Orcia Trattoria'sı (Trattoria da Fiorella). Pienza'nın çiçekli taş sokaklarında yerel Pecorino di Pienza peynirli makarnalar ve Val d'Orcia şarapları sunan otantik mekan.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+da+Fiorella+Pienza", "rating": 4.5 },
+        { "slot": "lunch", "tier": "b", "name": "La Taverna del Pecorino'dan pecorino + ekmek + domates, sur dışında piknik", "price": 20, "why": "Gurme Peynirci / Teras Pikniği. 4 kuşaktır Pienza'da peynir olgunlaştıran dükkan. Taze pecorino ve ekmekle sur dışındaki terasta nefis Val d'Orcia manzaralı piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza", "rating": 4.7 },
+        { "slot": "coffee", "tier": "both", "name": "Pienza Coffee & Fredo Pasticceria", "price": 12, "why": "Pienza'da meşe odununda kavrulan yerel meşhur artisanal kahve ve zarif bademli kurabiye durağı.", "nav": "https://www.google.com/maps/search/?api=1&query=Pienza+Coffee", "rating": 4.7 }
       ],
-      "shopping": [{ "name": "La Taverna del Pecorino (Via Condotti 1)", "for": "pecorino di Pienza, zeytinyagi, bal, recel", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza", "rating": 4.7 }]
+      "shopping": [{ "name": "La Taverna del Pecorino (Via Condotti 1)", "for": "pecorino di Pienza, zeytinyağı, bal, reçel", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza", "rating": 4.7 }]
     },
     {
       "id": "d7",
       "date": "2026-08-04",
       "weekday": "Sali",
-      "title": "Dinlenme veya plaj (4 secenek)",
+      "title": "Dinlenme veya plaj (4 seçenek)",
       "theme": "rest",
       "intensity": "low",
       "elderFriendly": true,
       "drivingMinutes": 60,
       "budget": { "a": 140, "b": 40 },
       "warnings": [],
-      "elderNote": "Ana cadde hafif yokus ama kisa. Piazza della Cisterna'da oturup dondurma yemek zaten programin kendisi.",
+      "elderNote": "Ana cadde hafif yokuş ama kısa. Piazza della Cisterna'da oturup dondurma yemek zaten programın kendisi.",
       "options": [
         {
           "id": "opt-a",
-          "label": "Dinlenme + San Gimignano aksami",
-          "desc": "Sabah + oglen otel havuzu. Aksam San Gimignano: kuleler, Rocca di Montestaffoli'de gun batimi, Piazza della Cisterna'da Dondoli.",
+          "label": "Dinlenme + San Gimignano akşamı",
+          "desc": "Sabah + öğlen otel havuzu. Akşam San Gimignano: kuleler, Rocca di Montestaffoli'de gün batımı, Piazza della Cisterna'da Dondoli.",
           "cost": 40,
           "drivingMinutes": 60,
           "rating": 4.7,
           "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano",
           "pros": [
-            "En ucuz gun",
-            "Sifir surus stresi",
-            "San Gimignano gun batiminda bambaska - turist otobusleri gitmis olur"
+            "En ucuz gün",
+            "Sıfır sürüş stresi",
+            "San Gimignano gün batımında bambaşka - turist otobüsleri gitmiş olur"
           ],
           "cons": ["Deniz yok"],
           "stops": [
-            { "id": "s7a", "name": "Otel havuzu (sabah + oglen)", "tier": "core", "cost": 0, "durationMin": 300, "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle", "rating": 4.6 },
-            { "id": "s7b", "name": "San Gimignano - kuleler ve meydanlar", "city": "San Gimignano", "lat": 43.4674126, "lng": 11.0433506, "tier": "core", "cost": 0, "durationMin": 180, "bestTime": "17:00 sonrasi", "why": "14 ortacag kulesi. 1300'lerde zengin aileler birbirine ustunluk taslamak icin kule diktirmis; bugun ayakta kalan tek 'kuleli siluet' burasi. 17:00'den sonra otobus turlari gidiyor, kasaba bambaska bir yer oluyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano", "navNote": "P2 Giubileo, ~2 EUR/saat", "rating": 4.7 },
-            { "id": "s7c", "name": "Rocca di Montestaffoli", "city": "San Gimignano", "tier": "core", "cost": 0, "durationMin": 45, "why": "Kale duvarlari - gun batimi icin en iyi nokta, bilet yok, kimse bilmiyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Rocca+di+Montestaffoli+San+Gimignano", "rating": 4.7 },
+            { "id": "s7a", "name": "Otel havuzu (sabah + öğlen)", "tier": "core", "cost": 0, "durationMin": 300, "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle", "rating": 4.6 },
+            { "id": "s7b", "name": "San Gimignano - kuleler ve meydanlar", "city": "San Gimignano", "lat": 43.4674126, "lng": 11.0433506, "tier": "core", "cost": 0, "durationMin": 180, "bestTime": "17:00 sonrası", "why": "14 ortaçağ kulesi. 1300'lerde zengin aileler birbirine üstünlük taslamak için kule diktirmiş; bugün ayakta kalan tek 'kuleli siluet' burası. 17:00'den sonra otobüs turları gidiyor, kasaba bambaşka bir yer oluyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano", "navNote": "P2 Giubileo, ~2 EUR/saat", "rating": 4.7 },
+            { "id": "s7c", "name": "Rocca di Montestaffoli", "city": "San Gimignano", "tier": "core", "cost": 0, "durationMin": 45, "why": "Kale duvarları - gün batımı için en iyi nokta, bilet yok, kimse bilmiyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Rocca+di+Montestaffoli+San+Gimignano", "rating": 4.7 },
             { "id": "s7d", "name": "Torre Grossa", "tier": "skip", "cost": 27, "skipReason": "218 basamak; Rocca zaten daha iyi manzara veriyor", "rating": 4.6 }
           ],
           "food": [
-            { "slot": "lunch", "tier": "b", "name": "Coop'tan malzemeyle havuz basi", "price": 15, "why": "Supermarket Malzemesi ile Otelde Havuz Basi Yemegi. Barberino Tavarnelle Coop'tan taze ekmek, grissini, domates, mozzarella ve meyve alip otel havuzunda rahat ogle yemegi keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=Coop+Barberino+Tavarnelle", "rating": 4.3 },
-            { "slot": "dinner", "tier": "a", "name": "San Gimignano'da aksam yemegi", "price": 110, "why": "Orta Cag Kasaba Restorani (Ristorante Rigoletto / Osteria del Carcere). Otobus turlari cekildikten sonra aksam sakinlesen San Gimignano kuleleri altinda Safranli Pici makarnasi ve Vernaccia sarabi.", "nav": "https://www.google.com/maps/search/?api=1&query=Ristorante+Rigoletto+San+Gimignano", "rating": 4.4 },
-            { "slot": "snack", "tier": "both", "name": "Gelateria Dondoli (Piazza della Cisterna 4)", "price": 12, "hours": "09:00-23:00", "why": "Dunya Sampiyonu Dondurmaci. Piazza della Cisterna'da 2 kez Dunya Dondurma Sampiyonu olan Sergio Dondoli'nin safranli-cam fistikli Crema di Santa Fina ve ahududu-biberiyeli Rosemary Baby ozel tatlari.", "keep": true, "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Dondoli+San+Gimignano", "rating": 4.6 }
+            { "slot": "lunch", "tier": "b", "name": "Coop'tan malzemeyle havuz başı", "price": 15, "why": "Süpermarket Malzemesi ile Otelde Havuz Başı Yemeği. Barberino Tavarnelle Coop'tan taze ekmek, grissini, domates, mozzarella ve meyve alıp otel havuzunda rahat öğle yemeği keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=Coop+Barberino+Tavarnelle", "rating": 4.3 },
+            { "slot": "dinner", "tier": "a", "name": "San Gimignano'da akşam yemeği", "price": 110, "why": "Orta Çağ Kasaba Restoranı (Ristorante Rigoletto / Osteria del Carcere). Otobüs turları çekildikten sonra akşam sakinleşen San Gimignano kuleleri altında Safranlı Pici makarnası ve Vernaccia şarabı.", "nav": "https://www.google.com/maps/search/?api=1&query=Ristorante+Rigoletto+San+Gimignano", "rating": 4.4 },
+            { "slot": "snack", "tier": "both", "name": "Gelateria Dondoli (Piazza della Cisterna 4)", "price": 12, "hours": "09:00-23:00", "why": "Dünya Şampiyonu Dondurmacı. Piazza della Cisterna'da 2 kez Dünya Dondurma Şampiyonu olan Sergio Dondoli'nin safranlı-çam fıstıklı Crema di Santa Fina ve ahududu-biberiyeli Rosemary Baby özel tatları.", "keep": true, "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Dondoli+San+Gimignano", "rating": 4.6 }
           ],
           "shopping": [
-            { "name": "San Gimignano zafferani (safran)", "for": "Ortacag'da kasabayi zengin eden urun, kucuk kutularda, mukemmel hediye", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+della+Cisterna+San+Gimignano", "rating": 4.6 },
-            { "name": "Seramik ve el yapimi kagit dukkanlari", "for": "ana cadde boyunca", "nav": "https://www.google.com/maps/search/?api=1&query=Via+San+Matteo+San+Gimignano", "rating": 4.5 }
+            { "name": "San Gimignano zafferani (safran)", "for": "Ortaçağ'da kasabayı zengin eden ürün, küçük kutularda, mükemmel hediye", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+della+Cisterna+San+Gimignano", "rating": 4.6 },
+            { "name": "Seramik ve el yapımı kağıt dükkanları", "for": "ana cadde boyunca", "nav": "https://www.google.com/maps/search/?api=1&query=Via+San+Matteo+San+Gimignano", "rating": 4.5 }
           ]
         },
         {
           "id": "opt-b",
           "label": "Marina di Bibbona / Cecina",
-          "desc": "08:00 cik / 09:30 plajda / 09:30-13:00 deniz / 13:00-16:00 ogle + golge / 16:00-18:30 deniz / 19:00 cik / 20:30 otelde.",
+          "desc": "08:00 çık / 09:30 plajda / 09:30-13:00 deniz / 13:00-16:00 öğle + gölge / 16:00-18:30 deniz / 19:00 çık / 20:30 otelde.",
           "cost": { "a": 177, "b": 60 },
           "drivingMinutes": 160,
           "recommended": true,
@@ -308,26 +308,26 @@
           "rating": 4.5,
           "nav": "https://www.google.com/maps/search/?api=1&query=Marina+di+Bibbona",
           "pros": [
-            "En yakin ve en ucuz deniz secenegi",
-            "Sezlong+semsiye 18-25 EUR, serbest plaj da var",
-            "Arkada cam ormani - ogle sicaginda golgeli yuruyus",
-            "Sig ve genis kumsal, cocuk icin guvenli",
+            "En yakın ve en ucuz deniz seçeneği",
+            "Şezlong+şemsiye 18-25 EUR, serbest plaj da var",
+            "Arkada çam ormanı - öğle sıcağında gölgeli yürüyüş",
+            "Sığ ve geniş kumsal, çocuk için güvenli",
             "Otopark kolay"
           ],
           "cons": [
-            "Ara sira denizanasi bildiriliyor",
-            "Kasaba siradan - plajdan baska yapacak sey yok",
-            "Cecina'nin en iyi restorani Ristorante da Andrea Pazartesi ve Sali kapali - bu gun gidilemez"
+            "Ara sıra denizanası bildiriliyor",
+            "Kasaba sıradan - plajdan başka yapacak şey yok",
+            "Cecina'nın en iyi restoranı Ristorante da Andrea Pazartesi ve Salı kapalı - bu gün gidilemez"
           ],
           "food": [
-            { "slot": "lunch", "tier": "a", "name": "Osteria Magona Mare (Cecina)", "price": 90, "why": "Deniz manzarali restoran, SALI ACIK. Fritto misto, spaghetti allo scoglio, alle vongole, cacciucco (Livorno'nun acili balik guveci). Sahilde domuz derdi sifir.", "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+Magona+Mare+Cecina", "rating": 4.5 },
-            { "slot": "lunch", "tier": "b", "name": "Plaj kulubunun mutfagi veya Coop'tan piknik", "price": 30, "why": "Plaj kulubunde hafif ogle yemegi ya da Coop'tan alip sezlongda piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=Marina+di+Bibbona", "rating": 4.3 }
+            { "slot": "lunch", "tier": "a", "name": "Osteria Magona Mare (Cecina)", "price": 90, "why": "Deniz manzaralı restoran, SALI AÇIK. Fritto misto, spaghetti allo scoglio, alle vongole, cacciucco (Livorno'nun acılı balık güveci). Sahilde domuz derdi sıfır.", "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+Magona+Mare+Cecina", "rating": 4.5 },
+            { "slot": "lunch", "tier": "b", "name": "Plaj kulübünün mutfağı veya Coop'tan piknik", "price": 30, "why": "Plaj kulübünde hafif öğle yemeği ya da Coop'tan alıp şezlongda piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=Marina+di+Bibbona", "rating": 4.3 }
           ]
         },
         {
           "id": "opt-c",
           "label": "Golfo di Baratti (Populonia)",
-          "desc": "07:30 cik (erken - 09:00'dan sonra doluyor) / 09:15 plajda / ogleden sonra istege bagli Populonia nekropolu / 19:00 cik.",
+          "desc": "07:30 çık (erken - 09:00'dan sonra doluyor) / 09:15 plajda / öğleden sonra isteğe bağlı Populonia nekropolü / 19:00 çık.",
           "cost": { "a": 150, "b": 70 },
           "drivingMinutes": 210,
           "beach": "baratti",
@@ -335,52 +335,52 @@
           "rating": 4.7,
           "nav": "https://www.google.com/maps/search/?api=1&query=Golfo+di+Baratti+Populonia",
           "pros": [
-            "Kiyinin en guzel koyu",
-            "Camlar dogrudan kumun ustune iniyor - KUMSALDA golge var, anne icin gezinin en rahat plaji",
-            "Ustunde Populonia Etrusk nekropolu ve kale - deniz + kultur",
-            "Iri kum suyu berrak tutuyor"
+            "Kıyının en güzel koyu",
+            "Çamlar doğrudan kumun üstüne iniyor - KUMSALDA gölge var, anne için gezinin en rahat plajı",
+            "Üstünde Populonia Etrusk nekropolü ve kale - deniz + kültür",
+            "İri kum suyu berrak tutuyor"
           ],
           "cons": [
-            "Sabah 9'dan itibaren doluyor - erken cikmak sart",
-            "Otopark ucretli ve sinirli",
-            "Servis az, restoran secenegi dar",
+            "Sabah 9'dan itibaren doluyor - erken çıkmak şart",
+            "Otopark ücretli ve sınırlı",
+            "Servis az, restoran seçeneği dar",
             "Bibbona'dan 25 dk daha uzak"
           ],
           "food": [
-            { "slot": "lunch", "tier": "a", "name": "Bagno Baratti plaj bari", "price": 45, "hours": "her gun 09:00-19:00", "why": "Plaj bari, sicak/soguk atistirmalik ve icecek. Populonia koyunde de kucuk trattoria'lar var.", "nav": "https://www.google.com/maps/search/?api=1&query=Bagno+Baratti+Populonia", "rating": 4.4 },
-            { "slot": "lunch", "tier": "b", "name": "Coop'tan piknik", "price": 20, "why": "Plaja gelmeden Coop'tan alinan malzemeyle piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=Coop+Piombino", "rating": 4.3 }
+            { "slot": "lunch", "tier": "a", "name": "Bagno Baratti plaj barı", "price": 45, "hours": "her gün 09:00-19:00", "why": "Plaj barı, sıcak/soğuk atıştırmalık ve içecek. Populonia köyünde de küçük trattoria'lar var.", "nav": "https://www.google.com/maps/search/?api=1&query=Bagno+Baratti+Populonia", "rating": 4.4 },
+            { "slot": "lunch", "tier": "b", "name": "Coop'tan piknik", "price": 20, "why": "Plaja gelmeden Coop'tan alınan malzemeyle piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=Coop+Piombino", "rating": 4.3 }
           ]
         },
         {
           "id": "opt-d",
           "label": "Forte dei Marmi",
-          "desc": "07:30 cik / 09:30 Parcheggio Centro Commerciale (Via G.B. Vico 23) / 10:00-13:00 kasaba: Il Fortino, pontile, merkez, istege bagli bisiklet / 13:00 ogle / 14:00 Le Dune'e gec (10 dk kuzey, sokaga park) / 14:30-18:00 plaj / 18:00 cik / 20:00 otelde.",
+          "desc": "07:30 çık / 09:30 Parcheggio Centro Commerciale (Via G.B. Vico 23) / 10:00-13:00 kasaba: Il Fortino, pontile, merkez, isteğe bağlı bisiklet / 13:00 öğle / 14:00 Le Dune'e geç (10 dk kuzey, sokağa park) / 14:30-18:00 plaj / 18:00 çık / 20:00 otelde.",
           "cost": { "a": 200, "b": 80 },
           "drivingMinutes": 240,
           "beach": "le-dune",
           "movesTo": "d9",
-          "bikes": "Forte Bike (Viale A. Morin 22e) veya Coppa Bike (Via A. Franceschi 4D). Kasaba duz, sahil boyu bisiklet yolu var.",
-          "note": "Pazari da istiyorsan bu gunu Carsamba'ya alman ve Siena'yi Sali'ya kaydirman gerekir - ama o zaman Siena'nin Fortezza pazari kacar. Sali'da kalmak Siena'yi korur, pazari feda eder.",
+          "bikes": "Forte Bike (Viale A. Morin 22e) veya Coppa Bike (Via A. Franceschi 4D). Kasaba düz, sahil boyu bisiklet yolu var.",
+          "note": "Pazarı da istiyorsan bu günü Çarşamba'ya alman ve Siena'yı Salı'ya kaydırman gerekir - ama o zaman Siena'nın Fortezza pazarı kaçar. Salı'da kalmak Siena'yı korur, pazarı feda eder.",
           "rating": 4.4,
           "nav": "https://www.google.com/maps/search/?api=1&query=Spiaggia+libera+Le+Dune+Forte+dei+Marmi",
           "pros": [
-            "Le Dune ucretsiz plaji gercekten iyi: cankurtaran, dus, tuvalet, 30 m sig su, park 3 saat 4.50 EUR",
-            "Arkada Apuan Alpleri - Michelangelo'nun mermer daglari, kiyida baska yerde olmayan manzara",
-            "Kasaba dumduz ve bisiklet yolu sahil boyunca - Toskana'nin tepe kasabalarindan anne icin cok daha rahat",
-            "Zarif merkez, aksam yuruyusu keyifli"
+            "Le Dune ücretsiz plajı gerçekten iyi: cankurtaran, duş, tuvalet, 30 m sığ su, park 3 saat 4.50 EUR",
+            "Arkada Apuan Alpleri - Michelangelo'nun mermer dağları, kıyıda başka yerde olmayan manzara",
+            "Kasaba dümdüz ve bisiklet yolu sahil boyunca - Toskana'nın tepe kasabalarından anne için çok daha rahat",
+            "Zarif merkez, akşam yürüyüşü keyifli"
           ],
           "cons": [
-            "SALI GUNU PAZAR YOK. Unlu pazar sadece Carsamba (216 tezgah) ve Pazar (55 tezgah). Forte dei Marmi'ye gitmenin asil sebebi bu pazar - Sali secilirse devre disi kalir.",
-            "4 saat surus - gezinin en uzun yol gunu",
-            "Kasaba Italya'nin en pahali sahili; ozel plajlar 40-80 EUR",
-            "Plajin kendisi Bibbona'dan daha iyi degil",
-            "Le Dune'de hic golge yok, semsiye sart",
-            "Seyyar saticilar israrci olabiliyor"
+            "SALI GÜNÜ PAZAR YOK. Ünlü pazar sadece Çarşamba (216 tezgah) ve Pazar (55 tezgah). Forte dei Marmi'ye gitmenin asıl sebebi bu pazar - Salı seçilirse devre dışı kalır.",
+            "4 saat sürüş - gezinin en uzun yol günü",
+            "Kasaba İtalya'nın en pahalı sahili; özel plajlar 40-80 EUR",
+            "Plajın kendisi Bibbona'dan daha iyi değil",
+            "Le Dune'de hiç gölge yok, şemsiye şart",
+            "Seyyar satıcılar ısrarcı olabiliyor"
           ],
           "food": [
-            { "slot": "lunch", "tier": "b", "name": "Santa Lucia - La Bottega del Panino (Viale Ammiraglio Morin 89)", "price": 30, "hours": "her gun 08:00-22:00", "why": "Kasabanin en iyi pizza al taglio'su, firin da var, mutfak surekli acik (bolgede nadir).", "nav": "https://www.google.com/maps/search/?api=1&query=La+Bottega+del+Panino+Forte+dei+Marmi", "rating": 4.5 },
-            { "slot": "lunch", "tier": "b", "name": "Vale (Piazza Garibaldi 4)", "price": 35, "why": "Dilim pizza, focaccia, salata, golgeli teras. Pazartesi kapali, Sali acik.", "closedOn": ["Pazartesi"], "nav": "https://www.google.com/maps/search/?api=1&query=Vale+Piazza+Garibaldi+Forte+dei+Marmi", "rating": 4.4 },
-            { "slot": "snack", "tier": "both", "name": "La Chicca (Via Piave 15)", "price": 12, "why": "Dondurma, en dusuk fiyat kademesi, kasabanin en iyisi.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Chicca+Via+Piave+Forte+dei+Marmi", "rating": 4.6 }
+            { "slot": "lunch", "tier": "b", "name": "Santa Lucia - La Bottega del Panino (Viale Ammiraglio Morin 89)", "price": 30, "hours": "her gün 08:00-22:00", "why": "Kasabanın en iyi pizza al taglio'su, fırın da var, mutfak sürekli açık (bölgede nadir).", "nav": "https://www.google.com/maps/search/?api=1&query=La+Bottega+del+Panino+Forte+dei+Marmi", "rating": 4.5 },
+            { "slot": "lunch", "tier": "b", "name": "Vale (Piazza Garibaldi 4)", "price": 35, "why": "Dilim pizza, focaccia, salata, gölgeli teras. Pazartesi kapalı, Salı açık.", "closedOn": ["Pazartesi"], "nav": "https://www.google.com/maps/search/?api=1&query=Vale+Piazza+Garibaldi+Forte+dei+Marmi", "rating": 4.4 },
+            { "slot": "snack", "tier": "both", "name": "La Chicca (Via Piave 15)", "price": 12, "why": "Dondurma, en düşük fiyat kademesi, kasabanın en iyisi.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Chicca+Via+Piave+Forte+dei+Marmi", "rating": 4.6 }
           ]
         }
       ],
@@ -399,42 +399,42 @@
       "drivingMinutes": 80,
       "budget": { "a": 290, "b": 130 },
       "warnings": [
-        "Carsamba pazar gunu oldugu icin Fortezza otoparki dolu olabilir. Yedek: Parcheggio Stadio (bitisik) veya Santa Caterina/Il Campo garaji (~2 EUR/saat)"
+        "Çarşamba pazar günü olduğu için Fortezza otoparkı dolu olabilir. Yedek: Parcheggio Stadio (bitişik) veya Santa Caterina/Il Campo garajı (~2 EUR/saat)"
       ],
-      "elderNote": "Il Campo'nun etrafindaki golgeli kenarda oturaklar var. Duomo'ya cikis hafif yokus ama kisa.",
+      "elderNote": "Il Campo'nun etrafındaki gölgeli kenarda oturaklar var. Duomo'ya çıkış hafif yokuş ama kısa.",
       "stops": [
-        { "id": "s8a", "name": "Fortezza Medicea pazari", "city": "Siena", "lat": 43.3232, "lng": 11.3230, "tier": "core", "cost": 0, "durationMin": 150, "hours": "08:30-13:00", "why": "Toskana'nin en buyuklerinden. Kumas, ev tekstili, deri, giyim, gida. Arezzo'dan sonraki en iyi alisveris duragi.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena", "tags": ["market", "shopping"], "rating": 4.5 },
-        { "id": "s8b", "name": "Piazza del Campo", "city": "Siena", "lat": 43.3188, "lng": 11.3308, "tier": "core", "cost": 0, "durationMin": 60, "why": "Deniz kabugu seklinde egimli meydan. Yere oturmak serbest ve tam Sienali isi.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+del+Campo+Siena", "rating": 4.8 },
-        { "id": "s8c", "name": "Duomo + Piccolomini Kutuphanesi", "city": "Siena", "tier": "core", "cost": 48, "durationMin": 90, "booking": "recommended", "why": "Toskana'nin en guzel ic mekani. Buna deger.", "nav": "https://www.google.com/maps/search/?api=1&query=Duomo+di+Siena", "rating": 4.8 },
-        { "id": "s8d", "name": "Torre del Mangia", "tier": "skip", "cost": 30, "skipReason": "400 basamak. Yerine Facciatone daha az kalabalik.", "rating": 4.6 },
-        { "id": "s8e", "name": "San Domenico kilisesi + kontrada cesmeleri", "city": "Siena", "tier": "optional", "cost": 0, "durationMin": 45, "nav": "https://www.google.com/maps/search/?api=1&query=Basilica+Cateriniana+di+San+Domenico+Siena", "rating": 4.7 }
+        { "id": "s8a", "name": "Fortezza Medicea pazarı", "city": "Siena", "lat": 43.3232, "lng": 11.3230, "tier": "core", "cost": 0, "durationMin": 150, "hours": "08:30-13:00", "why": "Toskana'nın en büyüklerinden. Kumaş, ev tekstili, deri, giyim, gıda. Arezzo'dan sonraki en iyi alışveriş durağı.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena", "tags": ["market", "shopping"], "rating": 4.5 },
+        { "id": "s8b", "name": "Piazza del Campo", "city": "Siena", "lat": 43.3188, "lng": 11.3308, "tier": "core", "cost": 0, "durationMin": 60, "why": "Deniz kabuğu şeklinde eğimli meydan. Yere oturmak serbest ve tam Sienalı işi.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+del+Campo+Siena", "rating": 4.8 },
+        { "id": "s8c", "name": "Duomo + Piccolomini Kütüphanesi", "city": "Siena", "tier": "core", "cost": 48, "durationMin": 90, "booking": "recommended", "why": "Toskana'nın en güzel iç mekanı. Buna değer.", "nav": "https://www.google.com/maps/search/?api=1&query=Duomo+di+Siena", "rating": 4.8 },
+        { "id": "s8d", "name": "Torre del Mangia", "tier": "skip", "cost": 30, "skipReason": "400 basamak. Yerine Facciatone daha az kalabalık.", "rating": 4.6 },
+        { "id": "s8e", "name": "San Domenico kilisesi + kontrada çeşmeleri", "city": "Siena", "tier": "optional", "cost": 0, "durationMin": 45, "nav": "https://www.google.com/maps/search/?api=1&query=Basilica+Cateriniana+di+San+Domenico+Siena", "rating": 4.7 }
       ],
       "food": [
-        { "slot": "lunch", "tier": "a", "name": "La Taverna di San Giuseppe (Via Dupre 132)", "price": 200, "why": "Tarihi Siena Mahzen Restorani (1100'lerden Etrusk Mahzeni). Kayalara oyulu mahzende yerel Siena trufu, el yapimi Pici makarnasi ve zengin mahzen saraplariyla unutulmaz bir gurme deneyim.", "phone": "+39 0577 42286", "booking": "phone-only", "bookingNote": "Gunler oncesinden ara", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+di+San+Giuseppe+Siena", "rating": 4.7 },
-        { "slot": "lunch", "tier": "b", "name": "Osteria Il Grattacielo (Via dei Pontani 8)", "price": 70, "why": "Nostaljik Siena Osteria'si (1840'tan beri). Masa ortusuz, tahtaya gunluk yazilan 3-4 cesit ev yemegiyle Siena'nin en eski ve otantik esnaf lokantasi. 12:00'de kapida ol.", "phone": "+39 331 742 2835", "porkWarning": "Menude salsiccia ve cinghiale var", "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+Il+Grattacielo+Siena", "rating": 4.5 },
-        { "slot": "lunch", "tier": "b", "name": "Consorzio Agrario (Via Pianigiani 9)", "price": 25, "why": "Yerel Uretici Gida Deposu & Sandviccisi. Siena ciftcilerinin kurdugu kooperatif pazarinda taze kesilen peynirler ve ekmekle hazirlanan sandvici alip tarihi meydanda yeme keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=Consorzi+Agrari+Via+Pianigiani+9+Siena", "rating": 4.6 },
-        { "slot": "coffee", "tier": "both", "name": "Nannini (Banchi di Sopra)", "price": 20, "why": "Tarihi Siena Pastanesi & Kahvesi. Siena'nin dunya mehur yumusak bademli Ricciarelli kurabiyeleri ve baharatli Panforte tatlisinin dogdugu tarihi mekan (domuzsuz, hediye icin ideal).", "nav": "https://www.google.com/maps/search/?api=1&query=Bar+Nannini+Banchi+di+Sopra+Siena", "rating": 4.4 },
-        { "slot": "coffee", "tier": "both", "name": "Torrefazione Fiorella (Via di Città)", "price": 10, "why": "Siena'nin en koklu yerel kahve kavurucusu. Tarihi sokakta ayakta (al banco) taze espresso keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=Torrefazione+Fiorella+Via+di+Citta+Siena", "rating": 4.7 },
-        { "slot": "snack", "tier": "both", "name": "Gelateria Kopakabana (Via dei Rossi 52)", "price": 12, "why": "Yerel Siena Dondurmacisi. Turistik kalabaliktan uzak ara sokakta Siena yerlilerinin gittigi, bol porsiyonlu ve uygun fiyatli dogal dondurmaci.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Kopakabana+Siena", "rating": 4.6 }
+        { "slot": "lunch", "tier": "a", "name": "La Taverna di San Giuseppe (Via Dupre 132)", "price": 200, "why": "Tarihi Siena Mahzen Restoranı (1100'lerden Etrusk Mahzeni). Kayalara oyulu mahzende yerel Siena trufu, el yapımı Pici makarnası ve zengin mahzen şaraplarıyla unutulmaz bir gurme deneyim.", "phone": "+39 0577 42286", "booking": "phone-only", "bookingNote": "Günler öncesinden ara", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+di+San+Giuseppe+Siena", "rating": 4.7 },
+        { "slot": "lunch", "tier": "b", "name": "Osteria Il Grattacielo (Via dei Pontani 8)", "price": 70, "why": "Nostaljik Siena Osteria'sı (1840'tan beri). Masa örtüsüz, tahtaya günlük yazılan 3-4 çeşit ev yemeğiyle Siena'nın en eski ve otantik esnaf lokantası. 12:00'de kapıda ol.", "phone": "+39 331 742 2835", "porkWarning": "Menüde salsiccia ve cinghiale var", "nav": "https://www.google.com/maps/search/?api=1&query=Osteria+Il+Grattacielo+Siena", "rating": 4.5 },
+        { "slot": "lunch", "tier": "b", "name": "Consorzio Agrario (Via Pianigiani 9)", "price": 25, "why": "Yerel Üretici Gıda Deposu & Sandviççisi. Siena çiftçilerinin kurduğu kooperatif pazarında taze kesilen peynirler ve ekmekle hazırlanan sandviçi alıp tarihi meydanda yeme keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=Consorzi+Agrari+Via+Pianigiani+9+Siena", "rating": 4.6 },
+        { "slot": "coffee", "tier": "both", "name": "Nannini (Banchi di Sopra)", "price": 20, "why": "Tarihi Siena Pastanesi & Kahvesi. Siena'nın dünya meşhur yumuşak bademli Ricciarelli kurabiyeleri ve baharatlı Panforte tatlısının doğduğu tarihi mekan (domuzsuz, hediye için ideal).", "nav": "https://www.google.com/maps/search/?api=1&query=Bar+Nannini+Banchi+di+Sopra+Siena", "rating": 4.4 },
+        { "slot": "coffee", "tier": "both", "name": "Torrefazione Fiorella (Via di Città)", "price": 10, "why": "Siena'nın en köklü yerel kahve kavurucusu. Tarihi sokakta ayakta (al banco) taze espresso keyfi.", "nav": "https://www.google.com/maps/search/?api=1&query=Torrefazione+Fiorella+Via+di+Citta+Siena", "rating": 4.7 },
+        { "slot": "snack", "tier": "both", "name": "Gelateria Kopakabana (Via dei Rossi 52)", "price": 12, "why": "Yerel Siena Dondurmacısı. Turistik kalabalıktan uzak ara sokakta Siena yerlilerinin gittiği, bol porsiyonlu ve uygun fiyatlı doğal dondurmacı.", "nav": "https://www.google.com/maps/search/?api=1&query=Gelateria+Kopakabana+Siena", "rating": 4.6 }
       ],
-      "shopping": [{ "name": "Antica Drogheria Manganelli (Via di Citta)", "for": "1879'dan kalma, ahsap rafli baharat dukkani", "nav": "https://www.google.com/maps/search/?api=1&query=Antica+Drogheria+Manganelli+Siena", "rating": 4.7 }]
+      "shopping": [{ "name": "Antica Drogheria Manganelli (Via di Citta)", "for": "1879'dan kalma, ahşap raflı baharat dükkanı", "nav": "https://www.google.com/maps/search/?api=1&query=Antica+Drogheria+Manganelli+Siena", "rating": 4.7 }]
     },
     {
       "id": "d9",
       "date": "2026-08-06",
       "weekday": "Persembe",
-      "title": "Zanaat gunu (3 secenek)",
+      "title": "Zanaat günü (3 seçenek)",
       "theme": "craft",
       "intensity": "low-medium",
       "elderFriendly": true,
       "drivingMinutes": 60,
       "budget": { "a": 90, "b": 60 },
-      "warnings": ["Aksam erken don, bavul topla - yarin 06:45'te yoldasin"],
+      "warnings": ["Akşam erken dön, bavul topla - yarın 06:45'te yoldaşın"],
       "options": [
         {
           "id": "opt-a",
           "label": "Floransa Oltrarno",
-          "desc": "Zanaat + tasarim. Sant'Ambrogio pazari (08:00-14:00, Pazar kapali) -> Oltrarno atolyeleri -> Il Torchio (el yapimi ebru kagidi ve ciltleme, Cts-Paz kapali) -> Santa Maria Novella -> Piazza Santo Spirito -> Giardino Bardini",
+          "desc": "Zanaat + tasarım. Sant'Ambrogio pazarı (08:00-14:00, Pazar kapalı) -> Oltrarno atölyeleri -> Il Torchio (el yapımı ebru kağıdı ve ciltleme, Cts-Paz kapalı) -> Santa Maria Novella -> Piazza Santo Spirito -> Giardino Bardini",
           "cost": 90,
           "nav": "https://www.google.com/maps/search/?api=1&query=Mercato+di+Sant%27Ambrogio+Firenze",
           "rating": 4.7
@@ -442,7 +442,7 @@
         {
           "id": "opt-b",
           "label": "Montelupo Fiorentino",
-          "desc": "Daha ucuz, daha rahat. Ronesans'tan beri seramik kasabasi, atolyeler halen calisiyor, muze ~5 EUR. Park bedava, ZTL yok. Yakinda Impruneta (terracotta).",
+          "desc": "Daha ucuz, daha rahat. Rönesans'tan beri seramik kasabası, atölyeler halen çalışıyor, müze ~5 EUR. Park bedava, ZTL yok. Yakında Impruneta (terracotta).",
           "cost": 60,
           "recommended": true,
           "nav": "https://www.google.com/maps/search/?api=1&query=Museo+della+Ceramica+Montelupo+Fiorentino",
@@ -451,38 +451,38 @@
         {
           "id": "opt-c",
           "label": "Lucca",
-          "desc": "29 Temmuz'da atladiysan.",
+          "desc": "29 Temmuz'da atladıysan.",
           "cost": 70,
           "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca",
           "rating": 4.7
         }
       ],
       "stops": [
-        { "id": "s9a", "name": "San Gimignano gun batimi", "city": "San Gimignano", "lat": 43.4674126, "lng": 11.0433506, "tier": "optional", "cost": 0, "durationMin": 120, "bestTime": "gun batimi", "why": "Montelupo -> San Gimignano ~40 dk, sabah zanaat duragindan sonra rahat oturuyor. Sali'da deniz secildiyse San Gimignano aksami buraya tasindi.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano", "badge": "Sali'dan tasindi", "showWhen": { "dayId": "d7", "optionIn": ["opt-b", "opt-c", "opt-d"] }, "rating": 4.7 }
+        { "id": "s9a", "name": "San Gimignano gün batımı", "city": "San Gimignano", "lat": 43.4674126, "lng": 11.0433506, "tier": "optional", "cost": 0, "durationMin": 120, "bestTime": "gün batımı", "why": "Montelupo -> San Gimignano ~40 dk, sabah zanaat durağından sonra rahat oturuyor. Salı'da deniz seçildiyse San Gimignano akşamı buraya taşındı.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano", "badge": "Salı'dan taşındı", "showWhen": { "dayId": "d7", "optionIn": ["opt-b", "opt-c", "opt-d"] }, "rating": 4.7 }
       ],
       "food": [
-        { "slot": "lunch", "tier": "a", "name": "I' Girone De' Ghiotti (Via dei Cimatori 23)", "price": 30, "why": "Floransa Gurme Sandviccisi (Schiacciateria). Italya'nin en yuksek puanli sandvic dukkanlarindan biri; taze pisarak cıtır schiacciata ekmegine izgara sebze, peynir ve roast beef.", "porkWarning": "Icler cogunlukla salumi - peynirli / sebzeli / roast beef iste", "nav": "https://www.google.com/maps/search/?api=1&query=I%27+Girone+De%27+Ghiotti+Firenze", "rating": 4.8 },
-        { "slot": "lunch", "tier": "b", "name": "Montelupo'da yerel trattoria", "price": 50, "why": "Geleneksel Seramik Kasabasi Trattoria'si. Montelupo Fiorentino'da yerel halkin ogle yemegi yedigi samimi, fiyati uygun ev yemegi ve taze pasta sunan trattoria.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+Montelupo+Fiorentino", "rating": 4.4 }
+        { "slot": "lunch", "tier": "a", "name": "I' Girone De' Ghiotti (Via dei Cimatori 23)", "price": 30, "why": "Floransa Gurme Sandviççisi (Schiacciateria). İtalya'nın en yüksek puanlı sandviç dükkanlarından biri; taze pisarak cıtır schiacciata ekmeğine ızgara sebze, peynir ve roast beef.", "porkWarning": "İçler çoğunlukla salumi - peynirli / sebzeli / roast beef iste", "nav": "https://www.google.com/maps/search/?api=1&query=I%27+Girone+De%27+Ghiotti+Firenze", "rating": 4.8 },
+        { "slot": "lunch", "tier": "b", "name": "Montelupo'da yerel trattoria", "price": 50, "why": "Geleneksel Seramik Kasabası Trattoria'sı. Montelupo Fiorentino'da yerel halkın öğle yemeği yediği samimi, fiyatı uygun ev yemeği ve taze pasta sunan trattoria.", "nav": "https://www.google.com/maps/search/?api=1&query=Trattoria+Montelupo+Fiorentino", "rating": 4.4 }
       ],
-      "shopping": [{ "name": "Il Torchio (Via de' Bardi 17)", "for": "El yapimi ebru kagidi, ciltleme, ozel defter. Cts-Paz kapali.", "highlight": true, "nav": "https://www.google.com/maps/search/?api=1&query=Il+Torchio+Via+de%27+Bardi+Firenze", "rating": 4.9 }, { "name": "Tavarnelle pazari (Persembe)", "for": "Son gun eksik hediyelikler icin sabah 5 dakikalik ugrayis", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa", "rating": 4.5 }]
+      "shopping": [{ "name": "Il Torchio (Via de' Bardi 17)", "for": "El yapımı ebru kağıdı, ciltleme, özel defter. Cts-Paz kapalı.", "highlight": true, "nav": "https://www.google.com/maps/search/?api=1&query=Il+Torchio+Via+de%27+Bardi+Firenze", "rating": 4.9 }, { "name": "Tavarnelle pazarı (Perşembe)", "for": "Son gün eksik hediyelikler için sabah 5 dakikalık uğrayış", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+Matteotti+Tavarnelle+Val+di+Pesa", "rating": 4.5 }]
     },
     {
       "id": "d10",
       "date": "2026-08-07",
       "weekday": "Cuma",
-      "title": "Donus",
+      "title": "Dönüş",
       "theme": "departure",
       "intensity": "low",
       "elderFriendly": true,
       "drivingMinutes": 90,
       "budget": { "a": 30, "b": 30 },
-      "warnings": ["Normal kahvalti 07:30'da basliyor - bir gece once erken kahvalti / paket iste"],
+      "warnings": ["Normal kahvaltı 07:30'da başlıyor - bir gece önce erken kahvaltı / paket iste"],
       "timeline": [
-        { "time": "06:30", "what": "Kahvalti (onceden ayarlanmis)" },
-        { "time": "06:45", "what": "Yola cik - raccordo -> FI-PI-LI (ucretsiz)" },
-        { "time": "08:15", "what": "Havalimanina yakin benzincide depoyu doldur (kiralamanin dolum ucreti 2 kati)" },
+        { "time": "06:30", "what": "Kahvaltı (önceden ayarlanmış)" },
+        { "time": "06:45", "what": "Yola çık - raccordo -> FI-PI-LI (ücretsiz)" },
+        { "time": "08:15", "what": "Havalimanına yakın benzincide depoyu doldur (kiralamanın dolum ücreti 2 katı)" },
         { "time": "08:30", "what": "Arac iadesi" },
-        { "time": "11:10", "what": "Kalkis" }
+        { "time": "11:10", "what": "Kalkış" }
       ],
       "stops": [],
       "food": [],
@@ -491,18 +491,18 @@
   ],
 
   "beaches": [
-    { "id": "bibbona", "name": "Marina di Bibbona / Cecina", "lat": 43.2519371, "lng": 10.5221615, "placeId": "ChIJx13BPckG1hIRlQbuPVT_pr8", "minutesFromBase": 80, "free": "partial", "notes": "Mavi Bayrak. Genis kumsal, sig su, arkada cam ormani. Plaja cam korusundan patikayla iniliyor. Stabilimento 18-25 EUR, serbest plaj bolumleri de var. Cecina 10 dk kuzeyde, ayni gun gezilir.", "nav": "https://www.google.com/maps/search/?api=1&query=Marina+di+Bibbona", "rating": 4.5 },
-    { "id": "baratti", "name": "Golfo di Baratti (Populonia)", "lat": 42.9938094, "lng": 10.5127788, "placeId": "ChIJQ9h6oA4i1hIRtuXFASVIB64", "minutesFromBase": 105, "free": "partial", "notes": "Hilal koy. Camlar dogrudan kumun ustune iniyor - KUMSALDA dogal golge var, Toskana kiyisinda nadir. Iri kum suyu temiz tutuyor. Ustunde Populonia Etrusk nekropolu ve kale.", "nav": "https://www.google.com/maps/search/?api=1&query=Golfo+di+Baratti+Populonia", "rating": 4.7 },
-    { "id": "le-dune", "name": "Spiaggia libera Le Dune (Forte dei Marmi)", "lat": 43.9739269, "lng": 10.1458824, "placeId": "ChIJiUvL15cJ1RIRoo2liC2JVWE", "minutesFromBase": 120, "free": "full", "notes": "Forte dei Marmi'nin TEK ucretsiz plaji, ~200 m, WWF korumasindaki kumullar. Cankurtaran gorevde, dus ve tuvalet var. Deniz ~30 m boyunca sig, kucuk cocuk icin guvenli. Sokak parki 4.50 EUR / 3 saat. Kendi semsiyeni gotur - hic golge yok. Seyyar saticilar israrci. Kopekler tasmasiz dolasiyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Spiaggia+libera+Le+Dune+Forte+dei+Marmi", "rating": 4.4 }
+    { "id": "bibbona", "name": "Marina di Bibbona / Cecina", "lat": 43.2519371, "lng": 10.5221615, "placeId": "ChIJx13BPckG1hIRlQbuPVT_pr8", "minutesFromBase": 80, "free": "partial", "notes": "Mavi Bayrak. Geniş kumsal, sığ su, arkada çam ormanı. Plaja çam korusundan patikayla iniliyor. Stabilimento 18-25 EUR, serbest plaj bölümleri de var. Cecina 10 dk kuzeyde, aynı gün gezilir.", "nav": "https://www.google.com/maps/search/?api=1&query=Marina+di+Bibbona", "rating": 4.5 },
+    { "id": "baratti", "name": "Golfo di Baratti (Populonia)", "lat": 42.9938094, "lng": 10.5127788, "placeId": "ChIJQ9h6oA4i1hIRtuXFASVIB64", "minutesFromBase": 105, "free": "partial", "notes": "Hilal koy. Çamlar doğrudan kumun üstüne iniyor - KUMSALDA doğal gölge var, Toskana kıyısında nadir. İri kum suyu temiz tutuyor. Üstünde Populonia Etrusk nekropolü ve kale.", "nav": "https://www.google.com/maps/search/?api=1&query=Golfo+di+Baratti+Populonia", "rating": 4.7 },
+    { "id": "le-dune", "name": "Spiaggia libera Le Dune (Forte dei Marmi)", "lat": 43.9739269, "lng": 10.1458824, "placeId": "ChIJiUvL15cJ1RIRoo2liC2JVWE", "minutesFromBase": 120, "free": "full", "notes": "Forte dei Marmi'nin TEK ücretsiz plajı, ~200 m, WWF korumasındaki kumullar. Cankurtaran görevde, duş ve tuvalet var. Deniz ~30 m boyunca sığ, küçük çocuk için güvenli. Sokak parkı 4.50 EUR / 3 saat. Kendi şemsiyeni götür - hiç gölge yok. Seyyar satıcılar ısrarcı. Köpekler tasmasız dolaşıyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Spiaggia+libera+Le+Dune+Forte+dei+Marmi", "rating": 4.4 }
   ],
 
   "bookings": [
     { "priority": "high", "what": "Accademia (David)", "date": "2026-07-31", "how": "Resmi site, saatli bilet", "when": "HEMEN", "cost": 55 },
-    { "priority": "high", "what": "Trattoria Sostanza", "date": "2026-07-31", "how": "Tel: +39 055 212691", "when": "HEMEN - Cts/Paz kapali, bugun veya yarin ara", "cost": 130 },
+    { "priority": "high", "what": "Trattoria Sostanza", "date": "2026-07-31", "how": "Tel: +39 055 212691", "when": "HEMEN - Cts/Paz kapalı, bugün veya yarın ara", "cost": 130 },
     { "priority": "high", "what": "La Sosta di Pio VII", "date": "2026-08-02", "how": "Tel: +39 055 807 5923", "when": "HEMEN", "cost": 110 },
     { "priority": "medium", "what": "Siena Duomo", "date": "2026-08-05", "how": "Resmi site", "when": "Bu hafta", "cost": 48 },
     { "priority": "medium", "what": "Osteria Il Grattacielo", "date": "2026-08-05", "how": "Tel: +39 331 742 2835", "when": "Bu hafta", "cost": 70 },
-    { "priority": "low", "what": "Fattoria Casa Sola tadim", "date": "2026-08-02", "how": "WhatsApp: +39 328 950 9196", "when": "Opsiyonel", "cost": 90 },
+    { "priority": "low", "what": "Fattoria Casa Sola tadım", "date": "2026-08-02", "how": "WhatsApp: +39 328 950 9196", "when": "Opsiyonel", "cost": 90 },
     { "priority": "low", "what": "San Francesco freskleri", "date": "2026-08-01", "how": "Resmi site", "when": "Opsiyonel", "cost": 30 },
     { "priority": "optional", "what": "Officina della Bistecca", "date": "2026-08-02", "how": "Tel: +39 055 852020", "when": "Sadece keyif modunda", "cost": 150 },
     { "priority": "optional", "what": "Osteria di Passignano", "date": "2026-07-30", "how": "Tel: +39 055 807 1278", "when": "Sadece keyif modunda", "cost": 225 }
@@ -510,44 +510,44 @@
 
   "porkGuide": {
     "avoid": ["prosciutto", "salame toscano", "finocchiona", "lardo di Colonnata", "pancetta", "guanciale", "salsiccia", "porchetta", "soppressata", "cinta senese", "cinghiale", "crostini misti", "mortadella"],
-    "avoidNote": "cinghiale = yaban domuzu. Toskana'nin en yaygin makarna sosu, her menude var. En sik dusulen tuzak.",
+    "avoidNote": "cinghiale = yaban domuzu. Toskana'nın en yaygın makarna sosu, her menüde var. En sık düşülen tuzak.",
     "safe": [
-      { "dish": "Bistecca alla Fiorentina", "desc": "Chianina sigiri, sadece al sangue yapilir", "price": "4.5-7 EUR/etto" },
-      { "dish": "Tagliata di manzo", "desc": "Dilimlenmis biftek, roka-parmesan", "price": "16-22 EUR" },
-      { "dish": "Peposo", "desc": "Impruneta'nin karabiberli dana guveci", "price": "12-14 EUR" },
-      { "dish": "Pollo al mattone", "desc": "Tugla altinda tavuk", "price": "12-16 EUR" },
-      { "dish": "Coniglio / agnello", "desc": "Tavsan / kuzu", "price": "14-18 EUR" },
-      { "dish": "Pici all'aglione", "desc": "Kalin el makarnasi, sarimsak-domates", "price": "10-12 EUR" },
+      { "dish": "Bistecca alla Fiorentina", "desc": "Chianina sığırı, sadece al sangue yapılır", "price": "4.5-7 EUR/etto" },
+      { "dish": "Tagliata di manzo", "desc": "Dilimlenmiş biftek, roka-parmesan", "price": "16-22 EUR" },
+      { "dish": "Peposo", "desc": "Impruneta'nın karabiberli dana güveci", "price": "12-14 EUR" },
+      { "dish": "Pollo al mattone", "desc": "Tuğla altında tavuk", "price": "12-16 EUR" },
+      { "dish": "Coniglio / agnello", "desc": "Tavşan / kuzu", "price": "14-18 EUR" },
+      { "dish": "Pici all'aglione", "desc": "Kalın el makarnası, sarımsak-domates", "price": "10-12 EUR" },
       { "dish": "Pappa al pomodoro / panzanella", "desc": "Ekmekli domates", "price": "8-10 EUR" },
-      { "dish": "Lampredotto / trippa", "desc": "Dana iskembe, Floransa sokak yemegi", "price": "5.5 EUR" },
-      { "dish": "Crostini di fegatini", "desc": "Tavuk cigeri ezmesi", "price": "8 EUR" }
+      { "dish": "Lampredotto / trippa", "desc": "Dana işkembe, Floransa sokak yemeği", "price": "5.5 EUR" },
+      { "dish": "Crostini di fegatini", "desc": "Tavuk ciğeri ezmesi", "price": "8 EUR" }
     ],
-    "caution": [{ "dish": "ribollita", "note": "Sebze corbasidir ama bazen domuz suyu kullanilir - sor" }]
+    "caution": [{ "dish": "ribollita", "note": "Sebze çorbasıdır ama bazen domuz suyu kullanılır - sor" }]
   },
 
   "phrases": [
-    { "tr": "Domuz eti yemiyoruz. Prosciutto, salam, pancetta, lardo, sucuk, yaban domuzu olmasin. Dana, tavuk, kuzu veya balik olur.", "it": "Non mangiamo maiale. Niente prosciutto, salame, pancetta, lardo, salsiccia, ne cinghiale. Va bene manzo, pollo, agnello o pesce.", "category": "pork" },
-    { "tr": "Icinde domuz eti var mi?", "it": "Contiene carne di maiale?", "category": "pork" },
+    { "tr": "Domuz eti yemiyoruz. Prosciutto, salam, pancetta, lardo, sucuk, yaban domuzu olmasın. Dana, tavuk, kuzu veya balık olur.", "it": "Non mangiamo maiale. Niente prosciutto, salame, pancetta, lardo, salsiccia, ne cinghiale. Va bene manzo, pollo, agnello o pesce.", "category": "pork" },
+    { "tr": "İçinde domuz eti var mı?", "it": "Contiene carne di maiale?", "category": "pork" },
     { "tr": "En iyi fiyat ne?", "it": "Qual e il prezzo migliore?", "category": "market" },
-    { "tr": "Paylasmak icin tek makarna", "it": "Un primo da dividere", "category": "restaurant" },
-    { "tr": "Bu hafta yakinda sagra var mi?", "it": "Ci sono sagre qui vicino questa settimana?", "category": "general" },
-    { "tr": "Hesap, lutfen", "it": "Il conto, per favore", "category": "restaurant" },
+    { "tr": "Paylaşmak için tek makarna", "it": "Un primo da dividere", "category": "restaurant" },
+    { "tr": "Bu hafta yakında sagra var mı?", "it": "Ci sono sagre qui vicino questa settimana?", "category": "general" },
+    { "tr": "Hesap, lütfen", "it": "Il conto, per favore", "category": "restaurant" },
     { "tr": "Musluk suyu", "it": "Acqua del rubinetto", "category": "restaurant" },
-    { "tr": "Alkolsuz aperitif", "it": "Un analcolico, per favore (Crodino o San Bitter)", "category": "restaurant" }
+    { "tr": "Alkolsüz aperitif", "it": "Un analcolico, per favore (Crodino o San Bitter)", "category": "restaurant" }
   ],
 
   "tips": [
-    { "id": "ztl", "icon": "car", "title": "ZTL", "body": "Floransa, Siena, Lucca, Arezzo, San Gimignano, Pienza merkezlerinde kamerali trafik yasagi. Ceza 3-6 ay sonra kiralama sirketi uzerinden +45 EUR idari ucretle gelir. Her sehirde sur disi otoparkini kullan.", "severity": "critical" },
-    { "id": "kids-free", "icon": "ticket", "title": "18 yas alti muzelerde ucretsiz", "body": "Devlet muzelerinde (Uffizi, Accademia dahil) 18 yas alti ucretsiz, uyruk fark etmez.", "severity": "info" },
-    { "id": "heat", "icon": "sun", "title": "Sicak: 33-36 C", "body": "Acik hava 08:00-12:00 ve 17:30-21:00. 13:00-17:00 havuz veya klimali mekan. Anneyle bu kural pazarlik konusu degil.", "severity": "critical" },
-    { "id": "bistecca", "icon": "beef", "title": "Bistecca kilo ile satilir", "body": "al etto = 100 g fiyati (4.5-7 EUR). 1.2 kg'lik bir bistecca 3 yetiskine yeter. Menudeki '45 EUR' tek kisilik degil.", "severity": "info" },
-    { "id": "coperto", "icon": "receipt", "title": "Coperto var, bahsis yok", "body": "Masa basi 2-3 EUR coperto normaldir. Italya'da bahsis beklenmez - Danimarka refleksiyle %10 birakma.", "severity": "info" },
-    { "id": "coffee", "icon": "coffee", "title": "Kahveyi ayakta ic", "body": "Tezgahta espresso 1.20 EUR, oturursan ayni kahve 4.50 EUR.", "severity": "info" },
-    { "id": "luggage", "icon": "luggage", "title": "Bagaj", "body": "VW Taigo kucuk bir crossover (~440 L). 4 kisi + 9 gunluk bagaj sikisir. Sert valiz yerine yumusak canta kullanin.", "severity": "warning" },
-    { "id": "sagra", "icon": "party", "title": "Sagra ayi", "body": "Agustos'ta koylerde gonullu yemek festivalleri olur: ortak masalar, 10-15 EUR'ya 3 tabak. Otele varinca resepsiyona sor. Kasaba girislerindeki afislere bak.", "severity": "info" },
-    { "id": "offline", "icon": "map", "title": "Cevrimdisi harita", "body": "Google Maps'te Toskana'yi cevrimdisi indir - Chianti'de sinyal kayboluyor.", "severity": "warning" },
-    { "id": "sunday", "icon": "calendar", "title": "Pazar gunleri", "body": "Italya'da dukkanlarin cogu kapali. Ayrica bircok yerde 13:00-16:00 arasi ogle molasi var.", "severity": "info" },
-    { "id": "beach-libera", "icon": "umbrella", "title": "Spiaggia libera vs stabilimento", "body": "Serbest plaj bedava ama kendi semsiyeni goturuyorsun. Plaj kulubu (stabilimento) semsiye + 2 sezlong: Bibbona 18-25 EUR, Forte dei Marmi 40-80 EUR. Anne icin kulube para vermek mantikli - garantili golge, gercek sezlong, tuvalet, dus, 5 metre otede bar.", "severity": "info" }
+    { "id": "ztl", "icon": "car", "title": "ZTL", "body": "Floransa, Siena, Lucca, Arezzo, San Gimignano, Pienza merkezlerinde kameralı trafik yasağı. Ceza 3-6 ay sonra kiralama şirketi üzerinden +45 EUR idari ücretle gelir. Her şehirde sur dışı otoparkını kullan.", "severity": "critical" },
+    { "id": "kids-free", "icon": "ticket", "title": "18 yaş altı müzelerde ücretsiz", "body": "Devlet müzelerinde (Uffizi, Accademia dahil) 18 yaş altı ücretsiz, uyruk fark etmez.", "severity": "info" },
+    { "id": "heat", "icon": "sun", "title": "Sıcak: 33-36 C", "body": "Açık hava 08:00-12:00 ve 17:30-21:00. 13:00-17:00 havuz veya klimalı mekan. Anneyle bu kural pazarlık konusu değil.", "severity": "critical" },
+    { "id": "bistecca", "icon": "beef", "title": "Bistecca kilo ile satılır", "body": "al etto = 100 g fiyatı (4.5-7 EUR). 1.2 kg'lik bir bistecca 3 yetişkine yeter. Menüdeki '45 EUR' tek kişilik değil.", "severity": "info" },
+    { "id": "coperto", "icon": "receipt", "title": "Coperto var, bahşiş yok", "body": "Masa başı 2-3 EUR coperto normaldir. İtalya'da bahşiş beklenmez - Danimarka refleksiyle %10 bırakma.", "severity": "info" },
+    { "id": "coffee", "icon": "coffee", "title": "Kahveyi ayakta iç", "body": "Tezgahta espresso 1.20 EUR, oturursan aynı kahve 4.50 EUR.", "severity": "info" },
+    { "id": "luggage", "icon": "luggage", "title": "Bagaj", "body": "VW Taigo küçük bir crossover (~440 L). 4 kişi + 9 günlük bagaj sıkışır. Sert valiz yerine yumuşak çanta kullanın.", "severity": "warning" },
+    { "id": "sagra", "icon": "party", "title": "Sagra ayı", "body": "Ağustos'ta köylerde gönüllü yemek festivalleri olur: ortak masalar, 10-15 EUR'ya 3 tabak. Otele varınca resepsiyona sor. Kasaba girişlerindeki afişlere bak.", "severity": "info" },
+    { "id": "offline", "icon": "map", "title": "Çevrimdışı harita", "body": "Google Maps'te Toskana'yı çevrimdışı indir - Chianti'de sinyal kayboluyor.", "severity": "warning" },
+    { "id": "sunday", "icon": "calendar", "title": "Pazar günleri", "body": "İtalya'da dükkanların çoğu kapalı. Ayrıca birçok yerde 13:00-16:00 arası öğle molası var.", "severity": "info" },
+    { "id": "beach-libera", "icon": "umbrella", "title": "Spiaggia libera vs stabilimento", "body": "Serbest plaj bedava ama kendi şemsiyeni götürüyorsun. Plaj kulübü (stabilimento) şemsiye + 2 şezlong: Bibbona 18-25 EUR, Forte dei Marmi 40-80 EUR. Anne için kulübe para vermek mantıklı - garantili gölge, gerçek şezlong, tuvalet, duş, 5 metre ötede bar.", "severity": "info" }
   ],
 
   "closures": [
@@ -555,10 +555,10 @@
     { "place": "In Serra da Cocchino (Barberino)", "closed": ["Carsamba"] },
     { "place": "Osteria di Passignano", "closed": ["Pazar"] },
     { "place": "Trattoria Sostanza (Firenze)", "closed": ["Cumartesi", "Pazar"] },
-    { "place": "Da Nerbone (Firenze)", "closed": ["Pazar"], "note": "15:00'te kapanir" },
+    { "place": "Da Nerbone (Firenze)", "closed": ["Pazar"], "note": "15:00'te kapanır" },
     { "place": "Gelateria dei Neri (Firenze)", "closed": ["Sali"] },
     { "place": "Il Torchio (Firenze)", "closed": ["Cumartesi", "Pazar"] },
-    { "place": "Sant'Ambrogio pazari", "closed": ["Pazar"], "note": "14:00'te kapanir" },
+    { "place": "Sant'Ambrogio pazarı", "closed": ["Pazar"], "note": "14:00'te kapanır" },
     { "place": "Antica Osteria l'Agania (Arezzo)", "closed": ["Pazartesi", "Sali"] },
     { "place": "Dario Doc (Panzano)", "closed": ["Cumartesi", "Pazar"] },
     { "place": "Coop Tavarnelle", "closed": [], "note": "Pazar sadece 08:00-13:00" },
@@ -568,21 +568,21 @@
 
   "packing": {
     "documents": [
-      "Herkesin pasaport/kimlik gecerliligi",
-      "Schengen vizesiyle seyahat eden varsa: vize tarihlerinin 29 Tem - 7 Agu araligini tam kapsadigini ve seyahat sigortasinin gecerli oldugunu kontrol et",
+      "Herkesin pasaport/kimlik geçerliliği",
+      "Schengen vizesiyle seyahat eden varsa: vize tarihlerinin 29 Tem - 7 Ağu aralığını tam kapsadığını ve seyahat sigortasının geçerli olduğunu kontrol et",
       "Ehliyet + kiralama voucher'i",
-      "Seyahat sigortasi / saglik karti"
+      "Seyahat sigortası / sağlık kartı"
     ],
-    "tech": ["Google Maps cevrimdisi Toskana", "Araba icin telefon tutucu + USB-C kablo", "Otel Wi-Fi sifresi"],
+    "tech": ["Google Maps çevrimdışı Toskana", "Araba için telefon tutucu + USB-C kablo", "Otel Wi-Fi şifresi"],
     "heat": [
-      "Her gun arabada 1.5 L x 4 su (supermarkette 0.30 EUR, kafede 3 EUR)",
-      "Sapka, gunes kremi, gunes gozlugu herkese",
-      "Rahat, kaymaz ayakkabi - Toskana'nin tas sokaklari",
-      "Anne icin: duzenli ilaclar + yedek, katlanir baston/oturak faydali olabilir",
-      "Kizin icin: tas sokaklarda puset zor - sirt tasiyici veya kaliteli tekerlekli",
-      "Plaj semsiyesi - Coop Tavarnelle'den 10-15 EUR. Le Dune'de ve serbest plajlarda hic golge yok.",
-      "Su ayakkabisi - bazi kumsallarda cakil var."
+      "Her gün arabada 1.5 L x 4 su (süpermarkette 0.30 EUR, kafede 3 EUR)",
+      "Şapka, güneş kremi, güneş gözlüğü herkese",
+      "Rahat, kaymaz ayakkabı - Toskana'nın taş sokakları",
+      "Anne için: düzenli ilaçlar + yedek, katlanır baston/oturak faydalı olabilir",
+      "Kızın için: taş sokaklarda puset zor - sırt taşıyıcı veya kaliteli tekerlekli",
+      "Plaj şemsiyesi - Coop Tavarnelle'den 10-15 EUR. Le Dune'de ve serbest plajlarda hiç gölge yok.",
+      "Su ayakkabısı - bazı kumsallarda çakıl var."
     ],
-    "emergency": ["112 - tek Avrupa acil numarasi", "Farmacia - yesil hac, her kasabada nobetci olur", "Otel: +39 055 807 3333"]
+    "emergency": ["112 - tek Avrupa acil numarası", "Farmacia - yeşil haç, her kasabada nöbetçi olur", "Otel: +39 055 807 3333"]
   }
 }

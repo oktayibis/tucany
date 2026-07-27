@@ -69,8 +69,8 @@ describe('stopCharge', () => {
     expect(stopCharge(casaSola, 'a')?.amount).toBe(90);
     const cheap = stopCharge(casaSola, 'mixed');
     expect(cheap?.amount).toBe(0);
-    // The note is the data's own wording, spelled without Turkish diacritics.
-    expect(cheap?.altNote).toContain('Sadece dukkanina ugra');
+    // The note is the data's own wording.
+    expect(cheap?.altNote).toContain('Sadece dükkanına uğra');
   });
 });
 

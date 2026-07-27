@@ -21,7 +21,7 @@ describe('search', () => {
     // feature exists for: "does this contain X" typed while ordering.
     const results = search(trip, { ...EMPTY_FILTERS, query: 'porchetta' });
     expect(
-      results.some((r) => r.kind === 'food' && r.title.includes('panini tezgahlari')),
+      results.some((r) => r.kind === 'food' && r.title.includes('panini tezgahları')),
     ).toBe(true);
   });
 
