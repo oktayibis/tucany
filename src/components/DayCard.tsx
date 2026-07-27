@@ -4,9 +4,8 @@ import { IntensityMeter } from './IntensityMeter';
 import { PriceTag } from './PriceTag';
 
 /**
- * One waypoint's content on the route. The dot and connecting line live in
- * `DayList` (they're a property of the list, not of one card); this is just
- * the signage-plate card sitting next to that dot.
+ * One day's plate in the list. A plain rounded card — the previous route-line
+ * threading days together is gone; the list is just a stack of these now.
  */
 export function DayCard({
   day,
@@ -29,18 +28,21 @@ export function DayCard({
     <button
       type="button"
       onClick={onOpen}
-      className={`flex min-h-11 w-full flex-col gap-1.5 border bg-surface-2 p-3 text-left ${
+      className={`flex min-h-11 w-full flex-col gap-1.5 rounded-2xl border bg-surface-2 p-4 text-left shadow-sm transition-shadow hover:shadow-md ${
         isToday ? 'border-2 border-accent' : 'border-border'
       }`}
       aria-current={isToday ? 'date' : undefined}
     >
-      <div className="flex items-center justify-between gap-2">
-        <span className="font-display text-xs font-medium uppercase tracking-wide text-text-muted">
-          {index + 1}. gün · {weekdayDisplay(day.weekday)} · {formatDayMonth(day.date)}
+      <div className="flex items-center gap-2">
+        <span className="font-display text-xs font-medium uppercase tracking-wide text-accent">
+          {index + 1}. gün
         </span>
-        <span className="flex items-center gap-1.5">
+        <span className="text-xs uppercase tracking-wide text-text-muted">
+          {weekdayDisplay(day.weekday)} · {formatDayMonth(day.date)}
+        </span>
+        <span className="ml-auto flex items-center gap-1.5">
           {isToday && (
-            <span className="bg-accent px-1.5 py-0.5 font-display text-xs font-semibold uppercase tracking-wide text-white">
+            <span className="rounded-full bg-accent px-2 py-0.5 font-display text-xs font-semibold uppercase tracking-wide text-white">
               Bugün
             </span>
           )}
@@ -51,16 +53,16 @@ export function DayCard({
           )}
         </span>
       </div>
-      <h2 className="font-display text-base font-medium">{day.title}</h2>
+      <h2 className="font-display text-xl">{day.title}</h2>
       {undecided && (
-        <span className="self-start bg-warn-bg px-1.5 py-0.5 font-body text-xs font-semibold text-warn-text">
+        <span className="self-start rounded-full bg-warn-bg px-2 py-0.5 font-body text-xs font-semibold text-warn-text">
           Karar verilmedi
         </span>
       )}
       <div className="flex flex-wrap items-center gap-3 text-sm text-text-muted">
         <IntensityMeter intensity={day.intensity} />
         <span>{drivingMinutes} dk sürüş</span>
-        <span className="ml-auto font-display text-base font-semibold text-text">
+        <span className="ml-auto font-display text-lg text-accent">
           <PriceTag amount={total} />
         </span>
       </div>

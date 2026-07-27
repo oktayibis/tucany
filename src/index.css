@@ -8,42 +8,44 @@
  * property name, higher specificity/later rule) is all a component needs;
  * no component ever hardcodes a hex value.
  *
- * Ground: brown Italian tourist-heritage road signage (surfaces, headers)
- * + Montelupo majolica glaze colours (cobalt / antimony / manganese / tin).
- * Deliberately not cream+serif+terracotta.
+ * Ground: Tuscan terracotta roof tile + olive grove — warm clay, sage olive,
+ * a dusty wine accent, all on a soft cream page. A deliberate move away from
+ * the previous "brown road signage + majolica glaze" direction: rounder,
+ * warmer, no more near-square plates.
  */
 @theme {
-  --color-sign-brown: #4a3728;
-  --color-cobalt: #1f4e8c;
-  --color-antimony: #e3a32b;
-  --color-manganese: #6b4f70;
-  --color-tin: #e8eae7;
-  --color-ink: #1a1614;
+  --color-terracotta-deep: #5a2f12;
+  --color-clay: #8c491a;
+  --color-olive: #7a8a5e;
+  --color-wine: #8c5b53;
+  --color-gold: #c98a2e;
+  --color-cream: #f5ead8;
+  --color-ink: #241d17;
   --color-danger: #b3261e;
   --color-safe: #3f6b3e;
   --color-theme-plaj: #1f8a8c;
 
-  --color-bg: var(--color-tin);
-  --color-surface: #f5f6f3;
-  --color-surface-2: #ffffff;
-  --color-plate: var(--color-sign-brown);
-  --color-plate-text: #f3e9dd;
+  --color-bg: #f2e3ca;
+  --color-surface: #f8efe0;
+  --color-surface-2: #fffaf2;
+  --color-plate: #f0d6bd;
+  --color-plate-text: var(--color-terracotta-deep);
   --color-text: var(--color-ink);
-  --color-text-muted: #5b534c;
-  --color-accent: var(--color-cobalt);
-  --color-accent-2: var(--color-antimony);
-  --color-secondary: var(--color-manganese);
-  --color-border: #c9cdc8;
-  --color-warn-bg: #fbeec9;
-  --color-warn-border: var(--color-antimony);
-  --color-warn-text: #6b4a12;
+  --color-text-muted: #6b5d4e;
+  --color-accent: var(--color-clay);
+  --color-accent-2: var(--color-olive);
+  --color-secondary: var(--color-wine);
+  --color-border: #d9c7ac;
+  --color-warn-bg: #f7e4c2;
+  --color-warn-border: var(--color-gold);
+  --color-warn-text: #6b4310;
   --color-danger-bg: #f7e3e1;
 
-  --font-display: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
-  --font-body: 'Public Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Caprasimo', 'Georgia', serif;
+  --font-body: 'Figtree', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
-  /* Signage is a rectangular plate, not a soft app bubble. */
-  --radius: 0.125rem;
+  /* Soft cards, not signage plates. */
+  --radius: 0.75rem;
 
   --text-display-xl: 2rem;
   --text-display-xl--line-height: 1.1;
@@ -56,19 +58,19 @@
 /* Dark theme: same token names, new values — every component follows for free. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #14100d;
-    --color-surface: #211a15;
-    --color-surface-2: #1a1512;
-    --color-plate: #5c4632;
-    --color-plate-text: #f6efe5;
-    --color-text: #f1ede6;
-    --color-text-muted: #b8ada0;
-    --color-accent: #6c9bd8;
-    --color-accent-2: #f0b750;
-    --color-secondary: #9b7ca3;
-    --color-border: #3a342e;
+    --color-bg: #17120c;
+    --color-surface: #201810;
+    --color-surface-2: #251c13;
+    --color-plate: #4a2a12;
+    --color-plate-text: #f6ead9;
+    --color-text: #f3e9db;
+    --color-text-muted: #c2ac93;
+    --color-accent: #e0935a;
+    --color-accent-2: #a3b382;
+    --color-secondary: #c99b91;
+    --color-border: #3d3022;
     --color-warn-bg: #3a2c10;
-    --color-warn-border: #f0b750;
+    --color-warn-border: #d9a13e;
     --color-warn-text: #f0c978;
     --color-danger: #e5645a;
     --color-danger-bg: #3a1815;

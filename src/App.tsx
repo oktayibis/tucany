@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { BottomBar } from './components/BottomBar';
 import { Checklists } from './components/Checklists';
-import { DayDetail } from './components/DayDetail';
+import { DayPager } from './components/DayPager';
 import { DayList } from './components/DayList';
 import { PorkGuide } from './components/PorkGuide';
 import { PrintView } from './components/PrintView';
@@ -37,7 +37,11 @@ function Shell() {
     <>
       <div className="print:hidden">
         {route.name === 'day' ? (
-          <DayDetail dayId={route.dayId} onBack={() => go(HOME)} />
+          <DayPager
+            dayId={route.dayId}
+            onBack={() => go(HOME)}
+            onDayChange={(dayId) => go({ name: 'day', dayId })}
+          />
         ) : route.name === 'pork' ? (
           <PorkGuide tab={route.tab} onTabChange={(tab) => go({ name: 'pork', tab })} />
         ) : route.name === 'search' ? (

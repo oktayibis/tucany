@@ -29,7 +29,7 @@ export function BottomBar({
   return (
     <nav
       aria-label="Ana gezinme"
-      className="fixed inset-x-0 bottom-0 z-10 flex border-t border-border bg-surface pb-[env(safe-area-inset-bottom)]"
+      className="fixed inset-x-0 bottom-0 z-10 flex rounded-t-2xl border-t border-border bg-surface pb-[env(safe-area-inset-bottom)]"
     >
       {TABS.map((tab) => {
         const active = isActive(route, tab.route);

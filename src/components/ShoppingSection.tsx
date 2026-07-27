@@ -10,12 +10,12 @@ export function ShoppingSection({ shopping }: { readonly shopping: readonly Shop
   return (
     <ul className="flex flex-col gap-2">
       {shopping.map((entry) => (
-        <li key={entry.name} className="border border-border bg-surface-2 p-3">
+        <li key={entry.name} className="rounded-2xl border border-border bg-surface-2 p-3">
           <div className="flex flex-wrap items-start justify-between gap-2">
             <p className="font-display font-medium">
               {entry.name}
               {entry.highlight === true && (
-                <span className="ml-2 bg-antimony px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
+                <span className="ml-2 rounded-full bg-olive px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
                   Öne çıkan
                 </span>
               )}

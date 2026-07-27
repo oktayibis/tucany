@@ -12,12 +12,12 @@ export function DayHeadNotes({ day }: { readonly day: Day }) {
   return (
     <div className="flex flex-col gap-2 text-sm">
       {day.highlight !== undefined && (
-        <p className="border-l-2 border-accent-2 bg-warn-bg px-3 py-2 font-medium text-warn-text">
+        <p className="rounded-2xl border-l-2 border-accent-2 bg-warn-bg px-3 py-2 font-medium text-warn-text">
           ★ {day.highlight}
         </p>
       )}
       {day.elderNote !== undefined && (
-        <p className="border-l-2 border-border px-3 py-2 text-text-muted">
+        <p className="rounded-2xl border-l-2 border-border px-3 py-2 text-text-muted">
           <span className="font-display font-semibold text-text">Anne için: </span>
           {day.elderNote}
         </p>

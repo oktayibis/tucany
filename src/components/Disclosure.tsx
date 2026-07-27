@@ -21,7 +21,7 @@ export function Disclosure({
   readonly children: ReactNode;
 }) {
   return (
-    <details open={defaultOpen} className="group border border-border bg-surface-2">
+    <details open={defaultOpen} className="group overflow-hidden rounded-2xl border border-border bg-surface-2">
       <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 px-3 py-2.5 [&::-webkit-details-marker]:hidden">
         <span
           aria-hidden="true"

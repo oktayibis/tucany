@@ -40,7 +40,7 @@ export function OptionsSection({ day }: { readonly day: Day }) {
       beach ?? (selected.nav === undefined ? undefined : { name: selected.label, nav: selected.nav });
 
     return (
-      <div className="border border-border bg-surface-2">
+      <div className="overflow-hidden rounded-2xl border border-border bg-surface-2">
         <div className="flex items-center gap-3 p-3">
           <div className="min-w-0 flex-1">
             <p className="font-display text-xs font-semibold uppercase tracking-wide text-text-muted">
@@ -54,7 +54,7 @@ export function OptionsSection({ day }: { readonly day: Day }) {
           <button
             type="button"
             onClick={() => setEditing(true)}
-            className="min-h-11 shrink-0 border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
+            className="min-h-11 shrink-0 rounded-full border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
           >
             Değiştir
           </button>
@@ -71,7 +71,7 @@ export function OptionsSection({ day }: { readonly day: Day }) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
-        <p className="flex-1 border border-dashed border-border bg-surface p-2 text-xs font-semibold text-text-muted">
+        <p className="flex-1 rounded-2xl border border-dashed border-border bg-surface p-2 text-xs font-semibold text-text-muted">
           {isDecided
             ? 'Bugünün rotasını seç.'
             : 'Karar verilmedi — planın önerisi gösteriliyor, aşağıdan seç.'}
@@ -80,7 +80,7 @@ export function OptionsSection({ day }: { readonly day: Day }) {
           <button
             type="button"
             onClick={() => setEditing(false)}
-            className="min-h-11 shrink-0 border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
+            className="min-h-11 shrink-0 rounded-full border border-border bg-surface px-3 py-2 text-sm font-semibold text-accent"
           >
             Kapat
           </button>
@@ -125,7 +125,7 @@ function OptionCard({
 
   return (
     <label
-      className={`flex cursor-pointer flex-col gap-2 border bg-surface-2 p-3 ${
+      className={`flex cursor-pointer flex-col gap-2 rounded-2xl border bg-surface-2 p-3 ${
         isSelected
           ? isBeach
             ? 'border-2 border-theme-plaj'
@@ -145,12 +145,12 @@ function OptionCard({
           {option.label}
           <RatingBadge rating={option.rating ?? beach?.rating} />
           {option.recommended === true && (
-            <span className="bg-antimony px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
+            <span className="rounded-full bg-olive px-1.5 py-0.5 font-body text-xs font-semibold text-ink">
               Planın önerisi
             </span>
           )}
           {isBeach && (
-            <span className="bg-theme-plaj/15 px-1.5 py-0.5 font-body text-xs font-semibold text-theme-plaj">
+            <span className="rounded-full bg-theme-plaj/15 px-1.5 py-0.5 font-body text-xs font-semibold text-theme-plaj">
               Plaj
             </span>
           )}
@@ -186,7 +186,7 @@ function OptionCard({
       )}
 
       {beach !== undefined && (
-        <div className="border border-dashed border-theme-plaj bg-surface p-2 text-xs">
+        <div className="rounded-2xl border border-dashed border-theme-plaj bg-surface p-2 text-xs">
           <p className="font-semibold">
             {beach.name} · {formatDriving(beach.minutesFromBase)}
           </p>

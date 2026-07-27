@@ -25,14 +25,14 @@ export function NavButton({
         href={links.google}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex min-h-11 items-center border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
+        className="inline-flex min-h-11 items-center rounded-full border border-border bg-surface-2 px-4 py-2 text-sm font-semibold text-accent"
       >
         Google Maps’te aç
       </a>
       {showApple && (
         <a
           href={links.apple}
-          className="inline-flex min-h-11 items-center border border-border bg-surface-2 px-3 py-2 text-sm font-semibold text-accent"
+          className="inline-flex min-h-11 items-center rounded-full border border-border bg-surface-2 px-4 py-2 text-sm font-semibold text-accent"
         >
           Apple Maps’te aç
         </a>
@@ -46,7 +46,7 @@ export function PhoneButton({ phone }: { readonly phone: string }) {
   return (
     <a
       href={telHref(phone)}
-      className="inline-flex min-h-11 items-center rounded border px-3 py-2 text-sm font-medium"
+      className="inline-flex min-h-11 items-center rounded-full border border-border px-4 py-2 text-sm font-medium"
     >
       {phone} — ara
     </a>

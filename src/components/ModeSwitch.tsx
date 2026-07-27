@@ -16,7 +16,7 @@ export function ModeSwitch() {
       <div
         role="radiogroup"
         aria-label="Bütçe modu"
-        className="flex divide-x divide-border border border-border bg-surface-2"
+        className="flex gap-1 rounded-full border border-border bg-surface-2 p-1"
       >
         {MODES.map((candidate) => (
           <button
@@ -25,7 +25,7 @@ export function ModeSwitch() {
             role="radio"
             aria-checked={candidate === mode}
             onClick={() => setMode(candidate)}
-            className={`min-h-11 flex-1 px-4 py-2 font-display text-sm font-semibold transition-colors ${
+            className={`min-h-11 flex-1 rounded-full px-4 py-2 font-display text-sm transition-colors ${
               candidate === mode ? 'bg-accent text-white' : 'text-text-muted'
             }`}
           >

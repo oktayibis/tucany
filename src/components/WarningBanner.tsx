@@ -25,7 +25,7 @@ export function WarningBanner({
   if (items.length === 0) return null;
 
   return (
-    <div role="alert" className="border-2 border-warn-border bg-warn-bg p-3 text-warn-text">
+    <div role="alert" className="rounded-2xl border-2 border-warn-border bg-warn-bg p-3 text-warn-text">
       <ul className="flex flex-col gap-1.5 text-sm font-semibold">
         {items.map((text) => (
           <li key={text} className="flex gap-2">

@@ -115,8 +115,8 @@ export function FoodSheet({
           <button
             type="button"
             onClick={() => toggleUpgrade(key)}
-            className={`min-h-11 border px-3 py-2 text-xs font-semibold ${
-              isUpgraded ? 'border-accent-2 bg-antimony text-ink' : 'border-border text-text-muted'
+            className={`min-h-11 rounded-full border px-3 py-2 text-xs font-semibold ${
+              isUpgraded ? 'border-accent-2 bg-olive text-ink' : 'border-border text-text-muted'
             }`}
           >
             {isUpgraded ? '✓ Karma’ya eklendi — kaldır' : 'Karma’ya ekle'}

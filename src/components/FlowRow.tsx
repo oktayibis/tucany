@@ -68,5 +68,5 @@ export function StopMarker({ index, visited }: { readonly index: number; readonl
 
 /** A single card wrapping a run of `FlowRow`s. */
 export function FlowList({ children }: { readonly children: ReactNode }) {
-  return <ul className="border border-border bg-surface-2">{children}</ul>;
+  return <ul className="overflow-hidden rounded-2xl border border-border bg-surface-2">{children}</ul>;
 }

@@ -52,7 +52,7 @@ export function StopSheet({
       <div className="flex flex-wrap items-center gap-2">
         {stop.tier === 'optional' && <StopTierBadge tier="optional" />}
         {stop.badge !== undefined && (
-          <span className="bg-accent-2/20 px-1.5 py-0.5 text-xs font-semibold text-accent-2">
+          <span className="rounded-full bg-accent-2/20 px-1.5 py-0.5 text-xs font-semibold text-accent-2">
             {stop.badge}
           </span>
         )}
@@ -98,8 +98,8 @@ export function StopSheet({
           <button
             type="button"
             onClick={() => toggleUpgrade(stop.id)}
-            className={`ml-auto min-h-11 border px-3 py-2 text-xs font-semibold ${
-              isUpgraded ? 'border-accent-2 bg-antimony text-ink' : 'border-border text-text-muted'
+            className={`ml-auto min-h-11 rounded-full border px-3 py-2 text-xs font-semibold ${
+              isUpgraded ? 'border-accent-2 bg-olive text-ink' : 'border-border text-text-muted'
             }`}
           >
             {isUpgraded ? '✓ Karma’ya eklendi — kaldır' : `Karma’ya ekle (+${euro(stop.cost ?? 0)})`}
