@@ -103,6 +103,11 @@ export function DayPager({
 
   return (
     <div
+      // 61px matches BottomBar's own content height (see BottomBar.tsx) — its
+      // safe-area padding is separate, so it's added here too, and again on
+      // NextStopBar's `bottom` offset below, so neither one drifts out of
+      // sync on a notched phone. If BottomBar's sizing ever changes, update
+      // both.
       className="fixed inset-0 z-0 flex flex-col bg-bg"
       style={{ paddingBottom: 'calc(61px + env(safe-area-inset-bottom))' }}
     >
@@ -296,7 +301,7 @@ function NextStopBar({ day }: { readonly day: Day }) {
   const done = visited.has(upcoming.id);
 
   return (
-    <div className="fixed inset-x-0 bottom-[61px] z-10 flex items-center gap-3 border-t border-border bg-surface-2 px-4 py-2.5">
+    <div className="fixed inset-x-0 bottom-[calc(61px_+_env(safe-area-inset-bottom))] z-10 flex items-center gap-3 border-t border-border bg-surface-2 px-4 py-2.5">
       <div className="min-w-0 flex-1">
         <p className="font-display text-xs font-semibold uppercase tracking-wide text-accent">
           {done ? 'Son durak' : 'Sıradaki'}
