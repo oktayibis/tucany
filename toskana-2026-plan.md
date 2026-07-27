@@ -12,7 +12,7 @@
 
 ---
 
-## 0. ÖNCE OKU — 12 kritik nokta
+## 0. ÖNCE OKU — 16 kritik nokta
 
 1. **ZTL.** Floransa, Siena, Lucca, Arezzo, San Gimignano, Pienza merkezlerinde kameralı trafik yasağı. Ceza 3–6 ay sonra kiralama şirketi üzerinden +45€ idari ücretle gelir. **Her şehirde sur dışı otoparkı kullan.**
 
@@ -38,6 +38,15 @@
 
 12. **Sagra ayı.** Ağustos'ta köylerde gönüllü yemek festivalleri olur: ortak masalar, 10–15€'ya 3 tabak. Otele varınca resepsiyona sor: *"Ci sono sagre qui vicino questa settimana?"* Kasaba girişlerindeki afişlere bak. Gezinin en eğlenceli akşamı bu olabilir.
 
+13. **EasyPark Uygulaması:** İtalya'daki tüm sur dışı otoparklarda (Pisa, Siena, Arezzo, San Gimignano) otomatlarda bozuk para/kart arama stresini bitirir. Gitmeden telefonunuza indirip plakanızı tanımlayın. Süreyi uzatmanız gerekirse oturduğunuz kafeden uzaktan uzatabilirsiniz.
+
+14. **Siena'da Yürüyen Merdivenler (Risalite Meccanizzate):** Siena tepe şehridir ama dik yokuş tırmanmak zorunda değilsiniz. *Parcheggio Santa Caterina* veya *Parcheggio San Francesco* otoparklarına park edip, kayaların içine oyulmuş **ücretsiz kapalı yürüyen merdivenlerle** doğrudan Duomo ve Il Campo seviyesine zahmetsizce çıkın.
+
+15. **Bistecca'da "Lardo" (Domuz Yağı) Tuzağı:** Izgara ustaları, eti mühürlerken veya servis öncesi parlatmak için biberiye dalını erimiş domuz yağına (*lardo*) batırıp etin üzerine sürebilir (*pennellata di lardo*). Sipariş verirken mutlaka şunu vurgulayın:
+> *"Per favore, niente lardo, niente strutto. Solo olio extravergine d'oliva."* (Lütfen domuz yağı olmasın, sadece sızma zeytinyağı.)
+
+16. **Tuvalet & Kafe Stratejisi:** Umumi tuvaletler 1€’dur ve bozuk para ister. Her kafe molasında (ayakta bir espresso içilse bile) gruptaki herkesin lavaboyu kullanmasını kural haline getirin.
+
 ---
 
 ## 1. GÜN GÜN PLAN
@@ -58,6 +67,7 @@
 **Seçenek B — Pisa + Lucca** *€90 · 3s 15dk*
 Pisa'dan sonra [Lucca / Parcheggio Palatucci](https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca): sur üstü yürüyüş bandı (4 km, gölgeli), Piazza dell'Anfiteatro (Roma amfitiyatrosunun üstüne kurulmuş oval meydan). 12:30–16:30, sonra 80 dk yol, ~18:00 otelde.
 - ➕ Lucca gerçekten güzel ve Pisa'dan daha keyifli · iki şehir tek günde biter
+- 🚲 **Anne & Çocuk Ulaşım Hilesi:** Lucca surlarında yürümek yerine sur girişinden 4 kişilik, tenteli pedallı aile bisikleti (**Risciò**) kiralayın (~15–20€/saat). Anne arkada gölgede oturur, Nil çok eğlenir, 4 km'lik sur turlarını hiç yorulmadan 45 dakikada bitirirsiniz.
 - ➖ Otelde 18:00, ilk gün için ağır · anne için yorucu olabilir
 - **Kesilecek:** Torre Guinigi (~€18, 230 basamak — tepesinde 700 yıllık meşe ağaçları var ama değmez)
 - 💡 *Modumuz yüksekse. Havalimanında karar verilebilir.*
@@ -121,16 +131,18 @@ Otel → [Parcheggio Villa Costanza](https://www.google.com/maps/search/?api=1&q
 **Ücretsiz ve harika**
 Piazza della Signoria + **Loggia dei Lanzi** (açık hava heykel müzesi, 45 dk) · Ponte Vecchio · Orsanmichele · **Piazzale Michelangelo** gün batımı (19:30'da git, 1 saat) · **San Miniato al Monte** (Piazzale'nin üstü — manzarası daha iyi, çok daha sakin, ücretsiz)
 
-**Yemek**
-- ☕ **Ditta Artigianale** (Via dello Sprone) — kendi kavurdukları çekirdek, gerçek specialty coffee ~€15
-- 🅰️ Öğle **Mercato Centrale üst kat** ~€50 + akşam **Trattoria Sostanza** ~€130 *(1869'dan kalma; Cts–Paz kapalı, sadece telefon rez. +39 055 212691; kömürde tereyağında tavuk göğsü — domuzsuz efsane tabak)*
+**Yemek & Kahve**
+- ☕ **Caffè Gilli** (Piazza della Repubblica) — 1733'ten beri açık. Klimalı iç salonu, muazzam tatlı vitrinleri ve geniş oturma alanıyla kalabalıktan kaçıp annenizle soluklanacağınız lüks sığınak ~€20
+- ☕ **Ditta Artigianale** (Via dello Sprone - Oltrarno tarafı) — Nitelikli 3. dalga kahvesevenler için şehirdeki en iyi adres ~€15
+- 🅰️ Öğle: **Mercato Centrale Primo Piano (Üst kat)** ~€50 — Herkes farklı tezgahtan (taze deniz ürünleri fritto misto, trüflü makarna vs.) yemeğini alıp ortak masalarda oturabilir. Domuz riski olmadan herkesi mutlu eder.
+- 🅰️ Akşam: **Trattoria Sostanza** ~€130 *(1869'dan kalma; Cts–Paz kapalı, sadece telefon rez. +39 055 212691; kömürde tereyağında tavuk göğsü — domuzsuz efsane tabak)*
 - 🅱️ Öğle **[L'Antico Trippaio](https://www.google.com/maps/search/?api=1&query=L%27Antico+Trippaio+Piazza+dei+Cimatori+Firenze)** (Piazza dei Cimatori, 100+ yıllık) — dana ve sebzeli sandviç €5.5'tan, **domuzsuz** ≈ **€25** → akşam otelde
 - 🅱️ Alternatif: **[Da Nerbone](https://www.google.com/maps/search/?api=1&query=Da+Nerbone+Mercato+Centrale+Firenze)** (Mercato Centrale zemin kat, 1872'den beri) ~€25 ⚠️ Pazar kapalı, 08:30–15:00
 - 🍦 **Gelateria dei Neri** (Via dei Neri 9) ~€12 ⚠️ Salı kapalı — bugün açık
 
-**Dicle için:** Officina Profumo-Farmaceutica di **Santa Maria Novella** (Via della Scala 16 — 1221'den beri, girmek bedava, mekân müze gibi) · San Lorenzo deri pazarı (pazarlık yapılır) · **Scuola del Cuoio** (deri ustalarını çalışırken izliyorsun)
+**Dicle için:** Officina Profumo-Farmaceutica di **Santa Maria Novella** (Via della Scala 16 — 1221'den beri dünyanın en eski eczanesi, girmek bedava, mekân müze gibi, yöresel parfüm/krem) · San Lorenzo deri pazarı · **Scuola del Cuoio** (Santa Croce Basilikası arkası — deri zanaatkarlarını canlı izleyip el yapımı hakiki deri ürünler alabilirsiniz)
 
-👵 **Bu günün püf noktası: kiliseler.** Ücretsiz, serin, oturaklı. Her 1–1.5 saatte bir kiliseye girip 15 dk oturun — Floransa'yı yaşlıyla gezmenin tek yolu bu.
+👵 **Anne için Ulaşım Hilesi:** Şehir içi kalabalıkta yürütmek yerine **Eco Green Tours** gibi elektrikli golf arabası turlarıyla (1 saat) tüm ana eserleri yürütmeden gezdirebilirsiniz. Ayrıca her 1–1.5 saatte bir ücretsiz, serin kiliselere girip 15 dk oturun.
 
 **💶 🅰️ ~€290 · 🅱️ ~€110 (Accademia dahil)**
 
@@ -174,11 +186,12 @@ Havuz *(sabah, 3 saat)* → [Fattoria Casa Sola](https://www.google.com/maps/sea
 - **Casa Sola** (Pazar 10:00–19:00, WhatsApp +39 328 950 9196) — aile işletmesi. 🅰️ Tadım ~€90 (3 kişi) · 🅱️ **Sadece dükkânına uğra** — satın alırken tattırıyorlar, ücretsiz. Ya da sadece **zeytinyağı tadımı** iste (şarabın yarı fiyatı).
 - **Montefioralle** (45 dk, ücretsiz) — 200 nüfuslu, halka şeklinde, tamamen taş ortaçağ köyü. Gezinin en güzel fotoğrafları.
 
-**Yemek — bistecca günü**
+**Yemek & Kahve — bistecca günü**
+- ☕ **Caffè Lepanto** (Greve in Chianti meydanı) — Çınar ağaçları altında gölgeli harika bir kahve/mola durağı ~€12
 - 🅰️ **Officina della Bistecca** (Dario Cecchini, Panzano) — sabit menü €50/kişi = **€150**, rez. şart +39 055 852020. Ortak masada Chianina ziyafeti.
-  ⚠️ Açılışı `burro del Chianti` = domuz lardo'su. Rezervasyonda ve masada **"niente maiale, niente lardo"** de.
+  ⚠️ Izgara mühürleme/parlatma tuzağına karşı masada mutlaka vurgulayın: *"Per favore, niente lardo, niente strutto. Solo olio extravergine d'oliva."*
 - 🅱️ **Öğle: [Cecchini Panini Truck](https://www.google.com/maps/search/?api=1&query=Cecchini+Panini+Truck+Panzano)** — aynı kasabın açık hava tezgâhı, dana burger ~€10 + fırın patates, bağ manzaralı, her gün 11:30–15:00 ≈ **€35**. ⚠️ `hot dog` ve `pancia` sandviçi domuz.
-- 🅱️ **Akşam: [La Sosta di Pio VII](https://www.google.com/maps/search/?api=1&query=La+Sosta+di+Pio+VII+Barberino)** (10 dk) — **3 yetişkin tek bir 1.2 kg bistecca'yı rahat paylaşır.** Odun ızgara, gün batımı terası ≈ **€110**, rez. +39 055 807 5923.
+- 🅱️ **Akşam: [La Sosta di Pio VII](https://www.google.com/maps/search/?api=1&query=La+Sosta+di+Pio+VII+Barberino)** (10 dk) — **3 yetişkin tek bir 1.2 kg bistecca'yı rahat paylaşır.** Odun ızgara, gün batımı terası ≈ **€110**, rez. +39 055 807 5923. ⚠️ Izgara ustasına *Lardo* (biberiyeyle domuz yağı sürme) uyarısını iletmeyi unutmayın.
 
 ⚠️ Pazar günü dükkânların çoğu kapalı. ⚠️ Dario Doc hafta sonu kapalı.
 
@@ -201,11 +214,12 @@ Otel → [Pienza](https://www.google.com/maps/search/?api=1&query=Parcheggio+Pie
 - **Pienza** (10:00–13:00, ücretsiz) — Papa II. Pius'un 15. yy'da sıfırdan tasarlattığı "ideal Rönesans şehri", UNESCO. Düz, küçük, gezmesi kolay. Sur dışı terasından Val d'Orcia manzarası **ücretsiz**.
   - ❌ Palazzo Piccolomini ~€21 — terastan bedavaya benzerini görüyorsun.
 - **Bagno Vignoni + Parco dei Mulini** (14:00–15:30, ücretsiz) — meydanın yerinde Romalılardan kalma dev termal havuz. Aşağıdaki parkta sıcak su deresine ayak sokulabiliyor.
-- **Yol üstü, bedava:** [Cappella della Madonna di Vitaleta](https://www.google.com/maps/search/?api=1&query=Cappella+della+Madonna+di+Vitaleta) ve San Quirico çevresindeki servi sıraları. Işık 18:00'den sonra en iyisi.
+- **Yol üstü, bedava:** [Cappella della Madonna di Vitaleta](https://www.google.com/maps/search/?api=1&query=Cappella+della+Madonna+di+Vitaleta), **Gladiator Point** (San Quirico d'Orcia çıkışında *Gladiator* filminin çekildiği ikonik servi ağaçlı yol) ve servi sıraları. Işık 18:00'den sonra en iyisi.
 
-**Yemek**
+**Yemek & Mola**
+- ☕ / 🍹 **Idyllium** (Pienza sur üstü) — Val d'Orcia vadisine karşı gün batımında alkolsüz kokteyl / aperitivo için en harika manzara durağı ~€20
 - 🅰️ **[Trattoria da Fiorella](https://www.google.com/maps/search/?api=1&query=Trattoria+da+Fiorella+Pienza)**, Pienza ~€90 — Pecorino di Pienza'lı makarnalar, Val d'Orcia şarapları
-- 🅱️ **[La Taverna del Pecorino](https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza)**'dan (Via Condotti 1, 4 kuşaklık peynirci) pecorino + ekmek + domates al ~€20, sur dışındaki terasta Val d'Orcia'ya karşı ye. **Hem gezinin en güzel öğünü hem hediyeliğin.**
+- 🅱️ **[La Taverna del Pecorino](https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza)** (Via Condotti 1, 4 kuşaklık peynirci) — *Pecorino di Pienza*, sızma zeytinyağı ve yöresel reçelleri vakumlu paket yaptırabilirsiniz. Peynir + ekmek + domates al ~€20, sur dışındaki terasta Val d'Orcia'ya karşı ye. **Hem gezinin en güzel öğünü hem hediyeliğin.**
 - ☕ **Pienza Coffee & Fredo Pasticceria** ~€12 — meşe odununda kavrulan yerel kahve, bademli kurabiye
 
 👵 **Bagno Vignoni gezinin en iyi durağı olabilir:** ayaklarını termal suya sokabiliyor, ücretsiz, oturaklı, gölgeli. Eklem ağrısına iyi gelir.
@@ -227,21 +241,23 @@ Sabah + öğlen otel havuzu (5 saat). 16:30 çık → [San Gimignano P2 Giubileo
 - **Görülecek:** 14 ortaçağ kulesi (17:00 sonrası, 3 saat) · Piazza della Cisterna, Piazza del Duomo · **Rocca di Montestaffoli** kale duvarları — gün batımı için en iyi nokta, **bilet yok, kimse bilmiyor**
 - **Kesilecek:** Torre Grossa (~€27 / 3 kişi, 218 basamak) — Rocca zaten daha iyi manzara veriyor
 - **Yemek:** 🅱️ Coop'tan malzemeyle havuz başı öğle ~€15 · 🅰️ kasabada akşam ([Rigoletto / Osteria del Carcere](https://www.google.com/maps/search/?api=1&query=Ristorante+Rigoletto+San+Gimignano), safranlı pici + Vernaccia) ~€110
-- 🍦 **[Gelateria Dondoli](https://www.google.com/maps/search/?api=1&query=Gelateria+Dondoli+San+Gimignano)** ~€12 — Piazza della Cisterna 4, 2 kez dünya şampiyonu, her gün 09:00–23:00. *Crema di Santa Fina* (safran + çam fıstığı) ve *Rosemary Baby* (ahududu-biberiye). **Bu kesinlikle kalsın.**
+- 🍦 **[Gelateria Dondoli](https://www.google.com/maps/search/?api=1&query=Gelateria+Dondoli+San+Gimignano)** ~€12 — Piazza della Cisterna 4, 2 kez dünya şampiyonu, *Crema di Santa Fina* (safran + çam fıstığı). **Mola Stratejisi:** Dondurmayı aldıktan sonra kalabalık meydanda durmayın; 100 m ilerideki **Rocca di Montestaffoli** (kale surları) parkına geçin. Zeytin ağaçları altında, taş banklarda manzaraya karşı dondurmanızı yiyin.
 - **Dicle için:** San Gimignano **safranı** (zafferano) — Ortaçağ'da kasabayı zengin eden ürün, mükemmel hediye · seramik ve el yapımı kâğıt dükkânları (Via San Matteo)
 
-#### Seçenek B — Marina di Bibbona / Cecina ✅ *önerilen deniz* · **🅰️ €177 · 🅱️ €60 · 2s 40dk**
+#### Seçenek B — Marina di Bibbona / Cecina · **🅰️ €177 · 🅱️ €60 · 2s 40dk**
 08:00 çık / 09:30 plajda / 09:30–13:00 deniz / 13:00–16:00 öğle + gölge / 16:00–18:30 deniz / 19:00 çık / 20:30 otelde.
 - ➕ En yakın ve en ucuz deniz seçeneği · şezlong+şemsiye €18–25, serbest plaj da var
 - ➕ Arkada çam ormanı — öğle sıcağında gölgeli yürüyüş · sığ ve geniş kumsal, çocuk için güvenli · otopark kolay
+- ☕ **Plaj İçeceği:** Plaj barında ferahlatıcı **Caffè Shakerato** (buzla shaker'da çırpılmış köpüklü espresso).
 - ➖ Ara sıra denizanası bildiriliyor · kasaba sıradan, plajdan başka yapacak şey yok
 - ⚠️ Cecina'nın en iyi restoranı *Ristorante da Andrea* Pzt+Salı kapalı — bu gün gidilemez
 - **Yemek:** 🅰️ **[Osteria Magona Mare](https://www.google.com/maps/search/?api=1&query=Osteria+Magona+Mare+Cecina)** (Cecina, **Salı açık**) ~€90 — fritto misto, spaghetti allo scoglio / alle vongole, cacciucco. **Sahilde domuz derdi sıfır.** · 🅱️ plaj kulübünün mutfağı veya Coop'tan piknik ~€30
 
-#### Seçenek C — Golfo di Baratti (Populonia) · **🅰️ €150 · 🅱️ €70 · 3s 30dk**
+#### Seçenek C — Golfo di Baratti (Populonia) ✅ *plaj için en doğru seçim* · **🅰️ €150 · 🅱️ €70 · 3s 30dk**
 07:30 çık (erken — 09:00'dan sonra doluyor) / 09:15 plajda / öğleden sonra isteğe bağlı Populonia nekropolü / 19:00 çık.
-- ➕ Kıyının en güzel koyu · **çamlar doğrudan kumun üstüne iniyor — KUMSALDA gölge var, anne için gezinin en rahat plajı**
+- ➕ Kıyının en güzel koyu · **kumsala kadar inen çam ağaçları sayesinde anne gölgede otururken Nil güvenle denize girer — anne için gezinin en konforlu plajı**
 - ➕ Üstünde Populonia Etrüsk nekropolü ve kale — deniz + kültür · iri kum suyu berrak tutuyor
+- ☕ **Plaj İçeceği:** Plaj barında ferahlatıcı **Caffè Shakerato** (buzla shaker'da çırpılmış köpüklü espresso).
 - ➖ Sabah 9'dan itibaren doluyor, erken çıkmak şart · otopark ücretli ve sınırlı · restoran seçeneği dar · Bibbona'dan 25 dk daha uzak
 - **Yemek:** 🅰️ Bagno Baratti plaj barı ~€45 (her gün 09:00–19:00) · 🅱️ Coop'tan piknik ~€20
 
@@ -263,23 +279,25 @@ Sabah + öğlen otel havuzu (5 saat). 16:30 çık → [San Gimignano P2 Giubileo
 ### 🗓️ 5 Ağu · Çarşamba — Siena
 **Tempo: orta · Sürüş: ~1s 20dk**
 
-**Rota**
+**Rota & Lojistik**
 Otel → Siena *(40 dk)*
-⚠️ **Çarşamba pazar günü olduğu için [Fortezza otoparkı](https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena) dolu olabilir.** Yedek: **Parcheggio Stadio** (hemen bitişik) veya Santa Caterina / Il Campo garajı (~€2/saat).
+🚗 **Lojistik Hilesi:** *Parcheggio Santa Caterina*'ya park edip kayaların içine oyulmuş **ücretsiz kapalı yürüyen merdivenlerle (Risalite Meccanizzate)** doğrudan Duomo ve Il Campo seviyesine dik yokuş tırmanmadan zahmetsizce çıkın.
+⚠️ Alternatif: Çarşamba pazarı nedeniyle [Fortezza otoparkı](https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena) ve Parcheggio Stadio erken dolabilir.
 
-**Görülecek**
+**Görülecek & Alışveriş**
 - **08:30–13:00 Fortezza Medicea pazarı** (2.5 saat) — Toskana'nın en büyüklerinden, Medici kalesinin duvarları boyunca. Kumaş, ev tekstili, deri, giyim, gıda. **Dicle için Arezzo'dan sonraki en iyi durak.** Ücretsiz.
+- **Antica Drogheria Manganelli** (Via di Città) — 1879'dan kalma, ahşap raflı tarihi baharat, peynir ve geleneksel gıda dükkânı.
 - **Piazza del Campo** (1 saat) — deniz kabuğu şeklinde eğimli meydan. Yere oturmak serbest ve tam Sienalı işi. Ücretsiz.
 - **Duomo + Piccolomini Kütüphanesi** ~€48 (3 kişi), 1.5 saat, rezervasyon önerilir → ✅ **Değer.** Toskana'nın en güzel iç mekânı.
 - **Kesilecek:** Torre del Mangia (~€30, 400 basamak). Bunun yerine **Facciatone** (tamamlanamamış katedral cephesinin tepesi) daha az kalabalık.
 - Ücretsiz: San Domenico kilisesi, kontrada çeşmeleri, sokaklar (45 dk)
 
-**Yemek**
+**Yemek & Kahve**
+- ☕ **Pasticceria Nannini** (Banchi di Sopra) ~€20 — Siena'nın simgesi olan **Ricciarelli** (badem ezmeli kurabiye) ve **Panforte** tatlılarının doğduğu yer. Klimalı, oturaklı ve konforlu lüks mola noktası.
+- ☕ **Torrefazione Fiorella** (Via di Città) ~€10 — Şehrin en köklü kahve kavurucusu, hızlı espresso molası için (`al banco`).
 - 🅰️ **La Taverna di San Giuseppe** (Via Duprè 132) — 1100'lerden kalma Etrüsk mahzeninde; Siena trüfü, el yapımı pici. **Sadece telefonla rez. +39 0577 42286**, günler öncesinden ara. ~€200 (3 yetişkin)
 - 🅱️ **[Osteria Il Grattacielo](https://www.google.com/maps/search/?api=1&query=Osteria+Il+Grattacielo+Siena)** (Via dei Pontani 8) — 1840'tan beri, masa örtüsüz, tahtaya yazılan günlük 3–4 çeşit ev yemeği ~€70, tel. +39 331 742 2835. **Çok küçük, 12:00'de kapıda ol.** ⚠️ Menüde `salsiccia` ve `cinghiale` var.
 - 🅱️🅱️ **[Consorzio Agrario](https://www.google.com/maps/search/?api=1&query=Consorzi+Agrari+Via+Pianigiani+9+Siena)** (Via Pianigiani 9) — çiftçi kooperatifi gıda deposu, sipariş üzerine sandviç; herkes Piazza Salimbeni'de oturup yiyor ~€25
-- ☕ **Nannini** (Banchi di Sopra) ~€20 — **ricciarelli** ve **panforte**'nin doğduğu yer. Domuzsuz, uzun ömürlü, Kopenhag'a hediye.
-- ☕ **Torrefazione Fiorella** (Via di Città) ~€10 — Siena'nın en köklü kavurucusu, ayakta (`al banco`) espresso
 - 🍦 **Gelateria Kopakabana** (Via dei Rossi 52) ~€12 — ana caddeden sapınca, yerel fiyat, kocaman porsiyon
 
 **Dicle için:** **Antica Drogheria Manganelli** (Via di Città) — 1879'dan kalma, ahşap raflı baharat dükkânı
@@ -370,6 +388,7 @@ Otel → Siena *(40 dk)*
 | Türkçe | İtalyanca |
 |---|---|
 | Domuz eti yemiyoruz. Prosciutto, salam, pancetta, lardo, sucuk, yaban domuzu olmasın. Dana, tavuk, kuzu veya balık olur. | *Non mangiamo maiale. Niente prosciutto, salame, pancetta, lardo, salsiccia, né cinghiale. Va bene manzo, pollo, agnello o pesce.* |
+| Lütfen domuz yağı olmasın, sadece sızma zeytinyağı. | *Per favore, niente lardo, niente strutto. Solo olio extravergine d'oliva.* |
 | İçinde domuz eti var mı? | *Contiene carne di maiale?* |
 | En iyi fiyat ne? | *Qual è il prezzo migliore?* |
 | Paylaşmak için tek makarna | *Un primo da dividere* |
@@ -377,6 +396,8 @@ Otel → Siena *(40 dk)*
 | Hesap, lütfen | *Il conto, per favore* |
 | Musluk suyu | *Acqua del rubinetto* |
 | Alkolsüz aperitif | *Un analcolico, per favore (Crodino o San Bitter)* |
+
+⚠️ **`Bistecca` / Izgara et:** Izgara ustaları eti mühürlerken veya servis öncesi biberiye dalıyla erimiş domuz yağı (*lardo*) sürebilir (*pennellata di lardo*). Mutlaka sipariş esnasında uyarın.
 
 ### ☕ Kahve düzeni
 `caffè` = espresso · `caffè macchiato` = az sütlü · **`caffè shakerato`** = buzla çalkalanmış espresso (35 derecede hayat kurtarıyor) · `caffè d'orzo` = arpa kahvesi, kafeinsiz
@@ -387,17 +408,28 @@ Otel → Siena *(40 dk)*
 
 ---
 
-## 4. DICLE İÇİN ALIŞVERİŞ HARİTASI
+## 4. HIZLI REFERANS: MEŞHUR KAFELER VE ALIŞVERİŞ ÖZETİ
 
+| Şehir | Meşhur Kafe / Mola Noktası | Ne Yenir / İçilir? | Ne Alınır? (Alışveriş) |
+| --- | --- | --- | --- |
+| **Floransa** | Caffè Gilli / Ditta Artigianale | Tarihi tatlılar, Nitelikli Kahve | SMN Parfümeri, Scuola del Cuoio (Deri) |
+| **Siena** | Pasticceria Nannini / Fiorella | Ricciarelli, Panforte, Espresso | Drogheria Manganelli (Baharat/Gıda), Fortezza Pazarı |
+| **Pienza** | Idyllium | Alkolsüz Aperitivo, Crodino | La Taverna del Pecorino (Pecorino Peyniri) |
+| **Arezzo** | Caffè dei Costanti / Vestri | Çikolata, El Yapımı Gelato | Fiera Antiquaria (Antika Pazarı) |
+| **San Gimignano** | Gelateria Dondoli | Crema di Santa Fina (Safranlı Gelato) | Safran (*Zafferano*), El Yapımı Seramik |
+| **Lucca** | Pasticceria Taddeucci | Buccellato (Anasonlu Tatlı Ekmek) | Sur içi lokal tasarım butikleri |
+| **Montelupo** | Kasaba Meydanı Trattoria'ları | Pici all'Aglione | El Yapımı Seramik (Doğrudan Atölyeden) |
+
+### 🛍️ Alışveriş Haritası
 | Tarih | Yer | Ne var |
 |---|---|---|
-| 30 Tem Per | **Tavarnelle pazarı** | Yerel, sıfır turist, kumaş & gıda |
+| 30 Tem Per | **Tavarnelle pazarı** | Yerel, sıfır turist, ev tekstili, kumaş & peynir |
 | 31 Tem Cum | **Floransa** | S. Maria Novella parfümeri, San Lorenzo deri, Scuola del Cuoio |
 | **1 Ağu Cts** | **Arezzo Fiera Antiquaria** ⭐ | İtalya'nın en büyük antika fuarı, 500 tezgâh |
-| 3 Ağu Pzt | **Pienza** | La Taverna del Pecorino: pecorino, zeytinyağı, bal, reçel |
+| 3 Ağu Pzt | **Pienza** | La Taverna del Pecorino: pecorino, zeytinyağı, bal, reçel (vakumlu) |
 | 4 Ağu Sal | **San Gimignano** *(dinlenme seçeneğinde)* | Seramik, safran, el yapımı kâğıt |
 | 5 Ağu Çar | **Siena Fortezza pazarı** | Kumaş, ev tekstili, deri · Antica Drogheria Manganelli |
-| 6 Ağu Per | **Oltrarno (Il Torchio)** veya **Montelupo** | Ebru kâğıdı & ciltleme / seramik · sabah Tavarnelle pazarı |
+| 6 Ağu Per | **Montelupo (Atölyeler)** veya **Oltrarno (Il Torchio)** | El yapımı seramik (%40 ucuz) / Ebru kâğıdı & ciltleme |
 
 ---
 
