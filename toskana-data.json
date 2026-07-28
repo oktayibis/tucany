@@ -328,7 +328,7 @@
         {
           "id": "opt-b",
           "label": "Pisa + Lucca",
-          "desc": "Pisa'dan sonra Lucca: sur üstü yürüyüş bandı (4 km, gölgeli), Piazza dell'Anfiteatro. 12:30-16:30, sonra 80 dk yol, ~18:00 otelde.",
+          "desc": "Pisa'dan sonra Lucca: geniş ağaçlık sur üstü yürüyüş bandı (4 km), eski bir Roma arenasının üzerine kurulan oval Piazza dell'Anfiteatro meydanı ve labirent sokaklar.",
           "cost": 90,
           "drivingMinutes": 195,
           "rating": 4.7,
@@ -465,12 +465,17 @@
       "elderFriendly": true,
       "drivingMinutes": 60,
       "budget": { "a": 290, "b": 150 },
-      "warnings": ["Pazar günü dükkanların çoğu kapalı", "Dario Doc hafta sonu kapalı"],
-      "elderNote": "Montefioralle'nin sokakları dik. Arabayı köy girişine kadar çıkarabilirsin, oradan 5 dk düz yürüyüş.",
+      "warnings": [
+        "Pazar günü dükkanların çoğu kapalı",
+        "Dario Doc hafta sonu kapalı",
+        "Greve ve Panzano kasaplarında vitrinlerden menülere yaban domuzu (cinghiale) hakimdir; siparişte ve şarküteride dikkat edin",
+        "Chianti şarabı veya zeytinyağı alırken kaliteli orijinal üretici simgesi olan 'Siyah Horoz' (Gallo Nero) amblemine dikkat edin"
+      ],
+      "elderNote": "Montefioralle dünyanın en küçük köylerinden biridir; dairesel ve düz ayak yapısı sayesinde 5-10 dk'da hiç yorulmadan gezilebilir. Arabayı köy girişine çıkarıp düz yürüyüşle taş ev dokusu yaşanabilir.",
       "stops": [
         { "id": "s5a", "name": "Otel havuzu", "tier": "core", "cost": 0, "durationMin": 180, "why": "Ücretsiz ve gezinin en iyi 3 saati.", "nav": "https://www.google.com/maps/search/?api=1&query=Hotel+Borgo+di+Cortefreda+Relais+Place+of+Charme+Barberino+Tavarnelle", "rating": 4.6 },
         { "id": "s5b", "name": "Fattoria Casa Sola", "city": "Barberino", "lat": 43.5263474, "lng": 11.2105129, "placeId": "ChIJHVZckDU2KhMR5cCUcDZtWwc", "tier": "optional", "cost": 90, "costAlt": 0, "costAltNote": "Sadece dükkanına uğra - satın alırken tattırıyorlar, ücretsiz. Ya da sadece zeytinyağı tadımı iste (şarabın yarı fiyatı).", "hours": "Pazar 10:00-19:00", "phone": "+39 328 950 9196", "nav": "https://www.google.com/maps/search/?api=1&query=Fattoria+Casa+Sola+Barberino", "rating": 4.8 },
-        { "id": "s5c", "name": "Montefioralle", "city": "Greve in Chianti", "lat": 43.5850, "lng": 11.3050, "tier": "core", "cost": 0, "durationMin": 45, "why": "200 nüfuslu, halka şeklinde, tamamen taş ortaçağ köyü. Gezinin en güzel fotoğrafları.", "nav": "https://www.google.com/maps/search/?api=1&query=Montefioralle+Greve+in+Chianti", "rating": 4.7 }
+        { "id": "s5c", "name": "Montefioralle", "city": "Greve in Chianti", "lat": 43.5850, "lng": 11.3050, "tier": "core", "cost": 0, "durationMin": 45, "why": "Dünyanın en küçük köylerinden biri (200 nüfuslu). Halka şeklinde, dairesel ve düz ayak yapısıyla 5-10 dk'da yorulmadan gezilir; yaşlı yolcular için otantik taş ev dokusunu hissetmek adına en ideal durak.", "nav": "https://www.google.com/maps/search/?api=1&query=Montefioralle+Greve+in+Chianti", "rating": 4.7 }
       ],
       "food": [
         { "slot": "coffee", "tier": "both", "name": "Caffè Lepanto (Greve in Chianti)", "price": 12, "why": "Meydan Kahvesi. Greve in Chianti'nin çınar ağaçlarıyla kaplı tarihi meydanında gölgeli kahve ve dinlenme molası.", "nav": "https://www.google.com/maps/search/?api=1&query=Caffe+Lepanto+Greve+in+Chianti", "rating": 4.5 },
@@ -494,7 +499,7 @@
       "warnings": ["Pienza'nın da ZTL'si var, sur dışına park et", "08:00 çık, 18:00 otelde ol"],
       "elderNote": "Bagno Vignoni gezinin en iyi durağı olabilir: ayaklarını termal suya sokabiliyor, ücretsiz, oturaklı, gölgeli. Eklem ağrısına iyi gelir.",
       "stops": [
-        { "id": "s6a", "name": "Pienza", "city": "Pienza", "lat": 43.0767964, "lng": 11.678544, "tier": "core", "cost": 0, "durationMin": 180, "why": "Papa II. Pius'un 15. yy'da sıfırdan tasarlattığı 'ideal Rönesans şehri', UNESCO. Düz, küçük, gezmesi kolay. Sur dışı terasından Val d'Orcia manzarası ücretsiz.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Pienza", "rating": 4.7 },
+        { "id": "s6a", "name": "Pienza", "city": "Pienza", "lat": 43.0767964, "lng": 11.678544, "tier": "core", "cost": 0, "durationMin": 180, "why": "Papa II. Pius'un 15. yy'da sıfırdan tasarlattığı 'ideal Rönesans şehri', UNESCO. Düz, küçük, gezmesi son derece kolay. Sur terasından Val d'Orcia'nın meşhur kartpostal manzaraları (kıvrımlı yollar, servi ağaçları) en iyi buradan izlenir.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Pienza", "rating": 4.7 },
         { "id": "s6b", "name": "Palazzo Piccolomini", "city": "Pienza", "tier": "skip", "cost": 21, "skipReason": "Terastan bedavaya benzerini görüyorsun", "rating": 4.6 },
         { "id": "s6c", "name": "Bagno Vignoni + Parco dei Mulini", "city": "Bagno Vignoni", "lat": 43.0308851, "lng": 11.6172621, "placeId": "ChIJv3gjDxRpKRMRLwDt3Gjr6x0", "tier": "core", "cost": 0, "durationMin": 90, "why": "Meydanın yerinde Romalılardan kalma dev termal havuz. Aşağıdaki parkta sıcak su deresine ayak sokulabiliyor.", "nav": "https://www.google.com/maps/search/?api=1&query=Bagno+Vignoni", "rating": 4.7 },
         { "id": "s6d", "name": "Gladiator Point & Cappella della Madonna di Vitaleta", "city": "San Quirico d'Orcia", "lat": 43.0640, "lng": 11.6100, "tier": "optional", "cost": 0, "durationMin": 30, "bestTime": "18:00 sonrası", "why": "Gladiator filminin çekildiği servi ağaçlı ikonik yol ve şapel. Yol üstü fotoğraf durağı.", "nav": "https://www.google.com/maps/search/?api=1&query=Cappella+della+Madonna+di+Vitaleta", "rating": 4.8 },
@@ -506,7 +511,7 @@
         { "slot": "lunch", "tier": "b", "name": "La Taverna del Pecorino'dan pecorino + ekmek + domates, sur dışında piknik", "price": 20, "why": "Gurme Peynirci / Teras Pikniği. 4 kuşaktır Pienza'da peynir olgunlaştıran dükkan. Taze pecorino ve ekmekle sur dışındaki terasta nefis Val d'Orcia manzaralı piknik.", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza", "rating": 4.7 },
         { "slot": "coffee", "tier": "both", "name": "Pienza Coffee & Fredo Pasticceria", "price": 12, "why": "Pienza'da meşe odununda kavrulan yerel meşhur artisanal kahve ve zarif bademli kurabiye durağı.", "nav": "https://www.google.com/maps/search/?api=1&query=Pienza+Coffee", "rating": 4.7 }
       ],
-      "shopping": [{ "name": "La Taverna del Pecorino (Via Condotti 1)", "for": "pecorino di Pienza, sızma zeytinyağı, bal, reçel (vakumlu paket yapılır)", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza", "rating": 4.7 }]
+      "shopping": [{ "name": "La Taverna del Pecorino (Via Condotti 1)", "for": "Pienza ve çevresinin meşhur koyun peyniri (Pecorino) tadımı, sızma zeytinyağı, bal (eve götürmek için vakumlu paket yaptırın)", "nav": "https://www.google.com/maps/search/?api=1&query=La+Taverna+del+Pecorino+Pienza", "rating": 4.7 }]
     },
     {
       "id": "d7",
@@ -657,9 +662,10 @@
       "budget": { "a": 290, "b": 130 },
       "warnings": [
         "Lojistik: Parcheggio Santa Caterina'ya park edip kapalı ücretsiz yürüyen merdivenlerle (Risalite Meccanizzate) dik yokuş çıkmadan merkeze varın",
-        "Çarşamba pazar günü olduğu için Fortezza otoparkı dolu olabilir"
+        "Çarşamba pazar günü olduğu için Fortezza otoparkı dolu olabilir",
+        "Müze/Duomo Kapanış Uyarısı: Siena Duomo'sunda son bilet alım saati (17:10) kapı kapanışından (17:30) 20 dk önceden biter. Girişi sabah saatine bırakın veya biletleri online önceden alın"
       ],
-      "elderNote": "Santa Caterina otoparkından kapalı yürüyen merdivenlerle doğrudan Duomo/Il Campo seviyesine zahmetsiz çıkış. Ayrıca Il Campo kenarında oturaklar var.",
+      "elderNote": "Santa Caterina otoparkından kapalı yürüyen merdivenlerle doğrudan Duomo/Il Campo seviyesine zahmetsiz çıkış. Il Campo meydanında koşturmadan oturup etrafı izlemek Siena'nın ruhunu anlamak için en keyifli yoldur.",
       "stops": [
         { "id": "s8a", "name": "Fortezza Medicea pazarı", "city": "Siena", "lat": 43.3232, "lng": 11.3230, "tier": "core", "cost": 0, "durationMin": 150, "hours": "08:30-13:00", "why": "Toskana'nın en büyüklerinden. Kumaş, ev tekstili, deri, giyim, gıda. Arezzo'dan sonraki en iyi alışveriş durağı.", "nav": "https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena", "tags": ["market", "shopping"], "rating": 4.5 },
         { "id": "s8b", "name": "Piazza del Campo & Fonte Gaia", "city": "Siena", "lat": 43.3188, "lng": 11.3308, "tier": "core", "cost": 0, "durationMin": 60, "why": "Deniz kabuğu şeklinde eğimli meydan, tarihi Fonte Gaia (Neşe Çeşmesi) ve Palio atmosferi. Yere oturmak serbest ve tam Sienalı işi.", "nav": "https://www.google.com/maps/search/?api=1&query=Piazza+del+Campo+Siena", "rating": 4.8 },
@@ -773,7 +779,7 @@
 
   "porkGuide": {
     "avoid": ["prosciutto", "salame toscano", "finocchiona", "lardo di Colonnata", "pancetta", "guanciale", "salsiccia", "porchetta", "soppressata", "cinta senese", "cinghiale", "crostini misti", "mortadella"],
-    "avoidNote": "cinghiale = yaban domuzu. Toskana'nın en yaygın makarna sosu, her menüde var. En sık düşülen tuzak.",
+    "avoidNote": "cinghiale = yaban domuzu. Greve ve Panzano gibi 120-250 yıllık kasaplarıyla ünlü Chianti kasabalarında vitrinlerden menülere her yerde hakimdir. Toskana'nın en sık düşülen lezzet tuzağı!",
     "safe": [
       { "dish": "Bistecca alla Fiorentina", "desc": "Chianina sığırı, sadece al sangue yapılır", "price": "4.5-7 EUR/etto" },
       { "dish": "Tagliata di manzo", "desc": "Dilimlenmiş biftek, roka-parmesan", "price": "16-22 EUR" },
@@ -800,12 +806,18 @@
     { "tr": "Bu hafta yakında sagra var mı?", "it": "Ci sono sagre qui vicino questa settimana?", "category": "general" },
     { "tr": "Hesap, lütfen", "it": "Il conto, per favore", "category": "restaurant" },
     { "tr": "Musluk suyu", "it": "Acqua del rubinetto", "category": "restaurant" },
-    { "tr": "Alkolsüz aperitif", "it": "Un analcolico, per favore (Crodino o San Bitter)", "category": "restaurant" }
+    { "tr": "Alkolsüz aperitif", "it": "Un analcolico, per favore (Crodino o San Bitter)", "category": "restaurant" },
+    { "tr": "Chianti Classico Siyah Horoz (Gallo Nero) amblemli olan hangisi?", "it": "Quale ha il marchio del Gallo Nero?", "category": "market" },
+    { "tr": "Yıllandırılmış Pecorino peyniri tadabilir miyiz ve eve götürmek için vakumlayabilir misiniz?", "it": "Possiamo assaggiare il pecorino stagionato e metterlo sous-vide per il viaggio?", "category": "market" }
   ],
 
   "tips": [
     { "id": "ztl", "icon": "car", "title": "ZTL", "body": "Floransa, Siena, Lucca, Arezzo, San Gimignano, Pienza merkezlerinde kameralı trafik yasağı. Ceza 3-6 ay sonra kiralama şirketi üzerinden +45 EUR idari ücretle gelir. Her şehirde sur dışı otoparkını kullan.", "severity": "critical" },
     { "id": "easypark", "icon": "car", "title": "EasyPark Uygulaması", "body": "İtalya'daki tüm sur dışı otoparklarda (Pisa, Siena, Arezzo, San Gimignano) otomatlarda bozuk para/kart arama stresini bitirir. Gitmeden plakanızı tanımlayın ve kafeden uzaktan süreyi uzatın.", "severity": "info" },
+    { "id": "cittaslow", "icon": "lightbulb", "title": "Cittaslow (Yavaş Yaşam) & Seyir Molaları", "body": "Toskana'nın ruhu koşturarak değil, küçük meydanlarda oturup yerliler ve butik üreticilerle vakit geçirerek hissedilir. Chianti ve Val d'Orcia'daki yeşil tepeler ve servi ağaçlı manzaralarda sık sık arabayı kenara çekip dinlenme molası verin.", "severity": "info" },
+    { "id": "esim", "icon": "route", "title": "eSIM ve Mobil İnternet (Airalo)", "body": "Chianti ve kırsal Toskana yollarında gezerken haritalar ve çeviriler için kesintisiz internet şart. Seyahat öncesi Airalo veya benzeri bir eSIM uygulamasından İtalya/Avrupa veri paketi indirin.", "severity": "warning" },
+    { "id": "museum-timing", "icon": "alert", "title": "Müze ve Katedral Saat Uyarısı", "body": "Siena Duomo vb. yapılarda son bilet alım saati kapı kapanışından 20-30 dk önceden biter (örn. 17:30 kapanışta son bilet 17:10). Girişleri sabah saatlerine bırakın veya biletleri online önceden alın.", "severity": "info" },
+    { "id": "gallo-nero", "icon": "star", "title": "Chianti Classico ve Siyah Horoz (Gallo Nero)", "body": "Chianti bölgesindeki orijinal ve kaliteli zeytinyağı ile şarapların üzerinde tarihi Floransa-Siena efsanesinden gelen 'Siyah Horoz' (Gallo Nero) amblemi bulunur. Yöresel ürün seçerken bu ambleme dikkat edin.", "severity": "info" },
     { "id": "siena-escalators", "icon": "map", "title": "Siena'da Yürüyen Merdivenler (Risalite Meccanizzate)", "body": "Parcheggio Santa Caterina veya Parcheggio San Francesco'ya park edip, ücretsiz kapalı yürüyen merdivenlerle doğrudan Duomo ve Il Campo seviyesine zahmetsizce çıkın.", "severity": "info" },
     { "id": "lardo-trap", "icon": "alert-triangle", "title": "Bistecca'da Lardo (Domuz Yağı) Tuzağı", "body": "Izgara ustaları eti mühürlerken veya parlatırken biberiye dalını erimiş domuz yağına (lardo) batırıp etin üzerine sürebilir. 'Per favore, niente lardo, niente strutto. Solo olio extravergine d'oliva.' deyin.", "severity": "warning" },
     { "id": "wc-strategy", "icon": "coffee", "title": "Tuvalet & Kafe Stratejisi", "body": "Umumi tuvaletler 1 EUR'dur ve bozuk para ister. Her kafe molasında gruptaki herkesin lavaboyu kullanmasını kural haline getirin.", "severity": "info" },
@@ -844,7 +856,7 @@
       "Ehliyet + kiralama voucher'i",
       "Seyahat sigortası / sağlık kartı"
     ],
-    "tech": ["Google Maps çevrimdışı Toskana", "Araba için telefon tutucu + USB-C kablo", "Otel Wi-Fi şifresi"],
+    "tech": ["Google Maps çevrimdışı Toskana", "eSIM paketi (Airalo veya benzeri) — Chianti kırsalında harita ve çeviriler için şart", "Araba için telefon tutucu + USB-C kablo", "Otel Wi-Fi şifresi"],
     "heat": [
       "Her gün arabada 1.5 L x 4 su (süpermarkette 0.30 EUR, kafede 3 EUR)",
       "Şapka, güneş kremi, güneş gözlüğü herkese",
