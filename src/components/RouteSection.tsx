@@ -50,7 +50,7 @@ export function RouteSection({ day }: { readonly day: Day }) {
         </div>
         <p className="mt-[3px] text-meta text-neutral-700">{trip.base.address}</p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
-          <NavButton place={trip.base} label="Yol tarifi" alt className="min-h-[44px]" />
+          <NavButton place={trip.base} label="Yol tarifi" className="min-h-[44px]" />
           <PhoneButton phone={trip.base.phone} className="min-h-[44px] w-[52px]" />
         </div>
       </div>

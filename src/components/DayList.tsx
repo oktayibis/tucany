@@ -8,6 +8,7 @@ import { useTrip } from '../state/TripContext';
 import { DayCard } from './DayCard';
 import { Disclosure } from './Disclosure';
 import { HotelVenuesSection } from './HotelVenuesSection';
+import { MapAppSwitch } from './MapAppSwitch';
 import { ModeSwitch } from './ModeSwitch';
 import { PartyControl } from './PartyControl';
 import { NavButton, PhoneButton } from './NavButton';
@@ -41,12 +42,18 @@ export function DayList({ onOpenDay }: { readonly onOpenDay: (dayId: string) => 
           <NavButton
             place={trip.base}
             label="Otele yol tarifi"
-            alt
             iconSize={18}
             className="min-h-[52px] flex-1 text-lead"
           />
           <PhoneButton phone={trip.base.phone} className="min-h-[52px] w-[64px]" />
         </div>
+        {/*
+         * Directly under the first navigation button in the app, because that
+         * is where the choice matters: whatever is picked here is what every
+         * "yol tarifi" on every screen opens, including the bare arrows that
+         * have no room to offer a choice of their own.
+         */}
+        <MapAppSwitch className="mt-3" />
       </header>
 
       {/*

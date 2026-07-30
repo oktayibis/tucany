@@ -19,6 +19,7 @@ import { DayHeadNotes, DayNotes, hasTailNotes } from './DayNotes';
 import { Icon } from './Icon';
 import { FoodSection } from './FoodSection';
 import { INTENSITY_SHORT } from './IntensityMeter';
+import { MapAppSwitch } from './MapAppSwitch';
 import { ModeSwitch } from './ModeSwitch';
 import { NavButton } from './NavButton';
 import { OptionsSection } from './OptionsSection';
@@ -185,6 +186,12 @@ function DayPanel({ day }: { readonly day: Day }) {
         <div className="mt-4">
           <ModeSwitch />
         </div>
+        {/*
+         * Reachable from the day the family is actually standing in, not only
+         * from the home screen: this is the page whose stop rows, food rows
+         * and next-stop bar carry the links the switch redirects.
+         */}
+        <MapAppSwitch className="mt-3" />
       </header>
 
       <dl className="grid grid-cols-3 gap-2 px-4 pt-4">
