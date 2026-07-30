@@ -1,25 +1,26 @@
 import { useMemo } from 'react';
 import { Icon } from './Icon';
-import { isIos, mapLinks, telHref, type Place } from '../lib/nav';
+import { mapHref, MAP_APP_INFO, telHref, type Place } from '../lib/nav';
+import { useTrip } from '../state/TripContext';
 
 /**
- * Opens a place in the phone's map app. Everywhere the mockup draws a
+ * Opens a place in the map app the family chose. Everywhere the mockup draws a
  * navigation affordance it is this button: a terracotta pill carrying the
  * Lucide `navigation` arrow, sometimes with a label, sometimes just the arrow
  * squeezed in beside a stop row.
  *
- * Apple Maps is offered alongside Google Maps on iOS, which the brief calls
- * out explicitly — but only where there is room for a second control (`alt`).
- * The inline arrow buttons on stop, shopping and leg rows have no space for
- * it, so there it stays one tap away inside the detail sheet instead. These
- * are the last external links the app produces; everything else stays put.
+ * Google Maps or Apple Haritalar is a single setting (`MapAppSwitch`), not a
+ * per-link pair of buttons: most of these buttons are bare arrows wedged into
+ * a row with no space for a second control, so a pair would have been offered
+ * only in the few roomy places and missing exactly where the family taps most.
+ * These are the last external links the app produces; everything else stays
+ * put.
  */
 export function NavButton({
   place,
   label,
   note,
   variant = 'primary',
-  alt = false,
   iconSize = 17,
   className = '',
 }: {
@@ -28,23 +29,23 @@ export function NavButton({
   /** Free-text hint from the data (`stop.navNote`), e.g. where to actually park. */
   readonly note?: string | undefined;
   readonly variant?: 'primary' | 'secondary';
-  readonly alt?: boolean;
   readonly iconSize?: number;
   readonly className?: string;
 }) {
-  const links = useMemo(() => mapLinks(place), [place]);
-  const showApple = useMemo(
-    () => alt && isIos(window.navigator.userAgent, window.navigator.maxTouchPoints),
-    [alt],
-  );
+  const { mapApp } = useTrip();
+  const href = useMemo(() => mapHref(place, mapApp), [place, mapApp]);
 
   const shell = variant === 'primary' ? 'btn btn-primary' : 'btn btn-secondary';
   const button = (
     <a
-      href={links.google}
+      href={href}
       target="_blank"
       rel="noreferrer"
-      aria-label={label === undefined ? `${place.name} için yol tarifi` : undefined}
+      aria-label={
+        label === undefined
+          ? `${place.name} için ${MAP_APP_INFO[mapApp].full}'te yol tarifi`
+          : undefined
+      }
       className={`${shell} ${className}`}
     >
       <Icon
@@ -56,17 +57,12 @@ export function NavButton({
     </a>
   );
 
-  if (!showApple && note === undefined) return button;
+  if (note === undefined) return button;
 
   return (
     <span className="inline-flex flex-wrap items-center gap-2">
       {button}
-      {showApple && (
-        <a href={links.apple} className="btn btn-secondary min-h-[44px]">
-          Apple Maps
-        </a>
-      )}
-      {note !== undefined && <span className="text-meta text-neutral-700">{note}</span>}
+      <span className="text-meta text-neutral-700">{note}</span>
     </span>
   );
 }

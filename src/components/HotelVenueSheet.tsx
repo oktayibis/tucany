@@ -28,7 +28,7 @@ export function HotelVenueSheet({
       onClose={onClose}
       footer={
         <div className="flex flex-wrap items-center gap-2">
-          <NavButton place={venue} label="Yol tarifi" alt />
+          <NavButton place={venue} label="Yol tarifi" />
           {venue.phone !== undefined && <PhoneButton phone={venue.phone} />}
         </div>
       }

@@ -4,6 +4,7 @@ import { trip, DATA_VERSION } from '../data/trip';
 import { tripBudget, type TripBudget } from '../lib/budget';
 import { activeDayIndex, isWithinTrip } from '../lib/dates';
 import { MODE_INFO, type Mode } from '../lib/modes';
+import { defaultMapApp, type MapApp } from '../lib/nav';
 import { useLocalStorage, usePersistentSet } from '../hooks/useLocalStorage';
 import { useToday } from '../hooks/useToday';
 
@@ -26,6 +27,10 @@ export type TripContextValue = {
 
   readonly party: Party;
   readonly setParty: (party: Party) => void;
+
+  /** Which map app every `NavButton` in the app opens. */
+  readonly mapApp: MapApp;
+  readonly setMapApp: (app: MapApp) => void;
 
   readonly chosenOptions: Readonly<Record<string, string>>;
   readonly chooseOption: (dayId: string, optionId: string) => void;
@@ -54,6 +59,17 @@ export function TripProvider({ children }: { readonly children: ReactNode }) {
   const today = useToday();
   const [mode, setMode] = useLocalStorage<Mode>(`${DATA_VERSION}.mode`, 'mixed');
   const [party, setParty] = useLocalStorage<Party>(`${DATA_VERSION}.party`, DEFAULT_PARTY);
+  /*
+   * Seeded from the phone rather than hardcoded to Google: an iPhone with no
+   * Google Maps installed would otherwise bounce every "yol tarifi" tap into
+   * a browser page asking to install it. Persisted from the first render on,
+   * so a deliberate switch survives a reload — and a passenger's Android can
+   * disagree with the driver's iPhone.
+   */
+  const [mapApp, setMapApp] = useLocalStorage<MapApp>(
+    `${DATA_VERSION}.map-app`,
+    defaultMapApp(window.navigator.userAgent, window.navigator.maxTouchPoints),
+  );
   const [chosenOptions, setChosenOptions] = useLocalStorage<Readonly<Record<string, string>>>(
     `${DATA_VERSION}.options`,
     {},
@@ -99,6 +115,8 @@ export function TripProvider({ children }: { readonly children: ReactNode }) {
     setMode,
     party,
     setParty,
+    mapApp,
+    setMapApp,
     chosenOptions,
     chooseOption,
     upgrades: upgradeList,

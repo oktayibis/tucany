@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { trip } from '../data/trip';
-import { isIos, mapLinks, queryFromGoogleUrl, telHref } from './nav';
+import { defaultMapApp, isIos, mapHref, mapLinks, queryFromGoogleUrl, telHref } from './nav';
 
 describe('queryFromGoogleUrl', () => {
   it('reads the search term the author chose', () => {
@@ -68,6 +68,40 @@ describe('mapLinks', () => {
         expect(() => new URL(links.apple)).not.toThrow();
       }
     }
+  });
+});
+
+describe('mapHref', () => {
+  it('opens the chosen app for the same place', () => {
+    const place = { name: 'Montefioralle', lat: 43.585, lng: 11.305 };
+    expect(mapHref(place, 'google')).toContain('google.com/maps');
+    expect(mapHref(place, 'apple')).toContain('maps.apple.com');
+  });
+
+  it('keeps the author car park in Apple Maps too', () => {
+    const pisa = trip.days[0]?.stops[0];
+    if (pisa === undefined) throw new Error('Pisa durağı yok');
+    expect(mapHref(pisa, 'apple')).toContain('Parcheggio%20Via%20Pietrasantina%20Pisa');
+  });
+
+  it('has a usable link in both apps for every stop in the trip', () => {
+    for (const day of trip.days) {
+      for (const stop of day.stops) {
+        expect(() => new URL(mapHref(stop, 'google'))).not.toThrow();
+        expect(() => new URL(mapHref(stop, 'apple'))).not.toThrow();
+      }
+    }
+  });
+});
+
+describe('defaultMapApp', () => {
+  it('starts an iPhone on Apple Haritalar', () => {
+    expect(defaultMapApp('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)', 5)).toBe('apple');
+  });
+
+  it('starts everything else on Google Maps', () => {
+    expect(defaultMapApp('Mozilla/5.0 (Linux; Android 14; Pixel 8)', 5)).toBe('google');
+    expect(defaultMapApp('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)', 0)).toBe('google');
   });
 });
 

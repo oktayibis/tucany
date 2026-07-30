@@ -8,6 +8,17 @@
  * and a €100 fine.
  */
 
+/** Which map app every link in the app opens in. Chosen once, applies everywhere. */
+export type MapApp = 'google' | 'apple';
+
+export const MAP_APPS = ['google', 'apple'] as const satisfies readonly MapApp[];
+
+export const MAP_APP_INFO: Readonly<Record<MapApp, { readonly label: string; readonly full: string }>> =
+  {
+    google: { label: 'Google', full: 'Google Maps' },
+    apple: { label: 'Apple', full: 'Apple Haritalar' },
+  };
+
 export type Place = {
   readonly name: string;
   readonly city?: string | undefined;
@@ -83,6 +94,11 @@ export function mapLinks(place: Place): MapLinks {
   };
 }
 
+/** The URL for one place in the app the family picked. */
+export function mapHref(place: Place, app: MapApp): string {
+  return mapLinks(place)[app];
+}
+
 /**
  * iOS detection, including iPadOS 13+, which reports itself as a Mac and can
  * only be told apart by the presence of a touchscreen.
@@ -90,6 +106,15 @@ export function mapLinks(place: Place): MapLinks {
 export function isIos(userAgent: string, maxTouchPoints: number): boolean {
   if (/iPhone|iPad|iPod/.test(userAgent)) return true;
   return /Macintosh/.test(userAgent) && maxTouchPoints > 1;
+}
+
+/**
+ * What the switch starts on: the map app the phone already has installed.
+ * Only the first launch uses this — after that the family's own choice is
+ * persisted and wins.
+ */
+export function defaultMapApp(userAgent: string, maxTouchPoints: number): MapApp {
+  return isIos(userAgent, maxTouchPoints) ? 'apple' : 'google';
 }
 
 /** Strips a phone number down to something `tel:` will dial. */
