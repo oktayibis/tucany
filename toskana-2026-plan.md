@@ -113,38 +113,40 @@ Tavarnelle merkezi *(3 dk)* → [Badia a Passignano](https://www.google.com/maps
 
 ---
 
-### 🗓️ 31 Tem · Cuma — Floransa #1 (klasikler)
-**Tempo: yüksek · Sürüş: ~50 dk + tramvay** · 👵 anne için zorlu gün
+### 🗓️ 31 Tem · Cuma — Siena ⭐ *(Duomo'nun mermer zemini açık — son gün)*
+**Tempo: orta · Sürüş: ~1s 20dk** · 👵 anne için rahat gün
 
-**Rota**
-Otel → [Parcheggio Villa Costanza](https://www.google.com/maps/search/?api=1&query=Parcheggio+Villa+Costanza+Scandicci) *(25 dk, ~€2/gün)* → **T1 tramvay** *(20 dk, ~€1.70/kişi)*
-⚠️ Arabayla merkeze girme. Tek ZTL cezası €100+.
+> **Neden bu gün Siena:** Duomo'nun 56 panelli mermer kakma zemini 2026'da 27 Haziran–31 Temmuz ve 18 Ağustos–15 Kasım arası açık. **31 Temmuz yaz penceresinin son günü** — 1–17 Ağustos arası zemin yeniden örtülü olacak. Siena'nın eski tarihi olan 5 Ağustos'ta hem zemin kapalı olurdu hem de Assunta Novena'sı (5–13 Ağustos) yüzünden katedral 18:00'de kapanıyor.
+> **Bedeli:** Fortezza Medicea pazarı yalnızca **Çarşamba** kuruluyor (08:30–13:30). Siena Cuma'ya alındığı için bu pazar plandan düştü; alışveriş karşılığı Arezzo fuarı (1 Ağu) ve Tavarnelle pazarı (30 Tem).
 
-**Bilet kararları**
-| | 3 yetişkin | Karar |
-|---|---|---|
-| Accademia (David) | ~€55 | ✅ **Al.** 45–60 dk, klimalı, beklentiyi karşılayan az sayıda eserden biri. *Rezervasyon şart* |
-| Uffizi | ~€80 | ⚠️ Opsiyonel — aynı gün ikinci müze anne + çocukla zor |
-| Duomo Brunelleschi Pass | ~€90 | ❌ **Vazgeç.** 463 dar basamak |
-| Katedralin içi + Battistero dışı | **ücretsiz** | ✅ Sıraya değer (~1 saat) |
+**Rota & Lojistik**
+Otel → Siena *(1s 20dk)*
+🚗 **Lojistik Hilesi:** *Parcheggio Santa Caterina*'ya park edip kayaların içine oyulmuş **ücretsiz kapalı yürüyen merdivenlerle (Risalite Meccanizzate)** doğrudan Duomo ve Il Campo seviyesine dik yokuş tırmanmadan zahmetsizce çıkın.
+✅ Cuma günü pazar kurulmadığı için [Fortezza otoparkı](https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena) ve Parcheggio Stadio da rahat.
 
-**Ücretsiz ve harika**
-Piazza della Signoria + **Loggia dei Lanzi** (açık hava heykel müzesi, 45 dk) · Ponte Vecchio · Orsanmichele · **Piazzale Michelangelo** gün batımı (19:30'da git, 1 saat) · **San Miniato al Monte** (Piazzale'nin üstü — manzarası daha iyi, çok daha sakin, ücretsiz)
+**Görülecek & Alışveriş**
+- **10:00 Duomo + Piccolomini Kütüphanesi — zemin açık** ~€48 (3 × €16 OPA SI Pass), 2 saat, **bileti online al**. Pzt–Cts 10:00–19:00, son giriş 18:30. Pass 3 gün geçerli; Battistero, Kripta, Museo dell'Opera ve Facciatone dâhil. Zeminin son günü olduğu için sabahın ilk seansını seç.
+- **Santa Maria della Scala** ~€30 (3 × €10), 1.5 saat — Duomo'nun karşısındaki eski hac hastanesi, Pellegrinaio freskleri. 👵 **Baştan sona asansörlü, tekerlekli sandalyeyle gezilebiliyor, serin** — kaçan pazar sabahının yerine geçen durak.
+- **Museo Civico + Sala della Pace** ~€30 (3 × €10), 1 saat — Lorenzetti'nin "İyi ve Kötü Yönetimin Alegorisi" (1338) ve Simone Martini'nin Maestà'sı. Kule değil, düz kat: tırmanış yok.
+- **Piazza del Campo** (1 saat) — deniz kabuğu şeklinde eğimli meydan. Yere oturmak serbest ve tam Sienalı işi. Ücretsiz.
+- **Kesilecek:** Torre del Mangia (~€30, 400 basamak). Bunun yerine pass'a dâhil **Facciatone** ya da hiç tırmanmadan Museo Civico.
+- Ücretsiz: San Domenico kilisesi, kontrada çeşmeleri, sokaklar (45 dk)
+- 🎷 **Siena Jazz — ücretsiz akşam konserleri** (International Summer Workshop 27 Tem–7 Ağu): Fortezza Medicea burcunda ve kontrada meydanlarında, ~21:00. Günün programını [sienajazz.it](https://www.sienajazz.it/eventi/)'ten teyit et — 6 yaşındaki çocuk ve 80 dk dönüş yoluyla ancak akşam yemeği de Siena'da yenirse mantıklı.
+- İsteğe bağlı yarım gün: **Abbazia di San Galgano & Montesiepi** (Taştaki Kılıç) ~€15 (3 × €5), 45 dk batıda — ancak Duomo sabah bitirilirse sığar.
 
 **Yemek & Kahve**
-- ☕ **Caffè Gilli** (Piazza della Repubblica) — 1733'ten beri açık. Klimalı iç salonu, muazzam tatlı vitrinleri ve geniş oturma alanıyla kalabalıktan kaçıp annenizle soluklanacağınız lüks sığınak ~€20
-- ☕ **Ditta Artigianale** (Via dello Sprone - Oltrarno tarafı) — Nitelikli 3. dalga kahvesevenler için şehirdeki en iyi adres ~€15
-- 🅰️ Öğle: **Mercato Centrale Primo Piano (Üst kat)** ~€50 — Herkes farklı tezgahtan (taze deniz ürünleri fritto misto, trüflü makarna vs.) yemeğini alıp ortak masalarda oturabilir. Domuz riski olmadan herkesi mutlu eder.
-- 🅰️ Akşam: **Trattoria Sostanza** ~€130 *(1869'dan kalma; Cts–Paz kapalı, sadece telefon rez. +39 055 212691; kömürde tereyağında tavuk göğsü — domuzsuz efsane tabak)*
-- 🅱️ Öğle **[L'Antico Trippaio](https://www.google.com/maps/search/?api=1&query=L%27Antico+Trippaio+Piazza+dei+Cimatori+Firenze)** (Piazza dei Cimatori, 100+ yıllık) — dana ve sebzeli sandviç €5.5'tan, **domuzsuz** ≈ **€25** → akşam otelde
-- 🅱️ Alternatif: **[Da Nerbone](https://www.google.com/maps/search/?api=1&query=Da+Nerbone+Mercato+Centrale+Firenze)** (Mercato Centrale zemin kat, 1872'den beri) ~€25 ⚠️ Pazar kapalı, 08:30–15:00
-- 🍦 **Gelateria dei Neri** (Via dei Neri 9) ~€12 ⚠️ Salı kapalı — bugün açık
+- ☕ **Pasticceria Nannini** (Banchi di Sopra) ~€20 — Siena'nın simgesi olan **Ricciarelli** (badem ezmeli kurabiye) ve **Panforte** tatlılarının doğduğu yer. Klimalı, oturaklı ve konforlu lüks mola noktası.
+- ☕ **Torrefazione Fiorella** (Via di Città) ~€10 — Şehrin en köklü kahve kavurucusu, hızlı espresso molası için (`al banco`).
+- 🅰️ **La Taverna di San Giuseppe** (Via Duprè 132) — 1100'lerden kalma Etrüsk mahzeninde; Siena trüfü, el yapımı pici. **Sadece telefonla rez. +39 0577 42286**, günler öncesinden ara. ~€200 (3 yetişkin) ⚠️ Pazar kapalı; Pzt–Cts 12:00–14:30 / 19:00–21:30 — Cuma akşam servisi de var (jazz akşamı seçilirse)
+- 🅱️ **[Osteria Il Grattacielo](https://www.google.com/maps/search/?api=1&query=Osteria+Il+Grattacielo+Siena)** (Via dei Pontani 8) — 1840'tan beri, masa örtüsüz, tahtaya yazılan günlük 3–4 çeşit ev yemeği ~€70, tel. +39 331 742 2835. **Çok küçük, 12:00'de kapıda ol.** ⚠️ Menüde `salsiccia` ve `cinghiale` var.
+- 🅱️🅱️ **[Consorzio Agrario](https://www.google.com/maps/search/?api=1&query=Consorzi+Agrari+Via+Pianigiani+9+Siena)** (Via Pianigiani 9) — çiftçi kooperatifi gıda deposu, sipariş üzerine sandviç; herkes Piazza Salimbeni'de oturup yiyor ~€25. Pazar kaçtığı için yerel ürün alışverişinin de tek adresi bugün burası.
+- 🍦 **Gelateria Kopakabana** (Via dei Rossi 52) ~€12 — ana caddeden sapınca, yerel fiyat, kocaman porsiyon
 
-**Dicle için:** Officina Profumo-Farmaceutica di **Santa Maria Novella** (Via della Scala 16 — 1221'den beri dünyanın en eski eczanesi, girmek bedava, mekân müze gibi, yöresel parfüm/krem) · San Lorenzo deri pazarı · **Scuola del Cuoio** (Santa Croce Basilikası arkası — deri zanaatkarlarını canlı izleyip el yapımı hakiki deri ürünler alabilirsiniz)
+**Dicle için:** **Antica Drogheria Manganelli** (Via di Città) — 1879'dan kalma, ahşap raflı baharat dükkânı · **Via di Città – Banchi di Sopra hattı** — deri, el yapımı kâğıt, kumaş ve gıda dükkânları; Fortezza pazarının fiyatını tutmaz ama Çarşamba dışında Siena'da açık olan tek alışveriş omurgası bu.
 
-👵 **Anne için Ulaşım Hilesi:** Şehir içi kalabalıkta yürütmek yerine **Eco Green Tours** gibi elektrikli golf arabası turlarıyla (1 saat) tüm ana eserleri yürütmeden gezdirebilirsiniz. Ayrıca her 1–1.5 saatte bir ücretsiz, serin kiliselere girip 15 dk oturun.
+👵 Il Campo'nun etrafındaki gölgeli kenarda oturaklar var. Duomo'ya çıkış hafif yokuş ama kısa. Sıcakta Santa Maria della Scala serin ve oturaklı sığınak.
 
-**💶 🅰️ ~€290 · 🅱️ ~€110 (Accademia dahil)**
+**💶 🅰️ ~€365 · 🅱️ ~€115**
 
 ---
 
@@ -267,7 +269,7 @@ Sabah + öğlen otel havuzu (5 saat). 16:30 çık → [San Gimignano P2 Giubileo
 - ➕ Arkada Apuan Alpleri — Michelangelo'nun mermer dağları · kasaba dümdüz, sahil boyu bisiklet yolu (Forte Bike, Viale A. Morin 22e / Coppa Bike, Via A. Franceschi 4D) — anne için tepe kasabalarından çok daha rahat
 - ➖ **SALI GÜNÜ PAZAR YOK.** Ünlü pazar sadece Çarşamba (216 tezgâh) ve Pazar (55 tezgâh) — buraya gitmenin asıl sebebi bu pazar
 - ➖ 4 saat sürüş, gezinin en uzun yol günü · İtalya'nın en pahalı sahili, özel plajlar €40–80 · Le Dune'de hiç gölge yok, şemsiye şart · seyyar satıcılar ısrarcı
-- 💡 Pazarı da istiyorsan bu günü **Çarşamba'ya** alıp Siena'yı Salı'ya kaydırman gerekir — ama o zaman Siena'nın Fortezza pazarı kaçar. Salı'da kalmak Siena'yı korur, pazarı feda eder.
+- 💡 Forte dei Marmi pazarı için bu günü **Çarşamba'ya** almak gerekir ama Çarşamba artık Floransa günü (Siena 31 Temmuz'a alındığından Fortezza pazarı zaten bu planda yok). Salı'da kalmak Floransa'yı korur, pazarı feda eder.
 - **Yemek:** 🅱️ **Santa Lucia – La Bottega del Panino** (Viale Ammiraglio Morin 89, her gün 08:00–22:00) ~€30 — kasabanın en iyi pizza al taglio'su, mutfak sürekli açık · **Vale** (Piazza Garibaldi 4, Pzt kapalı / Salı açık) ~€35 · 🍦 **La Chicca** (Via Piave 15) ~€12
 
 👵 Seçenek A'da ana cadde hafif yokuş ama kısa; Piazza della Cisterna'da oturup dondurma yemek zaten programın kendisi. Deniz seçilecekse **C (Baratti)** anne için en rahatı — kumsalda doğal gölge var.
@@ -276,35 +278,41 @@ Sabah + öğlen otel havuzu (5 saat). 16:30 çık → [San Gimignano P2 Giubileo
 
 ---
 
-### 🗓️ 5 Ağu · Çarşamba — Siena
-**Tempo: orta · Sürüş: ~1s 20dk**
+### 🗓️ 5 Ağu · Çarşamba — Floransa (klasikler)
+**Tempo: yüksek · Sürüş: ~50 dk + tramvay** · 👵 anne için zorlu gün
 
-**Rota & Lojistik**
-Otel → Siena *(40 dk)*
-🚗 **Lojistik Hilesi:** *Parcheggio Santa Caterina*'ya park edip kayaların içine oyulmuş **ücretsiz kapalı yürüyen merdivenlerle (Risalite Meccanizzate)** doğrudan Duomo ve Il Campo seviyesine dik yokuş tırmanmadan zahmetsizce çıkın.
-⚠️ Alternatif: Çarşamba pazarı nedeniyle [Fortezza otoparkı](https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena) ve Parcheggio Stadio erken dolabilir.
+> **Neden bu gün Floransa:** Siena ile yer değişti. Floransa'nın müzeleri sadece **Pazartesi** kapalı, dolayısıyla Çarşamba'ya taşınmak hiçbir kapıyı kapatmıyor; buna karşılık Siena, Duomo zemininin açık olduğu son güne yetişti.
 
-**Görülecek & Alışveriş**
-- **08:30–13:00 Fortezza Medicea pazarı** (2.5 saat) — Toskana'nın en büyüklerinden, Medici kalesinin duvarları boyunca. Kumaş, ev tekstili, deri, giyim, gıda. **Dicle için Arezzo'dan sonraki en iyi durak.** Ücretsiz.
-- **Antica Drogheria Manganelli** (Via di Città) — 1879'dan kalma, ahşap raflı tarihi baharat, peynir ve geleneksel gıda dükkânı.
-- **Piazza del Campo** (1 saat) — deniz kabuğu şeklinde eğimli meydan. Yere oturmak serbest ve tam Sienalı işi. Ücretsiz.
-- **Duomo + Piccolomini Kütüphanesi** ~€48 (3 kişi), 1.5 saat, rezervasyon önerilir → ✅ **Değer.** Toskana'nın en güzel iç mekânı.
-- **Kesilecek:** Torre del Mangia (~€30, 400 basamak). Bunun yerine **Facciatone** (tamamlanamamış katedral cephesinin tepesi) daha az kalabalık.
-- Ücretsiz: San Domenico kilisesi, kontrada çeşmeleri, sokaklar (45 dk)
+**Rota**
+Otel → [Parcheggio Villa Costanza](https://www.google.com/maps/search/?api=1&query=Parcheggio+Villa+Costanza+Scandicci) *(25 dk, ~€2/gün)* → **T1 tramvay** *(20 dk, ~€1.70/kişi)*
+⚠️ Arabayla merkeze girme. Tek ZTL cezası €100+.
+
+**Bilet kararları**
+| | 3 yetişkin | Karar |
+|---|---|---|
+| Accademia (David) | ~€60 | ✅ **Al.** 3 × €20 (€16 + €4 rezervasyon — 1 Şub 2026 zammı). 45–60 dk, klimalı. *Rezervasyon şart* · Sal–Paz 08:15–18:50, **Pzt kapalı** |
+| Uffizi | ~€87 | ⚠️ Opsiyonel — 3 × €29 online (gişede €25, 08:15–08:55 arası €19). Aynı gün ikinci müze anne + çocukla zor |
+| **Rothko · Palazzo Strozzi** *(23 Ağu'ya kadar)* | ~€54 | 💡 İkinci müze şartsa **bunu seç**: tek katlı, klimalı, asansörlü. 3 × €16 + çocuk €6; 1–2 yetişkin + çocuk için €25 aile bileti var. Her gün 10:00–20:00 |
+| Duomo Brunelleschi Pass | ~€90 | ❌ **Vazgeç.** 463 dar basamak |
+| Katedralin içi + Battistero dışı | **ücretsiz** | ✅ Sıraya değer (~1 saat) ⚠️ **Ücretsiz giriş Pzt–Cts 10:15–15:45**, Pazar kapalı. Şort/atlet ve parmak arası terlikle alınmıyorsun |
+
+**Ücretsiz ve harika**
+Piazza della Signoria + **Loggia dei Lanzi** (açık hava heykel müzesi, 45 dk) · Ponte Vecchio · Orsanmichele · **Piazzale Michelangelo** gün batımı (19:30'da git, 1 saat — 5 Ağustos'ta güneş ~20:35'te batıyor) · **San Miniato al Monte** (Piazzale'nin üstü — manzarası daha iyi, çok daha sakin, ücretsiz)
 
 **Yemek & Kahve**
-- ☕ **Pasticceria Nannini** (Banchi di Sopra) ~€20 — Siena'nın simgesi olan **Ricciarelli** (badem ezmeli kurabiye) ve **Panforte** tatlılarının doğduğu yer. Klimalı, oturaklı ve konforlu lüks mola noktası.
-- ☕ **Torrefazione Fiorella** (Via di Città) ~€10 — Şehrin en köklü kahve kavurucusu, hızlı espresso molası için (`al banco`).
-- 🅰️ **La Taverna di San Giuseppe** (Via Duprè 132) — 1100'lerden kalma Etrüsk mahzeninde; Siena trüfü, el yapımı pici. **Sadece telefonla rez. +39 0577 42286**, günler öncesinden ara. ~€200 (3 yetişkin)
-- 🅱️ **[Osteria Il Grattacielo](https://www.google.com/maps/search/?api=1&query=Osteria+Il+Grattacielo+Siena)** (Via dei Pontani 8) — 1840'tan beri, masa örtüsüz, tahtaya yazılan günlük 3–4 çeşit ev yemeği ~€70, tel. +39 331 742 2835. **Çok küçük, 12:00'de kapıda ol.** ⚠️ Menüde `salsiccia` ve `cinghiale` var.
-- 🅱️🅱️ **[Consorzio Agrario](https://www.google.com/maps/search/?api=1&query=Consorzi+Agrari+Via+Pianigiani+9+Siena)** (Via Pianigiani 9) — çiftçi kooperatifi gıda deposu, sipariş üzerine sandviç; herkes Piazza Salimbeni'de oturup yiyor ~€25
-- 🍦 **Gelateria Kopakabana** (Via dei Rossi 52) ~€12 — ana caddeden sapınca, yerel fiyat, kocaman porsiyon
+- ☕ **Caffè Gilli** (Piazza della Repubblica) — 1733'ten beri açık. Klimalı iç salonu, muazzam tatlı vitrinleri ve geniş oturma alanıyla kalabalıktan kaçıp annenizle soluklanacağınız lüks sığınak ~€20
+- ☕ **Ditta Artigianale** (Via dello Sprone - Oltrarno tarafı) — Nitelikli 3. dalga kahvesevenler için şehirdeki en iyi adres ~€15
+- 🅰️ Öğle: **Mercato Centrale Primo Piano (Üst kat)** ~€50 — Herkes farklı tezgahtan (taze deniz ürünleri fritto misto, trüflü makarna vs.) yemeğini alıp ortak masalarda oturabilir. Domuz riski olmadan herkesi mutlu eder.
+- 🅰️ Akşam: **Trattoria Sostanza** ~€130 *(1869'dan kalma; Cts–Paz kapalı, Pzt–Cum 12:30–14:00 / 19:30–23:00, sadece telefon rez. +39 055 212691; kömürde tereyağında tavuk göğsü — domuzsuz efsane tabak)* ⚠️ Ararken **5 Ağustos'ta ağustos tatilinde olup olmadığını da sor**
+- 🅱️ Öğle **[L'Antico Trippaio](https://www.google.com/maps/search/?api=1&query=L%27Antico+Trippaio+Piazza+dei+Cimatori+Firenze)** (Piazza dei Cimatori, 100+ yıllık) — dana ve sebzeli sandviç €5.5'tan, **domuzsuz** ≈ **€25** → akşam otelde
+- 🅱️ Alternatif: **[Da Nerbone](https://www.google.com/maps/search/?api=1&query=Da+Nerbone+Mercato+Centrale+Firenze)** (Mercato Centrale zemin kat, 1872'den beri) ~€25 ⚠️ Pazar kapalı, 08:30–15:00 — Çarşamba açık ama 15:00'te kapanır
+- 🍦 **Gelateria dei Neri** (Via dei Neri 9) ~€12 ⚠️ Salı kapalı — bugün açık
 
-**Dicle için:** **Antica Drogheria Manganelli** (Via di Città) — 1879'dan kalma, ahşap raflı baharat dükkânı
+**Dicle için:** Officina Profumo-Farmaceutica di **Santa Maria Novella** (Via della Scala 16 — 1221'den beri dünyanın en eski eczanesi, girmek bedava, mekân müze gibi, yöresel parfüm/krem) · San Lorenzo deri pazarı (her gün kurulu) · **Scuola del Cuoio** (Santa Croce Basilikası arkası — deri zanaatkarlarını canlı izleyip el yapımı hakiki deri ürünler alabilirsiniz)
 
-👵 Il Campo'nun etrafındaki gölgeli kenarda oturaklar var. Duomo'ya çıkış hafif yokuş ama kısa.
+👵 **Anne için Ulaşım Hilesi:** Şehir içi kalabalıkta yürütmek yerine **Eco Green Tours** gibi elektrikli golf arabası turlarıyla (1 saat) tüm ana eserleri yürütmeden gezdirebilirsiniz. Ayrıca her 1–1.5 saatte bir ücretsiz, serin kiliselere girip 15 dk oturun.
 
-**💶 🅰️ ~€290 · 🅱️ ~€130**
+**💶 🅰️ ~€425 · 🅱️ ~€130 (Accademia dahil)**
 
 ---
 
@@ -413,7 +421,7 @@ Otel → Siena *(40 dk)*
 | Şehir | Meşhur Kafe / Mola Noktası | Ne Yenir / İçilir? | Ne Alınır? (Alışveriş) |
 | --- | --- | --- | --- |
 | **Floransa** | Caffè Gilli / Ditta Artigianale | Tarihi tatlılar, Nitelikli Kahve | SMN Parfümeri, Scuola del Cuoio (Deri) |
-| **Siena** | Pasticceria Nannini / Fiorella | Ricciarelli, Panforte, Espresso | Drogheria Manganelli (Baharat/Gıda), Fortezza Pazarı |
+| **Siena** | Pasticceria Nannini / Fiorella | Ricciarelli, Panforte, Espresso | Drogheria Manganelli (Baharat/Gıda), Via di Città–Banchi di Sopra hattı ⚠️ Fortezza pazarı sadece Çarşamba, bu planda yok |
 | **Pienza** | Idyllium | Alkolsüz Aperitivo, Crodino | La Taverna del Pecorino (Pecorino Peyniri) |
 | **Arezzo** | Caffè dei Costanti / Vestri | Çikolata, El Yapımı Gelato | Fiera Antiquaria (Antika Pazarı) |
 | **San Gimignano** | Gelateria Dondoli | Crema di Santa Fina (Safranlı Gelato) | Safran (*Zafferano*), El Yapımı Seramik |
@@ -424,11 +432,11 @@ Otel → Siena *(40 dk)*
 | Tarih | Yer | Ne var |
 |---|---|---|
 | 30 Tem Per | **Tavarnelle pazarı** | Yerel, sıfır turist, ev tekstili, kumaş & peynir |
-| 31 Tem Cum | **Floransa** | S. Maria Novella parfümeri, San Lorenzo deri, Scuola del Cuoio |
+| 31 Tem Cum | **Siena** | Antica Drogheria Manganelli · Via di Città–Banchi di Sopra dükkânları *(pazar günü değil)* |
 | **1 Ağu Cts** | **Arezzo Fiera Antiquaria** ⭐ | İtalya'nın en büyük antika fuarı, 500 tezgâh |
 | 3 Ağu Pzt | **Pienza** | La Taverna del Pecorino: pecorino, zeytinyağı, bal, reçel (vakumlu) |
 | 4 Ağu Sal | **San Gimignano** *(dinlenme seçeneğinde)* | Seramik, safran, el yapımı kâğıt |
-| 5 Ağu Çar | **Siena Fortezza pazarı** | Kumaş, ev tekstili, deri · Antica Drogheria Manganelli |
+| 5 Ağu Çar | **Floransa** | S. Maria Novella parfümeri, San Lorenzo deri, Scuola del Cuoio |
 | 6 Ağu Per | **Montelupo (Atölyeler)** veya **Oltrarno (Il Torchio)** | El yapımı seramik (%40 ucuz) / Ebru kâğıdı & ciltleme |
 
 ---
@@ -448,20 +456,20 @@ Otel → Siena *(40 dk)*
 |---|---|---|
 | 29 Tem · Pisa (+Lucca) | €170 | €60 |
 | 30 Tem · Tavarnelle + Passignano | €290 | €60 |
-| 31 Tem · Floransa | €290 | €110 |
+| 31 Tem · Siena ⭐ | €365 | €115 |
 | 1 Ağu · Arezzo ⭐ | €160 | €130 |
 | 2 Ağu · Chianti + bistecca | €290 | €150 |
 | 3 Ağu · Val d'Orcia | €180 | €75 |
 | 4 Ağu · Dinlenme / plaj | €140 | €40 |
-| 5 Ağu · Siena | €290 | €130 |
+| 5 Ağu · Floransa | €425 | €130 |
 | 6 Ağu · Zanaat | €90 | €60 |
 | 7 Ağu · Dönüş | €30 | €30 |
 
 ### 🎯 Karma mod — tutulacaklar
 1. **Arezzo antika fuarı** (1 Ağu) — ücretsiz, asıl sebep
 2. **Bir bistecca gecesi** — La Sosta'da, tek biftek 3 kişiye, €110
-3. **Accademia / David** — €55
-4. **Siena Duomo** — €48
+3. **Accademia / David** — €60 *(1 Şub 2026'da €16+€4'e zamlandı)*
+4. **Siena Duomo** — €48 *(zemin açıkken OPA SI Pass tarifesi, 3 × €16)*
 5. **Dondoli + Piazzale Michelangelo gün batımı** — ~€15
 6. **Bir deniz günü** — Bibbona 🅱️ modunda ~€60
 
@@ -479,11 +487,12 @@ Otel → Siena *(40 dk)*
 
 | Öncelik | Ne | Tarih | Nasıl | Ne zaman | Tutar |
 |---|---|---|---|---|---|
-| 🔴 | **Accademia (David)** | 31 Tem | Resmî site, saatli bilet | **HEMEN** | €55 |
-| 🔴 | **Trattoria Sostanza** | 31 Tem | Tel: +39 055 212691 | **HEMEN** — Cts/Paz kapalı, bugün veya yarın ara | €130 |
+| 🔴 | **Siena Duomo** (OPA SI Pass) | 31 Tem | [operaduomo.siena.it](https://operaduomo.siena.it/), saatli bilet | **HEMEN** — mermer zeminin açık olduğu son gün, dolar | €48 |
+| 🔴 | **Accademia (David)** | 5 Ağu | Resmî site, saatli bilet | **HEMEN** | €60 |
+| 🔴 | **Trattoria Sostanza** | 5 Ağu | Tel: +39 055 212691 | **HEMEN** — Cts/Paz kapalı; ağustos tatilini de sor | €130 |
 | 🔴 | **La Sosta di Pio VII** | 2 Ağu | Tel: +39 055 807 5923 | **HEMEN** | €110 |
-| 🟠 | **Siena Duomo** | 5 Ağu | Resmî site | Bu hafta | €48 |
-| 🟠 | Osteria Il Grattacielo | 5 Ağu | Tel: +39 331 742 2835 | Bu hafta | €70 |
+| 🟠 | La Taverna di San Giuseppe | 31 Tem | Tel: +39 0577 42286 | Bu hafta — Pazar kapalı, günler öncesinden ara | €200 |
+| 🟠 | Osteria Il Grattacielo | 31 Tem | Tel: +39 331 742 2835 | Bu hafta | €70 |
 | 🟡 | Fattoria Casa Sola tadım | 2 Ağu | WhatsApp: +39 328 950 9196 | Opsiyonel | €90 |
 | 🟡 | San Francesco freskleri | 1 Ağu | Resmî site | Opsiyonel | €30 |
 | ⚪ | *Officina della Bistecca* | 2 Ağu | Tel: +39 055 852020 | Sadece 🅰️ modunda | €150 |
@@ -532,7 +541,8 @@ Otel → Siena *(40 dk)*
 | Il Caratello (Tavarnelle) | **Çarşamba** |
 | In Serra da Cocchino (Barberino) | **Çarşamba** |
 | Osteria di Passignano | **Pazar** |
-| Trattoria Sostanza (Firenze) | **Cts + Pazar** |
+| Trattoria Sostanza (Firenze) | **Cts + Pazar** *(ağustos tatili için ara)* |
+| La Taverna di San Giuseppe (Siena) | **Pazar** |
 | Da Nerbone (Firenze) | **Pazar** · 15:00'te kapanır |
 | Gelateria dei Neri (Firenze) | **Salı** |
 | Il Torchio (Firenze) | **Cts + Pazar** |
@@ -545,4 +555,4 @@ Otel → Siena *(40 dk)*
 
 **Pazar günleri:** İtalya'da dükkânların çoğu kapalı. Ayrıca birçok yerde 13:00–16:00 arası öğle molası var.
 
-**Haftalık pazarlar:** Perşembe Tavarnelle · Cumartesi Arezzo antika ⭐ · Çarşamba Siena Fortezza · Çarşamba+Pazar Forte dei Marmi
+**Haftalık pazarlar:** Perşembe Tavarnelle · Cumartesi Arezzo antika ⭐ · Çarşamba Siena Fortezza *(bu planda yok — Siena Cuma'da)* · Çarşamba+Pazar Forte dei Marmi
