@@ -102,6 +102,33 @@ const DAY_ROUTES: Record<string, Omit<DayRoute, 'dayId'>> = {
   d3: {
     starterRoute: {
       origin: trip.base.name,
+      destination: 'Siena (Parcheggio Santa Caterina - yürüyen merdiven)',
+      durationMin: 40,
+      km: 42,
+      navUrl: 'https://www.google.com/maps/search/?api=1&query=Parcheggio+Santa+Caterina+Siena',
+    },
+    legs: [
+      {
+        from: trip.base.name,
+        to: 'Siena (Parcheggio Santa Caterina)',
+        durationMin: 40,
+        km: 42,
+        navUrl: 'https://www.google.com/maps/search/?api=1&query=Parcheggio+Santa+Caterina+Siena',
+      },
+      {
+        from: 'Siena',
+        to: trip.base.name,
+        durationMin: 40,
+        km: 42,
+        navUrl: trip.base.nav,
+      },
+    ],
+    totalKm: 84,
+    totalDrivingMinutes: 80,
+  },
+  d4: {
+    starterRoute: {
+      origin: trip.base.name,
       destination: 'Floransa Villa Costanza Otoparkı (Tram T1)',
       durationMin: 30,
       km: 32,
@@ -133,7 +160,7 @@ const DAY_ROUTES: Record<string, Omit<DayRoute, 'dayId'>> = {
     totalKm: 82,
     totalDrivingMinutes: 90,
   },
-  d4: {
+  d5: {
     starterRoute: {
       origin: trip.base.name,
       destination: 'Arezzo Antika Fuarı (Parcheggio Pietri)',
@@ -159,40 +186,6 @@ const DAY_ROUTES: Record<string, Omit<DayRoute, 'dayId'>> = {
     ],
     totalKm: 190,
     totalDrivingMinutes: 160,
-  },
-  d5: {
-    starterRoute: {
-      origin: trip.base.name,
-      destination: 'Fattoria Casa Sola (Barberino)',
-      durationMin: 10,
-      km: 6,
-      navUrl: 'https://www.google.com/maps/search/?api=1&query=Fattoria+Casa+Sola+Barberino',
-    },
-    legs: [
-      {
-        from: trip.base.name,
-        to: 'Fattoria Casa Sola',
-        durationMin: 10,
-        km: 6,
-        navUrl: 'https://www.google.com/maps/search/?api=1&query=Fattoria+Casa+Sola+Barberino',
-      },
-      {
-        from: 'Fattoria Casa Sola',
-        to: 'Montefioralle / Panzano',
-        durationMin: 20,
-        km: 15,
-        navUrl: 'https://www.google.com/maps/search/?api=1&query=Montefioralle+Greve+in+Chianti',
-      },
-      {
-        from: 'Panzano',
-        to: trip.base.name,
-        durationMin: 30,
-        km: 18,
-        navUrl: trip.base.nav,
-      },
-    ],
-    totalKm: 39,
-    totalDrivingMinutes: 60,
   },
   d6: {
     starterRoute: {
@@ -238,7 +231,7 @@ const DAY_ROUTES: Record<string, Omit<DayRoute, 'dayId'>> = {
   d7: {
     starterRoute: {
       origin: trip.base.name,
-      destination: 'San Gimignano (Parcheggio Giubileo P2)',
+      destination: 'San Gimignano (Parcheggio Giubileo P1)',
       durationMin: 30,
       km: 24,
       navUrl: 'https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano',
@@ -246,7 +239,7 @@ const DAY_ROUTES: Record<string, Omit<DayRoute, 'dayId'>> = {
     legs: [
       {
         from: trip.base.name,
-        to: 'San Gimignano (P2 Giubileo)',
+        to: 'San Gimignano (P1 Giubileo)',
         durationMin: 30,
         km: 24,
         navUrl: 'https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano',
@@ -265,29 +258,36 @@ const DAY_ROUTES: Record<string, Omit<DayRoute, 'dayId'>> = {
   d8: {
     starterRoute: {
       origin: trip.base.name,
-      destination: 'Siena (Parcheggio Fortezza Medicea)',
-      durationMin: 40,
-      km: 42,
-      navUrl: 'https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena',
+      destination: 'Fattoria Casa Sola (Barberino)',
+      durationMin: 10,
+      km: 6,
+      navUrl: 'https://www.google.com/maps/search/?api=1&query=Fattoria+Casa+Sola+Barberino',
     },
     legs: [
       {
         from: trip.base.name,
-        to: 'Siena (Fortezza Medicea)',
-        durationMin: 40,
-        km: 42,
-        navUrl: 'https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena',
+        to: 'Fattoria Casa Sola',
+        durationMin: 10,
+        km: 6,
+        navUrl: 'https://www.google.com/maps/search/?api=1&query=Fattoria+Casa+Sola+Barberino',
       },
       {
-        from: 'Siena',
+        from: 'Fattoria Casa Sola',
+        to: 'Montefioralle / Panzano',
+        durationMin: 20,
+        km: 15,
+        navUrl: 'https://www.google.com/maps/search/?api=1&query=Montefioralle+Greve+in+Chianti',
+      },
+      {
+        from: 'Panzano',
         to: trip.base.name,
-        durationMin: 40,
-        km: 42,
+        durationMin: 30,
+        km: 18,
         navUrl: trip.base.nav,
       },
     ],
-    totalKm: 84,
-    totalDrivingMinutes: 80,
+    totalKm: 39,
+    totalDrivingMinutes: 60,
   },
   d9: {
     starterRoute: {

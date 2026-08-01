@@ -55,7 +55,7 @@
 **Tempo: düşük · Sürüş: seçime göre 1s 40dk – 3s 15dk**
 
 **Ortak durak**
-- **Piazza dei Miracoli**, Pisa (09:45–11:15, ücretsiz) — [Parcheggio Via Pietrasantina](https://www.google.com/maps/search/?api=1&query=Parcheggio+Via+Pietrasantina+Pisa) *(ücretsiz shuttle)*. Battistero'da görevli günde birkaç kez akustiği göstermek için sesleniyor, çocuklar bayılıyor.
+- **Piazza dei Miracoli**, Pisa (09:45–11:15, ücretsiz) — [Parcheggio Via Pietrasantina](https://www.google.com/maps/search/?api=1&query=Parcheggio+Via+Pietrasantina+Pisa) *(araba **ücretsiz**; shuttle €1/kişi 08:30–17:30, 10–15 dk'da bir — ya da 600 m / 10 dk düz yürüyüş)*. Battistero'da görevli günde birkaç kez akustiği göstermek için sesleniyor, çocuklar bayılıyor.
 - **Kesilecek:** Eğik Kule tırmanışı (~€60 / 3 yetişkin, uzun sıra, 8 yaş altına yasak)
 
 **Seçenek A — Sadece Pisa + otel** ✅ *önerilen · €45 · 1s 40dk*
@@ -65,7 +65,7 @@
 - ➖ Lucca kaçar (6 Ağustos'ta opsiyon olarak duruyor)
 
 **Seçenek B — Pisa + Lucca** *€90 · 3s 15dk*
-Pisa'dan sonra [Lucca / Parcheggio Palatucci](https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca): sur üstü yürüyüş bandı (4 km, gölgeli), Piazza dell'Anfiteatro (Roma amfitiyatrosunun üstüne kurulmuş oval meydan). 12:30–16:30, sonra 80 dk yol, ~18:00 otelde.
+Pisa'dan sonra [Lucca / Parcheggio Palatucci](https://www.google.com/maps/search/?api=1&query=Parcheggio+Palatucci+Lucca) *(sur dışı, 24 saat açık; ilk saat €0.50, sonrası €1/saat, günlük tavan €8)*: sur üstü yürüyüş bandı (4 km, gölgeli), Piazza dell'Anfiteatro (Roma amfitiyatrosunun üstüne kurulmuş oval meydan). 12:30–16:30, sonra 80 dk yol, ~18:00 otelde.
 - ➕ Lucca gerçekten güzel ve Pisa'dan daha keyifli · iki şehir tek günde biter
 - 🚲 **Anne & Çocuk Ulaşım Hilesi:** Lucca surlarında yürümek yerine sur girişinden 4 kişilik, tenteli pedallı aile bisikleti (**Risciò**) kiralayın (~15–20€/saat). Anne arkada gölgede oturur, Nil çok eğlenir, 4 km'lik sur turlarını hiç yorulmadan 45 dakikada bitirirsiniz.
 - ➖ Otelde 18:00, ilk gün için ağır · anne için yorucu olabilir
@@ -121,7 +121,8 @@ Tavarnelle merkezi *(3 dk)* → [Badia a Passignano](https://www.google.com/maps
 
 **Rota & Lojistik**
 Otel → Siena *(1s 20dk)*
-🚗 **Lojistik Hilesi:** *Parcheggio Santa Caterina*'ya park edip kayaların içine oyulmuş **ücretsiz kapalı yürüyen merdivenlerle (Risalite Meccanizzate)** doğrudan Duomo ve Il Campo seviyesine dik yokuş tırmanmadan zahmetsizce çıkın.
+🚗 **Lojistik Hilesi:** *Parcheggio Santa Caterina*'ya park edip kayaların içine oyulmuş **ücretsiz kapalı yürüyen merdivenlerle (Risalite Meccanizzate — 12 kollu, fotoselli)** doğrudan Duomo seviyesine dik yokuş tırmanmadan çıkın.
+💶 Tarife **€2/saat**, günlük tavan €35 → 8 saatlik gün ≈ **€16**. Daha ucuzu *Stadio-Fortezza* (günlük €26, **20:00–07:00 ücretsiz**) ama yürüyen merdiven Santa Caterina ile San Francesco'da.
 ✅ Cuma günü pazar kurulmadığı için [Fortezza otoparkı](https://www.google.com/maps/search/?api=1&query=Parcheggio+Fortezza+Medicea+Siena) ve Parcheggio Stadio da rahat.
 
 **Görülecek & Alışveriş**
@@ -158,8 +159,13 @@ Otel → Siena *(1s 20dk)*
 > 🛍️ **Saldi:** yaz indirimleri **4 Temmuz – 1 Eylül 2026**. 1 Ağustos indirimin ikinci ayı: stok azalmış, iskonto en yüksek.
 
 **Rota**
-Otel → [Parcheggio Villa Costanza](https://www.google.com/maps/search/?api=1&query=Parcheggio+Villa+Costanza+Scandicci) *(25 dk, ~€2/gün)* → **T1 tramvay** *(20 dk, ~€1.70/kişi)*
+Otel → [Parcheggio Villa Costanza](https://www.google.com/maps/search/?api=1&query=Parcheggio+Villa+Costanza+Scandicci) *(25–30 dk)* → **T1 tramvay** *(22 dk, Santa Maria Novella)*
+💶 **Villa Costanza:** ilk 30 dk ücretsiz · 4 saat €2 · 8 saat €4 · **tam gün €7**. Tramvay €1.70/kişi → 4 kişi gidiş-dönüş ≈ **€13.60**.
 ⚠️ Arabayla merkeze girme. Tek ZTL cezası €100+.
+
+🌆 **Akşam düzeni — iki seçenek, ikisi birden olmuyor:**
+> **(1) Arabayla Piazzale:** Oltrarno bitince tramvayla Villa Costanza'ya dön, arabayla Piazzale'ye çık *(25 dk)*, gün batımını gör, otele dön. Akşam yemeği otel civarında olur. **Sürüş 90 dk.**
+> **(2) Otobüsle Piazzale:** merkezde Buca Mario'da ye, Piazzale'ye **12/13 numaralı otobüsle** çık *(€1.70/kişi)*, araba Villa Costanza'da kalır. **Sürüş 50 dk**, ama akşam daha uzun sürer.
 
 **Yürüyüş sırası** *(hepsi ücretsiz)*
 1. **08:30 [Sant'Ambrogio pazarı](https://www.google.com/maps/search/?api=1&query=Mercato+di+Sant%27Ambrogio+Firenze) + [Mercato delle Pulci](https://www.google.com/maps/search/?api=1&query=Mercato+delle+Pulci+Piazza+Ghiberti+Firenze)** *(2 saat)* — Floransalıların kendi pazarı, turist yok, fiyatlar merkezin yarısı (Pzt–Cts 07:00–14:00). Yanındaki Piazza Ghiberti'de bit pazarı: 50'ler–70'ler mobilya, plak, eski kitap, gümüş, vintage takı (Cts 09:00–19:30). **Günün en iyi ve en ucuz alışveriş durağı.**
@@ -209,7 +215,7 @@ Otel → [Parcheggio Villa Costanza](https://www.google.com/maps/search/?api=1&q
 > **Cumartesi'den Pazar'a alındı** (Floransa 1 Ağustos'a geçti): fuar iki gün de kurulu olduğu için kayıp yok, üstelik 2 Ağustos ayın ilk Pazarı → **San Francesco'daki Piero della Francesca freskleri o gün ücretsiz**.
 
 **Rota**
-Otel → A1 → [Parcheggio Pietri, Arezzo](https://www.google.com/maps/search/?api=1&query=Parcheggio+Pietri+Arezzo) *(1s 20dk, ~€8/gün)*. **09:00'da orada ol** — hem serin hem tezgâhlar taze; Pazar fuarın asıl günü, otopark erken doluyor.
+Otel → A1 → [Parcheggio Pietri, Arezzo](https://www.google.com/maps/search/?api=1&query=Parcheggio+Pietri+Arezzo) *(1s 20dk)*. 💶 **€0.70/saat, günlük tavan €5** — üstelik **yürüyen merdivenlerden uzak ilk sektör tamamen ücretsiz**. Merdivenler Piazza Duomo seviyesine çıkarıyor ve **fuar günlerinde merdivenlerin oradan ATAM'ın ücretsiz servisi** kalkıyor. Pietri hafta içi 08–20 ve **ayın ilk Pazarı** açık — 2 Ağustos ilk Pazar. **09:00'da orada ol** — hem serin hem tezgâhlar taze; Pazar fuarın asıl günü, otopark erken doluyor.
 
 **Görülecek**
 - **Fiera Antiquaria — Piazza Grande** (5 saat, ücretsiz) — tablolar, kitaplar, tarihi baskılar, oyuncaklar, saatler, porselen, kumaşlar. Eğimli ortaçağ meydanı, Vasari Locaları altında en iyi antikacılar. *Hayat Güzeldir*'in çekildiği meydan.
@@ -238,7 +244,7 @@ Otel → A1 → [Parcheggio Pietri, Arezzo](https://www.google.com/maps/search/?
 
 **Rota**
 Otel → [Pienza](https://www.google.com/maps/search/?api=1&query=Parcheggio+Pienza) *(1s 30dk)* → [Bagno Vignoni](https://www.google.com/maps/search/?api=1&query=Bagno+Vignoni) *(25 dk)* → otel *(1s 30dk)*
-**08:00 çık · 18:00 otelde ol.** ⚠️ Pienza'nın da ZTL'si var, sur dışına park et.
+**08:00 çık · 18:00 otelde ol.** ⚠️ Pienza'nın da ZTL'si var, sur dışına park et: **kuzeydeki P1 (via della Madonnina) ücretsiz**, güneydeki P2 €2/saat (günlük €10).
 
 **Görülecek**
 - **Pienza** (10:00–13:00, ücretsiz) — Papa II. Pius'un 15. yy'da sıfırdan tasarlattığı "ideal Rönesans şehri", UNESCO. Düz, küçük, gezmesi kolay. Sur dışı terasından Val d'Orcia manzarası **ücretsiz**.
@@ -265,7 +271,7 @@ Otel → [Pienza](https://www.google.com/maps/search/?api=1&query=Parcheggio+Pie
 > ⚠️ **Deniz seçilirse San Gimignano akşamı 6 Ağustos Perşembe'ye taşınır.**
 
 #### Seçenek A — Dinlenme + San Gimignano akşamı · **€40 · 1s sürüş**
-Sabah + öğlen otel havuzu (5 saat). 16:30 çık → [San Gimignano P2 Giubileo](https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano) *(30 dk, ~€2/saat)*.
+Sabah + öğlen otel havuzu (5 saat). 16:30 çık → [San Gimignano P1 Giubileo](https://www.google.com/maps/search/?api=1&query=Parcheggio+Giubileo+San+Gimignano) *(30 dk, €2/saat, günlük tavan €15; P2 Montemaggio asansörlü, Nisan–Ekim merkeze €1 gidiş-dönüş Citybus)*. ⚠️ **1 Temmuz 2026'dan beri nakit alınmıyor — sadece kart.**
 - ➕ En ucuz gün · sıfır sürüş stresi · San Gimignano gün batımında bambaşka, turist otobüsleri gitmiş olur
 - ➖ Deniz yok
 - **Görülecek:** 14 ortaçağ kulesi (17:00 sonrası, 3 saat) · Piazza della Cisterna, Piazza del Duomo · **Rocca di Montestaffoli** kale duvarları — gün batımı için en iyi nokta, **bilet yok, kimse bilmiyor**
@@ -570,6 +576,21 @@ Havuz *(sabah, 3 saat)* → [Fattoria Casa Sola](https://www.google.com/maps/sea
 | Vale (Forte dei Marmi) | **Pazartesi** |
 | Ristorante da Andrea (Cecina) | **Pzt + Salı** |
 | Coop Tavarnelle | Pazar sadece 08:00–13:00 |
+
+### 🅿️ Otopark hızlı tablosu *(2026 tarifeleri)*
+
+| Şehir | Otopark | Tarife | Merkeze |
+|---|---|---|---|
+| **Pisa** | Via Pietrasantina | **araba ücretsiz** *(camper €15)* | shuttle €1/kişi 08:30–17:30 · ya da 600 m yürüyüş |
+| **Lucca** | Palatucci *(sur dışı, 24 s)* | ilk saat €0.50, sonra €1/saat, **gün €8** | yürüyerek, ZTL'ye girmeden |
+| **Floransa** | Villa Costanza *(A1'den doğrudan)* | 30 dk ücretsiz · 4 s €2 · 8 s €4 · **gün €7** | **T1 tramvay** €1.70/kişi, SMN 22 dk |
+| **Siena** | Santa Caterina / San Francesco | €2/saat, gün €35 | **yürüyen merdiven** (ücretsiz), Duomo seviyesi |
+| **Siena (ucuz)** | Stadio-Fortezza | €2/saat, **gün €26**, 20:00–07:00 ücretsiz | merdiven yok, yokuş var |
+| **Arezzo** | Pietri | €0.70/saat, **gün €5** · merdivenden uzak sektör **ücretsiz** | scale mobili → Piazza Duomo · fuar günü ATAM ücretsiz servis |
+| **San Gimignano** | P1 Giubileo / P2 Montemaggio | €2/saat, **gün €15** | P2'de asansör · Nis–Eki Citybus €1 gidiş-dönüş ⚠️ **nakit yok, sadece kart** |
+| **Pienza** | P1 kuzey (via della Madonnina) | **ücretsiz** *(güneydeki P2 €2/saat)* | sur dibi, kısa yürüyüş |
+
+💡 Hepsinde **EasyPark** plakayla çalışıyor — bozuk para aramadan, kafeden süre uzatarak.
 
 **Pazar günleri:** İtalya'da dükkânların çoğu kapalı. Ayrıca birçok yerde 13:00–16:00 arası öğle molası var.
 
