@@ -52,16 +52,16 @@ describe('stopCharge', () => {
 
   it('charges core stops in every mode', () => {
     for (const mode of MODES) {
-      expect(stopCharge(stopById('d4', 's4a'), mode)?.amount).toBe(60); // Accademia
       expect(stopCharge(stopById('d3', 's3a'), mode)?.amount).toBe(48); // Siena Duomo
+      expect(stopCharge(stopById('d1', 's1a'), mode)?.amount).toBe(0); // Piazza dei Miracoli, ücretsiz
     }
   });
 
   it('drops an optional stop with no cheaper alternative outside Keyif', () => {
-    const uffizi = stopById('d4', 's4d');
-    expect(stopCharge(uffizi, 'a')?.amount).toBe(87);
-    expect(stopCharge(uffizi, 'mixed')).toBeNull();
-    expect(stopCharge(uffizi, 'b')).toBeNull();
+    const scala = stopById('d3', 's3c'); // Santa Maria della Scala
+    expect(stopCharge(scala, 'a')?.amount).toBe(30);
+    expect(stopCharge(scala, 'mixed')).toBeNull();
+    expect(stopCharge(scala, 'b')).toBeNull();
   });
 
   it('keeps an optional stop that has a free alternative, and says why', () => {
@@ -80,7 +80,7 @@ describe('selectFood', () => {
     for (const mode of MODES) {
       const chosen = names(selectFood(day.food, mode, day.id));
       expect(chosen).toContain('Ditta Artigianale (Via dello Sprone)');
-      expect(chosen).toContain('Gelateria dei Neri (Via dei Neri 9)');
+      expect(chosen).toContain('Caffè Gilli (Piazza della Repubblica)');
     }
   });
 
@@ -155,7 +155,6 @@ describe('Karma matches the keep/drop list the plan writes out', () => {
   const labels = kept.days.flatMap((day) => day.items.map((item) => item.label));
 
   it.each([
-    ['Galleria dell’Accademia', 'Galleria dell'],
     ['Siena Duomo', 'Duomo + Piccolomini'],
     ['La Sosta bistecca gecesi', 'La Sosta'],
   ])('keeps %s', (_name, needle) => {
@@ -166,6 +165,9 @@ describe('Karma matches the keep/drop list the plan writes out', () => {
     ['Osteria di Passignano', 'Passignano'],
     ['Officina della Bistecca', 'Officina della Bistecca'],
     ['Uffizi', 'Uffizi'],
+    // The family cut the Florence museums; they stay in the data as `removed`.
+    ['Galleria dell’Accademia', 'Galleria dell'],
+    ['Rothko', 'Rothko'],
   ])('drops %s', (_name, needle) => {
     expect(labels.some((label) => label.includes(needle))).toBe(false);
   });
@@ -237,7 +239,7 @@ describe('day totals', () => {
 describe('savings from skipped stops', () => {
   it('sums what the plan decided against, per day', () => {
     expect(daySavings(dayById('d1'))).toBe(60); // Eğik Kule (Torre Guinigi now lives under d1's opt-b)
-    expect(daySavings(dayById('d4'))).toBe(90); // Brunelleschi Pass
+    expect(daySavings(dayById('d4'))).toBe(291); // Accademia + Uffizi + Rothko + Brunelleschi
     expect(daySavings(dayById('d3'))).toBe(30); // Torre del Mangia
     expect(daySavings(dayById('d2'))).toBe(0);
   });
@@ -251,11 +253,11 @@ describe('savings from skipped stops', () => {
 
 describe('party size', () => {
   it('reproduces the plan exactly at the default 3 adults + 1 child', () => {
-    // Accademia is written as "3 yetiskin", Officina as "50 EUR/kisi" for 3.
-    const accademia = dayBudget(dayById('d4'), input('a')).items.find((item) =>
-      item.label.includes('Accademia'),
+    // Siena Duomo is written as "3 yetiskin", Officina as "50 EUR/kisi" for 3.
+    const duomo = dayBudget(dayById('d3'), input('a')).items.find((item) =>
+      item.label.includes('Duomo + Piccolomini'),
     );
-    expect(accademia?.amount).toBe(60);
+    expect(duomo?.amount).toBe(48);
 
     const officina = dayBudget(dayById('d8'), input('a')).items.find((item) =>
       item.label.includes('Officina'),
@@ -265,10 +267,10 @@ describe('party size', () => {
 
   it('scales the two per-person prices with the adult count', () => {
     const twoAdults: Party = { ...PARTY, adults: 2 };
-    const accademia = dayBudget(dayById('d4'), input('a', twoAdults)).items.find((item) =>
-      item.label.includes('Accademia'),
+    const duomo = dayBudget(dayById('d3'), input('a', twoAdults)).items.find((item) =>
+      item.label.includes('Duomo + Piccolomini'),
     );
-    expect(accademia?.amount).toBeCloseTo((60 / 3) * 2, 6);
+    expect(duomo?.amount).toBeCloseTo((48 / 3) * 2, 6);
   });
 
   it('leaves table prices alone — a shared steak is not per head', () => {
@@ -316,15 +318,15 @@ describe('day 9, which offers three itineraries instead of stops', () => {
 
 describe('Karma upgrades — buying an individual splurge back by hand', () => {
   it('offers every optional paid stop and every tier-a meal, and nothing else', () => {
-    const day = dayById('d4');
+    const day = dayById('d3');
     const upgrades = availableUpgrades(day);
     const keys = upgrades.map((upgrade) => upgrade.key);
-    expect(keys).toContain(stopKey(stopById('d4', 's4d'))); // Uffizi, optional
-    expect(keys).not.toContain(stopById('d4', 's4a').id); // Accademia is core, always paid
-    expect(keys).not.toContain(stopById('d4', 's4c').id); // Brunelleschi is skip
-    const mercatoCentrale = day.food.find((entry) => entry.name.includes('Mercato Centrale'));
-    if (mercatoCentrale === undefined) throw new Error('Mercato Centrale verisi yok');
-    expect(keys).toContain(foodKey(day.id, mercatoCentrale));
+    expect(keys).toContain(stopKey(stopById('d3', 's3c'))); // Santa Maria della Scala, optional
+    expect(keys).not.toContain(stopById('d3', 's3a').id); // Siena Duomo is core, always paid
+    expect(keys).not.toContain(stopById('d3', 's3h').id); // Torre del Mangia is skip
+    const taverna = day.food.find((entry) => entry.name.includes('Taverna di San Giuseppe'));
+    if (taverna === undefined) throw new Error('Taverna di San Giuseppe verisi yok');
+    expect(keys).toContain(foodKey(day.id, taverna));
   });
 
   it('is empty for a day with nothing to buy back', () => {
@@ -332,18 +334,18 @@ describe('Karma upgrades — buying an individual splurge back by hand', () => {
   });
 
   it('adds the stop\'s full cost to the Karma total when upgraded', () => {
-    const day = dayById('d4');
+    const day = dayById('d3');
     const withoutUpgrade = dayBudget(day, input('mixed'));
     const withUpgrade = dayBudget(day, {
       ...input('mixed'),
-      upgrades: [stopKey(stopById('d4', 's4d'))],
+      upgrades: [stopKey(stopById('d3', 's3c'))],
     });
-    expect(withUpgrade.total - withoutUpgrade.total).toBe(87); // Uffizi
+    expect(withUpgrade.total - withoutUpgrade.total).toBe(30); // Santa Maria della Scala
   });
 
   it('marks the upgraded line so the UI can show it was a deliberate splurge', () => {
-    const day = dayById('d4');
-    const key = stopKey(stopById('d4', 's4d'));
+    const day = dayById('d3');
+    const key = stopKey(stopById('d3', 's3c'));
     const item = dayBudget(day, { ...input('mixed'), upgrades: [key] }).items.find(
       (candidate) => candidate.id === key,
     );
@@ -362,8 +364,8 @@ describe('Karma upgrades — buying an individual splurge back by hand', () => {
   });
 
   it('has no effect in Keyif or Ucuz — upgrades only make sense against the Karma floor', () => {
-    const day = dayById('d4');
-    const key = stopKey(stopById('d4', 's4d'));
+    const day = dayById('d3');
+    const key = stopKey(stopById('d3', 's3c'));
     expect(dayBudget(day, { ...input('a'), upgrades: [key] }).total).toBe(
       dayBudget(day, input('a')).total,
     );
