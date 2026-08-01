@@ -52,20 +52,20 @@ describe('stopCharge', () => {
 
   it('charges core stops in every mode', () => {
     for (const mode of MODES) {
-      expect(stopCharge(stopById('d3', 's3a'), mode)?.amount).toBe(55); // Accademia
-      expect(stopCharge(stopById('d8', 's8c'), mode)?.amount).toBe(48); // Siena Duomo
+      expect(stopCharge(stopById('d4', 's4a'), mode)?.amount).toBe(60); // Accademia
+      expect(stopCharge(stopById('d3', 's3a'), mode)?.amount).toBe(48); // Siena Duomo
     }
   });
 
   it('drops an optional stop with no cheaper alternative outside Keyif', () => {
-    const uffizi = stopById('d3', 's3d');
-    expect(stopCharge(uffizi, 'a')?.amount).toBe(80);
+    const uffizi = stopById('d4', 's4d');
+    expect(stopCharge(uffizi, 'a')?.amount).toBe(87);
     expect(stopCharge(uffizi, 'mixed')).toBeNull();
     expect(stopCharge(uffizi, 'b')).toBeNull();
   });
 
   it('keeps an optional stop that has a free alternative, and says why', () => {
-    const casaSola = stopById('d5', 's5b');
+    const casaSola = stopById('d8', 's8b');
     expect(stopCharge(casaSola, 'a')?.amount).toBe(90);
     const cheap = stopCharge(casaSola, 'mixed');
     expect(cheap?.amount).toBe(0);
@@ -76,7 +76,7 @@ describe('stopCharge', () => {
 
 describe('selectFood', () => {
   it('always eats the entries tiered "both"', () => {
-    const day = dayById('d3');
+    const day = dayById('d4');
     for (const mode of MODES) {
       const chosen = names(selectFood(day.food, mode, day.id));
       expect(chosen).toContain('Ditta Artigianale (Via dello Sprone)');
@@ -85,7 +85,7 @@ describe('selectFood', () => {
   });
 
   it('takes one option per slot, not all of them', () => {
-    const day = dayById('d8'); // two tier-b lunches
+    const day = dayById('d3'); // two tier-b lunches
     for (const mode of MODES) {
       const lunches = selectFood(day.food, mode, day.id).filter((entry) => entry.slot === 'lunch');
       expect(lunches).toHaveLength(1);
@@ -93,7 +93,7 @@ describe('selectFood', () => {
   });
 
   it('Karma keeps the better cheap meal, Ucuz takes the cheaper one', () => {
-    const day = dayById('d8');
+    const day = dayById('d3');
     const lunchIn = (mode: Mode): Food | undefined =>
       selectFood(day.food, mode, day.id).find((entry) => entry.slot === 'lunch');
     expect(lunchIn('mixed')?.price).toBe(70); // Osteria Il Grattacielo
@@ -101,7 +101,7 @@ describe('selectFood', () => {
   });
 
   it('Karma keeps the bistecca night, which the data tiers as cheap', () => {
-    const day = dayById('d5');
+    const day = dayById('d8');
     const dinner = selectFood(day.food, 'mixed', day.id).find((entry) => entry.slot === 'dinner');
     expect(dinner?.name).toContain('La Sosta');
     expect(dinner?.price).toBe(110);
@@ -109,9 +109,9 @@ describe('selectFood', () => {
 
   it('Karma drops the two splurges the plan names', () => {
     const d2 = dayById('d2');
-    const d5 = dayById('d5');
+    const chianti = dayById('d8');
     expect(names(selectFood(d2.food, 'mixed', d2.id))).not.toContain('Osteria di Passignano');
-    expect(names(selectFood(d5.food, 'mixed', d5.id))).not.toContain(
+    expect(names(selectFood(chianti.food, 'mixed', chianti.id))).not.toContain(
       'Officina della Bistecca (Dario Cecchini)',
     );
   });
@@ -132,7 +132,7 @@ describe('selectFood', () => {
   });
 
   it('Karma buys back a tier-a meal when the family upgrades it, replacing the usual pick', () => {
-    const day = dayById('d8');
+    const day = dayById('d3');
     const taverna = day.food.find((entry) => entry.name.includes('Taverna di San Giuseppe'));
     if (taverna === undefined) throw new Error('Taverna di San Giuseppe verisi yok');
     const key = foodKey(day.id, taverna);
@@ -141,7 +141,7 @@ describe('selectFood', () => {
   });
 
   it('an upgrade key has no effect outside Karma', () => {
-    const day = dayById('d8');
+    const day = dayById('d3');
     const taverna = day.food.find((entry) => entry.name.includes('Taverna di San Giuseppe'));
     if (taverna === undefined) throw new Error('Taverna di San Giuseppe verisi yok');
     const key = foodKey(day.id, taverna);
@@ -237,7 +237,8 @@ describe('day totals', () => {
 describe('savings from skipped stops', () => {
   it('sums what the plan decided against, per day', () => {
     expect(daySavings(dayById('d1'))).toBe(60); // Eğik Kule (Torre Guinigi now lives under d1's opt-b)
-    expect(daySavings(dayById('d3'))).toBe(90); // Brunelleschi Pass
+    expect(daySavings(dayById('d4'))).toBe(90); // Brunelleschi Pass
+    expect(daySavings(dayById('d3'))).toBe(30); // Torre del Mangia
     expect(daySavings(dayById('d2'))).toBe(0);
   });
 
@@ -251,12 +252,12 @@ describe('savings from skipped stops', () => {
 describe('party size', () => {
   it('reproduces the plan exactly at the default 3 adults + 1 child', () => {
     // Accademia is written as "3 yetiskin", Officina as "50 EUR/kisi" for 3.
-    const accademia = dayBudget(dayById('d3'), input('a')).items.find((item) =>
+    const accademia = dayBudget(dayById('d4'), input('a')).items.find((item) =>
       item.label.includes('Accademia'),
     );
-    expect(accademia?.amount).toBe(55);
+    expect(accademia?.amount).toBe(60);
 
-    const officina = dayBudget(dayById('d5'), input('a')).items.find((item) =>
+    const officina = dayBudget(dayById('d8'), input('a')).items.find((item) =>
       item.label.includes('Officina'),
     );
     expect(officina?.amount).toBe(150);
@@ -264,16 +265,16 @@ describe('party size', () => {
 
   it('scales the two per-person prices with the adult count', () => {
     const twoAdults: Party = { ...PARTY, adults: 2 };
-    const accademia = dayBudget(dayById('d3'), input('a', twoAdults)).items.find((item) =>
+    const accademia = dayBudget(dayById('d4'), input('a', twoAdults)).items.find((item) =>
       item.label.includes('Accademia'),
     );
-    expect(accademia?.amount).toBeCloseTo((55 / 3) * 2, 6);
+    expect(accademia?.amount).toBeCloseTo((60 / 3) * 2, 6);
   });
 
   it('leaves table prices alone — a shared steak is not per head', () => {
     const fourAdults: Party = { ...PARTY, adults: 4 };
     const laSosta = (party: Party) =>
-      dayBudget(dayById('d5'), input('b', party)).items.find((item) =>
+      dayBudget(dayById('d8'), input('b', party)).items.find((item) =>
         item.label.includes('La Sosta'),
       )?.amount;
     expect(laSosta(PARTY)).toBe(110);
@@ -315,12 +316,12 @@ describe('day 9, which offers three itineraries instead of stops', () => {
 
 describe('Karma upgrades — buying an individual splurge back by hand', () => {
   it('offers every optional paid stop and every tier-a meal, and nothing else', () => {
-    const day = dayById('d3');
+    const day = dayById('d4');
     const upgrades = availableUpgrades(day);
     const keys = upgrades.map((upgrade) => upgrade.key);
-    expect(keys).toContain(stopKey(stopById('d3', 's3d'))); // Uffizi, optional
-    expect(keys).not.toContain(stopById('d3', 's3a').id); // Accademia is core, always paid
-    expect(keys).not.toContain(stopById('d3', 's3c').id); // Brunelleschi is skip
+    expect(keys).toContain(stopKey(stopById('d4', 's4d'))); // Uffizi, optional
+    expect(keys).not.toContain(stopById('d4', 's4a').id); // Accademia is core, always paid
+    expect(keys).not.toContain(stopById('d4', 's4c').id); // Brunelleschi is skip
     const mercatoCentrale = day.food.find((entry) => entry.name.includes('Mercato Centrale'));
     if (mercatoCentrale === undefined) throw new Error('Mercato Centrale verisi yok');
     expect(keys).toContain(foodKey(day.id, mercatoCentrale));
@@ -331,18 +332,18 @@ describe('Karma upgrades — buying an individual splurge back by hand', () => {
   });
 
   it('adds the stop\'s full cost to the Karma total when upgraded', () => {
-    const day = dayById('d3');
+    const day = dayById('d4');
     const withoutUpgrade = dayBudget(day, input('mixed'));
     const withUpgrade = dayBudget(day, {
       ...input('mixed'),
-      upgrades: [stopKey(stopById('d3', 's3d'))],
+      upgrades: [stopKey(stopById('d4', 's4d'))],
     });
-    expect(withUpgrade.total - withoutUpgrade.total).toBe(80); // Uffizi
+    expect(withUpgrade.total - withoutUpgrade.total).toBe(87); // Uffizi
   });
 
   it('marks the upgraded line so the UI can show it was a deliberate splurge', () => {
-    const day = dayById('d3');
-    const key = stopKey(stopById('d3', 's3d'));
+    const day = dayById('d4');
+    const key = stopKey(stopById('d4', 's4d'));
     const item = dayBudget(day, { ...input('mixed'), upgrades: [key] }).items.find(
       (candidate) => candidate.id === key,
     );
@@ -350,10 +351,10 @@ describe('Karma upgrades — buying an individual splurge back by hand', () => {
   });
 
   it('replaces a costAlt tasting with the full price when upgraded', () => {
-    const day = dayById('d5');
-    const key = stopKey(stopById('d5', 's5b')); // Casa Sola
+    const day = dayById('d8');
+    const key = stopKey(stopById('d8', 's8b')); // Casa Sola
     // Free lines are not shown as a €0 row — the stop simply costs nothing.
-    expect(stopCharge(stopById('d5', 's5b'), 'mixed')?.amount).toBe(0);
+    expect(stopCharge(stopById('d8', 's8b'), 'mixed')?.amount).toBe(0);
     const paid = dayBudget(day, { ...input('mixed'), upgrades: [key] }).items.find(
       (item) => item.id === key,
     );
@@ -361,8 +362,8 @@ describe('Karma upgrades — buying an individual splurge back by hand', () => {
   });
 
   it('has no effect in Keyif or Ucuz — upgrades only make sense against the Karma floor', () => {
-    const day = dayById('d3');
-    const key = stopKey(stopById('d3', 's3d'));
+    const day = dayById('d4');
+    const key = stopKey(stopById('d4', 's4d'));
     expect(dayBudget(day, { ...input('a'), upgrades: [key] }).total).toBe(
       dayBudget(day, input('a')).total,
     );

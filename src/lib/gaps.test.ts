@@ -73,7 +73,7 @@ describe('the specific gaps this data has', () => {
   it('reports tickets whose per-person split is unknown', () => {
     const unscalable = gaps.filter((gap) => gap.id.startsWith('unscalable-'));
     expect(unscalable.length).toBeGreaterThan(0);
-    expect(unscalable.some((gap) => gap.what.includes('Duomo + Piccolomini'))).toBe(true);
+    expect(unscalable.some((gap) => gap.what.includes('Fattoria Casa Sola'))).toBe(true);
   });
 
   it('reports the return day, which has a budget but no items', () => {
