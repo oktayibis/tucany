@@ -220,6 +220,13 @@ describe('day totals', () => {
     expect(dayBudget(day, input('mixed')).declared).toBeNull();
   });
 
+  it('keeps day 8 Ucuz headline aligned with its selected cheap meals', () => {
+    const day = dayById('d8');
+    const budget = dayBudget(day, input('b'));
+    expect(budget.total).toBe(157);
+    expect(budget.declared).toBe(157);
+  });
+
   it('is never negative', () => {
     for (const mode of MODES) {
       for (const day of tripBudget(trip, input(mode)).days) {
