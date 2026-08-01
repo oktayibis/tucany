@@ -45,14 +45,14 @@ describe('search', () => {
 
   it('filters by theme', () => {
     const results = search(trip, { ...EMPTY_FILTERS, theme: 'market' });
-    expect(results.every((r) => r.dayId === 'd4' || r.dayId === 'd8')).toBe(true);
+    expect(results.every((r) => r.dayId === 'd5')).toBe(true); // Arezzo fuarı
     expect(results.length).toBeGreaterThan(0);
   });
 
   it('filters by elderFriendly', () => {
     const results = search(trip, { ...EMPTY_FILTERS, elderFriendlyOnly: true });
     const dayIds = new Set(results.map((r) => r.dayId));
-    expect(dayIds.has('d8')).toBe(false); // day 8 (Floransa) is not elder-friendly
+    expect(dayIds.has('d4')).toBe(false); // day 4 (Floransa) is not elder-friendly
     expect(dayIds.has('d3')).toBe(true); // day 3 (Siena) is
   });
 
