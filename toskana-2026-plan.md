@@ -117,7 +117,7 @@ Tavarnelle merkezi *(3 dk)* → [Badia a Passignano](https://www.google.com/maps
 **Tempo: orta · Sürüş: ~1s 20dk** · 👵 anne için rahat gün
 
 > **Neden bu gün Siena:** Duomo'nun 56 panelli mermer kakma zemini 2026'da 27 Haziran–31 Temmuz ve 18 Ağustos–15 Kasım arası açık. **31 Temmuz yaz penceresinin son günü** — 1–17 Ağustos arası zemin yeniden örtülü olacak. Siena'nın eski tarihi olan 5 Ağustos'ta hem zemin kapalı olurdu hem de Assunta Novena'sı (5–13 Ağustos) yüzünden katedral 18:00'de kapanıyor.
-> **Bedeli:** Fortezza Medicea pazarı yalnızca **Çarşamba** kuruluyor (08:30–13:30). Siena Cuma'ya alındığı için bu pazar plandan düştü; alışveriş karşılığı Arezzo fuarı (1 Ağu) ve Tavarnelle pazarı (30 Tem).
+> **Bedeli:** Fortezza Medicea pazarı yalnızca **Çarşamba** kuruluyor (08:30–13:30). Siena Cuma'ya alındığı için bu pazar plandan düştü; alışveriş karşılığı Arezzo fuarı (2 Ağu) ve Tavarnelle pazarı (30 Tem).
 
 **Rota & Lojistik**
 Otel → Siena *(1s 20dk)*
